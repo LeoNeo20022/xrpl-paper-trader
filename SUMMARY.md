@@ -3,17 +3,17 @@
 > **PAPER ONLY.** Simulated trades from public prices. No wallet, no keys, no real orders. Not financial or tax advice.
 
 - Started: **2026-10-20T08:43:56+00:00** at XRPL mid **$1.2948**
-- Last update: **2026-10-20T14:26:07+00:00**, XRPL XRP/RLUSD mid **$1.3304** (bid 1.3295 / ask 1.3314, node https://xrplcluster.com, ledger 107785547)
-- RLUSD issuer transfer fee (live): 0.0000%  |  candles processed this run: 6
+- Last update: **2026-10-20T15:05:19+00:00**, XRPL XRP/RLUSD mid **$1.3268** (bid 1.3264 / ask 1.3272, node https://xrplcluster.com, ledger 107786124)
+- RLUSD issuer transfer fee (live): 0.0000%  |  candles processed this run: 8
 
 | Strategy | Budget | XRP held | RLUSD unspent | XRP-equivalent* | Fills | XRP sells (taxable) |
 |---|---|---|---|---|---|---|
 | Weekly dip-buy ladder, never sells (`dip_ladder`) | $75 | 61.5320 | $0.00 | 61.5320 | 6 | 0 |
-| Static 2% scalp ladder, all profit kept as XRP (`scalp_2pct`) | $25 | 3.5533 | $20.85 | 19.2203 | 21 | 10 |
-| **Total** | $100 | **65.0853** | $20.85 | **80.7523** | | |
+| Static 2% scalp ladder, all profit kept as XRP (`scalp_2pct`) | $25 | 3.5533 | $20.85 | 19.2636 | 21 | 10 |
+| **Total** | $100 | **65.0853** | $20.85 | **80.7956** | | |
 | Baseline: $100 lump-sum XRP bought at start | $100 | 77.1917 | $0.00 | 77.1917 | 1 | 0 |
 
-**Experiment vs baseline (XRP-equivalent): +4.61%**
+**Experiment vs baseline (XRP-equivalent): +4.67%**
 
 \* XRP-equivalent = XRP held + unspent RLUSD converted at the current mid with a 0.05% taker cost. XRP held includes the XRP locked as ledger reserve (it is still yours).
 
