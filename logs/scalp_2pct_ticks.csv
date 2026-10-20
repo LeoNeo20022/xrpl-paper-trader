@@ -1,3 +1,4 @@
 ts,strategy,budget_usd,xrpl_mid,xrp_held,rlusd_unspent,xrp_equiv,value_usd,fills,xrp_sells_taxable,new_fills,open_buy_orders,open_sell_orders,xrp_kept_from_scalps
 2026-10-20T08:43:56+00:00,scalp_2pct,25,1.294829,3.2,20.8545,19.297919,24.9979,1,0,0,10,0,0.0
 2026-10-20T08:54:37+00:00,scalp_2pct,25,0.64618,21.229012,0.0,21.229012,13.7178,11,0,10,0,10,0.0
+2026-10-20T09:27:21+00:00,scalp_2pct,25,1.2942,5.164564,18.769,19.659731,25.453,20,9,9,9,1,0.321287
