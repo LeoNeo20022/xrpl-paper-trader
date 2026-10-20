@@ -1,0 +1,42 @@
+{
+  "_note": "PAPER TRADING ONLY. No wallet, no keys, no orders are ever placed. Public data only.",
+  "market": {
+    "pair": "XRP/RLUSD",
+    "rlusd_issuer": "rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De",
+    "rlusd_currency_hex": "524C555344000000000000000000000000000000",
+    "rippled_nodes": ["https://xrplcluster.com", "https://s1.ripple.com:51234", "https://s2.ripple.com:51234"],
+    "candles_url": "https://www.bitstamp.net/api/v2/ohlc/xrpusd/?step=300&limit=1000&start={start}"
+  },
+  "baseline_usd": 100,
+  "taker_cost_pct": 0.05,
+  "strategies": {
+    "dip_ladder": {
+      "type": "dip_ladder",
+      "label": "Weekly dip-buy ladder, never sells",
+      "budget_usd": 75,
+      "steps_pct": [2, 4, 6, 8, 10],
+      "refresh_days": 7,
+      "trigger_pct": 0.05,
+      "entry_cost_pct": 0.05,
+      "base_reserve_xrp": 1.0, "trustline_reserve_xrp": 0.2, "owner_reserve_xrp": 0.2,
+      "tx_fee_xrp": 0.00001
+    },
+    "scalp_2pct": {
+      "type": "scalp",
+      "label": "Static 2% scalp ladder, all profit kept as XRP",
+      "budget_usd": 25,
+      "spacing_pct": 2.0,
+      "tp_pct": 2.0,
+      "levels": 10,
+      "save_share": 0.0,
+      "core_pct": 0,
+      "recenter_mode": "off",
+      "range_days": 3, "range_pct": 12, "recenter_cooldown_h": 24,
+      "trigger_pct": 0.05,
+      "extra_cost_pct_per_fill": 0.0,
+      "entry_cost_pct": 0.05,
+      "base_reserve_xrp": 1.0, "trustline_reserve_xrp": 0.2, "owner_reserve_xrp": 0.2,
+      "tx_fee_xrp": 0.00001
+    }
+  }
+}

@@ -1,0 +1,76 @@
+period,topups,scheme,xrp_held,rlusd_left,xrp_equiv,value_usd,trades,xrp_sells,il_usd,lp_fees_usd,vs_lump
+RECENT Sep-Oct 2026 (falling),0,"4b Scalp 2% static, 100% reinvest",25.79,66.9,77.53,100.24,18,7,,,7.2%
+RECENT Sep-Oct 2026 (falling),0,"4a Scalp 0.5% static, 100% reinvest",76.45,-0.0,76.45,98.81,135,62,,,5.8%
+RECENT Sep-Oct 2026 (falling),0,"5 AMM LP (MEASURED, 6.0% APR)",37.58,48.57,75.14,97.14,3,0,-0.05,0.48,3.9%
+RECENT Sep-Oct 2026 (falling),0,"5 AMM LP (0% fees = IL only, 0.0% APR)",37.39,48.33,74.77,96.66,3,0,-0.05,0.0,3.4%
+RECENT Sep-Oct 2026 (falling),0,6 Hybrid 50% weekly DCA + 50% scalp 2%,49.3,31.9,73.97,95.62,23,7,,,2.3%
+RECENT Sep-Oct 2026 (falling),0,1 Lump sum at start,72.29,0.0,72.29,93.43,1,0,,,0.0%
+RECENT Sep-Oct 2026 (falling),0,2a DCA weekly,70.65,0.0,70.65,91.32,5,0,,,-2.3%
+RECENT Sep-Oct 2026 (falling),0,2b DCA daily,69.34,0.0,69.34,89.63,30,0,,,-4.1%
+RECENT Sep-Oct 2026 (falling),0,"3 Dip-buy ladder (-2..-10%, weekly refresh)",69.05,0.0,69.05,89.25,8,0,,,-4.5%
+FULL Oct24-Mar25 (rally+sideways),0,"3 Dip-buy ladder (-2..-10%, weekly refresh)",174.2,0.0,174.2,364.06,5,0,,,6.5%
+FULL Oct24-Mar25 (rally+sideways),0,1 Lump sum at start,163.52,0.0,163.52,341.74,1,0,,,0.0%
+FULL Oct24-Mar25 (rally+sideways),0,"5 AMM LP (ASSUMED high, 10.0% APR)",46.43,97.04,92.84,194.08,3,0,-36.04,9.22,-43.2%
+FULL Oct24-Mar25 (rally+sideways),0,"5 AMM LP (ASSUMED mid, 6.0% APR)",45.55,95.2,91.08,190.39,3,0,-36.04,5.53,-44.3%
+FULL Oct24-Mar25 (rally+sideways),0,"5 AMM LP (ASSUMED low, 3.0% APR)",44.89,93.81,89.75,187.63,3,0,-36.04,2.77,-45.1%
+FULL Oct24-Mar25 (rally+sideways),0,"5 AMM LP (IL only, 0.0% APR)",44.23,92.43,88.43,184.86,3,0,-36.04,0.0,-45.9%
+FULL Oct24-Mar25 (rally+sideways),0,2a DCA weekly,81.77,0.0,81.77,170.89,26,0,,,-50.0%
+FULL Oct24-Mar25 (rally+sideways),0,2b DCA daily,79.8,0.0,79.8,166.78,182,0,,,-51.2%
+FULL Oct24-Mar25 (rally+sideways),0,6 Hybrid 50% weekly DCA + 50% scalp 2%,51.84,48.04,74.82,156.39,117,45,,,-54.2%
+FULL Oct24-Mar25 (rally+sideways),0,"4b Scalp 2% static, 100% reinvest",19.03,98.04,65.92,137.82,91,45,,,-59.7%
+FULL Oct24-Mar25 (rally+sideways),0,"4a Scalp 0.5% static, 100% reinvest",13.19,98.04,60.08,125.6,245,122,,,-63.3%
+FULL Oct24-Mar25 (rally+sideways),25,1 Lump sum at start,268.4,0.0,268.4,560.93,7,0,,,0.0%
+FULL Oct24-Mar25 (rally+sideways),25,"3 Dip-buy ladder (-2..-10%, weekly refresh)",239.49,25.0,251.45,525.52,37,0,,,-6.3%
+FULL Oct24-Mar25 (rally+sideways),25,"5 AMM LP (ASSUMED high, 10.0% APR)",88.51,184.97,176.97,369.95,15,0,-48.96,13.41,-34.1%
+FULL Oct24-Mar25 (rally+sideways),25,"5 AMM LP (ASSUMED mid, 6.0% APR)",87.22,182.29,174.41,364.58,15,0,-48.96,8.04,-35.0%
+FULL Oct24-Mar25 (rally+sideways),25,2a DCA weekly,173.53,0.0,173.53,362.66,50,0,,,-35.3%
+FULL Oct24-Mar25 (rally+sideways),25,"5 AMM LP (ASSUMED low, 3.0% APR)",86.26,180.28,172.48,360.56,15,0,-48.96,4.02,-35.7%
+FULL Oct24-Mar25 (rally+sideways),25,"5 AMM LP (IL only, 0.0% APR)",85.3,178.27,170.56,356.54,15,0,-48.96,0.0,-36.5%
+FULL Oct24-Mar25 (rally+sideways),25,2b DCA daily,165.43,0.0,165.43,345.73,362,0,,,-38.4%
+FULL Oct24-Mar25 (rally+sideways),25,6 Hybrid 50% weekly DCA + 50% scalp 2%,98.48,123.04,157.32,328.85,141,45,,,-41.4%
+FULL Oct24-Mar25 (rally+sideways),25,"4b Scalp 2% static, 100% reinvest",20.54,248.04,139.17,290.97,91,45,,,-48.1%
+FULL Oct24-Mar25 (rally+sideways),25,"4a Scalp 0.5% static, 100% reinvest",14.54,248.04,133.17,278.44,245,122,,,-50.4%
+RALLY Oct1-Dec3 2024,0,"3 Dip-buy ladder (-2..-10%, weekly refresh)",174.2,0.0,174.2,475.15,5,0,,,6.5%
+RALLY Oct1-Dec3 2024,0,1 Lump sum at start,163.52,0.0,163.52,446.02,1,0,,,0.0%
+RALLY Oct1-Dec3 2024,0,2a DCA weekly,158.95,0.0,158.95,433.56,9,0,,,-2.8%
+RALLY Oct1-Dec3 2024,0,2b DCA daily,154.04,0.0,154.04,420.17,63,0,,,-5.8%
+RALLY Oct1-Dec3 2024,0,6 Hybrid 50% weekly DCA + 50% scalp 2%,90.43,48.04,108.04,294.71,100,45,,,-33.9%
+RALLY Oct1-Dec3 2024,0,"5 AMM LP (ASSUMED high, 10.0% APR)",39.38,107.42,78.74,214.84,3,0,-61.86,3.65,-51.8%
+RALLY Oct1-Dec3 2024,0,"5 AMM LP (ASSUMED mid, 6.0% APR)",39.11,106.69,78.21,213.38,3,0,-61.86,2.19,-52.2%
+RALLY Oct1-Dec3 2024,0,"5 AMM LP (ASSUMED low, 3.0% APR)",38.91,106.14,77.81,212.28,3,0,-61.86,1.09,-52.4%
+RALLY Oct1-Dec3 2024,0,"5 AMM LP (IL only, 0.0% APR)",38.71,105.6,77.41,211.19,3,0,-61.86,0.0,-52.7%
+RALLY Oct1-Dec3 2024,0,"4b Scalp 2% static, 100% reinvest",19.03,98.04,54.96,149.95,91,45,,,-66.4%
+RALLY Oct1-Dec3 2024,0,"4a Scalp 0.5% static, 100% reinvest",13.19,98.04,49.11,134.01,245,122,,,-70.0%
+RALLY Oct1-Dec3 2024,25,1 Lump sum at start,225.16,0.0,225.16,614.14,3,0,,,0.0%
+RALLY Oct1-Dec3 2024,25,2a DCA weekly,207.5,0.0,207.5,565.98,17,0,,,-7.8%
+RALLY Oct1-Dec3 2024,25,"3 Dip-buy ladder (-2..-10%, weekly refresh)",196.96,27.4,207.0,564.62,12,0,,,-8.1%
+RALLY Oct1-Dec3 2024,25,2b DCA daily,196.63,0.0,196.63,536.34,123,0,,,-12.7%
+RALLY Oct1-Dec3 2024,25,6 Hybrid 50% weekly DCA + 50% scalp 2%,115.46,73.04,142.23,387.98,108,45,,,-36.8%
+RALLY Oct1-Dec3 2024,25,"5 AMM LP (ASSUMED high, 10.0% APR)",55.58,151.6,111.13,303.2,7,0,-83.11,4.19,-50.6%
+RALLY Oct1-Dec3 2024,25,"5 AMM LP (ASSUMED mid, 6.0% APR)",55.27,150.77,110.52,301.53,7,0,-83.11,2.51,-50.9%
+RALLY Oct1-Dec3 2024,25,"5 AMM LP (ASSUMED low, 3.0% APR)",55.04,150.14,110.06,300.27,7,0,-83.11,1.26,-51.1%
+RALLY Oct1-Dec3 2024,25,"5 AMM LP (IL only, 0.0% APR)",54.81,149.51,109.6,299.02,7,0,-83.11,0.0,-51.3%
+RALLY Oct1-Dec3 2024,25,"4b Scalp 2% static, 100% reinvest",20.54,148.04,74.79,204.07,91,45,,,-66.8%
+RALLY Oct1-Dec3 2024,25,"4a Scalp 0.5% static, 100% reinvest",14.54,148.04,68.79,187.71,245,122,,,-69.4%
+SIDEWAYS Dec3 2024-Mar 2025,0,"4b Scalp 2% static, 100% reinvest",67.71,0.0,67.71,141.51,733,361,,,84.5%
+SIDEWAYS Dec3 2024-Mar 2025,0,6 Hybrid 50% weekly DCA + 50% scalp 2%,52.82,0.0,52.82,110.4,750,361,,,44.0%
+SIDEWAYS Dec3 2024-Mar 2025,0,"4a Scalp 0.5% static, 100% reinvest",46.91,-0.0,46.91,98.04,1091,540,,,27.9%
+SIDEWAYS Dec3 2024-Mar 2025,0,"5 AMM LP (ASSUMED high, 10.0% APR)",21.63,45.21,43.26,90.43,3,0,-0.77,2.85,17.9%
+SIDEWAYS Dec3 2024-Mar 2025,0,"5 AMM LP (ASSUMED mid, 6.0% APR)",21.36,44.64,42.71,89.28,3,0,-0.77,1.71,16.4%
+SIDEWAYS Dec3 2024-Mar 2025,0,"5 AMM LP (ASSUMED low, 3.0% APR)",21.16,44.21,42.3,88.43,3,0,-0.77,0.86,15.3%
+SIDEWAYS Dec3 2024-Mar 2025,0,"5 AMM LP (IL only, 0.0% APR)",20.95,43.79,41.89,87.57,3,0,-0.77,0.0,14.2%
+SIDEWAYS Dec3 2024-Mar 2025,0,2a DCA weekly,40.91,0.0,40.91,85.49,17,0,,,11.5%
+SIDEWAYS Dec3 2024-Mar 2025,0,2b DCA daily,40.5,0.0,40.5,84.65,119,0,,,10.4%
+SIDEWAYS Dec3 2024-Mar 2025,0,"3 Dip-buy ladder (-2..-10%, weekly refresh)",39.09,0.0,39.09,81.7,5,0,,,6.5%
+SIDEWAYS Dec3 2024-Mar 2025,0,1 Lump sum at start,36.69,0.0,36.69,76.69,1,0,,,0.0%
+SIDEWAYS Dec3 2024-Mar 2025,25,"4b Scalp 2% static, 100% reinvest",108.03,0.0,108.03,225.77,733,361,,,68.4%
+SIDEWAYS Dec3 2024-Mar 2025,25,6 Hybrid 50% weekly DCA + 50% scalp 2%,87.47,0.0,87.47,182.81,762,361,,,36.3%
+SIDEWAYS Dec3 2024-Mar 2025,25,"4a Scalp 0.5% static, 100% reinvest",78.91,-0.0,78.91,164.92,1091,540,,,23.0%
+SIDEWAYS Dec3 2024-Mar 2025,25,"5 AMM LP (ASSUMED high, 10.0% APR)",37.56,78.5,75.11,157.01,9,0,-1.47,3.94,17.1%
+SIDEWAYS Dec3 2024-Mar 2025,25,"5 AMM LP (ASSUMED mid, 6.0% APR)",37.19,77.72,74.35,155.43,9,0,-1.47,2.36,15.9%
+SIDEWAYS Dec3 2024-Mar 2025,25,"5 AMM LP (ASSUMED low, 3.0% APR)",36.9,77.13,73.79,154.25,9,0,-1.47,1.18,15.0%
+SIDEWAYS Dec3 2024-Mar 2025,25,"5 AMM LP (IL only, 0.0% APR)",36.62,76.54,73.22,153.07,9,0,-1.47,0.0,14.1%
+SIDEWAYS Dec3 2024-Mar 2025,25,"3 Dip-buy ladder (-2..-10%, weekly refresh)",70.52,0.0,70.52,147.37,24,0,,,9.9%
+SIDEWAYS Dec3 2024-Mar 2025,25,2b DCA daily,70.3,0.0,70.3,146.92,209,0,,,9.6%
+SIDEWAYS Dec3 2024-Mar 2025,25,2a DCA weekly,69.89,0.0,69.89,146.06,29,0,,,8.9%
+SIDEWAYS Dec3 2024-Mar 2025,25,1 Lump sum at start,64.16,0.0,64.16,134.1,4,0,,,0.0%
