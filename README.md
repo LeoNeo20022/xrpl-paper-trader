@@ -30,7 +30,7 @@ That XRP is counted as held, because it is still yours.
 To restart the experiment from scratch, delete `state/`, `logs/` and `SUMMARY.md`, then run a tick.
 
 ## Automation
-`.github/workflows/paper-trading.yml` runs a tick every 30 minutes on GitHub Actions and commits the updated logs.
+`.github/workflows/paper-trading.yml` runs a tick every 15 minutes on GitHub Actions and commits the updated logs.
 It uses no secrets and only Python's standard library.
 
 ## Settings

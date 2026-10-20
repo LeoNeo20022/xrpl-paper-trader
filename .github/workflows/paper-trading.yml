@@ -2,7 +2,7 @@ name: xrpl-paper-trading
 # PAPER ONLY: reads public prices, simulates trades, commits the logs. No secrets, no wallet, no orders.
 on:
   schedule:
-    - cron: "*/30 * * * *"   # every 30 min (UTC). GitHub may delay scheduled runs.
+    - cron: "*/15 * * * *"   # every 15 min (UTC). GitHub may delay scheduled runs.
   workflow_dispatch: {}
 permissions:
   contents: write            # only so the job can commit state/ logs/ SUMMARY.md back to this repo
