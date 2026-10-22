@@ -1,12 +1,12 @@
 {
  "started": "2026-10-20T08:43:56+00:00",
  "start_mid": 1.2948290358744394,
- "last_candle_ts": 1792632000,
+ "last_candle_ts": 1792634400,
  "baseline_usd": 100,
  "baseline_xrp": 77.19167721629505,
- "last_run": "2026-10-22T01:28:55+00:00",
- "last_mid": 1.3643157,
+ "last_run": "2026-10-22T02:06:16+00:00",
+ "last_mid": 1.3484749985062043,
  "last_node": "https://xrplcluster.com",
- "last_ledger": 107817125,
- "candles_this_run": 7
+ "last_ledger": 107817689,
+ "candles_this_run": 8
 }
