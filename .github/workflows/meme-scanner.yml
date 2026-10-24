@@ -1,0 +1,35 @@
+name: xrpl-meme-scanner
+# PAPER ONLY: reads public APIs (xrpl.to + public XRPL nodes), simulates $10 meme buys, commits logs.
+# No secrets, no wallet, no transactions. Fully separate from paper-trading.yml.
+on:
+  schedule:
+    - cron: "7,22,37,52 * * * *"   # every 15 min (UTC), offset from the grid trader. GitHub may delay scheduled runs.
+  workflow_dispatch: {}
+permissions:
+  contents: write                  # only to commit meme_scanner/ logs back to this repo
+concurrency:
+  group: meme-scanner
+  cancel-in-progress: false
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Meme scan (stdlib only, public read-only APIs)
+        run: python meme_scanner/scanner.py
+      - name: Commit meme_scanner logs only
+        run: |
+          git config user.name "meme-scanner-bot"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add meme_scanner/state meme_scanner/logs meme_scanner/SUMMARY.md
+          git diff --cached --quiet && exit 0
+          git commit -m "meme scan $(date -u +%FT%TZ)"
+          for i in 1 2 3 4 5; do
+            git pull --rebase --autostash && git push && exit 0
+            sleep $((i * 5))
+          done
+          exit 1
