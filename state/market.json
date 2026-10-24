@@ -4,11 +4,11 @@
  "last_candle_ts": 1792864200,
  "baseline_usd": 100,
  "baseline_xrp": 77.19167721629505,
- "last_run": "2026-10-24T17:57:11+00:00",
- "last_mid": 1.2758611114714449,
+ "last_run": "2026-10-24T17:57:23+00:00",
+ "last_mid": 1.275782226792011,
  "last_node": "https://xrplcluster.com",
- "last_ledger": 107876264,
- "candles_this_run": 3,
+ "last_ledger": 107876267,
+ "candles_this_run": 0,
  "last_close": 1.27611,
  "replayed": {
   "on": "2026-10-24",
@@ -17,6 +17,6 @@
   "book_mids_used": 171,
   "book_mids_rejected": 2
  },
- "net_fee_xrp": 2e-05,
- "open_ledger_fee_xrp": 1e-05
+ "net_fee_xrp": 0.005121,
+ "open_ledger_fee_xrp": 0.005121
 }
