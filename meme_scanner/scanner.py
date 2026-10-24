@@ -263,6 +263,29 @@ BOOK_FIELDS = ["ts", "label", "strategy", "token", "issuer", "currency", "source
                "fill_xrp_per_token", "tokens", "buy_cost_pct_vs_spot", "amm_fee_pct", "transfer_fee_pct", "round_trip_cost_pct",
                "pool_xrp", "cash_after_usd", "warnings", "note"]
 
+TRUST_RESERVE_XRP = 0.2   # owner reserve per trust line: LOCKED while the line exists, returned when it is removed (not a cost)
+
+def set_network_fee(meta):
+    """Network fee per transaction, as if signed in Xaman: max(config floor, 0.00002 XRP, live open-ledger fee), capped at 0.01 XRP.
+    Used for every simulated swap (buy/sell) and TrustSet (add line before a buy, remove it after a full exit). Since 2026-10-24."""
+    live = None
+    try: live = int(rpc("fee", {})["drops"]["open_ledger_fee"]) / 1e6
+    except Exception as e: WARN.append(f"live fee unavailable: {e!r}")
+    fee = max(CFG["network_fee_xrp"], 0.00002, min(live or 0, 0.01))
+    CFG["network_fee_xrp"] = fee; meta["network_fee_xrp_used"] = fee; meta["open_ledger_fee_xrp"] = live
+    return fee
+
+def fee_book(bk):
+    """Cumulative network-fee counter (XRP). Seeded once from the trade count at the 12-drop fee used before Oct 24."""
+    if "net_fees_xrp" not in bk:
+        n = len(bk["positions"]) + len(bk["closed"]) + sum(len(p["legs"]) for p in bk["positions"] + bk["closed"])
+        bk["net_fees_xrp"] = n * 0.000012; bk["trustset_fees_xrp"] = 0.0
+    return bk
+
+def charge_trustset(bk, px):
+    f = CFG["network_fee_xrp"]; fee_book(bk)
+    bk["cash_usd"] = round(bk["cash_usd"] - f * px, 6); bk["net_fees_xrp"] += f; bk["trustset_fees_xrp"] += f
+
 def new_book(px):
     b = CFG["bankroll"]
     return {"start_usd": b["start_usd"], "start_xrp_usd": px, "start_ts": TS, "cash_usd": b["start_usd"], "day": "", "buys_today": 0,
@@ -298,6 +321,7 @@ def close_part(bk, pos, sname, frac, reason, pool, px):
     cost_xrp, cost_usd = pos["xrp_cost"] * frac, pos["usd_cost"] * frac
     usd_net, usd_gross = xrp_net * px, xrp_gross * px
     bk["cash_usd"] = round(bk["cash_usd"] + usd_net, 6)
+    if pool: fee_book(bk)["net_fees_xrp"] += CFG["network_fee_xrp"]   # the sell swap's network fee (already inside xrp_net)
     row = {"ts": TS, "label": LABEL, "strategy": sname, "token": pos["name"], "issuer": pos["issuer"], "reason": reason,
            "fraction_of_buy": round(frac, 4), "hours_held": round((NOW - pos["t"]) / 3600, 2),
            "entry_spot_xrp": pos["entry_spot"], "exit_spot_xrp": pool["spot"] if pool else 0,
@@ -331,10 +355,11 @@ def manage(bk, sname, pool, px):
                 close_part(bk, pos, sname, min(rule["take_profit_fraction"], pos["remaining"]), f"take profit (x{ratio:.2f} net)", pl, px)
                 pos["tp_done"] = True
             if pos["remaining"] > 1e-9:
-                if ratio <= rule["stop_mult"]: close_part(bk, pos, sname, pos["remaining"], f"stop (x{ratio:.2f} net)", pl, px)
+                if "stop_mult" in rule and ratio <= rule["stop_mult"]: close_part(bk, pos, sname, pos["remaining"], f"stop (x{ratio:.2f} net)", pl, px)
                 elif age_h >= rule["max_hours"]: close_part(bk, pos, sname, pos["remaining"], f"time limit {rule['max_hours']}h (x{ratio:.2f} net)", pl, px)
         if pos["remaining"] > 1e-9: still.append(pos)
         else:
+            charge_trustset(bk, px)   # TrustSet to remove the line and unlock its 0.2 XRP reserve
             pos["closed_ts"] = TS; pos["pnl_usd_net"] = round(sum(l["pnl_usd_net"] for l in pos["legs"]), 4)
             pos["pnl_xrp_net"] = round(sum(l["pnl_xrp_net"] for l in pos["legs"]), 6)
             bk["closed"].append(pos); bk["last_exit"][pos["key"]] = NOW
@@ -353,13 +378,18 @@ def book_stats(bk, pools, px):
     legs = [l for p in bk["positions"] + bk["closed"] for l in p["legs"]]
     realized = sum(l["pnl_usd_net"] for l in legs); realized_g = sum(l["pnl_usd_gross"] for l in legs)
     realized_x = sum(l["pnl_xrp_net"] for l in legs)
+    fee_book(bk)
+    fees_usd = sum(l["pnl_usd_gross"] - l["pnl_usd_net"] for l in legs)            # closed legs: entry+exit AMM fee, price impact, transfer fee, network fee
+    fees_usd += sum(p["xrp_cost"] * p["remaining"] * (1 - p["entry_spot"] / p["entry_eff_px"]) * p["xrp_usd_entry"] for p in bk["positions"])  # open: entry costs
+    fees_usd += bk["trustset_fees_xrp"] * px
     wins = sum(1 for p in bk["closed"] if p["pnl_usd_net"] > 0); losses = len(bk["closed"]) - wins
     eq = bk["cash_usd"] + open_val
     return {"cash": bk["cash_usd"], "open_n": len(bk["positions"]), "open_val": open_val, "unrealized": open_val - open_cost,
             "realized": realized, "realized_gross": realized_g, "realized_xrp": realized_x, "equity": eq, "equity_xrp": eq / px,
             "start_xrp": bk["start_usd"] / bk["start_xrp_usd"], "closed_n": len(bk["closed"]),
             "trades": len(bk["closed"]) + len(bk["positions"]), "win_rate": (wins / len(bk["closed"]) * 100) if bk["closed"] else None,
-            "unpriced": unknown, "wins": wins, "losses": losses, "unrealized_xrp": open_val_x - open_cost_x}
+            "unpriced": unknown, "wins": wins, "losses": losses, "unrealized_xrp": open_val_x - open_cost_x,
+            "fees_usd": fees_usd, "net_fees_xrp": bk["net_fees_xrp"], "reserve_locked_xrp": TRUST_RESERVE_XRP * len(bk["positions"])}
 
 # ---------------- main ----------------
 def main():
@@ -368,6 +398,7 @@ def main():
     meta = load("meta.json", {}); seen = load("seen.json", {}); books = load("strategies.json", {})
     px, px_src = xrp_usd()
     meta["xrp_usd"], meta["xrp_usd_src"] = px, px_src
+    set_network_fee(meta)
     migrate_v1(books, px)
     for s in STRATS: books.setdefault(s, new_book(px))
     day = TS[:10]
@@ -552,13 +583,14 @@ def buy_round(books, elig, px, stats, pools):
             if "trail_pct" in CFG["exits"][s]: pos["peak_spot"] = pool["spot"]
             bk["positions"].append(pos); held.add(k); bk["buys_today"] += 1; stats["bought"][s] += 1
             bk["cash_usd"] = round(bk["cash_usd"] - CFG["buy_usd"], 6); pools.setdefault(k, pool)
+            charge_trustset(bk, px); bk["net_fees_xrp"] += CFG["network_fee_xrp"]   # TrustSet before the buy + the buy swap's fee (inside tokens_net)
             row = {"ts": TS, "label": LABEL, "strategy": s, "token": tok["name"], "issuer": tok["issuer"], "currency": tok["currency"],
                    "sources": "|".join(tok["sources"]), "usd": CFG["buy_usd"], "xrp_usd": px, "xrp_in": round(xin, 6),
                    "spot_xrp_per_token": pool["spot"], "fill_xrp_per_token": eff, "tokens": tn,
                    "buy_cost_pct_vs_spot": round((eff / pool["spot"] - 1) * 100, 3), "amm_fee_pct": round(pool["fee"] * 100, 3),
                    "transfer_fee_pct": round(pool["tf"] * 100, 3), "round_trip_cost_pct": round(rt, 3) if rt is not None else "",
                    "pool_xrp": round(pool["x"]), "cash_after_usd": round(bk["cash_usd"], 4), "warnings": "; ".join(r["warn"]),
-                   "note": (trig + " | " if trig else "") + "simulated AMM fill incl. pool fee, slippage, transfer fee; CLOB ignored; trust line reserve 0.2 XRP not counted"}
+                   "note": (trig + " | " if trig else "") + "simulated AMM fill incl. pool fee, slippage, transfer fee; CLOB ignored; network fee per tx; TrustSet fee charged; trust line reserve 0.2 XRP locked, not spent"}
             append("paper_buys.csv", row, BOOK_FIELDS)
 
 def write_summary(meta, seen, books, pools, px, stats):
@@ -573,18 +605,23 @@ def write_summary(meta, seen, books, pools, px, stats):
             "breakout": "up ≥10% in 1h + rising volume; trailing stop 8% below high / 24h",
             "dip_bounce": ">3 days old, ≥15% below 24h high; +10% / −10% / 24h"}
     L += ["## Bankrolls — scoreboard is USD/RLUSD (each strategy has its own $100, $10 per trade)", "",
-          "| Strategy | Rule | Started (UTC) | **Equity USD** | **vs $100** | Cash | Open (n / value) | Realized USD | Unrealized USD | Wins / losses (win rate) | Trades (closed) | Realized XRP | Unrealized XRP | Equity XRP | vs start XRP |",
-          "|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|"]
+          "| Strategy | Rule | Started (UTC) | **Equity USD** | **vs $100** | Cash | Open (n / value) | Realized USD | Unrealized USD | Wins / losses (win rate) | Trades (closed) | Realized XRP | Unrealized XRP | Equity XRP | vs start XRP | Fees paid USD (network XRP) | Reserve locked XRP |",
+          "|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|"]
     for s in STRATS:
         st = book_stats(books[s], pools, px)
         wr = f"{st['wins']} / {st['losses']} ({st['win_rate']:.0f}%)" if st["win_rate"] is not None else "–"
         started = (books[s].get("start_ts") or "2026-10-24T11:16")[:16].replace("T", " ")
         L.append(f"| {s} | {desc.get(s, '')} | {started} | **${st['equity']:.2f}** | **{st['equity'] - books[s]['start_usd']:+.2f}** | ${st['cash']:.2f} | {st['open_n']} / ${st['open_val']:.2f} | "
-                 f"${st['realized']:+.2f} | ${st['unrealized']:+.2f} | {wr} | {st['trades']} ({st['closed_n']}) | {st['realized_xrp']:+.2f} | {st['unrealized_xrp']:+.2f} | {st['equity_xrp']:.2f} | {st['equity_xrp'] - st['start_xrp']:+.2f} |")
+                 f"${st['realized']:+.2f} | ${st['unrealized']:+.2f} | {wr} | {st['trades']} ({st['closed_n']}) | {st['realized_xrp']:+.2f} | {st['unrealized_xrp']:+.2f} | {st['equity_xrp']:.2f} | {st['equity_xrp'] - st['start_xrp']:+.2f} | ${st['fees_usd']:.2f} ({st['net_fees_xrp']:.5f}) | {st['reserve_locked_xrp']:.1f} |")
     if "hold" in books:  # baseline: the same $100 simply kept in XRP from the original start
         sp = books["hold"]["start_xrp_usd"]; bx = books["hold"]["start_usd"] / sp; bu = bx * px
-        L.append(f"| *baseline: keep $100 in XRP* | buy XRP at ${sp:.4f}, hold | 2026-10-24 11:16 | **${bu:.2f}** | **{bu - 100:+.2f}** | – | – | – | – | – | – | – | – | {bx:.2f} | +0.00 |")
-    L += ["", "Cash is kept in USD at each fill. Values are net of AMM pool fee, price impact, issuer transfer fee and network fee "
+        L.append(f"| *baseline: keep $100 in XRP* | buy XRP at ${sp:.4f}, hold | 2026-10-24 11:16 | **${bu:.2f}** | **{bu - 100:+.2f}** | – | – | – | – | – | – | – | – | {bx:.2f} | +0.00 | – | – |")
+    L += ["", f"**All P/L above is after fees.** Fees paid = AMM pool fee + price impact (slippage) + issuer transfer fee + XRPL network fee, "
+          f"as if each tx were a plain transaction signed in Xaman (network fee now {meta.get('network_fee_xrp_used', CFG['network_fee_xrp']):.6f} XRP/tx = max(0.00002, live open-ledger fee {meta.get('open_ledger_fee_xrp')}), cap 0.01). "
+          "Each buy = TrustSet + swap; each exit = swap; a full exit also removes the trust line (TrustSet). TrustSet fees are charged from Oct 24 ~14:30 UTC on; "
+          "earlier network fees were 0.000012 XRP per swap. Reserve locked = 0.2 XRP per open trust line: held by the ledger and returned when the line is removed, so it is not a cost. "
+          "Not included: Xaman's own 0.8% service fee on swaps/DEX trades (see README).", "",
+          "Cash is kept in USD at each fill. Values are net of AMM pool fee, price impact, issuer transfer fee and network fee "
           "(open positions valued at what selling right now would return). Equity XRP = equity USD ÷ current XRP/USD; start XRP = $100 at the start price. "
           "Each strategy is an independent hypothetical: their buys of the same token are each simulated against the same pool. "
           "Exits fire at the price seen at each ~5-min poll, so real fills could be better or worse than the trigger level. "

@@ -40,3 +40,9 @@ Every logged trade is labelled `PAPER-NOT-ON-LEDGER`.
 Run locally: `python3 meme_scanner/scanner.py` (Python 3.9+, stdlib only).
 
 Token data by <a href="https://xrpl.to">xrpl.to</a>.
+
+## Fees (as if signed in Xaman), since 2026-10-24
+- Every simulated transaction pays the XRPL network fee: max(0.00002 XRP, live open-ledger fee), capped at 0.01 XRP. Each buy = TrustSet (add line) + swap; each exit = swap; a full exit also removes the line (TrustSet). TrustSet fees are charged going forward from Oct 24 ~14:30 UTC; earlier swaps paid 0.000012 XRP.
+- AMM pool fee, price impact (slippage) and issuer transfer fees were already inside every simulated fill.
+- Trust line owner reserve (0.2 XRP per open line) is locked by the ledger, not spent; it is shown separately.
+- NOT included: Xaman's own service fee. Xaman charges 0.8% of value on token swaps, AMM deposits/withdrawals and DEX market trades (TrustSet and offer cancels are free): https://help.xaman.app/app/getting-started-with-xaman/understanding-the-xaman-service-fee
