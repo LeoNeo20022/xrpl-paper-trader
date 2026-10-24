@@ -5,8 +5,8 @@
 **Scoreboard: value in RLUSD/USD** (goal: grow dollars; can swap to XRP later). XRP-equivalent is shown second.
 
 - Started: **2026-10-20T08:43:56+00:00** at XRPL mid **$1.2948**
-- Last update: **2026-10-24T12:53:01+00:00**, XRPL XRP/RLUSD mid **$1.2857** (bid 1.2856 / ask 1.2858, node https://xrplcluster.com, ledger 107871676)
-- RLUSD issuer transfer fee (live): 0.0000%  |  candles processed this run: 3
+- Last update: **2026-10-24T12:53:15+00:00**, XRPL XRP/RLUSD mid **$1.2857** (bid 1.2856 / ask 1.2858, node https://xrplcluster.com, ledger 107871679)
+- RLUSD issuer transfer fee (live): 0.0000%  |  candles processed this run: 0
 
 | Strategy | Start | **Value (RLUSD/USD)** | **Change vs start** | XRP held | RLUSD | XRP-equivalent* | Fills | XRP sells (taxable) |
 |---|---|---|---|---|---|---|---|---|
