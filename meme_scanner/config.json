@@ -6,7 +6,7 @@
     "xrplto_trending_limit": 40,
     "new_max_age_hours": 72,
     "trending_top_n": 15,
-    "ledger_fallback_max_ledgers": 120,
+    "ledger_fallback_max_ledgers": 60,
     "exclude_tags": [
       "Stablecoin",
       "Scam"

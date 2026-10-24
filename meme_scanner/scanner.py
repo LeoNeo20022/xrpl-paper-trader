@@ -12,17 +12,18 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 CFG = json.load(open(os.path.join(HERE, "config.json")))
 STATE, LOGS = os.path.join(HERE, "state"), os.path.join(HERE, "logs")
 NODES = ["https://xrplcluster.com", "https://s1.ripple.com:51234", "https://s2.ripple.com:51234"]
-XRPLTO = "https://api.xrpl.to/api/tokens"
+XRPLTO = "https://api.xrpl.to/v1/tokens"
+XRPLTO_KEY = os.environ.get("XRPLTO_API_KEY", "").strip()  # optional free key; sent only as a header, never printed/logged
 BLACKHOLES = {"rrrrrrrrrrrrrrrrrrrrrhoLvTp", "rrrrrrrrrrrrrrrrrrrrBZbvji", "rrrrrrrrrrrrrrrrrNAMEtxvNvQ", "rrrrrrrrrrrrrrrrrrrn5RM1rHd"}
 LABEL = "PAPER-NOT-ON-LEDGER"
-UA = {"User-Agent": "xrpl-paper-meme-scanner (log-only; github.com/LeoNeo20022/xrpl-paper-trader)"}
+UA = {"User-Agent": "xrpl-meme-paper-scanner/1.0 (github.com/LeoNeo20022/xrpl-paper-trader)"}
 NOW = time.time()
 TS = datetime.fromtimestamp(NOW, timezone.utc).isoformat(timespec="seconds")
 WARN = []  # source/API problems this run, shown in SUMMARY
 
 # ---------------- io helpers ----------------
-def http_json(url, body=None, timeout=25):
-    h = dict(UA)
+def http_json(url, body=None, timeout=25, headers=None):
+    h = dict(UA, **(headers or {}))
     data = None
     if body is not None:
         data = json.dumps(body).encode(); h["Content-Type"] = "application/json"
@@ -122,7 +123,14 @@ def discover(meta):
     for src, q, lim in [("new", "sortBy=dateon&sortType=desc", d["xrplto_newest_limit"]),
                         ("trending", "sortBy=trendingScore&sortType=desc", d["xrplto_trending_limit"])]:
         try:
-            r = http_json(f"{XRPLTO}?start=0&limit={lim}&{q}&filter=")
+            url = f"{XRPLTO}?start=0&limit={lim}&{q}&filter="
+            use_key = bool(XRPLTO_KEY) and NOW - meta.get("key_rejected_t", 0) > 3600
+            try: r = http_json(url, headers={"X-Api-Key": XRPLTO_KEY} if use_key else None)
+            except urllib.error.HTTPError as he:
+                if not (use_key and he.code in (401, 402, 403)): raise
+                meta["key_rejected_t"] = NOW  # bad/expired key or out of credits: go anonymous (and throttled) for 1h
+                WARN.append(f"xrpl.to rejected the API key (HTTP {he.code}); using anonymous access, 15-min throttle for 1h")
+                r = http_json(url)
             toks = r.get("tokens") or []
             for i, t in enumerate(toks, 1):
                 t["_x"] = t
@@ -134,7 +142,8 @@ def discover(meta):
                     add(t, "trending", i)
             ok += 1
         except Exception as e:
-            WARN.append(f"xrpl.to {src} list failed: {e!r}")
+            msg = repr(e).replace(XRPLTO_KEY, "***") if XRPLTO_KEY else repr(e)
+            WARN.append(f"xrpl.to {src} list failed: {msg}")
     meta["xrplto_ok"] = ok
     if ok == 0:  # fallback: scan recent ledgers for AMMCreate XRP/<token> pools
         try:
@@ -354,13 +363,16 @@ def main():
     # 2) discovery + safety only if >= 15 min since the last one (keeps xrpl.to at <= 2 calls / 15 min)
     stats = {"discovery": False, "seen": 0, "checked": 0, "passed": 0, "bought": {s: 0 for s in STRATS}}
     since = NOW - meta.get("last_discovery_t", 0)
-    if since >= CFG["discovery"]["min_interval_minutes"] * 60:
+    keyed = bool(XRPLTO_KEY) and NOW - meta.get("key_rejected_t", 0) > 3600
+    interval_min = 0 if keyed else CFG["discovery"]["min_interval_minutes"]  # keyed: discover every run; anonymous: throttle
+    meta["xrplto_keyed"] = keyed
+    if since >= interval_min * 60:
         stats["discovery"] = True; meta["last_discovery_t"] = NOW; meta["last_discovery"] = TS
         eligible = discover_and_check(meta, seen, books, px, stats)
         buy_round(books, eligible, px, stats, pools)
         save("seen.json", seen)
     else:
-        stats["next_discovery_in_min"] = round((CFG["discovery"]["min_interval_minutes"] * 60 - since) / 60, 1)
+        stats["next_discovery_in_min"] = round((interval_min * 60 - since) / 60, 1)
 
     stats["runtime_s"] = round(time.time() - t0, 1)
     meta.update(last_run=TS, last_stats=stats, warnings=WARN[-20:])
@@ -446,7 +458,7 @@ def write_summary(meta, seen, books, pools, px, stats):
     L = [f"# XRPL meme scanner — PAPER ONLY ({LABEL})", "",
          "Log-only experiment: no wallet, no keys, no orders. Every number below is simulated from public data.",
          "Data by <a href=\"https://xrpl.to\">xrpl.to</a> (token discovery); safety checks and prices from the public XRP Ledger.", "",
-         f"Last run: **{meta['last_run']}** (UTC) · XRP/USD {px:.4f} ({meta['xrp_usd_src']}) · last discovery {meta.get('last_discovery', '–')} (UTC)", ""]
+         f"Last run: **{meta['last_run']}** (UTC) · XRP/USD {px:.4f} ({meta['xrp_usd_src']}) · last discovery {meta.get('last_discovery', '–')} (UTC, {'every run, API key' if meta.get('xrplto_keyed') else 'every ≥15 min, anonymous'})", ""]
     if meta.get("warnings"): L += ["**Warnings this run:** " + " | ".join(meta["warnings"]), ""]
     desc = {"hold": "½ at +100%, stop −50%, 72h", "plus5": "all at +50%, stop −50%, 72h", "scalp": "+20% / −10% / 60 min"}
     L += ["## Bankrolls (each strategy started with its own $100)", "",

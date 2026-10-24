@@ -3,7 +3,7 @@ name: xrpl-meme-scanner
 # No secrets, no wallet, no transactions. Fully separate from paper-trading.yml.
 on:
   schedule:
-    - cron: "2-59/5 * * * *"   # every 5 min (UTC), offset from the grid trader. Exits every run; xrpl.to discovery only every >=15 min (state timestamp). GitHub often delays scheduled runs.
+    - cron: "2-59/5 * * * *"   # every 5 min (UTC), offset from the grid trader. Exits every run; xrpl.to discovery every run if the XRPLTO_API_KEY secret is set, else every >=15 min (state timestamp). GitHub often delays scheduled runs.
   workflow_dispatch: {}
 permissions:
   contents: write                  # only to commit meme_scanner/ logs back to this repo
@@ -20,6 +20,8 @@ jobs:
         with:
           python-version: "3.12"
       - name: Meme scan (stdlib only, public read-only APIs)
+        env:
+          XRPLTO_API_KEY: ${{ secrets.XRPLTO_API_KEY }}   # optional; if unset, discovery throttles to every >=15 min
         run: python meme_scanner/scanner.py
       - name: Commit meme_scanner logs only
         run: |
