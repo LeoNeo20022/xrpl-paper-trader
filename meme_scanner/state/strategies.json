@@ -50,7 +50,7 @@
     "entry_spot": 6.574188211489212e-07,
     "issuer": "rExSpmk2PAqxKRTT3mhjCrCpqVasBra5v8",
     "key": "rExSpmk2PAqxKRTT3mhjCrCpqVasBra5v8-54494D4500000000000000000000000000000000",
-    "last_ratio_net": 0.9958,
+    "last_ratio_net": 0.996,
     "legs": [],
     "name": "TIME",
     "pool_xrp_entry": 7397.270287,
@@ -126,7 +126,7 @@
     "entry_spot": 0.010352091420325572,
     "issuer": "rBFJGmWj6YaabVCxfsjiCM8pfYXs8xFdeC",
     "key": "rBFJGmWj6YaabVCxfsjiCM8pfYXs8xFdeC-UGA",
-    "last_ratio_net": 0.9966,
+    "last_ratio_net": 0.9968,
     "legs": [],
     "name": "UGA",
     "pool_xrp_entry": 8086.697643,
@@ -274,7 +274,7 @@
     "entry_spot": 0.0012836028178416713,
     "issuer": "rhLJ2ma5pScsxVhL5EQr71w3FgASVLwP84",
     "key": "rhLJ2ma5pScsxVhL5EQr71w3FgASVLwP84-BOX",
-    "last_ratio_net": 1.0394,
+    "last_ratio_net": 1.0393,
     "legs": [],
     "name": "BOX",
     "pool_xrp_entry": 6704.813794,
@@ -312,7 +312,7 @@
     "entry_spot": 5.727471671679549e-07,
     "issuer": "rnHDzEH4xyW6u4LbXqDoX1uk36v5ovhbFi",
     "key": "rnHDzEH4xyW6u4LbXqDoX1uk36v5ovhbFi-4465657054696465000000000000000000000000",
-    "last_ratio_net": 0.9274,
+    "last_ratio_net": 0.8614,
     "legs": [],
     "name": "DeepTide",
     "pool_xrp_entry": 11714.122001,
@@ -338,7 +338,7 @@
     "entry_spot": 0.00018395865035572009,
     "issuer": "rGLEgQdktoN4Be5thhk6seg1HifGPBxY5Q",
     "key": "rGLEgQdktoN4Be5thhk6seg1HifGPBxY5Q-PLX",
-    "last_ratio_net": 0.9907,
+    "last_ratio_net": 0.9906,
     "legs": [],
     "name": "PLX",
     "pool_xrp_entry": 28093.179002,
@@ -577,7 +577,7 @@
     "entry_spot": 5.727471671679549e-07,
     "issuer": "rnHDzEH4xyW6u4LbXqDoX1uk36v5ovhbFi",
     "key": "rnHDzEH4xyW6u4LbXqDoX1uk36v5ovhbFi-4465657054696465000000000000000000000000",
-    "last_ratio_net": 0.9274,
+    "last_ratio_net": 0.8614,
     "legs": [],
     "name": "DeepTide",
     "pool_xrp_entry": 11714.122001,
@@ -603,7 +603,7 @@
     "entry_spot": 0.00018395865035572009,
     "issuer": "rGLEgQdktoN4Be5thhk6seg1HifGPBxY5Q",
     "key": "rGLEgQdktoN4Be5thhk6seg1HifGPBxY5Q-PLX",
-    "last_ratio_net": 0.9907,
+    "last_ratio_net": 0.9906,
     "legs": [],
     "name": "PLX",
     "pool_xrp_entry": 28093.179002,
@@ -1236,7 +1236,7 @@
  },
  "slow_scalp": {
   "buys_today": 10,
-  "cash_usd": 12.331193,
+  "cash_usd": 21.184263,
   "closed": [
    {
     "amm_fee": 0.00311,
@@ -1274,25 +1274,32 @@
     "warnings": [],
     "xrp_cost": 7.810486358985575,
     "xrp_usd_entry": 1.28033
-   }
-  ],
-  "day": "2026-10-24",
-  "last_exit": {
-   "rMFL2KuFPMuiujdbVGbMzNNjj5QKyd6dZf-586D656E00000000000000000000000000000000": 1792850637.3212926
-  },
-  "positions": [
+   },
    {
     "amm_fee": 0.00224,
+    "closed_ts": "2026-10-24T15:35:30+00:00",
     "currency": "4465657054696465000000000000000000000000",
     "entry_eff_px": 5.503976714795741e-07,
     "entry_spot": 5.487913640991316e-07,
     "issuer": "rnHDzEH4xyW6u4LbXqDoX1uk36v5ovhbFi",
     "key": "rnHDzEH4xyW6u4LbXqDoX1uk36v5ovhbFi-4465657054696465000000000000000000000000",
-    "last_ratio_net": 0.9679,
-    "legs": [],
+    "last_ratio_net": 0.899,
+    "legs": [
+     {
+      "fraction_of_buy": 1.0,
+      "pnl_usd_gross": -1.0934,
+      "pnl_usd_net": -1.1469,
+      "pnl_xrp_gross": -0.746262,
+      "pnl_xrp_net": -0.788734,
+      "reason": "stop (x0.90 net)",
+      "ts": "2026-10-24T15:35:30+00:00"
+     }
+    ],
     "name": "DeepTide",
+    "pnl_usd_net": -1.1469,
+    "pnl_xrp_net": -0.788734,
     "pool_xrp_entry": 11478.880933,
-    "remaining": 1.0,
+    "remaining": 0.0,
     "t": 1792849072.2342532,
     "tf": 0.0,
     "tokens_gross": 14232159.742176114,
@@ -1306,7 +1313,15 @@
     ],
     "xrp_cost": 7.810486358985575,
     "xrp_usd_entry": 1.28033
-   },
+   }
+  ],
+  "day": "2026-10-24",
+  "last_exit": {
+   "rMFL2KuFPMuiujdbVGbMzNNjj5QKyd6dZf-586D656E00000000000000000000000000000000": 1792850637.3212926,
+   "rnHDzEH4xyW6u4LbXqDoX1uk36v5ovhbFi-4465657054696465000000000000000000000000": 1792856130.661501
+  },
+  "net_fees_xrp": 0.000172,
+  "positions": [
    {
     "amm_fee": 4e-05,
     "currency": "ATM",
@@ -1338,7 +1353,7 @@
     "entry_spot": 0.00018384885749452384,
     "issuer": "rGLEgQdktoN4Be5thhk6seg1HifGPBxY5Q",
     "key": "rGLEgQdktoN4Be5thhk6seg1HifGPBxY5Q-PLX",
-    "last_ratio_net": 0.9913,
+    "last_ratio_net": 0.9912,
     "legs": [],
     "name": "PLX",
     "pool_xrp_entry": 28085.877388,
@@ -1514,6 +1529,7 @@
   ],
   "start_ts": "2026-10-24T13:37:52+00:00",
   "start_usd": 100.0,
-  "start_xrp_usd": 1.28033
+  "start_xrp_usd": 1.28033,
+  "trustset_fees_xrp": 2e-05
  }
 }
