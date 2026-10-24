@@ -49,3 +49,20 @@ Everything is in `config.json` (budgets, step sizes, refresh period, fill margin
 - Bitstamp XRP/USD candles stand in for prices between ticks. The XRPL DEX price is usually within about 0.1% of them, but not always.
 - Real limit orders wait in a queue and can be skipped, so simulated fills are optimistic.
 - If ticks stop for more than about 3 days, only the latest 1,000 candles are caught up.
+
+## xrp_stacker (added 2026-10-24, separate $100 line, PAPER ONLY)
+Goal: more XRP over time. Starts 100% in XRP (same count as "keep $100 in XRP"). Four sell slices, each 15% of the sellable stack
+(stack minus 2.0 XRP reserve), sit at +4%, +8.2%, +12.5%, +17% above a reference price. When one sells, ALL of its RLUSD is parked in a
+buy-back 4% lower, so each round trip ends with ~+3.5% more XRP on that slice (4% minus 2 x 0.25% fill cost). No RLUSD is ever banked.
+The ladder trails down when nothing is parked and price is 4% below the reference; a slice parked over 14 days is bought back at
+market (this can lose XRP). Risk: in a sustained rally it ends with fewer XRP than holding. Scoreboard: XRP count first.
+Replayed from the Oct 20 start on the same Bitstamp 5-minute candles as the other lines (book mids not used for the replay).
+
+## Fees (as if signed in Xaman), since 2026-10-24
+Every simulated transaction pays the XRPL network fee: max(0.00002 XRP, live open-ledger fee), capped at 0.01 XRP
+(OfferCreate per order, OfferCancel at dip-ladder refresh, TrustSet for RLUSD, AMMDeposit/AMMWithdraw for amm_lp). Before Oct 24
+fills paid 0.00001 XRP; the missed TrustSet and initial-ladder OfferCreates were charged once on Oct 24. Limit orders fill at their
+limit price (maker, no AMM fee); market buys pay 0.05% taker; xrp_stacker pays 0.25% per fill (AMM 0.205% + slippage).
+Owner reserves (1 XRP base + 0.2 per trust line/offer) are locked, not spent, and shown separately.
+NOT included: Xaman's own 0.8% service fee on swaps, AMM deposits/withdrawals and DEX trades:
+https://help.xaman.app/app/getting-started-with-xaman/understanding-the-xaman-service-fee

@@ -48,7 +48,7 @@ def place_ladder(st, cfg):
                            for i in range(cfg["levels"] - len(held))]
 
 def total_xrp(st):
-    return st["reserve_xrp"] + st["core_xrp"] + st["scalp_xrp"]
+    return st["reserve_xrp"] + st["core_xrp"] + st["scalp_xrp"] - st.get("netfee_extra_xrp", 0.0)   # extra = network fees not tied to a fill (TrustSet, initial offers)
 
 def equity(st, price):
     return st["trading_usd"] + st["savings_usd"] + total_xrp(st) * price

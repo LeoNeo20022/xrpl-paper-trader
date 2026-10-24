@@ -19,7 +19,11 @@ def maybe_refresh(st, cfg, now_unix, price):
         return False
     free = st["cash_usd"] + sum(o["usd"] for o in st["orders"])
     steps = cfg["steps_pct"]
+    n_cancel = len(st["orders"])
     st["orders"] = [{"price": round(price * (1 - s / 100), 6), "usd": free / len(steps), "step_pct": s} for s in steps] if free > 0.01 else []
+    if st.get("fees_v2"):   # network fee: OfferCancel per unfilled order + OfferCreate per new order (since 2026-10-24)
+        f = (n_cancel + len(st["orders"])) * cfg.get("tx_fee_xrp", 0.00002)
+        st["netfee_extra_xrp"] = st.get("netfee_extra_xrp", 0.0) + f; st["net_fees_xrp"] = st.get("net_fees_xrp", 0.0) + f
     st["cash_usd"] = 0.0 if st["orders"] else free
     st["ref"] = price; st["refreshes"] += 1
     st["next_refresh_unix"] = now_unix + cfg.get("refresh_days", 7) * 86400
@@ -42,7 +46,7 @@ def process(st, path, cfg, ts=None):
     return ev
 
 def total_xrp(st):
-    return st["xrp"] + st["reserve_xrp"]
+    return st["xrp"] + st["reserve_xrp"] - st.get("netfee_extra_xrp", 0.0)   # extra = network fees not tied to a fill (TrustSet, OfferCreate/OfferCancel at refresh)
 
 def unspent_usd(st):
     return st["cash_usd"] + sum(o["usd"] for o in st["orders"])

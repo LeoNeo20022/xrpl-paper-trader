@@ -10,7 +10,9 @@ Each run (tick):
   4. writes per-strategy state + logs, a tax-friendly CSV, logs/summary.csv and SUMMARY.md."""
 import json, os, csv, time, urllib.request
 from datetime import datetime, timezone
-import scalper, dipladder
+import scalper, dipladder, stacker
+
+NET_FEE_FLOOR_XRP, NET_FEE_CAP_XRP = 0.00002, 0.01   # network fee per tx: max(floor, live open-ledger fee), capped
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 CFG = json.load(open(os.path.join(HERE, "config.json")))
@@ -51,9 +53,12 @@ def xrpl_snapshot():
             iss = post(node, {"method": "account_info", "params": [{"account": MK["rlusd_issuer"], "ledger_index": "validated"}]})["result"]["account_data"]
             tr = iss.get("TransferRate", 0)
             vl = post(node, {"method": "server_info", "params": [{}]})["result"]["info"].get("validated_ledger", {})
+            try: olf = int(post(node, {"method": "fee", "params": [{}]})["result"]["drops"]["open_ledger_fee"]) / 1e6
+            except Exception: olf = None
             return {"node": node, "bid": b, "ask": a, "mid": (a + b) / 2, "ledger": vl.get("seq"),
                     "transfer_fee_pct": 0.0 if tr in (0, 1000000000) else (tr / 1e9 - 1) * 100,
-                    "reserve_base": vl.get("reserve_base_xrp"), "reserve_inc": vl.get("reserve_inc_xrp")}
+                    "reserve_base": vl.get("reserve_base_xrp"), "reserve_inc": vl.get("reserve_inc_xrp"),
+                    "open_ledger_fee_xrp": olf, "net_fee_xrp": max(NET_FEE_FLOOR_XRP, min(olf or 0, NET_FEE_CAP_XRP))}
         except Exception as e:
             err = e
     raise RuntimeError(f"all rippled nodes failed: {err}")
@@ -98,6 +103,14 @@ def save(path, obj):
 
 def init_strategy(name, sc, mid, now, ts_iso):
     """Create a fresh paper account. Reserve XRP is bought at the live mid + taker cost (logged as a trade)."""
+    if sc["type"] == "stacker":
+        st = stacker.new_state(mid, sc)
+        st.update(type="stacker", created=ts_iso)
+        e = {"ts": ts_iso, "side": "BUY", "price": round(mid * (1 + sc.get("entry_cost_pct", 0.05) / 100), 6), "xrp": round(st["start_xrp"], 6),
+             "rlusd": round(st["budget_usd"], 4), "fee_xrp": sc.get("tx_fee_xrp", 0.00002)}
+        append(TAX, tax_row(name, e, "PAPER market buy of the whole $100 as XRP (stacker start)"), TAX_FIELDS)
+        append(os.path.join(LDIR, f"{name}_fills.csv"), dict(e, side="BUY_START"), FILL_FIELDS)
+        return st
     if sc["type"] == "scalp":
         st = scalper.new_state(mid, sc)
         rx = st["reserve_xrp"]; ru = st["budget_usd"] - st["trading_usd"]
@@ -105,13 +118,50 @@ def init_strategy(name, sc, mid, now, ts_iso):
         st = dipladder.new_state(mid, sc, now)
         rx = st["reserve_xrp"]; ru = st["reserve_cost_usd"]
     st.update(type=sc["type"], created=ts_iso)
+    fees_catchup(st, sc)
     e = {"ts": ts_iso, "side": "BUY", "price": round(ru / rx, 6), "xrp": round(rx, 6), "rlusd": round(ru, 4), "fee_xrp": sc.get("tx_fee_xrp", 0.00001)}
     append(TAX, tax_row(name, e, "PAPER market buy of reserve XRP (base + trust line + per-offer reserve)"), TAX_FIELDS)
     append(os.path.join(LDIR, f"{name}_fills.csv"), dict(e, side="BUY_RESERVE"), FILL_FIELDS)
     return st
 
+def fees_catchup(st, sc):
+    """One-time (2026-10-24): start a fees-paid ledger and charge network fees the old model skipped:
+    1 TrustSet (RLUSD line) + one OfferCreate per order in the initial ladder. Fill-time OfferCreates were already charged
+    (0.00001 XRP each before Oct 24). Trading cost so far = 0.05% taker cost on the reserve XRP bought up front."""
+    if st.get("fees_v2"): return
+    tx = sc.get("tx_fee_xrp", NET_FEE_FLOOR_XRP)
+    n0 = sc["levels"] if sc["type"] == "scalp" else len(sc["steps_pct"])
+    paid_before = (st["buys"] + st["sells"]) * 0.00001 if sc["type"] == "scalp" else st.get("fees_xrp", 0.0)
+    reserve_usd = (st["budget_usd"] - st["trading_usd"]) if sc["type"] == "scalp" else st["reserve_cost_usd"]
+    ent = sc.get("entry_cost_pct", 0.05) / 100
+    st["netfee_extra_xrp"] = (1 + n0) * tx
+    st["net_fees_xrp"] = paid_before + st["netfee_extra_xrp"]
+    st["fees_trading_usd"] = reserve_usd * ent / (1 + ent)
+    st["fees_v2"] = True
+
+def fee_stats(sc, st, mid):
+    """(fees paid USD incl. network fee at the current mid, network fee XRP, XRP locked as ledger reserve)."""
+    if sc["type"] == "stacker": return st["fees_usd"] + st["net_fees_xrp"] * mid, st["net_fees_xrp"], st["reserve_xrp"]
+    return st.get("fees_trading_usd", 0.0) + st.get("net_fees_xrp", 0.0) * mid, st.get("net_fees_xrp", 0.0), st["reserve_xrp"]
+
 def run_strategy(name, sc, st, candles, snap, now, ts_iso):
     events = []
+    if sc["type"] == "stacker":
+        for t, path, h, l in candles:
+            events += stacker.process(st, path, sc, ts=iso(t + 300), ts_unix=t + 300)
+        if snap.get("mid") is not None: events += stacker.process(st, [snap["mid"]], sc, ts=ts_iso, ts_unix=now)
+        x, usd = stacker.total_xrp(st), stacker.parked_usd(st)
+        for e in events:
+            append(os.path.join(LDIR, f"{name}_fills.csv"), e, FILL_FIELDS); append(TAX, tax_row(name, e), TAX_FIELDS)
+        st["last_run"] = ts_iso
+        lv = st["levels"]
+        extra = {"open_buy_orders": sum(L["state"] == "buy" for L in lv), "open_sell_orders": sum(L["state"] == "sell" for L in lv),
+                 "start_xrp": round(st["start_xrp"], 6), "round_trips": st["round_trips"], "forced_rebuys": st["forced_rebuys"],
+                 "xrp_gained_trips": round(st["xrp_gained_trips"], 6), "xrp_lost_forced": round(st["xrp_lost_forced"], 6),
+                 "ladder_ref": round(st["ref"], 6),
+                 "order_prices": " ".join(f"sell {L['sell']:.4f}" if L["state"] == "sell" else f"rebuy {L['buy']:.4f}" for L in lv)}
+        return events, x, usd, 1 + st["buys"] + st["sells"], st["sells"], extra
+    fees_catchup(st, sc)
     if sc["type"] == "scalp":
         for t, path, h, l in candles:
             events += scalper.process(st, path, sc, ts=iso(t + 300))
@@ -138,6 +188,7 @@ def run_strategy(name, sc, st, candles, snap, now, ts_iso):
     for e in events:
         append(os.path.join(LDIR, f"{name}_fills.csv"), e, FILL_FIELDS)
         append(TAX, tax_row(name, e), TAX_FIELDS)
+        st["net_fees_xrp"] = st.get("net_fees_xrp", 0.0) + e.get("fee_xrp", 0.0)   # the follow-up OfferCreate charged at each fill
     st["last_run"] = ts_iso
     return events, x, usd, fills + 1, sells, extra   # +1 = the reserve buy
 
@@ -178,7 +229,10 @@ def amm_lp_init(taker, mid, ts_iso):
 def amm_lp_tick(taker, snap, ts_iso, base_xrp):
     st = load(AMM_STATE) or amm_lp_init(taker, snap["mid"], ts_iso)
     pool = amm_pool(); share = st["lp_tokens"] / pool["lp"]
-    x, r, mid = share * pool["x"], share * pool["r"], snap["mid"]
+    if "net_fees_xrp" not in st:   # 2026-10-24: TrustSet + OfferCreate (buy XRP half) + AMMDeposit + the future AMMWithdraw
+        st["net_fees_xrp"] = 4 * snap.get("net_fee_xrp", NET_FEE_FLOOR_XRP)
+        st["fees_trading_usd"] = st["deposit_xrp"] * st["start_price"] * (taker - 1)
+    x, r, mid = share * pool["x"] - st["net_fees_xrp"], share * pool["r"], snap["mid"]
     hold_x, hold_r = st["deposit_xrp"], st["deposit_rlusd"]
     k = (pool["r"] / pool["x"]) / (st["start_pool"]["r"] / st["start_pool"]["x"])   # pool price change since deposit
     il_pct = (2 * k ** 0.5 / (1 + k) - 1) * 100                                     # theoretical IL vs holding the deposit
@@ -190,7 +244,9 @@ def amm_lp_tick(taker, snap, ts_iso, base_xrp):
            "lump_xrp": round(base_xrp, 6), "lump_value_usd": round(base_xrp * mid, 4),
            "vs_hold5050_pct": round((lp_val / hold_val - 1) * 100, 4), "il_pct": round(il_pct, 4),
            "fees_est_pct": round(((lp_val / hold_val) / (1 + il_pct / 100) - 1) * 100, 4),
-           "vs_lump_xrp_pct": round(((x + r / (mid * taker)) / base_xrp - 1) * 100, 3), "pool_fee_pct": pool["fee_pct"]}
+           "vs_lump_xrp_pct": round(((x + r / (mid * taker)) / base_xrp - 1) * 100, 3), "pool_fee_pct": pool["fee_pct"],
+           "fees_paid_usd": round(st["fees_trading_usd"] + st["net_fees_xrp"] * mid, 4), "net_fees_xrp": round(st["net_fees_xrp"], 6),
+           "reserve_locked_xrp": 1.0 + 0.2 + 0.2}
     st["last_run"] = ts_iso; st["last"] = row
     save(AMM_STATE, st)
     append(os.path.join(LDIR, "amm_lp_ticks.csv"), row, list(row.keys()))
@@ -239,12 +295,14 @@ def tick_row(name, sc, st, events, x, usd, fills, sells, extra, ts_iso, val_mid,
     return {"ts": ts_iso, "strategy": name, "budget_usd": sc["budget_usd"], "xrpl_mid": round(val_mid, 6),
             "xrp_held": round(x, 6), "rlusd_unspent": round(usd, 4), "xrp_equiv": round(eq, 6),
             "value_usd": round(val, 4), "vs_start_usd": round(val - sc["budget_usd"], 4), "fills": fills, "xrp_sells_taxable": sells,
-            "new_fills": len(events), **extra}
+            "new_fills": len(events), "fees_paid_usd": round(fee_stats(sc, st, val_mid)[0], 4),
+            "net_fees_xrp": round(fee_stats(sc, st, val_mid)[1], 6), "reserve_locked_xrp": round(st["reserve_xrp"], 2), **extra}
 
 def build_srow(ts_iso, mid, spread_pct, n_candles, rows, ms):
     """USD/RLUSD scoreboard first. Every strategy is compared with keeping its own budget in XRP bought at the start
     (baseline_xrp is for $100, scaled by budget/100); the total is compared with the sum of those baselines."""
     base = ms["baseline_xrp"]; bu = ms.get("baseline_usd", CFG["baseline_usd"])
+    all_rows = rows; rows = [r for r in rows if not CFG["strategies"][r["strategy"]].get("separate")]
     tot_x = sum(r["xrp_held"] for r in rows); tot_u = sum(r["rlusd_unspent"] for r in rows); tot_eq = sum(r["xrp_equiv"] for r in rows)
     tot_val = sum(r["value_usd"] for r in rows); tot_bud = sum(r["budget_usd"] for r in rows)
     k_tot = tot_bud / bu
@@ -262,6 +320,14 @@ def build_srow(ts_iso, mid, spread_pct, n_candles, rows, ms):
         srow.update({f"{n}_xrp": r["xrp_held"], f"{n}_rlusd": r["rlusd_unspent"], f"{n}_xrp_equiv": r["xrp_equiv"],
                      f"{n}_vs_xrp_equiv_pct": round((r["xrp_equiv"] / (base * k) - 1) * 100, 3),
                      f"{n}_fills": r["fills"], f"{n}_xrp_sells": r["xrp_sells_taxable"]})
+    for r in all_rows:
+        n = r["strategy"]; srow.update({f"{n}_fees_paid_usd": r["fees_paid_usd"], f"{n}_net_fees_xrp": r["net_fees_xrp"]})
+        if CFG["strategies"][n].get("separate"):   # xrp_stacker: XRP count first
+            srow.update({f"{n}_xrp": r["xrp_held"], f"{n}_start_xrp": r["start_xrp"], f"{n}_vs_start_xrp": round(r["xrp_held"] - r["start_xrp"], 6),
+                         f"{n}_rlusd_parked": r["rlusd_unspent"], f"{n}_xrp_equiv": r["xrp_equiv"],
+                         f"{n}_vs_xrp_equiv_pct": round((r["xrp_equiv"] / r["start_xrp"] - 1) * 100, 3), f"{n}_value_usd": r["value_usd"],
+                         f"{n}_vs_xrp_usd": round(r["value_usd"] - r["start_xrp"] * mid, 4), f"{n}_round_trips": r["round_trips"],
+                         f"{n}_xrp_gained_trips": r["xrp_gained_trips"], f"{n}_forced_rebuys": r["forced_rebuys"], f"{n}_fills": r["fills"]})
     srow.update({"total_xrp": round(tot_x, 6), "total_rlusd": round(tot_u, 4), "total_xrp_equiv": round(tot_eq, 6),
                  "vs_baseline_pct": round((tot_eq / (base * k_tot) - 1) * 100, 3)})
     return srow
@@ -292,6 +358,7 @@ def main():
         st = load(spath)
         if st is None:
             st = backfill_new_strategy(name, sc, ms, now) if not fresh else init_strategy(name, sc, snap["mid"], now, ts_iso)
+        sc["tx_fee_xrp"] = snap["net_fee_xrp"]   # Xaman-style network fee per tx this tick (live open-ledger fee, floor 0.00002 XRP)
         events, x, usd, fills, sells, extra = run_strategy(name, sc, st, candles, {"mid": snap["mid"] if mid_ok else None, "ref": val_mid}, now, ts_iso)
         save(spath, st)
         row = tick_row(name, sc, st, events, x, usd, fills, sells, extra, ts_iso, val_mid, taker)
@@ -300,7 +367,7 @@ def main():
         for e in events: print(f"FILL [{name}]", e)
     if candles: ms["last_candle_ts"] = candles[-1][0]; ms["last_close"] = candles[-1][1][-1]
     ms.update(last_run=ts_iso, last_mid=snap["mid"], last_node=snap["node"], last_ledger=snap["ledger"],
-              candles_this_run=len(candles))
+              candles_this_run=len(candles), net_fee_xrp=snap["net_fee_xrp"], open_ledger_fee_xrp=snap["open_ledger_fee_xrp"])
     save(MARKET_STATE, ms)
     srow = build_srow(ts_iso, val_mid, spread, len(candles), rows, ms)
     base = ms["baseline_xrp"]
@@ -322,6 +389,8 @@ def main():
 
 def write_md(ms, snap, rows, s, lp=None):
     mid = snap["mid"]
+    sep = [r for r in rows if CFG["strategies"][r["strategy"]].get("separate")]
+    rows = [r for r in rows if not CFG["strategies"][r["strategy"]].get("separate")]
     base = s["baseline_xrp"]; bvu = s["baseline_xrp_value_usd"]
     L = ["# XRP/RLUSD paper-trading experiment: SUMMARY", "",
          "> **PAPER ONLY.** Simulated trades from public prices. No wallet, no keys, no real orders. Not financial or tax advice.", "",
@@ -330,23 +399,29 @@ def write_md(ms, snap, rows, s, lp=None):
          f"- Started: **{ms['started']}** at XRPL mid **${ms['start_mid']:.4f}**",
          f"- Last update: **{s['ts']}**, XRPL XRP/RLUSD mid **${mid:.4f}** (bid {snap['bid']:.4f} / ask {snap['ask']:.4f}, node {snap['node']}, ledger {snap['ledger']})",
          f"- RLUSD issuer transfer fee (live): {snap['transfer_fee_pct']:.4f}%  |  candles processed this run: {s['candles']}", "",
-         "| Strategy | Start | **Value (RLUSD/USD)** | Change vs start | **vs keep $100 in XRP** | XRP held | RLUSD | XRP-equivalent* | vs XRP baseline (XRP-eq.) | Fills | XRP sells (taxable) |",
-         "|---|---|---|---|---|---|---|---|---|---|---|"]
+         "| Strategy | Start | **Value (RLUSD/USD)** | Change vs start | **vs keep $100 in XRP** | XRP held | RLUSD | XRP-equivalent* | vs XRP baseline (XRP-eq.) | Fills | XRP sells (taxable) | Fees paid USD (network XRP) | Reserve locked XRP |",
+         "|---|---|---|---|---|---|---|---|---|---|---|---|---|"]
     for r in rows:
         n = r["strategy"]; lab = CFG["strategies"][n]["label"]; bx = bvu * r["budget_usd"] / ms["baseline_usd"]
         d = r["value_usd"] - bx
         L.append(f"| {lab} (`{n}`) | ${r['budget_usd']} | **${r['value_usd']:.2f}** | {r['vs_start_usd']:+.2f} | **{d:+.2f}** ({d / bx * 100:+.2f}%) | "
-                 f"{r['xrp_held']:.4f} | ${r['rlusd_unspent']:.2f} | {r['xrp_equiv']:.4f} | {s[n + '_vs_xrp_equiv_pct']:+.2f}% | {r['fills']} | {r['xrp_sells_taxable']} |")
+                 f"{r['xrp_held']:.4f} | ${r['rlusd_unspent']:.2f} | {r['xrp_equiv']:.4f} | {s[n + '_vs_xrp_equiv_pct']:+.2f}% | {r['fills']} | {r['xrp_sells_taxable']} | ${r['fees_paid_usd']:.2f} ({r['net_fees_xrp']:.5f}) | {r['reserve_locked_xrp']:.1f} |")
     tb = sum(r["budget_usd"] for r in rows); dt = s["total_vs_xrp_usd"]
     L.append(f"| **Experiment total** (all {len(rows)}) | ${tb} | **${s['total_value_usd']:.2f}** | {s['total_vs_start_usd']:+.2f} | **{dt:+.2f}** ({dt / s['total_baseline_xrp_value_usd'] * 100:+.2f}%) | "
-             f"{s['total_xrp']:.4f} | ${s['total_rlusd']:.2f} | {s['total_xrp_equiv']:.4f} | {s['vs_baseline_pct']:+.2f}% | | |")
-    L.append(f"| **Baseline: keep $100 in XRP** (bought at start) | ${ms['baseline_usd']} | ${bvu:.2f} | {bvu - ms['baseline_usd']:+.2f} | — | {base:.4f} | $0.00 | {base:.4f} | — | 1 | 0 |")
-    L.append(f"| Baseline for the total: keep ${tb} in XRP | ${tb} | ${s['total_baseline_xrp_value_usd']:.2f} | {s['total_baseline_xrp_value_usd'] - tb:+.2f} | — | {s['total_baseline_xrp']:.4f} | $0.00 | {s['total_baseline_xrp']:.4f} | — | | |")
+             f"{s['total_xrp']:.4f} | ${s['total_rlusd']:.2f} | {s['total_xrp_equiv']:.4f} | {s['vs_baseline_pct']:+.2f}% | | | ${sum(r['fees_paid_usd'] for r in rows):.2f} ({sum(r['net_fees_xrp'] for r in rows):.5f}) | {sum(r['reserve_locked_xrp'] for r in rows):.1f} |")
+    L.append(f"| **Baseline: keep $100 in XRP** (bought at start) | ${ms['baseline_usd']} | ${bvu:.2f} | {bvu - ms['baseline_usd']:+.2f} | — | {base:.4f} | $0.00 | {base:.4f} | — | 1 | 0 | ${ms['baseline_usd'] * 0.0005 / 1.0005:.2f} | — |")
+    L.append(f"| Baseline for the total: keep ${tb} in XRP | ${tb} | ${s['total_baseline_xrp_value_usd']:.2f} | {s['total_baseline_xrp_value_usd'] - tb:+.2f} | — | {s['total_baseline_xrp']:.4f} | $0.00 | {s['total_baseline_xrp']:.4f} | — | | | | |")
     L += ["", "_History replayed on 2026-10-24 from Bitstamp 5-min candles after bad XRPL book data was removed, then re-sized to $100 per strategy "
           "(earlier versions archived under `*/archive_phantom_2026-10-24/` and `*/archive_resize_2026-10-24/`)._", "",
           f"**Experiment (${tb}) vs keep ${tb} in XRP: {dt:+.2f} USD ({dt / s['total_baseline_xrp_value_usd'] * 100:+.2f}%)** · XRP-equivalent: {s['vs_baseline_pct']:+.2f}%", "",
           "\\* Value = XRP held × current mid + RLUSD. XRP-equivalent = XRP held + RLUSD converted at the current mid with a 0.05% taker cost. "
           "XRP held includes the XRP locked as ledger reserve (it is still yours).", "",
+          f"**All values and P/L are after fees.** Fees paid = taker/AMM cost on market buys + XRPL network fee on every transaction, as if each were a plain "
+          f"OfferCreate/OfferCancel/TrustSet/AMMDeposit signed in Xaman. Network fee this tick: {snap.get('net_fee_xrp', 0):.6f} XRP per tx = max(0.00002, live open-ledger fee "
+          f"{snap.get('open_ledger_fee_xrp')}) capped at 0.01. Grid limit orders fill at their limit price (maker, no AMM fee). Before Oct 24 fills paid 0.00001 XRP; the "
+          "TrustSet and initial-ladder OfferCreates were charged once on Oct 24 (catch-up), dip-ladder refresh cancels/creates from then on. "
+          "Reserve locked = 1 XRP base + 0.2 per trust line/offer, held by the ledger (not spent). "
+          "**Not included:** Xaman's own 0.8% service fee on swaps, AMM deposits/withdrawals and DEX trades (see README).", "",
           "- `dip_ladder` is an **XRP-accumulation** strategy (it only buys and never sells), so it only grows dollar value if XRP rises.",
           "- `scalp_2pct_rlusd` runs the same 2% grid as `scalp_2pct` but banks each round trip's whole profit in RLUSD and does not recompound it.", ""]
     for r in rows:
@@ -354,6 +429,21 @@ def write_md(ms, snap, rows, s, lp=None):
             L.append(f"- Dip ladder open buy orders: {r.get('order_prices') or 'none'} (reference {r.get('ladder_ref')}, next refresh {r.get('next_refresh')})")
         else:
             L.append(f"- `{r['strategy']}`: {r['open_buy_orders']} buy orders waiting, {r['open_sell_orders']} sell orders waiting, XRP kept from scalps {r['xrp_kept_from_scalps']}")
+    for r in sep:
+        n = r["strategy"]; c = CFG["strategies"][n]; dx = r["xrp_held"] - r["start_xrp"]; bv = r["start_xrp"] * mid
+        L += ["", f"## Separate line: XRP stacker (`{n}`, PAPER-NOT-ON-LEDGER) — scoreboard is XRP COUNT", "",
+              f"{c['label']}. Separate $100 line, not included in the $300 total. Started {CFG['strategies'][n].get('_start', ms['started'])} at "
+              f"${ms['start_mid']:.4f} with **{r['start_xrp']:.4f} XRP** (= keep $100 in XRP).", "",
+              "| | **XRP held** | vs start XRP | RLUSD parked (waiting to rebuy) | XRP-equivalent* | Value (RLUSD/USD) | vs keep $100 in XRP (USD) | Round trips | XRP gained from trips | Forced rebuys (XRP lost) | Fees paid USD (network XRP) | Reserve locked XRP |",
+              "|---|---|---|---|---|---|---|---|---|---|---|---|",
+              f"| `{n}` | **{r['xrp_held']:.4f}** | **{dx:+.4f}** ({dx / r['start_xrp'] * 100:+.2f}%) | ${r['rlusd_unspent']:.2f} | {r['xrp_equiv']:.4f} ({s[n + '_vs_xrp_equiv_pct']:+.2f}%) | ${r['value_usd']:.2f} | "
+              f"{r['value_usd'] - bv:+.2f} | {r['round_trips']} | {r['xrp_gained_trips']:+.4f} | {r['forced_rebuys']} ({r['xrp_lost_forced']:+.4f}) | ${r['fees_paid_usd']:.2f} ({r['net_fees_xrp']:.5f}) | {r['reserve_locked_xrp']:.1f} |",
+              f"| Baseline: keep $100 in XRP | {r['start_xrp']:.4f} | +0.0000 | $0.00 | {r['start_xrp']:.4f} | ${bv:.2f} | — | | | | | |", "",
+              f"- Rules: {c['levels']} sell slices of {c['slice_pct']:g}% of the sellable stack at +{c['spacing_pct']:g}% steps above the reference; each sold slice rebuys with ALL its RLUSD "
+              f"one step ({c['spacing_pct']:g}%) lower, so each round trip ends with more XRP. No RLUSD profit is banked. Cost {c['fee_pct_per_fill']:g}% per fill (AMM 0.205% + slippage) + network fee. "
+              f"Ladder trails down when nothing is parked and price is {c['spacing_pct']:g}% below the reference. A slice parked over {c['max_park_days']} days is bought back at market (can lose XRP).",
+              f"- Orders now (reference {r['ladder_ref']}): {r['order_prices']}",
+              "- Risk: in a sustained rally the RLUSD stays parked or is rebought higher, so it ends with **fewer XRP than just holding**."]
     if lp:
         L += ["", "## Separate line: AMM liquidity provider (`amm_lp`, PAPER-NOT-ON-LEDGER)", "",
               f"$100 deposited 50/50 into the XRP/RLUSD AMM pool on {lp['start_ts']} at ${lp['start_price']:.4f} "
@@ -363,7 +453,9 @@ def write_md(ms, snap, rows, s, lp=None):
               f"| Hold the same 50/50 (no pool) | ${lp['hold5050_value_usd']:.2f} | {lp['hold5050_value_usd'] - 100:+.2f} | {lp['dep_x']:.4f} | ${lp['dep_r']:.2f} | {lp['hold5050_xrp_equiv']:.4f} |",
               f"| Baseline: keep $100 in XRP | ${lp['lump_value_usd']:.2f} | {lp['lump_value_usd'] - 100:+.2f} | {lp['lump_xrp']:.4f} | $0.00 | {lp['lump_xrp']:.4f} |", "",
               f"- LP vs hold-50/50: **{lp['vs_hold5050_pct']:+.3f}%** = impermanent loss {lp['il_pct']:+.3f}% + fees earned ≈ {lp['fees_est_pct']:+.3f}% (pool fee {lp['pool_fee_pct']:.3f}%, pool share {lp['pool_share_pct']:.6f}%)",
-              f"- LP vs keep $100 in XRP: **{lp['value_usd'] - lp['lump_value_usd']:+.2f} USD** · XRP-equivalent: {lp['vs_lump_xrp_pct']:+.2f}%"]
+              f"- LP vs keep $100 in XRP: **{lp['value_usd'] - lp['lump_value_usd']:+.2f} USD** · XRP-equivalent: {lp['vs_lump_xrp_pct']:+.2f}%",
+              f"- Fees paid: ${lp.get('fees_paid_usd', 0):.2f} (taker cost on the XRP half + {lp.get('net_fees_xrp', 0):.5f} XRP network fees for TrustSet, OfferCreate, AMMDeposit and the future AMMWithdraw, already deducted). "
+              f"Reserve locked: {lp.get('reserve_locked_xrp', 1.4):.1f} XRP (base + RLUSD line + LP-token line), not spent."]
     L += ["", "Logs: `logs/summary.csv`, `logs/<strategy>_ticks.csv`, `logs/<strategy>_fills.csv`, `logs/amm_lp_ticks.csv`, `logs/tax_export.csv`."]
     open(os.path.join(HERE, "SUMMARY.md"), "w").write("\n".join(L) + "\n")
 
