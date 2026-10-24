@@ -72,7 +72,7 @@ def process(st, path, cfg, ts=None):
                 st["trading_usd"] -= C; st["scalp_xrp"] += q - txfee_xrp
                 st["fees_usd"] += fee + txfee_xrp * p; st["buys"] += 1
                 t = L["buy"] * (1 + tp)
-                sell_qty = C * (1 + k * tp) / (t * (1 - fee_pct))
+                sell_qty = min(C * (1 + k * tp) / (t * (1 - fee_pct)), q)   # never sell more than this level bought (only binds when save_share≈1)
                 L.update(state="sell", cost=C, qty=q, target=round(t, 6), sell_qty=sell_qty, bar=st["bar"])
                 ev.append({"ts": ts, "side": "BUY", "price": L["buy"], "xrp": round(q, 6), "rlusd": round(C, 4), "fee_xrp": txfee_xrp, "mkt": round(p, 6)})
             elif L["state"] == "sell" and L["bar"] < st["bar"] and p >= L["target"] * (1 + trig):

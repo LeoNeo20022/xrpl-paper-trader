@@ -4,7 +4,11 @@
     "pair": "XRP/RLUSD",
     "rlusd_issuer": "rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De",
     "rlusd_currency_hex": "524C555344000000000000000000000000000000",
-    "rippled_nodes": ["https://xrplcluster.com", "https://s1.ripple.com:51234", "https://s2.ripple.com:51234"],
+    "rippled_nodes": [
+      "https://xrplcluster.com",
+      "https://s1.ripple.com:51234",
+      "https://s2.ripple.com:51234"
+    ],
     "candles_url": "https://www.bitstamp.net/api/v2/ohlc/xrpusd/?step=300&limit=1000&start={start}"
   },
   "baseline_usd": 100,
@@ -14,12 +18,20 @@
       "type": "dip_ladder",
       "label": "Weekly dip-buy ladder, never sells",
       "budget_usd": 75,
-      "steps_pct": [2, 4, 6, 8, 10],
+      "steps_pct": [
+        2,
+        4,
+        6,
+        8,
+        10
+      ],
       "refresh_days": 7,
       "trigger_pct": 0.05,
       "entry_cost_pct": 0.05,
-      "base_reserve_xrp": 1.0, "trustline_reserve_xrp": 0.2, "owner_reserve_xrp": 0.2,
-      "tx_fee_xrp": 0.00001
+      "base_reserve_xrp": 1.0,
+      "trustline_reserve_xrp": 0.2,
+      "owner_reserve_xrp": 0.2,
+      "tx_fee_xrp": 1e-05
     },
     "scalp_2pct": {
       "type": "scalp",
@@ -31,12 +43,48 @@
       "save_share": 0.0,
       "core_pct": 0,
       "recenter_mode": "off",
-      "range_days": 3, "range_pct": 12, "recenter_cooldown_h": 24,
+      "range_days": 3,
+      "range_pct": 12,
+      "recenter_cooldown_h": 24,
       "trigger_pct": 0.05,
       "extra_cost_pct_per_fill": 0.0,
       "entry_cost_pct": 0.05,
-      "base_reserve_xrp": 1.0, "trustline_reserve_xrp": 0.2, "owner_reserve_xrp": 0.2,
-      "tx_fee_xrp": 0.00001
+      "base_reserve_xrp": 1.0,
+      "trustline_reserve_xrp": 0.2,
+      "owner_reserve_xrp": 0.2,
+      "tx_fee_xrp": 1e-05
+    },
+    "scalp_2pct_rlusd": {
+      "type": "scalp",
+      "label": "Static 2% scalp ladder, profit banked in RLUSD (variant)",
+      "budget_usd": 25,
+      "spacing_pct": 2.0,
+      "tp_pct": 2.0,
+      "levels": 10,
+      "save_share": 1.0,
+      "core_pct": 0,
+      "recenter_mode": "off",
+      "range_days": 3,
+      "range_pct": 12,
+      "recenter_cooldown_h": 24,
+      "trigger_pct": 0.05,
+      "extra_cost_pct_per_fill": 0.0,
+      "entry_cost_pct": 0.05,
+      "base_reserve_xrp": 1.0,
+      "trustline_reserve_xrp": 0.2,
+      "owner_reserve_xrp": 0.2,
+      "tx_fee_xrp": 1e-05,
+      "in_total": false,
+      "_note": "Paper variant of scalp_2pct: same grid, each round trip sells enough XRP to bank the whole profit in RLUSD savings; savings are not recompounded into the ladder. Backfilled from the experiment start with the same 5-min candles. Not part of the experiment total."
     }
+  },
+  "amm_lp": {
+    "label": "AMM liquidity provider, $100 split 50/50 into the XRP/RLUSD pool (paper)",
+    "amm_account": "rhWTXC2m2gGGA9WozUaoMm6kLAVPb1tcS3",
+    "budget_usd": 100,
+    "backdate_ts": "2026-10-20T08:43:56+00:00",
+    "backdate_ledger": 107780350,
+    "backdate_price": 1.2948,
+    "_note": "Tracked separately from the strategies above; NOT included in their totals or vs_baseline_pct. Two-asset proportional deposit (no AMM fee); XRP half bought with the same 0.05% taker cost as the baseline."
   }
 }

@@ -461,14 +461,14 @@ def write_summary(meta, seen, books, pools, px, stats):
          f"Last run: **{meta['last_run']}** (UTC) · XRP/USD {px:.4f} ({meta['xrp_usd_src']}) · last discovery {meta.get('last_discovery', '–')} (UTC, {'every run, API key' if meta.get('xrplto_keyed') else 'every ≥15 min, anonymous'})", ""]
     if meta.get("warnings"): L += ["**Warnings this run:** " + " | ".join(meta["warnings"]), ""]
     desc = {"hold": "½ at +100%, stop −50%, 72h", "plus5": "all at +50%, stop −50%, 72h", "scalp": "+20% / −10% / 60 min"}
-    L += ["## Bankrolls (each strategy started with its own $100)", "",
-          "| Strategy | Rule | Cash | Open (n / value) | Equity USD | vs $100 | Equity XRP | vs start XRP | Realized net | Unrealized net | Win rate | Trades (closed) |",
+    L += ["## Bankrolls — scoreboard is USD/RLUSD (each strategy started with its own $100; hold RLUSD = $100 flat)", "",
+          "| Strategy | Rule | **Equity USD** | **vs $100** | Cash | Open (n / value) | Realized net | Unrealized net | Win rate | Trades (closed) | Equity XRP | vs start XRP |",
           "|---|---|---|---|---|---|---|---|---|---|---|---|"]
     for s in STRATS:
         st = book_stats(books[s], pools, px)
         wr = f"{st['win_rate']:.0f}%" if st["win_rate"] is not None else "–"
-        L.append(f"| {s} | {desc.get(s, '')} | ${st['cash']:.2f} | {st['open_n']} / ${st['open_val']:.2f} | ${st['equity']:.2f} | {st['equity'] - books[s]['start_usd']:+.2f} | "
-                 f"{st['equity_xrp']:.2f} | {st['equity_xrp'] - st['start_xrp']:+.2f} | ${st['realized']:+.2f} | ${st['unrealized']:+.2f} | {wr} | {st['trades']} ({st['closed_n']}) |")
+        L.append(f"| {s} | {desc.get(s, '')} | **${st['equity']:.2f}** | **{st['equity'] - books[s]['start_usd']:+.2f}** | ${st['cash']:.2f} | {st['open_n']} / ${st['open_val']:.2f} | "
+                 f"${st['realized']:+.2f} | ${st['unrealized']:+.2f} | {wr} | {st['trades']} ({st['closed_n']}) | {st['equity_xrp']:.2f} | {st['equity_xrp'] - st['start_xrp']:+.2f} |")
     L += ["", "Cash is kept in USD at each fill. Values are net of AMM pool fee, price impact, issuer transfer fee and network fee "
           "(open positions valued at what selling right now would return). Equity XRP = equity USD ÷ current XRP/USD; start XRP = $100 at the start price. "
           "Each strategy is an independent hypothetical: their buys of the same token are each simulated against the same pool. "

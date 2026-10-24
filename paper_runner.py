@@ -42,8 +42,12 @@ def xrpl_snapshot():
             bids = post(node, {"method": "book_offers", "params": [{"taker_pays": {"currency": "XRP"}, "taker_gets": usd, "limit": 20}]})["result"]["offers"]
             def px(o, ask):
                 g = amt(o.get("taker_gets_funded", o["TakerGets"])); p = amt(o.get("taker_pays_funded", o["TakerPays"]))
-                return None if g <= 0 or p <= 0 else (p / g if ask else g / p)
+                xrp = g if ask else p
+                if g <= 0 or p <= 0 or xrp < 1: return None   # dust/partially-funded offers give distorted prices
+                return p / g if ask else g / p
             a = min(x for x in (px(o, 1) for o in asks) if x); b = max(x for x in (px(o, 0) for o in bids) if x)
+            if not (0 < b < a) or (a - b) / ((a + b) / 2) > 0.02:   # crossed or absurd book = bad snapshot, try next node
+                raise ValueError(f"bad book snapshot bid={b} ask={a}")
             iss = post(node, {"method": "account_info", "params": [{"account": MK["rlusd_issuer"], "ledger_index": "validated"}]})["result"]["account_data"]
             tr = iss.get("TransferRate", 0)
             vl = post(node, {"method": "server_info", "params": [{}]})["result"]["info"].get("validated_ledger", {})
@@ -136,6 +140,94 @@ def run_strategy(name, sc, st, candles, snap, now, ts_iso):
     st["last_run"] = ts_iso
     return events, x, usd, fills + 1, sells, extra   # +1 = the reserve buy
 
+# ---------------- amm_lp: paper liquidity position in the XRP/RLUSD AMM (separate 4th line) ----------------
+AMM_STATE = os.path.join(SDIR, "amm_lp.json")
+
+def amm_pool(ledger_index="validated"):
+    err = None
+    for node in MK["rippled_nodes"]:
+        try:
+            a = post(node, {"method": "amm_info", "params": [{"amm_account": CFG["amm_lp"]["amm_account"], "ledger_index": ledger_index}]}, timeout=30)["result"]["amm"]
+            if isinstance(a["amount"], str): x, r = float(a["amount"]) / 1e6, float(a["amount2"]["value"])
+            else: x, r = float(a["amount2"]) / 1e6, float(a["amount"]["value"])
+            return {"x": x, "r": r, "lp": float(a["lp_token"]["value"]), "fee_pct": a["trading_fee"] / 1000, "node": node}
+        except Exception as e: err = e
+    raise RuntimeError(f"amm_info failed on all nodes: {err}")
+
+def amm_lp_init(taker, mid, ts_iso):
+    """Reconstruct the paper deposit at the backdated ledger if history is available, else start now."""
+    c = CFG["amm_lp"]
+    try: pool, start_ts, px, led, note = amm_pool(c["backdate_ledger"]), c["backdate_ts"], c["backdate_price"], c["backdate_ledger"], "backdated from historical pool state"
+    except Exception as e:
+        print("amm_lp: historical pool unavailable, starting now:", e)
+        pool, start_ts, px, led, note = amm_pool(), ts_iso, mid, None, "started at first run (history unavailable)"
+    ratio = pool["r"] / pool["x"]                      # RLUSD per XRP inside the pool at deposit time
+    x = c["budget_usd"] / (px * taker + ratio)         # proportional deposit worth $100 at the start price
+    r = x * ratio
+    st = {"type": "amm_lp", "created": ts_iso, "start_ts": start_ts, "start_ledger": led, "start_price": px, "note": note,
+          "deposit_xrp": x, "deposit_rlusd": r, "lp_tokens": pool["lp"] * x / pool["x"],
+          "start_pool": {k: pool[k] for k in ("x", "r", "lp", "fee_pct")}}
+    e = {"ts": start_ts, "side": "BUY", "price": px, "xrp": round(x, 6), "rlusd": round(x * px * taker, 4), "fee_xrp": 0.00001}
+    append(TAX, tax_row("amm_lp", e, "PAPER buy of XRP half for AMM deposit (simulated)"), TAX_FIELDS)
+    append(TAX, {"Date (UTC)": start_ts, "Type": "AMM Deposit", "Sent Asset": "XRP+RLUSD", "Sent Amount": f"{x:.6f} XRP + {r:.4f} RLUSD",
+                 "Received Asset": "LP token", "Received Amount": f"{st['lp_tokens']:.6f}", "Fee Asset": "XRP", "Fee Amount": "0.000010",
+                 "Strategy": "amm_lp", "Price (RLUSD per XRP)": px, "Description": "PAPER two-asset AMM deposit (simulated)", "TxHash": "PAPER-NOT-ON-LEDGER"}, TAX_FIELDS)
+    return st
+
+def amm_lp_tick(taker, snap, ts_iso, base_xrp):
+    st = load(AMM_STATE) or amm_lp_init(taker, snap["mid"], ts_iso)
+    pool = amm_pool(); share = st["lp_tokens"] / pool["lp"]
+    x, r, mid = share * pool["x"], share * pool["r"], snap["mid"]
+    hold_x, hold_r = st["deposit_xrp"], st["deposit_rlusd"]
+    k = (pool["r"] / pool["x"]) / (st["start_pool"]["r"] / st["start_pool"]["x"])   # pool price change since deposit
+    il_pct = (2 * k ** 0.5 / (1 + k) - 1) * 100                                     # theoretical IL vs holding the deposit
+    lp_val, hold_val = x * mid + r, hold_x * mid + hold_r
+    row = {"ts": ts_iso, "label": "PAPER-NOT-ON-LEDGER", "xrpl_mid": round(mid, 6), "lp_tokens": round(st["lp_tokens"], 6),
+           "pool_share_pct": round(share * 100, 8), "xrp": round(x, 6), "rlusd": round(r, 4),
+           "xrp_equiv": round(x + r / (mid * taker), 6), "value_usd": round(lp_val, 4),
+           "hold5050_xrp_equiv": round(hold_x + hold_r / (mid * taker), 6), "hold5050_value_usd": round(hold_val, 4),
+           "lump_xrp": round(base_xrp, 6), "lump_value_usd": round(base_xrp * mid, 4),
+           "vs_hold5050_pct": round((lp_val / hold_val - 1) * 100, 4), "il_pct": round(il_pct, 4),
+           "fees_est_pct": round(((lp_val / hold_val) / (1 + il_pct / 100) - 1) * 100, 4),
+           "vs_lump_xrp_pct": round(((x + r / (mid * taker)) / base_xrp - 1) * 100, 3), "pool_fee_pct": pool["fee_pct"]}
+    st["last_run"] = ts_iso; st["last"] = row
+    save(AMM_STATE, st)
+    append(os.path.join(LDIR, "amm_lp_ticks.csv"), row, list(row.keys()))
+    return st, row
+
+def append_summary(path, row):
+    """Append to summary.csv; if new columns appeared (e.g. amm_lp_*), rewrite the header once, old rows keep blanks."""
+    if os.path.exists(path):
+        with open(path, newline="") as f:
+            rd = csv.DictReader(f); old_fields = rd.fieldnames or []
+            if any(k not in old_fields for k in row):
+                rows = list(rd); fields = list(row.keys()) + [k for k in old_fields if k not in row]
+                with open(path + ".tmp", "w", newline="") as g:
+                    w = csv.DictWriter(g, fieldnames=fields); w.writeheader(); w.writerows(rows)
+                os.replace(path + ".tmp", path)
+    append(path, row, list(row.keys()) if not os.path.exists(path) else next(csv.reader(open(path))))
+
+def candles_between(after_ts, until_ts, now):
+    """Closed 5-min candles with after_ts < t <= until_ts, paging the 1000-candle API limit."""
+    out, cur = [], after_ts
+    while cur < until_ts:
+        page = [c for c in closed_candles(cur, now) if c[0] <= until_ts]
+        if not page: break
+        out += page; cur = page[-1][0]
+    return out
+
+def backfill_new_strategy(name, sc, ms, now):
+    """A strategy added after the experiment started is initialised at the experiment's start price/time and
+    replayed over the same closed candles the others saw, so all lines share one start date."""
+    start = datetime.fromisoformat(ms["started"]).timestamp()
+    st = init_strategy(name, sc, ms["start_mid"], start, ms["started"])
+    st["backfilled_from"] = ms["started"]
+    hist = candles_between(int(start) // 300 * 300 - 300, ms["last_candle_ts"], now)
+    snap0 = {"mid": ms["start_mid"]}
+    ev, *_ = run_strategy(name, sc, st, hist, snap0, start, ms["started"])
+    print(f"backfilled {name}: {len(hist)} candles, {len(ev)} fills")
+    return st
+
 def main():
     now = time.time(); ts_iso = iso(now)
     snap = xrpl_snapshot()
@@ -156,13 +248,14 @@ def main():
         spath = os.path.join(SDIR, f"{name}.json")
         st = load(spath)
         if st is None:
-            st = init_strategy(name, sc, snap["mid"], now, ts_iso)
+            st = backfill_new_strategy(name, sc, ms, now) if not fresh else init_strategy(name, sc, snap["mid"], now, ts_iso)
         events, x, usd, fills, sells, extra = run_strategy(name, sc, st, candles, snap, now, ts_iso)
         save(spath, st)
         eq = x + usd / (snap["mid"] * taker)
+        val = x * snap["mid"] + usd
         row = {"ts": ts_iso, "strategy": name, "budget_usd": sc["budget_usd"], "xrpl_mid": round(snap["mid"], 6),
                "xrp_held": round(x, 6), "rlusd_unspent": round(usd, 4), "xrp_equiv": round(eq, 6),
-               "value_usd": round(x * snap["mid"] + usd, 4), "fills": fills, "xrp_sells_taxable": sells,
+               "value_usd": round(val, 4), "vs_start_usd": round(val - sc["budget_usd"], 4), "fills": fills, "xrp_sells_taxable": sells,
                "new_fills": len(events), **extra}
         append(os.path.join(LDIR, f"{name}_ticks.csv"), row, list(row.keys()))
         rows.append(row)
@@ -172,42 +265,85 @@ def main():
               candles_this_run=len(candles))
     save(MARKET_STATE, ms)
     # combined summary
-    tot_x = sum(r["xrp_held"] for r in rows); tot_u = sum(r["rlusd_unspent"] for r in rows); tot_eq = sum(r["xrp_equiv"] for r in rows)
-    base = ms["baseline_xrp"]
-    srow = {"ts": ts_iso, "xrpl_mid": round(snap["mid"], 6), "spread_pct": round((snap["ask"] - snap["bid"]) / snap["mid"] * 100, 4),
-            "candles": len(candles), "baseline_xrp": round(base, 6)}
+    trows = [r for r in rows if CFG["strategies"][r["strategy"]].get("in_total", True)]
+    tot_x = sum(r["xrp_held"] for r in trows); tot_u = sum(r["rlusd_unspent"] for r in trows); tot_eq = sum(r["xrp_equiv"] for r in trows)
+    base = ms["baseline_xrp"]; mid = snap["mid"]
+    tot_val = sum(r["value_usd"] for r in trows); tot_bud = sum(r["budget_usd"] for r in trows)
+    alt_val = sum(r["value_usd"] for r in rows if r["strategy"] != "scalp_2pct" and r["strategy"] in ("dip_ladder", "scalp_2pct_rlusd"))
+    # USD/RLUSD scoreboard first, XRP-equivalent kept as secondary columns
+    srow = {"ts": ts_iso, "xrpl_mid": round(mid, 6), "total_value_usd": round(tot_val, 4), "total_vs_start_usd": round(tot_val - tot_bud, 4),
+            "hold_rlusd_value_usd": CFG["baseline_usd"], "baseline_xrp_value_usd": round(base * mid, 4)}
+    for r in rows: srow.update({f"{r['strategy']}_value_usd": r["value_usd"], f"{r['strategy']}_vs_start_usd": r["vs_start_usd"]})
+    if "scalp_2pct_rlusd" in [r["strategy"] for r in rows]:
+        srow.update({"alt_total_value_usd": round(alt_val, 4), "alt_total_vs_start_usd": round(alt_val - tot_bud, 4)})
+    srow.update({"spread_pct": round((snap["ask"] - snap["bid"]) / mid * 100, 4), "candles": len(candles), "baseline_xrp": round(base, 6)})
     for r in rows:
         n = r["strategy"]
         srow.update({f"{n}_xrp": r["xrp_held"], f"{n}_rlusd": r["rlusd_unspent"], f"{n}_xrp_equiv": r["xrp_equiv"],
                      f"{n}_fills": r["fills"], f"{n}_xrp_sells": r["xrp_sells_taxable"]})
     srow.update({"total_xrp": round(tot_x, 6), "total_rlusd": round(tot_u, 4), "total_xrp_equiv": round(tot_eq, 6),
                  "vs_baseline_pct": round((tot_eq / base - 1) * 100, 3)})
-    append(os.path.join(LDIR, "summary.csv"), srow, list(srow.keys()))
-    write_md(ms, snap, rows, srow)
+    lp = None
+    if "amm_lp" in CFG:
+        try:
+            lp_st, lp = amm_lp_tick(taker, snap, ts_iso, base)
+            srow.update({"amm_lp_vs_start_usd": round(lp["value_usd"] - CFG["amm_lp"]["budget_usd"], 4), "amm_lp_xrp": lp["xrp"], "amm_lp_rlusd": lp["rlusd"], "amm_lp_xrp_equiv": lp["xrp_equiv"],
+                         "amm_lp_value_usd": lp["value_usd"], "amm_lp_hold5050_value_usd": lp["hold5050_value_usd"],
+                         "amm_lp_vs_hold5050_pct": lp["vs_hold5050_pct"], "amm_lp_vs_lump_xrp_pct": lp["vs_lump_xrp_pct"]})
+            lp = dict(lp, start_ts=lp_st["start_ts"], start_price=lp_st["start_price"], note=lp_st["note"],
+                      dep_x=lp_st["deposit_xrp"], dep_r=lp_st["deposit_rlusd"])
+        except Exception as e:
+            print("amm_lp tick failed (other strategies unaffected):", e)
+    append_summary(os.path.join(LDIR, "summary.csv"), srow)
+    write_md(ms, snap, rows, srow, lp)
     print(json.dumps(srow, indent=1))
 
-def write_md(ms, snap, rows, s):
+def write_md(ms, snap, rows, s, lp=None):
+    mid = snap["mid"]
     L = ["# XRP/RLUSD paper-trading experiment: SUMMARY", "",
          "> **PAPER ONLY.** Simulated trades from public prices. No wallet, no keys, no real orders. Not financial or tax advice.", "",
+         "**Scoreboard: value in RLUSD/USD** (goal: grow dollars; can swap to XRP later). XRP-equivalent is shown second.", "",
          f"- Started: **{ms['started']}** at XRPL mid **${ms['start_mid']:.4f}**",
-         f"- Last update: **{s['ts']}**, XRPL XRP/RLUSD mid **${snap['mid']:.4f}** (bid {snap['bid']:.4f} / ask {snap['ask']:.4f}, node {snap['node']}, ledger {snap['ledger']})",
+         f"- Last update: **{s['ts']}**, XRPL XRP/RLUSD mid **${mid:.4f}** (bid {snap['bid']:.4f} / ask {snap['ask']:.4f}, node {snap['node']}, ledger {snap['ledger']})",
          f"- RLUSD issuer transfer fee (live): {snap['transfer_fee_pct']:.4f}%  |  candles processed this run: {s['candles']}", "",
-         "| Strategy | Budget | XRP held | RLUSD unspent | XRP-equivalent* | Fills | XRP sells (taxable) |",
-         "|---|---|---|---|---|---|---|"]
+         "| Strategy | Start | **Value (RLUSD/USD)** | **Change vs start** | XRP held | RLUSD | XRP-equivalent* | Fills | XRP sells (taxable) |",
+         "|---|---|---|---|---|---|---|---|---|"]
     for r in rows:
         lab = CFG["strategies"][r["strategy"]]["label"]
-        L.append(f"| {lab} (`{r['strategy']}`) | ${r['budget_usd']} | {r['xrp_held']:.4f} | ${r['rlusd_unspent']:.2f} | {r['xrp_equiv']:.4f} | {r['fills']} | {r['xrp_sells_taxable']} |")
-    L.append(f"| **Total** | ${sum(r['budget_usd'] for r in rows)} | **{s['total_xrp']:.4f}** | ${s['total_rlusd']:.2f} | **{s['total_xrp_equiv']:.4f}** | | |")
-    L.append(f"| Baseline: ${ms['baseline_usd']} lump-sum XRP bought at start | ${ms['baseline_usd']} | {s['baseline_xrp']:.4f} | $0.00 | {s['baseline_xrp']:.4f} | 1 | 0 |")
-    L += ["", f"**Experiment vs baseline (XRP-equivalent): {s['vs_baseline_pct']:+.2f}%**", "",
-          "\\* XRP-equivalent = XRP held + unspent RLUSD converted at the current mid with a 0.05% taker cost. "
-          "XRP held includes the XRP locked as ledger reserve (it is still yours).", ""]
+        L.append(f"| {lab} (`{r['strategy']}`) | ${r['budget_usd']} | **${r['value_usd']:.2f}** | **{r['vs_start_usd']:+.2f}** ({r['vs_start_usd'] / r['budget_usd'] * 100:+.2f}%) | "
+                 f"{r['xrp_held']:.4f} | ${r['rlusd_unspent']:.2f} | {r['xrp_equiv']:.4f} | {r['fills']} | {r['xrp_sells_taxable']} |")
+    tb = CFG["baseline_usd"]
+    L.append(f"| **Experiment total** (dip_ladder + scalp_2pct) | ${tb} | **${s['total_value_usd']:.2f}** | **{s['total_vs_start_usd']:+.2f}** | {s['total_xrp']:.4f} | ${s['total_rlusd']:.2f} | {s['total_xrp_equiv']:.4f} | | |")
+    if "alt_total_value_usd" in s:
+        L.append(f"| Alt total (dip_ladder + scalp_2pct_rlusd) | ${tb} | ${s['alt_total_value_usd']:.2f} | {s['alt_total_vs_start_usd']:+.2f} | | | | | |")
+    L.append(f"| Baseline: hold RLUSD (do nothing in dollars) | ${tb} | ${tb:.2f} | +0.00 | 0 | ${tb:.2f} | {tb / (mid * 1.0005):.4f} | 0 | 0 |")
+    L.append(f"| Baseline: ${ms['baseline_usd']} lump-sum XRP bought at start | ${tb} | ${s['baseline_xrp_value_usd']:.2f} | {s['baseline_xrp_value_usd'] - tb:+.2f} | {s['baseline_xrp']:.4f} | $0.00 | {s['baseline_xrp']:.4f} | 1 | 0 |")
+    L += ["", "> ⚠️ **Data issue found 2026-10-24:** the XRPL book snapshots at 2026-10-20 08:54 UTC (mid $0.646) and 2026-10-22 21:22 UTC (mid $0.679) were bad reads "
+          "(crossed book from dust offers). They triggered phantom fills in `dip_ladder` and `scalp_2pct`, so their results above are overstated. "
+          "A guard now rejects such snapshots. The backfilled `scalp_2pct_rlusd` and `amm_lp` lines are not affected."]
+    L += ["", f"**Experiment vs $100 in RLUSD: {s['total_vs_start_usd']:+.2f} USD** · vs lump-sum XRP (XRP-equivalent): {s['vs_baseline_pct']:+.2f}%", "",
+          "\\* Value = XRP held × current mid + RLUSD. XRP-equivalent = XRP held + RLUSD converted at the current mid with a 0.05% taker cost. "
+          "XRP held includes the XRP locked as ledger reserve (it is still yours).", "",
+          "- Note: `dip_ladder` is an **XRP-accumulation** strategy (it only buys and never sells), so it only grows dollar value if XRP rises.",
+          "- `scalp_2pct_rlusd` (paper variant, not in the experiment total) runs the same 2% grid but banks each round trip's whole profit in RLUSD and does not recompound it; "
+          "it was backfilled from the experiment start using the same 5-min candles (the original scalper's extra fills came from the bad snapshots noted above; by the candles, price never fell 2% below the start, so no ladder level should have filled yet).", ""]
     for r in rows:
         if r["strategy"] == "dip_ladder" or "order_prices" in r:
             L.append(f"- Dip ladder open buy orders: {r.get('order_prices') or 'none'} (reference {r.get('ladder_ref')}, next refresh {r.get('next_refresh')})")
         else:
             L.append(f"- `{r['strategy']}`: {r['open_buy_orders']} buy orders waiting, {r['open_sell_orders']} sell orders waiting, XRP kept from scalps {r['xrp_kept_from_scalps']}")
-    L += ["", "Logs: `logs/summary.csv`, `logs/<strategy>_ticks.csv`, `logs/<strategy>_fills.csv`, `logs/tax_export.csv`."]
+    if lp:
+        L += ["", "## Separate line: AMM liquidity provider (`amm_lp`, PAPER-NOT-ON-LEDGER)", "",
+              f"$100 deposited 50/50 into the XRP/RLUSD AMM pool on {lp['start_ts']} at ${lp['start_price']:.4f} "
+              f"({lp['dep_x']:.4f} XRP + {lp['dep_r']:.2f} RLUSD; {lp['note']}). Not included in the totals above.", "",
+              "| | **Value (RLUSD/USD)** | Change vs $100 | XRP | RLUSD | XRP-equivalent* |", "|---|---|---|---|---|---|",
+              f"| AMM LP position now (fees included) | **${lp['value_usd']:.2f}** | {lp['value_usd'] - 100:+.2f} | {lp['xrp']:.4f} | ${lp['rlusd']:.2f} | {lp['xrp_equiv']:.4f} |",
+              f"| Hold the same 50/50 (no pool) | ${lp['hold5050_value_usd']:.2f} | {lp['hold5050_value_usd'] - 100:+.2f} | {lp['dep_x']:.4f} | ${lp['dep_r']:.2f} | {lp['hold5050_xrp_equiv']:.4f} |",
+              f"| Hold RLUSD | $100.00 | +0.00 | 0 | $100.00 | |",
+              f"| $100 lump-sum XRP baseline | ${lp['lump_value_usd']:.2f} | {lp['lump_value_usd'] - 100:+.2f} | {lp['lump_xrp']:.4f} | $0.00 | {lp['lump_xrp']:.4f} |", "",
+              f"- LP vs hold-50/50: **{lp['vs_hold5050_pct']:+.3f}%** = impermanent loss {lp['il_pct']:+.3f}% + fees earned ≈ {lp['fees_est_pct']:+.3f}% (pool fee {lp['pool_fee_pct']:.3f}%, pool share {lp['pool_share_pct']:.6f}%)",
+              f"- LP vs lump-sum XRP (XRP-equivalent): **{lp['vs_lump_xrp_pct']:+.2f}%**"]
+    L += ["", "Logs: `logs/summary.csv`, `logs/<strategy>_ticks.csv`, `logs/<strategy>_fills.csv`, `logs/amm_lp_ticks.csv`, `logs/tax_export.csv`."]
     open(os.path.join(HERE, "SUMMARY.md"), "w").write("\n".join(L) + "\n")
 
 if __name__ == "__main__":
