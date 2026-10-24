@@ -7,7 +7,8 @@ import csv, json, os, shutil, time
 from datetime import datetime
 import paper_runner as R
 
-TAG = "archive_phantom_2026-10-24"
+import sys
+TAG = sys.argv[1] if len(sys.argv) > 1 else "archive_phantom_2026-10-24"   # 2nd use: archive_resize_2026-10-24 ($100 per strategy)
 REPLAYED = list(R.CFG["strategies"].keys())          # dip_ladder, scalp_2pct, scalp_2pct_rlusd
 SA, LA = os.path.join(R.SDIR, TAG), os.path.join(R.LDIR, TAG)
 
@@ -58,6 +59,7 @@ def main():
         srow = R.build_srow(old["ts"], val_mid, spread, len(batch), rows, ms)
         for k, v in old.items():                               # carry the untouched amm_lp columns
             if k.startswith("amm_lp_") and v != "": srow[k] = v
+        if old.get("amm_lp_value_usd"): srow["amm_lp_vs_xrp_usd"] = round(float(old["amm_lp_value_usd"]) - float(srow["baseline_xrp_value_usd"]), 4)
         out_rows.append(srow)
     fields = list(dict.fromkeys(k for r in out_rows[::-1] for k in r))
     with open(os.path.join(R.LDIR, "summary.csv"), "w", newline="") as f:

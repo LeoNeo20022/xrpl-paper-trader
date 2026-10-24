@@ -8,9 +8,13 @@ happened. No money moves and no transactions are ever sent to the XRP Ledger. No
 
 | Strategy | Money | How it works |
 |---|---|---|
-| `dip_ladder` | $75 | Once a week it "places" 5 buy orders at 2%, 4%, 6%, 8% and 10% below the current price, splitting all unspent RLUSD evenly. Unfilled orders are cancelled and re-placed at the next weekly refresh. **It never sells XRP.** |
-| `scalp_2pct` | $25 | 10 buy orders 2% apart below the start price. When one fills, a sell is placed 2% higher that sells only enough XRP to get the RLUSD back, so **all the profit stays as XRP**. Then the buy is re-armed. The ladder does not move (static). |
-| baseline | $100 | Simply buying $100 of XRP at the start, for comparison. |
+| `dip_ladder` | $100 | Once a week it "places" 5 buy orders (about $20 each) at 2%, 4%, 6%, 8% and 10% below the current price, splitting all unspent RLUSD evenly. Unfilled orders are cancelled and re-placed at the next weekly refresh. **It never sells XRP.** |
+| `scalp_2pct` | $100 | 10 buy orders (about $10 each) 2% apart below the start price. When one fills, a sell is placed 2% higher that sells only enough XRP to get the RLUSD back, so **all the profit stays as XRP**. Then the buy is re-armed. The ladder does not move (static). |
+| `scalp_2pct_rlusd` | $100 | Same grid as `scalp_2pct`, but each round trip sells enough XRP to bank the **whole profit in RLUSD**; that profit is not recompounded. |
+| `amm_lp` (separate line) | $100 | $100 deposited 50/50 into the XRP/RLUSD AMM pool on Oct 20, valued each tick from `amm_info` (fees included), compared with holding the same 50/50. |
+| baseline: keep $100 in XRP | $100 | Simply buying $100 of XRP at the start, for comparison. |
+
+Each strategy is compared with **keep $100 in XRP** bought at the Oct 20 start; the $300 total is compared with $300 kept in XRP. Values are in RLUSD/USD first, XRP-equivalent second. On 2026-10-24 the history was replayed from Bitstamp 5-min candles (bad XRPL book reads removed) and re-sized from $75/$25 to $100 each; `logs/summary.csv` was rebuilt from that replay, and the previous versions are kept under `state/` and `logs/archive_phantom_2026-10-24/` and `archive_resize_2026-10-24/`.
 
 Each paper account also "buys" the XRP the ledger would lock as reserve (1 XRP base + 0.2 trust line + 0.2 per open order).
 That XRP is counted as held, because it is still yours.

@@ -242,24 +242,28 @@ def tick_row(name, sc, st, events, x, usd, fills, sells, extra, ts_iso, val_mid,
             "new_fills": len(events), **extra}
 
 def build_srow(ts_iso, mid, spread_pct, n_candles, rows, ms):
-    trows = [r for r in rows if CFG["strategies"][r["strategy"]].get("in_total", True)]
-    tot_x = sum(r["xrp_held"] for r in trows); tot_u = sum(r["rlusd_unspent"] for r in trows); tot_eq = sum(r["xrp_equiv"] for r in trows)
-    base = ms["baseline_xrp"]
-    tot_val = sum(r["value_usd"] for r in trows); tot_bud = sum(r["budget_usd"] for r in trows)
-    alt_val = sum(r["value_usd"] for r in rows if r["strategy"] in ("dip_ladder", "scalp_2pct_rlusd"))
-    # USD/RLUSD scoreboard first, XRP-equivalent kept as secondary columns
+    """USD/RLUSD scoreboard first. Every strategy is compared with keeping its own budget in XRP bought at the start
+    (baseline_xrp is for $100, scaled by budget/100); the total is compared with the sum of those baselines."""
+    base = ms["baseline_xrp"]; bu = ms.get("baseline_usd", CFG["baseline_usd"])
+    tot_x = sum(r["xrp_held"] for r in rows); tot_u = sum(r["rlusd_unspent"] for r in rows); tot_eq = sum(r["xrp_equiv"] for r in rows)
+    tot_val = sum(r["value_usd"] for r in rows); tot_bud = sum(r["budget_usd"] for r in rows)
+    k_tot = tot_bud / bu
     srow = {"ts": ts_iso, "xrpl_mid": round(mid, 6), "total_value_usd": round(tot_val, 4), "total_vs_start_usd": round(tot_val - tot_bud, 4),
-            "hold_rlusd_value_usd": CFG["baseline_usd"], "baseline_xrp_value_usd": round(base * mid, 4)}
-    for r in rows: srow.update({f"{r['strategy']}_value_usd": r["value_usd"], f"{r['strategy']}_vs_start_usd": r["vs_start_usd"]})
-    if "scalp_2pct_rlusd" in [r["strategy"] for r in rows]:
-        srow.update({"alt_total_value_usd": round(alt_val, 4), "alt_total_vs_start_usd": round(alt_val - tot_bud, 4)})
-    srow.update({"spread_pct": round(spread_pct, 4), "candles": n_candles, "baseline_xrp": round(base, 6)})
+            "total_baseline_xrp_value_usd": round(base * k_tot * mid, 4), "total_vs_xrp_usd": round(tot_val - base * k_tot * mid, 4),
+            "baseline_xrp_value_usd": round(base * mid, 4)}
     for r in rows:
-        n = r["strategy"]
+        k = r["budget_usd"] / bu
+        srow.update({f"{r['strategy']}_value_usd": r["value_usd"], f"{r['strategy']}_vs_start_usd": r["vs_start_usd"],
+                     f"{r['strategy']}_vs_xrp_usd": round(r["value_usd"] - base * k * mid, 4)})
+    srow.update({"spread_pct": round(spread_pct, 4), "candles": n_candles, "baseline_xrp": round(base, 6),
+                 "total_baseline_xrp": round(base * k_tot, 6)})
+    for r in rows:
+        n = r["strategy"]; k = r["budget_usd"] / bu
         srow.update({f"{n}_xrp": r["xrp_held"], f"{n}_rlusd": r["rlusd_unspent"], f"{n}_xrp_equiv": r["xrp_equiv"],
+                     f"{n}_vs_xrp_equiv_pct": round((r["xrp_equiv"] / (base * k) - 1) * 100, 3),
                      f"{n}_fills": r["fills"], f"{n}_xrp_sells": r["xrp_sells_taxable"]})
     srow.update({"total_xrp": round(tot_x, 6), "total_rlusd": round(tot_u, 4), "total_xrp_equiv": round(tot_eq, 6),
-                 "vs_baseline_pct": round((tot_eq / base - 1) * 100, 3)})
+                 "vs_baseline_pct": round((tot_eq / (base * k_tot) - 1) * 100, 3)})
     return srow
 
 def main():
@@ -306,7 +310,8 @@ def main():
             lp_st, lp = amm_lp_tick(taker, dict(snap, mid=val_mid), ts_iso, base)
             srow.update({"amm_lp_vs_start_usd": round(lp["value_usd"] - CFG["amm_lp"]["budget_usd"], 4), "amm_lp_xrp": lp["xrp"], "amm_lp_rlusd": lp["rlusd"], "amm_lp_xrp_equiv": lp["xrp_equiv"],
                          "amm_lp_value_usd": lp["value_usd"], "amm_lp_hold5050_value_usd": lp["hold5050_value_usd"],
-                         "amm_lp_vs_hold5050_pct": lp["vs_hold5050_pct"], "amm_lp_vs_lump_xrp_pct": lp["vs_lump_xrp_pct"]})
+                         "amm_lp_vs_hold5050_pct": lp["vs_hold5050_pct"], "amm_lp_vs_lump_xrp_pct": lp["vs_lump_xrp_pct"],
+                         "amm_lp_vs_xrp_usd": round(lp["value_usd"] - lp["lump_value_usd"], 4)})
             lp = dict(lp, start_ts=lp_st["start_ts"], start_price=lp_st["start_price"], note=lp_st["note"],
                       dep_x=lp_st["deposit_xrp"], dep_r=lp_st["deposit_rlusd"])
         except Exception as e:
@@ -317,31 +322,33 @@ def main():
 
 def write_md(ms, snap, rows, s, lp=None):
     mid = snap["mid"]
+    base = s["baseline_xrp"]; bvu = s["baseline_xrp_value_usd"]
     L = ["# XRP/RLUSD paper-trading experiment: SUMMARY", "",
          "> **PAPER ONLY.** Simulated trades from public prices. No wallet, no keys, no real orders. Not financial or tax advice.", "",
-         "**Scoreboard: value in RLUSD/USD** (goal: grow dollars; can swap to XRP later). XRP-equivalent is shown second.", "",
+         "**Scoreboard: value in RLUSD/USD**, XRP-equivalent second. Each strategy has its own **$100** (paper total **$300**) and is compared with "
+         "**keep $100 in XRP** (bought at the start).", "",
          f"- Started: **{ms['started']}** at XRPL mid **${ms['start_mid']:.4f}**",
          f"- Last update: **{s['ts']}**, XRPL XRP/RLUSD mid **${mid:.4f}** (bid {snap['bid']:.4f} / ask {snap['ask']:.4f}, node {snap['node']}, ledger {snap['ledger']})",
          f"- RLUSD issuer transfer fee (live): {snap['transfer_fee_pct']:.4f}%  |  candles processed this run: {s['candles']}", "",
-         "| Strategy | Start | **Value (RLUSD/USD)** | **Change vs start** | XRP held | RLUSD | XRP-equivalent* | Fills | XRP sells (taxable) |",
-         "|---|---|---|---|---|---|---|---|---|"]
+         "| Strategy | Start | **Value (RLUSD/USD)** | Change vs start | **vs keep $100 in XRP** | XRP held | RLUSD | XRP-equivalent* | vs XRP baseline (XRP-eq.) | Fills | XRP sells (taxable) |",
+         "|---|---|---|---|---|---|---|---|---|---|---|"]
     for r in rows:
-        lab = CFG["strategies"][r["strategy"]]["label"]
-        L.append(f"| {lab} (`{r['strategy']}`) | ${r['budget_usd']} | **${r['value_usd']:.2f}** | **{r['vs_start_usd']:+.2f}** ({r['vs_start_usd'] / r['budget_usd'] * 100:+.2f}%) | "
-                 f"{r['xrp_held']:.4f} | ${r['rlusd_unspent']:.2f} | {r['xrp_equiv']:.4f} | {r['fills']} | {r['xrp_sells_taxable']} |")
-    tb = CFG["baseline_usd"]
-    L.append(f"| **Experiment total** (dip_ladder + scalp_2pct) | ${tb} | **${s['total_value_usd']:.2f}** | **{s['total_vs_start_usd']:+.2f}** | {s['total_xrp']:.4f} | ${s['total_rlusd']:.2f} | {s['total_xrp_equiv']:.4f} | | |")
-    if "alt_total_value_usd" in s:
-        L.append(f"| Alt total (dip_ladder + scalp_2pct_rlusd) | ${tb} | ${s['alt_total_value_usd']:.2f} | {s['alt_total_vs_start_usd']:+.2f} | | | | | |")
-    L.append(f"| **Baseline: keep $100 in XRP** (bought at start) | ${tb} | ${s['baseline_xrp_value_usd']:.2f} | {s['baseline_xrp_value_usd'] - tb:+.2f} | {s['baseline_xrp']:.4f} | $0.00 | {s['baseline_xrp']:.4f} | 1 | 0 |")
-    L += ["", "_History replayed on 2026-10-24 from Bitstamp 5-min candles after bad XRPL book data was removed (old state/fills archived under `*/archive_phantom_2026-10-24/`)._"]
-    d = s['total_value_usd'] - s['baseline_xrp_value_usd']
-    L += ["", f"**Experiment vs keep $100 in XRP: {d:+.2f} USD ({d / s['baseline_xrp_value_usd'] * 100:+.2f}%)** · XRP-equivalent: {s['vs_baseline_pct']:+.2f}%", "",
+        n = r["strategy"]; lab = CFG["strategies"][n]["label"]; bx = bvu * r["budget_usd"] / ms["baseline_usd"]
+        d = r["value_usd"] - bx
+        L.append(f"| {lab} (`{n}`) | ${r['budget_usd']} | **${r['value_usd']:.2f}** | {r['vs_start_usd']:+.2f} | **{d:+.2f}** ({d / bx * 100:+.2f}%) | "
+                 f"{r['xrp_held']:.4f} | ${r['rlusd_unspent']:.2f} | {r['xrp_equiv']:.4f} | {s[n + '_vs_xrp_equiv_pct']:+.2f}% | {r['fills']} | {r['xrp_sells_taxable']} |")
+    tb = sum(r["budget_usd"] for r in rows); dt = s["total_vs_xrp_usd"]
+    L.append(f"| **Experiment total** (all {len(rows)}) | ${tb} | **${s['total_value_usd']:.2f}** | {s['total_vs_start_usd']:+.2f} | **{dt:+.2f}** ({dt / s['total_baseline_xrp_value_usd'] * 100:+.2f}%) | "
+             f"{s['total_xrp']:.4f} | ${s['total_rlusd']:.2f} | {s['total_xrp_equiv']:.4f} | {s['vs_baseline_pct']:+.2f}% | | |")
+    L.append(f"| **Baseline: keep $100 in XRP** (bought at start) | ${ms['baseline_usd']} | ${bvu:.2f} | {bvu - ms['baseline_usd']:+.2f} | — | {base:.4f} | $0.00 | {base:.4f} | — | 1 | 0 |")
+    L.append(f"| Baseline for the total: keep ${tb} in XRP | ${tb} | ${s['total_baseline_xrp_value_usd']:.2f} | {s['total_baseline_xrp_value_usd'] - tb:+.2f} | — | {s['total_baseline_xrp']:.4f} | $0.00 | {s['total_baseline_xrp']:.4f} | — | | |")
+    L += ["", "_History replayed on 2026-10-24 from Bitstamp 5-min candles after bad XRPL book data was removed, then re-sized to $100 per strategy "
+          "(earlier versions archived under `*/archive_phantom_2026-10-24/` and `*/archive_resize_2026-10-24/`)._", "",
+          f"**Experiment (${tb}) vs keep ${tb} in XRP: {dt:+.2f} USD ({dt / s['total_baseline_xrp_value_usd'] * 100:+.2f}%)** · XRP-equivalent: {s['vs_baseline_pct']:+.2f}%", "",
           "\\* Value = XRP held × current mid + RLUSD. XRP-equivalent = XRP held + RLUSD converted at the current mid with a 0.05% taker cost. "
           "XRP held includes the XRP locked as ledger reserve (it is still yours).", "",
-          "- Note: `dip_ladder` is an **XRP-accumulation** strategy (it only buys and never sells), so it only grows dollar value if XRP rises.",
-          "- `scalp_2pct_rlusd` (paper variant, not in the experiment total) runs the same 2% grid but banks each round trip's whole profit in RLUSD and does not recompound it; "
-          "it was backfilled from the experiment start using the same 5-min candles (same replay as the original).", ""]
+          "- `dip_ladder` is an **XRP-accumulation** strategy (it only buys and never sells), so it only grows dollar value if XRP rises.",
+          "- `scalp_2pct_rlusd` runs the same 2% grid as `scalp_2pct` but banks each round trip's whole profit in RLUSD and does not recompound it.", ""]
     for r in rows:
         if r["strategy"] == "dip_ladder" or "order_prices" in r:
             L.append(f"- Dip ladder open buy orders: {r.get('order_prices') or 'none'} (reference {r.get('ladder_ref')}, next refresh {r.get('next_refresh')})")
@@ -350,7 +357,7 @@ def write_md(ms, snap, rows, s, lp=None):
     if lp:
         L += ["", "## Separate line: AMM liquidity provider (`amm_lp`, PAPER-NOT-ON-LEDGER)", "",
               f"$100 deposited 50/50 into the XRP/RLUSD AMM pool on {lp['start_ts']} at ${lp['start_price']:.4f} "
-              f"({lp['dep_x']:.4f} XRP + {lp['dep_r']:.2f} RLUSD; {lp['note']}). Not included in the totals above.", "",
+              f"({lp['dep_x']:.4f} XRP + {lp['dep_r']:.2f} RLUSD; {lp['note']}). Separate $100 line, not included in the $300 total.", "",
               "| | **Value (RLUSD/USD)** | Change vs $100 | XRP | RLUSD | XRP-equivalent* |", "|---|---|---|---|---|---|",
               f"| AMM LP position now (fees included) | **${lp['value_usd']:.2f}** | {lp['value_usd'] - 100:+.2f} | {lp['xrp']:.4f} | ${lp['rlusd']:.2f} | {lp['xrp_equiv']:.4f} |",
               f"| Hold the same 50/50 (no pool) | ${lp['hold5050_value_usd']:.2f} | {lp['hold5050_value_usd'] - 100:+.2f} | {lp['dep_x']:.4f} | ${lp['dep_r']:.2f} | {lp['hold5050_xrp_equiv']:.4f} |",

@@ -1,20 +1,20 @@
 {
- "budget_usd": 25,
+ "budget_usd": 100,
  "start_price": 1.2948290358744394,
  "anchor": 1.2948290358744394,
  "reserve_xrp": 3.2,
  "core_xrp": 0.0,
  "scalp_xrp": 0.0,
  "kept_xrp": 0.0,
- "trading_usd": 20.854475358744395,
+ "trading_usd": 95.8544753587444,
  "savings_usd": 0.0,
- "chunk_usd": 2.0854475358744393,
+ "chunk_usd": 9.58544753587444,
  "fees_usd": 0.0,
  "buys": 0,
  "sells": 0,
  "round_trips": 0,
  "reanchors": 0,
- "bar": 1376,
+ "bar": 1380,
  "levels": [
   {
    "buy": 1.268932,
@@ -59,6 +59,6 @@
  ],
  "type": "scalp",
  "created": "2026-10-20T08:43:56+00:00",
- "last_run": "2026-10-24T13:08:16+00:00",
+ "last_run": "2026-10-24T13:21:26+00:00",
  "replayed": "2026-10-24"
 }

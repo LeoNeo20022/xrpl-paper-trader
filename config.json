@@ -17,7 +17,7 @@
     "dip_ladder": {
       "type": "dip_ladder",
       "label": "Weekly dip-buy ladder, never sells",
-      "budget_usd": 75,
+      "budget_usd": 100,
       "steps_pct": [
         2,
         4,
@@ -36,7 +36,7 @@
     "scalp_2pct": {
       "type": "scalp",
       "label": "Static 2% scalp ladder, all profit kept as XRP",
-      "budget_usd": 25,
+      "budget_usd": 100,
       "spacing_pct": 2.0,
       "tp_pct": 2.0,
       "levels": 10,
@@ -57,7 +57,7 @@
     "scalp_2pct_rlusd": {
       "type": "scalp",
       "label": "Static 2% scalp ladder, profit banked in RLUSD (variant)",
-      "budget_usd": 25,
+      "budget_usd": 100,
       "spacing_pct": 2.0,
       "tp_pct": 2.0,
       "levels": 10,
@@ -74,8 +74,7 @@
       "trustline_reserve_xrp": 0.2,
       "owner_reserve_xrp": 0.2,
       "tx_fee_xrp": 1e-05,
-      "in_total": false,
-      "_note": "Paper variant of scalp_2pct: same grid, each round trip sells enough XRP to bank the whole profit in RLUSD savings; savings are not recompounded into the ladder. Backfilled from the experiment start with the same 5-min candles. Not part of the experiment total."
+      "_note": "Paper variant of scalp_2pct: same grid, each round trip sells enough XRP to bank the whole profit in RLUSD savings; savings are not recompounded into the ladder."
     }
   },
   "amm_lp": {
@@ -86,5 +85,6 @@
     "backdate_ledger": 107780350,
     "backdate_price": 1.2948,
     "_note": "Tracked separately from the strategies above; NOT included in their totals or vs_baseline_pct. Two-asset proportional deposit (no AMM fee); XRP half bought with the same 0.05% taker cost as the baseline."
-  }
+  },
+  "_sizing": "Since 2026-10-24: each grid strategy has its own $100 (paper total $300), each compared with 'keep $100 in XRP' bought at the Oct 20 start. amm_lp is a separate $100 line."
 }

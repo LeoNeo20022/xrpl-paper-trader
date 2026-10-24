@@ -1,0 +1,6 @@
+Date (UTC),Type,Sent Asset,Sent Amount,Received Asset,Received Amount,Fee Asset,Fee Amount,Strategy,Price (RLUSD per XRP),Description,TxHash
+2026-10-20T08:43:56+00:00,Trade,RLUSD,49.9775,XRP,38.579298,XRP,0.000010,amm_lp,1.2948,PAPER buy of XRP half for AMM deposit (simulated),PAPER-NOT-ON-LEDGER
+2026-10-20T08:43:56+00:00,AMM Deposit,XRP+RLUSD,38.579298 XRP + 50.0225 RLUSD,LP token,37221.193272,XRP,0.000010,amm_lp,1.2948,PAPER two-asset AMM deposit (simulated),PAPER-NOT-ON-LEDGER
+2026-10-20T08:43:56+00:00,Trade,RLUSD,2.85,XRP,2.2,XRP,0.000010,dip_ladder,1.295476,PAPER market buy of reserve XRP (base + trust line + per-offer reserve),PAPER-NOT-ON-LEDGER
+2026-10-20T08:43:56+00:00,Trade,RLUSD,4.1455,XRP,3.2,XRP,0.000010,scalp_2pct,1.295476,PAPER market buy of reserve XRP (base + trust line + per-offer reserve),PAPER-NOT-ON-LEDGER
+2026-10-20T08:43:56+00:00,Trade,RLUSD,4.1455,XRP,3.2,XRP,0.000010,scalp_2pct_rlusd,1.295476,PAPER market buy of reserve XRP (base + trust line + per-offer reserve),PAPER-NOT-ON-LEDGER
