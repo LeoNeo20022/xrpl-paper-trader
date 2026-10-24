@@ -5,22 +5,22 @@
 **Scoreboard: value in RLUSD/USD** (goal: grow dollars; can swap to XRP later). XRP-equivalent is shown second.
 
 - Started: **2026-10-20T08:43:56+00:00** at XRPL mid **$1.2948**
-- Last update: **2026-10-24T11:57:39+00:00**, XRPL XRP/RLUSD mid **$1.2800** (bid 1.2790 / ask 1.2810, node https://xrplcluster.com, ledger 107870856)
-- RLUSD issuer transfer fee (live): 0.0000%  |  candles processed this run: 4
+- Last update: **2026-10-24T12:06:54+00:00**, XRPL XRP/RLUSD mid **$1.2791** (bid 1.2783 / ask 1.2798, node https://xrplcluster.com, ledger 107870997)
+- RLUSD issuer transfer fee (live): 0.0000%  |  candles processed this run: 2
 
 | Strategy | Start | **Value (RLUSD/USD)** | **Change vs start** | XRP held | RLUSD | XRP-equivalent* | Fills | XRP sells (taxable) |
 |---|---|---|---|---|---|---|---|---|
-| Weekly dip-buy ladder, never sells (`dip_ladder`) | $75 | **$78.76** | **+3.76** (+5.01%) | 61.5320 | $0.00 | 61.5320 | 6 | 0 |
-| Static 2% scalp ladder, all profit kept as XRP (`scalp_2pct`) | $25 | **$25.85** | **+0.85** (+3.42%) | 3.9066 | $20.85 | 20.1914 | 41 | 20 |
-| Static 2% scalp ladder, profit banked in RLUSD (variant) (`scalp_2pct_rlusd`) | $25 | **$24.95** | **-0.05** (-0.20%) | 3.2000 | $20.85 | 19.4848 | 1 | 0 |
-| **Experiment total** (dip_ladder + scalp_2pct) | $100 | **$104.61** | **+4.61** | 65.4386 | $20.85 | 81.7235 | | |
-| Alt total (dip_ladder + scalp_2pct_rlusd) | $100 | $103.71 | +3.71 | | | | | |
-| Baseline: hold RLUSD (do nothing in dollars) | $100 | $100.00 | +0.00 | 0 | $100.00 | 78.0879 | 0 | 0 |
-| Baseline: $100 lump-sum XRP bought at start | $100 | $98.80 | -1.20 | 77.1917 | $0.00 | 77.1917 | 1 | 0 |
+| Weekly dip-buy ladder, never sells (`dip_ladder`) | $75 | **$78.70** | **+3.70** (+4.94%) | 61.5320 | $0.00 | 61.5320 | 6 | 0 |
+| Static 2% scalp ladder, all profit kept as XRP (`scalp_2pct`) | $25 | **$25.85** | **+0.85** (+3.41%) | 3.9066 | $20.85 | 20.2029 | 41 | 20 |
+| Static 2% scalp ladder, profit banked in RLUSD (variant) (`scalp_2pct_rlusd`) | $25 | **$24.95** | **-0.05** (-0.21%) | 3.2000 | $20.85 | 19.4963 | 1 | 0 |
+| **Experiment total** (dip_ladder + scalp_2pct) | $100 | **$104.55** | **+4.55** | 65.4386 | $20.85 | 81.7350 | | |
+| Alt total (dip_ladder + scalp_2pct_rlusd) | $100 | $103.65 | +3.65 | | | | | |
+| Baseline: hold RLUSD (do nothing in dollars) | $100 | $100.00 | +0.00 | 0 | $100.00 | 78.1430 | 0 | 0 |
+| Baseline: $100 lump-sum XRP bought at start | $100 | $98.73 | -1.27 | 77.1917 | $0.00 | 77.1917 | 1 | 0 |
 
 > ⚠️ **Data issue found 2026-10-24:** the XRPL book snapshots at 2026-10-20 08:54 UTC (mid $0.646) and 2026-10-22 21:22 UTC (mid $0.679) were bad reads (crossed book from dust offers). They triggered phantom fills in `dip_ladder` and `scalp_2pct`, so their results above are overstated. A guard now rejects such snapshots. The backfilled `scalp_2pct_rlusd` and `amm_lp` lines are not affected.
 
-**Experiment vs $100 in RLUSD: +4.61 USD** · vs lump-sum XRP (XRP-equivalent): +5.87%
+**Experiment vs $100 in RLUSD: +4.55 USD** · vs lump-sum XRP (XRP-equivalent): +5.89%
 
 \* Value = XRP held × current mid + RLUSD. XRP-equivalent = XRP held + RLUSD converted at the current mid with a 0.05% taker cost. XRP held includes the XRP locked as ledger reserve (it is still yours).
 
@@ -37,12 +37,12 @@ $100 deposited 50/50 into the XRP/RLUSD AMM pool on 2026-10-20T08:43:56+00:00 at
 
 | | **Value (RLUSD/USD)** | Change vs $100 | XRP | RLUSD | XRP-equivalent* |
 |---|---|---|---|---|---|
-| AMM LP position now (fees included) | **$99.44** | -0.56 | 38.8466 | $49.71 | 77.6672 |
-| Hold the same 50/50 (no pool) | $99.40 | -0.60 | 38.5793 | $50.02 | 77.6409 |
+| AMM LP position now (fees included) | **$99.40** | -0.60 | 38.8466 | $49.71 | 77.6946 |
+| Hold the same 50/50 (no pool) | $99.37 | -0.63 | 38.5793 | $50.02 | 77.6684 |
 | Hold RLUSD | $100.00 | +0.00 | 0 | $100.00 | |
-| $100 lump-sum XRP baseline | $98.80 | -1.20 | 77.1917 | $0.00 | 77.1917 |
+| $100 lump-sum XRP baseline | $98.73 | -1.27 | 77.1917 | $0.00 | 77.1917 |
 
 - LP vs hold-50/50: **+0.034%** = impermanent loss -0.002% + fees earned ≈ +0.036% (pool fee 0.205%, pool share 0.002125%)
-- LP vs lump-sum XRP (XRP-equivalent): **+0.62%**
+- LP vs lump-sum XRP (XRP-equivalent): **+0.65%**
 
 Logs: `logs/summary.csv`, `logs/<strategy>_ticks.csv`, `logs/<strategy>_fills.csv`, `logs/amm_lp_ticks.csv`, `logs/tax_export.csv`.
