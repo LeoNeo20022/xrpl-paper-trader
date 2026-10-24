@@ -235,69 +235,143 @@ def check(tok, seen_entry, need_conc=True):
     elif res["top10"] > s["warn_top10_pct"]: res["warn"].append(f"top-10 holders own {res['top10']:.0f}%")
     return res
 
-# ---------------- positions / exits ----------------
+# ---------------- strategy bankrolls / exits ----------------
 STRATS = list(CFG["exits"].keys())
+BOOK_FIELDS = ["ts", "label", "strategy", "token", "issuer", "currency", "sources", "usd", "xrp_usd", "xrp_in", "spot_xrp_per_token",
+               "fill_xrp_per_token", "tokens", "buy_cost_pct_vs_spot", "amm_fee_pct", "transfer_fee_pct", "round_trip_cost_pct",
+               "pool_xrp", "cash_after_usd", "warnings", "note"]
 
-def close_part(pos, sname, frac_of_original, reason, pool, px_usd):
-    st = pos["strategies"][sname]
-    tokens = pos["tokens_net"] * frac_of_original
-    tokens_g = pos["tokens_gross"] * frac_of_original
+def new_book(px):
+    b = CFG["bankroll"]
+    return {"start_usd": b["start_usd"], "start_xrp_usd": px, "cash_usd": b["start_usd"], "day": "", "buys_today": 0,
+            "positions": [], "closed": [], "last_exit": {}}
+
+def migrate_v1(books, px):
+    """One-time: seed every strategy with the 10 shared v1 paper buys (same fills/timestamps), $100 fully deployed."""
+    old = load("positions.json", None)
+    if old is None: return
+    for s in STRATS:
+        bk = books.setdefault(s, new_book(old[0]["xrp_usd_entry"] if old else px))
+        for p in old:
+            bk["positions"].append({k: p[k] for k in ("key", "name", "currency", "issuer", "t", "ts", "tf", "usd_cost", "xrp_usd_entry",
+                "xrp_cost", "tokens_net", "tokens_gross", "entry_spot", "entry_eff_px", "pool_xrp_entry", "amm_fee", "warnings")}
+                | {"remaining": 1.0, "tp_done": False, "legs": [], "seeded_from_v1": True})
+            bk["cash_usd"] -= p["usd_cost"]
+        bk["day"], bk["buys_today"] = old[0]["ts"][:10] if old else "", len(old)
+        bk["cash_usd"] = round(bk["cash_usd"], 6)
+    # old paper_buys.csv -> new columns, tagged as the shared seed
+    pb = os.path.join(LOGS, "paper_buys.csv")
+    if os.path.exists(pb):
+        rows = list(csv.DictReader(open(pb)))
+        with open(pb, "w", newline="") as f:
+            w = csv.DictWriter(f, fieldnames=BOOK_FIELDS, extrasaction="ignore"); w.writeheader()
+            for r in rows: r["strategy"] = "hold+plus5+scalp (v1 seed)"; w.writerow(r)
+    os.replace(os.path.join(STATE, "positions.json"), os.path.join(STATE, "positions_v1_migrated.json"))
+    WARN.append("migrated v1 shared positions into 3 bankrolls")
+
+def close_part(bk, pos, sname, frac, reason, pool, px):
+    tokens = pos["tokens_net"] * frac
     xrp_net, _ = sim_sell(pool, tokens)
-    xrp_gross = tokens_g * pool["spot"] if pool else 0.0
-    cost_xrp = pos["xrp_cost"] * frac_of_original; cost_usd = pos["usd_cost"] * frac_of_original
-    row = {"ts": TS, "label": LABEL, "token": pos["name"], "issuer": pos["issuer"], "strategy": sname, "reason": reason,
-           "fraction_of_buy": round(frac_of_original, 4), "hours_held": round((NOW - pos["t"]) / 3600, 2),
+    xrp_gross = pos["tokens_gross"] * frac * pool["spot"] if pool else 0.0
+    cost_xrp, cost_usd = pos["xrp_cost"] * frac, pos["usd_cost"] * frac
+    usd_net, usd_gross = xrp_net * px, xrp_gross * px
+    bk["cash_usd"] = round(bk["cash_usd"] + usd_net, 6)
+    row = {"ts": TS, "label": LABEL, "strategy": sname, "token": pos["name"], "issuer": pos["issuer"], "reason": reason,
+           "fraction_of_buy": round(frac, 4), "hours_held": round((NOW - pos["t"]) / 3600, 2),
            "entry_spot_xrp": pos["entry_spot"], "exit_spot_xrp": pool["spot"] if pool else 0,
            "cost_xrp": round(cost_xrp, 6), "proceeds_xrp_net": round(xrp_net, 6), "proceeds_xrp_gross": round(xrp_gross, 6),
            "pnl_xrp_net": round(xrp_net - cost_xrp, 6), "pnl_xrp_gross": round(xrp_gross - cost_xrp, 6),
-           "cost_usd": round(cost_usd, 4), "xrp_usd": px_usd,
-           "pnl_usd_net": round(xrp_net * px_usd - cost_usd, 4), "pnl_usd_gross": round(xrp_gross * px_usd - cost_usd, 4),
-           "note": "exit at price observed at 15-min poll, not the exact trigger level"}
+           "cost_usd": round(cost_usd, 4), "xrp_usd": px, "proceeds_usd_net": round(usd_net, 4),
+           "pnl_usd_net": round(usd_net - cost_usd, 4), "pnl_usd_gross": round(usd_gross - cost_usd, 4),
+           "cash_after_usd": round(bk["cash_usd"], 4), "note": "exit at price observed at the ~5-min poll, not the exact trigger level"}
     append("exits.csv", row, list(row.keys()))
-    st["remaining"] = round(st["remaining"] - frac_of_original, 10)
-    st.setdefault("closed", []).append({k: row[k] for k in ("reason", "fraction_of_buy", "pnl_xrp_net", "pnl_xrp_gross", "pnl_usd_net", "pnl_usd_gross", "cost_xrp", "cost_usd")})
-    if st["remaining"] <= 1e-9: st["open"] = False; st["closed_ts"] = TS
+    pos["remaining"] = round(pos["remaining"] - frac, 10)
+    pos["legs"].append({k: row[k] for k in ("ts", "reason", "fraction_of_buy", "pnl_xrp_net", "pnl_xrp_gross", "pnl_usd_net", "pnl_usd_gross")})
 
-def manage(pos, pool, px_usd):
-    age_h = (NOW - pos["t"]) / 3600
-    # mark-to-market ratio of what we'd actually get (net) vs what we paid
-    full_net, _ = sim_sell(pool, pos["tokens_net"])
-    ratio = full_net / pos["xrp_cost"] if pos["xrp_cost"] else 0
-    pos["last_ratio_net"] = round(ratio, 4); pos["last_spot"] = pool["spot"] if pool else 0; pos["last_mark_ts"] = TS
-    for sname, rule in CFG["exits"].items():
-        st = pos["strategies"][sname]
-        if not st["open"]: continue
-        if pool is None: close_part(pos, sname, st["remaining"], "pool gone (rug?) -> 0", None, px_usd); continue
-        if not st.get("tp_done") and ratio >= rule["take_profit_mult"]:
-            f = min(rule["take_profit_fraction"], st["remaining"])
-            close_part(pos, sname, f, f"take profit (x{ratio:.2f} net)", pool, px_usd); st["tp_done"] = True
-            if not st["open"]: continue
-        if ratio <= rule["stop_mult"]: close_part(pos, sname, st["remaining"], f"stop (x{ratio:.2f} net)", pool, px_usd)
-        elif age_h >= rule["max_hours"]: close_part(pos, sname, st["remaining"], f"time limit {rule['max_hours']}h (x{ratio:.2f} net)", pool, px_usd)
-    pos["open"] = any(s["open"] for s in pos["strategies"].values())
+def manage(bk, sname, pool, px):
+    rule = CFG["exits"][sname]; still = []
+    for pos in bk["positions"]:
+        age_h = (NOW - pos["t"]) / 3600
+        if pool.get(pos["key"], "err") == "err": still.append(pos); continue  # couldn't price this run: hold
+        pl = pool[pos["key"]]
+        if pl is None: close_part(bk, pos, sname, pos["remaining"], "pool gone (rug?) -> 0", None, px)
+        else:
+            net, _ = sim_sell(pl, pos["tokens_net"]); ratio = net / pos["xrp_cost"]
+            pos["last_ratio_net"] = round(ratio, 4)
+            if not pos["tp_done"] and ratio >= rule["take_profit_mult"]:
+                close_part(bk, pos, sname, min(rule["take_profit_fraction"], pos["remaining"]), f"take profit (x{ratio:.2f} net)", pl, px)
+                pos["tp_done"] = True
+            if pos["remaining"] > 1e-9:
+                if ratio <= rule["stop_mult"]: close_part(bk, pos, sname, pos["remaining"], f"stop (x{ratio:.2f} net)", pl, px)
+                elif age_h >= rule["max_hours"]: close_part(bk, pos, sname, pos["remaining"], f"time limit {rule['max_hours']}h (x{ratio:.2f} net)", pl, px)
+        if pos["remaining"] > 1e-9: still.append(pos)
+        else:
+            pos["closed_ts"] = TS; pos["pnl_usd_net"] = round(sum(l["pnl_usd_net"] for l in pos["legs"]), 4)
+            pos["pnl_xrp_net"] = round(sum(l["pnl_xrp_net"] for l in pos["legs"]), 6)
+            bk["closed"].append(pos); bk["last_exit"][pos["key"]] = NOW
+    bk["positions"] = still
+
+def book_stats(bk, pools, px):
+    open_val = open_cost = 0.0; unknown = 0
+    for p in bk["positions"]:
+        pl = pools.get(p["key"])
+        if not isinstance(pl, dict): unknown += 1; open_cost += p["usd_cost"] * p["remaining"]; open_val += p["usd_cost"] * p["remaining"]; continue
+        open_val += sim_sell(pl, p["tokens_net"] * p["remaining"])[0] * px
+        open_cost += p["usd_cost"] * p["remaining"]
+    legs = [l for p in bk["positions"] + bk["closed"] for l in p["legs"]]
+    realized = sum(l["pnl_usd_net"] for l in legs); realized_g = sum(l["pnl_usd_gross"] for l in legs)
+    realized_x = sum(l["pnl_xrp_net"] for l in legs)
+    wins = sum(1 for p in bk["closed"] if p["pnl_usd_net"] > 0)
+    eq = bk["cash_usd"] + open_val
+    return {"cash": bk["cash_usd"], "open_n": len(bk["positions"]), "open_val": open_val, "unrealized": open_val - open_cost,
+            "realized": realized, "realized_gross": realized_g, "realized_xrp": realized_x, "equity": eq, "equity_xrp": eq / px,
+            "start_xrp": bk["start_usd"] / bk["start_xrp_usd"], "closed_n": len(bk["closed"]),
+            "trades": len(bk["closed"]) + len(bk["positions"]), "win_rate": (wins / len(bk["closed"]) * 100) if bk["closed"] else None,
+            "unpriced": unknown}
 
 # ---------------- main ----------------
 def main():
+    t0 = time.time()
     os.makedirs(STATE, exist_ok=True); os.makedirs(LOGS, exist_ok=True)
-    meta = load("meta.json", {}); seen = load("seen.json", {}); positions = load("positions.json", [])
+    meta = load("meta.json", {}); seen = load("seen.json", {}); books = load("strategies.json", {})
     px, px_src = xrp_usd()
     meta["xrp_usd"], meta["xrp_usd_src"] = px, px_src
-
-    # 1) mark open positions (ledger only, independent of discovery API)
-    for pos in positions:
-        if not pos["open"]: continue
-        try:
-            pool = get_pool(pos["currency"], pos["issuer"], pos["tf"])
-            manage(pos, pool, px)
-        except Exception as e: WARN.append(f"could not mark {pos['name']}: {e!r}")
-
-    # 2) discover + safety
-    found = discover(meta)
-    owned = {key(p["currency"], p["issuer"]) for p in positions}
+    migrate_v1(books, px)
+    for s in STRATS: books.setdefault(s, new_book(px))
     day = TS[:10]
-    if meta.get("day") != day: meta["day"], meta["buys_today"] = day, 0
-    open_n = sum(1 for p in positions if p["open"])
-    stats = {"seen": len(found), "checked": 0, "passed": 0, "bought": 0, "rejected": 0}
+    for bk in books.values():
+        if bk["day"] != day: bk["day"], bk["buys_today"] = day, 0
+
+    # 1) every run: price all open positions from the ledger (one amm_info per unique token) and apply exits
+    pools = {}
+    for bk in books.values():
+        for p in bk["positions"]:
+            if p["key"] in pools: continue
+            try: pools[p["key"]] = get_pool(p["currency"], p["issuer"], p["tf"])
+            except Exception as e: pools[p["key"]] = "err"; WARN.append(f"could not price {p['name']}: {e!r}")
+    for s in STRATS: manage(books[s], s, pools, px)
+
+    # 2) discovery + safety only if >= 15 min since the last one (keeps xrpl.to at <= 2 calls / 15 min)
+    stats = {"discovery": False, "seen": 0, "checked": 0, "passed": 0, "bought": {s: 0 for s in STRATS}}
+    since = NOW - meta.get("last_discovery_t", 0)
+    if since >= CFG["discovery"]["min_interval_minutes"] * 60:
+        stats["discovery"] = True; meta["last_discovery_t"] = NOW; meta["last_discovery"] = TS
+        eligible = discover_and_check(meta, seen, books, px, stats)
+        buy_round(books, eligible, px, stats, pools)
+        save("seen.json", seen)
+    else:
+        stats["next_discovery_in_min"] = round((CFG["discovery"]["min_interval_minutes"] * 60 - since) / 60, 1)
+
+    stats["runtime_s"] = round(time.time() - t0, 1)
+    meta.update(last_run=TS, last_stats=stats, warnings=WARN[-20:])
+    save("meta.json", meta); save("strategies.json", books)
+    write_summary(meta, seen, books, pools, px, stats)
+    out = {s: {k: (round(v, 2) if isinstance(v, float) else v) for k, v in book_stats(books[s], pools, px).items()} for s in STRATS}
+    print(json.dumps({"ts": TS, "xrp_usd": px, **stats, "books": out, "warnings": WARN}, indent=1))
+
+def discover_and_check(meta, seen, books, px, stats):
+    found = discover(meta); stats["seen"] = len(found)
+    held_by_all = set.intersection(*[{p["key"] for p in books[s]["positions"]} for s in STRATS])
     eligible = []
     cand_fields = ["ts", "label", "token", "issuer", "currency", "sources", "verdict", "reasons", "warnings", "pool_xrp", "amm_fee_pct",
                    "transfer_fee_pct", "blackholed", "no_freeze", "clawback", "global_freeze", "top10_pct", "top10_src",
@@ -307,14 +381,14 @@ def main():
         x = tok.get("x") or {}
         is_new = any(s.startswith("new") or s.startswith("ledger") for s in tok["sources"])
         top = any(s.startswith("trending#") and int(s.split("#")[1]) <= CFG["discovery"]["trending_top_n"] for s in tok["sources"])
-        try: r = check(tok, se, need_conc=(is_new or top) and k not in owned); stats["checked"] += 1
+        try: r = check(tok, se, need_conc=(is_new or top) and k not in held_by_all); stats["checked"] += 1
         except Exception as e:
             WARN.append(f"safety check error {tok['name']}: {e!r}"); continue
         pool, ii = r["pool"], r["issuer"] or {}
         rt = None
         if pool:
             xin = CFG["buy_usd"] / px; tn, _ = sim_buy(pool, xin)
-            p2 = dict(pool, x=pool["x"] + xin * (1 - pool["fee"]), t=pool["t"] - tn)  # pool after our buy
+            p2 = dict(pool, x=pool["x"] + xin * (1 - pool["fee"]), t=pool["t"] - tn)
             back, _ = sim_sell(p2, tn); rt = (1 - back / xin) * 100
         entry_fail = []
         if not r["hard_fail"]:
@@ -324,7 +398,6 @@ def main():
             if rt is not None and rt > CFG["entry"]["max_round_trip_cost_pct"]: entry_fail.append(f"round-trip cost {rt:.1f}% too high")
         verdict = "FAIL_SAFETY" if r["hard_fail"] else ("SKIP_ENTRY" if entry_fail else "PASS")
         if verdict == "PASS": stats["passed"] += 1
-        else: stats["rejected"] += 1
         reasons = "; ".join(r["hard_fail"] + entry_fail)
         age_h = round((NOW * 1000 - x["dateon"]) / 3.6e6, 1) if x.get("dateon") else ""
         row = {"ts": TS, "label": LABEL, "token": tok["name"], "issuer": tok["issuer"], "currency": tok["currency"],
@@ -337,72 +410,68 @@ def main():
                "vol24h_xrp": round(x["vol24hxrp"]) if x.get("vol24hxrp") is not None else "", "age_h": age_h,
                "round_trip_cost_pct": round(rt, 2) if rt is not None else "",
                "url": f"https://xrpl.to/token/{tok['issuer']}-{tok['currency']}"}
-        # log a candidate row on first sight or when its verdict/reasons change (keeps the CSV small)
         sig = verdict + "|" + reasons
         if se.get("sig") != sig: append("candidates.csv", row, cand_fields); se["sig"] = sig
-        se.update(last_seen=TS, verdict=verdict, reasons=reasons, warnings=row["warnings"], name=tok["name"], pool_xrp=row["pool_xrp"],
-                  url=row["url"])
-        if verdict == "PASS" and k not in owned: eligible.append((0 if is_new else 1, -(x.get("trendingScore") or 0), k, tok, r, rt))
-
-    # 3) paper buys (once per token, capped)
+        se.update(last_seen=TS, verdict=verdict, reasons=reasons, warnings=row["warnings"], name=tok["name"], pool_xrp=row["pool_xrp"], url=row["url"])
+        if verdict == "PASS": eligible.append((0 if is_new else 1, -(x.get("trendingScore") or 0), k, tok, r, rt))
     eligible.sort(key=lambda e: (e[0], e[1]))
-    for _, _, k, tok, r, rt in eligible:
-        if open_n >= CFG["max_open_positions"]: WARN.append("max open positions reached; skipped further buys"); break
-        if meta["buys_today"] >= CFG["max_new_buys_per_day_utc"]: WARN.append("daily buy cap reached; skipped further buys"); break
-        pool = r["pool"]; xin = CFG["buy_usd"] / px
-        tn, tg = sim_buy(pool, xin)
-        eff_px = xin / tn
-        pos = {"key": k, "name": tok["name"], "currency": tok["currency"], "issuer": tok["issuer"], "t": NOW, "ts": TS, "tf": pool["tf"],
-               "usd_cost": CFG["buy_usd"], "xrp_usd_entry": px, "xrp_cost": xin, "tokens_net": tn, "tokens_gross": tg,
-               "entry_spot": pool["spot"], "entry_eff_px": eff_px, "pool_xrp_entry": pool["x"], "amm_fee": pool["fee"],
-               "sources": tok["sources"], "warnings": r["warn"], "open": True,
-               "strategies": {s: {"open": True, "remaining": 1.0} for s in STRATS}}
-        positions.append(pos); owned.add(k); open_n += 1; meta["buys_today"] += 1; stats["bought"] += 1
-        slip = (eff_px / pool["spot"] - 1) * 100
-        row = {"ts": TS, "label": LABEL, "token": tok["name"], "issuer": tok["issuer"], "currency": tok["currency"],
-               "sources": "|".join(tok["sources"]), "usd": CFG["buy_usd"], "xrp_usd": px, "xrp_in": round(xin, 6),
-               "spot_xrp_per_token": pool["spot"], "fill_xrp_per_token": eff_px, "tokens": tn,
-               "buy_cost_pct_vs_spot": round(slip, 3), "amm_fee_pct": round(pool["fee"] * 100, 3),
-               "transfer_fee_pct": round(pool["tf"] * 100, 3), "round_trip_cost_pct": round(rt, 3) if rt is not None else "",
-               "pool_xrp": round(pool["x"]), "warnings": "; ".join(r["warn"]),
-               "note": "simulated AMM fill incl. pool fee, slippage, transfer fee; CLOB ignored; trust line reserve 0.2 XRP not counted"}
-        append("paper_buys.csv", row, list(row.keys()))
-        pos["buy_cost_pct"] = round(slip, 3); pos["round_trip_cost_pct"] = row["round_trip_cost_pct"]
+    return eligible
 
-    meta.update(last_run=TS, last_stats=stats, warnings=WARN[-20:])
-    save("meta.json", meta); save("seen.json", seen); save("positions.json", positions)
-    write_summary(meta, seen, positions, stats)
-    print(json.dumps({"ts": TS, "xrp_usd": px, **stats, "open_positions": sum(p["open"] for p in positions), "warnings": WARN}, indent=1))
+def buy_round(books, eligible, px, stats, pools):
+    b = CFG["bankroll"]
+    for s in STRATS:
+        bk = books[s]; held = {p["key"] for p in bk["positions"]}
+        for _, _, k, tok, r, rt in eligible:
+            if bk["cash_usd"] + 1e-9 < CFG["buy_usd"] or bk["buys_today"] >= b["max_new_buys_per_day_utc"]: break
+            if k in held: continue
+            if NOW - bk["last_exit"].get(k, 0) < b["rebuy_cooldown_hours"] * 3600: continue
+            pool = r["pool"]; xin = CFG["buy_usd"] / px
+            tn, tg = sim_buy(pool, xin); eff = xin / tn
+            pos = {"key": k, "name": tok["name"], "currency": tok["currency"], "issuer": tok["issuer"], "t": NOW, "ts": TS, "tf": pool["tf"],
+                   "usd_cost": CFG["buy_usd"], "xrp_usd_entry": px, "xrp_cost": xin, "tokens_net": tn, "tokens_gross": tg,
+                   "entry_spot": pool["spot"], "entry_eff_px": eff, "pool_xrp_entry": pool["x"], "amm_fee": pool["fee"],
+                   "warnings": r["warn"], "remaining": 1.0, "tp_done": False, "legs": []}
+            bk["positions"].append(pos); held.add(k); bk["buys_today"] += 1; stats["bought"][s] += 1
+            bk["cash_usd"] = round(bk["cash_usd"] - CFG["buy_usd"], 6); pools.setdefault(k, pool)
+            row = {"ts": TS, "label": LABEL, "strategy": s, "token": tok["name"], "issuer": tok["issuer"], "currency": tok["currency"],
+                   "sources": "|".join(tok["sources"]), "usd": CFG["buy_usd"], "xrp_usd": px, "xrp_in": round(xin, 6),
+                   "spot_xrp_per_token": pool["spot"], "fill_xrp_per_token": eff, "tokens": tn,
+                   "buy_cost_pct_vs_spot": round((eff / pool["spot"] - 1) * 100, 3), "amm_fee_pct": round(pool["fee"] * 100, 3),
+                   "transfer_fee_pct": round(pool["tf"] * 100, 3), "round_trip_cost_pct": round(rt, 3) if rt is not None else "",
+                   "pool_xrp": round(pool["x"]), "cash_after_usd": round(bk["cash_usd"], 4), "warnings": "; ".join(r["warn"]),
+                   "note": "simulated AMM fill incl. pool fee, slippage, transfer fee; CLOB ignored; trust line reserve 0.2 XRP not counted"}
+            append("paper_buys.csv", row, BOOK_FIELDS)
 
-def write_summary(meta, seen, positions, stats):
+def write_summary(meta, seen, books, pools, px, stats):
     L = [f"# XRPL meme scanner — PAPER ONLY ({LABEL})", "",
          "Log-only experiment: no wallet, no keys, no orders. Every number below is simulated from public data.",
-         "Token data by <a href=\"https://xrpl.to\">xrpl.to</a>; safety checks and prices from the public XRP Ledger.", "",
-         f"Last run: **{meta['last_run']}** (UTC) · XRP/USD {meta['xrp_usd']:.4f} ({meta['xrp_usd_src']}) · "
-         f"this run: {stats['seen']} tokens seen, {stats['passed']} passed, {stats['bought']} paper-bought · buys today {meta.get('buys_today',0)}/{CFG['max_new_buys_per_day_utc']}", ""]
-    if meta.get("warnings"): L += ["**Source warnings this run:** " + " | ".join(meta["warnings"]), ""]
-    L += ["## Results per exit strategy (closed trades, each buy scored separately under all 3)", "",
-          "| Strategy | Rule | Closed | Win rate | P&L XRP gross | P&L XRP net | P&L USD gross | P&L USD net | Open |", "|---|---|---|---|---|---|---|---|---|"]
+         "Data by <a href=\"https://xrpl.to\">xrpl.to</a> (token discovery); safety checks and prices from the public XRP Ledger.", "",
+         f"Last run: **{meta['last_run']}** (UTC) · XRP/USD {px:.4f} ({meta['xrp_usd_src']}) · last discovery {meta.get('last_discovery', '–')} (UTC)", ""]
+    if meta.get("warnings"): L += ["**Warnings this run:** " + " | ".join(meta["warnings"]), ""]
     desc = {"hold": "½ at +100%, stop −50%, 72h", "plus5": "all at +50%, stop −50%, 72h", "scalp": "+20% / −10% / 60 min"}
+    L += ["## Bankrolls (each strategy started with its own $100)", "",
+          "| Strategy | Rule | Cash | Open (n / value) | Equity USD | vs $100 | Equity XRP | vs start XRP | Realized net | Unrealized net | Win rate | Trades (closed) |",
+          "|---|---|---|---|---|---|---|---|---|---|---|---|"]
     for s in STRATS:
-        closed = [p for p in positions if not p["strategies"][s]["open"]]
-        legs = [c for p in positions for c in p["strategies"][s].get("closed", [])]
-        tot = lambda f: sum(c[f] for c in legs)
-        wins = sum(1 for p in closed if sum(c["pnl_xrp_net"] for c in p["strategies"][s]["closed"]) > 0)
-        wr = f"{wins / len(closed) * 100:.0f}%" if closed else "–"
-        L.append(f"| {s} | {desc.get(s, '')} | {len(closed)} | {wr} | {tot('pnl_xrp_gross'):+.3f} | {tot('pnl_xrp_net'):+.3f} | "
-                 f"{tot('pnl_usd_gross'):+.2f} | {tot('pnl_usd_net'):+.2f} | {sum(1 for p in positions if p['strategies'][s]['open'])} |")
-    L += ["", "Gross = at pool spot price with no fees/slippage. Net = simulated AMM swaps incl. pool trading fee, price impact, issuer transfer fee and network fee. "
-          "USD P&L also moves with XRP/USD. Exits fire at the price seen at each ~15-min poll, so real fills could be better or worse than the trigger level.", ""]
-    op = [p for p in positions if p["open"]]
-    L += [f"## Open paper positions ({len(op)}/{CFG['max_open_positions']})", ""]
-    if op:
-        L += ["| Token | Bought (UTC) | Cost | Buy cost vs spot | Now (net, x) | Strategies still open | Warnings |", "|---|---|---|---|---|---|---|"]
-        for p in sorted(op, key=lambda p: p["t"], reverse=True):
-            L.append(f"| [{p['name']}](https://xrpl.to/token/{p['issuer']}-{p['currency']}) | {p['ts'][:16]} | ${p['usd_cost']:.0f} = {p['xrp_cost']:.2f} XRP | "
-                     f"{p.get('buy_cost_pct', 0):.2f}% | {p.get('last_ratio_net', 1):.2f} | {', '.join(s for s in STRATS if p['strategies'][s]['open'])} | {'; '.join(p['warnings'])} |")
-    else: L.append("None.")
-    L += ["", "## Recently rejected (latest verdict per token)", "", "| Token | Verdict | Reasons | Pool XRP |", "|---|---|---|---|"]
+        st = book_stats(books[s], pools, px)
+        wr = f"{st['win_rate']:.0f}%" if st["win_rate"] is not None else "–"
+        L.append(f"| {s} | {desc.get(s, '')} | ${st['cash']:.2f} | {st['open_n']} / ${st['open_val']:.2f} | ${st['equity']:.2f} | {st['equity'] - books[s]['start_usd']:+.2f} | "
+                 f"{st['equity_xrp']:.2f} | {st['equity_xrp'] - st['start_xrp']:+.2f} | ${st['realized']:+.2f} | ${st['unrealized']:+.2f} | {wr} | {st['trades']} ({st['closed_n']}) |")
+    L += ["", "Cash is kept in USD at each fill. Values are net of AMM pool fee, price impact, issuer transfer fee and network fee "
+          "(open positions valued at what selling right now would return). Equity XRP = equity USD ÷ current XRP/USD; start XRP = $100 at the start price. "
+          "Each strategy is an independent hypothetical: their buys of the same token are each simulated against the same pool. "
+          "Exits fire at the price seen at each ~5-min poll, so real fills could be better or worse than the trigger level.", ""]
+    for s in STRATS:
+        bk = books[s]
+        L += [f"### {s} — open positions ({len(bk['positions'])})", ""]
+        if bk["positions"]:
+            L += ["| Token | Bought (UTC) | Cost | Now (net, x) | Warnings |", "|---|---|---|---|---|"]
+            for p in sorted(bk["positions"], key=lambda p: p["t"], reverse=True):
+                L.append(f"| [{p['name']}](https://xrpl.to/token/{p['issuer']}-{p['currency']}) | {p['ts'][:16]} | ${p['usd_cost'] * p['remaining']:.2f} | "
+                         f"{p.get('last_ratio_net', 1):.2f} | {'; '.join(p['warnings'])} |")
+        else: L.append("None.")
+        L.append("")
+    L += ["## Recently rejected (latest verdict per token)", "", "| Token | Verdict | Reasons | Pool XRP |", "|---|---|---|---|"]
     rej = sorted([v for v in seen.values() if v.get("verdict") and v["verdict"] != "PASS"], key=lambda v: v.get("last_seen", ""), reverse=True)[:40]
     for v in rej: L.append(f"| [{v['name']}]({v.get('url','')}) | {v['verdict']} | {v.get('reasons','')} | {v.get('pool_xrp','')} |")
     L += ["", "Logs: `logs/candidates.csv`, `logs/paper_buys.csv`, `logs/exits.csv`. Thresholds: `config.json`. Method: `README.md`."]

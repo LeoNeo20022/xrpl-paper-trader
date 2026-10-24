@@ -1,18 +1,24 @@
 {
  "buys_today": 10,
  "day": "2026-10-24",
- "last_run": "2026-10-24T11:21:27+00:00",
+ "last_discovery": "2026-10-24T11:26:51+00:00",
+ "last_discovery_t": 1792841211.7725093,
+ "last_run": "2026-10-24T11:27:28+00:00",
  "last_stats": {
-  "bought": 0,
-  "checked": 45,
-  "passed": 13,
-  "rejected": 32,
-  "seen": 45
+  "bought": {
+   "hold": 0,
+   "plus5": 0,
+   "scalp": 0
+  },
+  "checked": 0,
+  "discovery": false,
+  "next_discovery_in_min": 14.4,
+  "passed": 0,
+  "runtime_s": 4.4,
+  "seen": 0
  },
- "warnings": [
-  "daily buy cap reached; skipped further buys"
- ],
- "xrp_usd": 1.28169,
+ "warnings": [],
+ "xrp_usd": 1.2784,
  "xrp_usd_src": "bitstamp",
  "xrplto_ok": 2
 }
