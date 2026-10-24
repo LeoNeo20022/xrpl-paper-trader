@@ -3,7 +3,7 @@
 Log-only experiment: no wallet, no keys, no orders. Every number below is simulated from public data.
 Data by <a href="https://xrpl.to">xrpl.to</a> (token discovery); safety checks and prices from the public XRP Ledger.
 
-Last run: **2026-10-24T11:27:28+00:00** (UTC) · XRP/USD 1.2784 (bitstamp) · last discovery 2026-10-24T11:26:51+00:00 (UTC)
+Last run: **2026-10-24T11:28:25+00:00** (UTC) · XRP/USD 1.2784 (bitstamp) · last discovery 2026-10-24T11:26:51+00:00 (UTC)
 
 ## Bankrolls (each strategy started with its own $100)
 
