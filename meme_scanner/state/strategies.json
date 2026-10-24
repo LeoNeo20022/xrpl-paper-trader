@@ -267,7 +267,7 @@
  },
  "dip_bounce": {
   "buys_today": 10,
-  "cash_usd": 11.109195,
+  "cash_usd": 22.179736,
   "closed": [
    {
     "amm_fee": 0.00255,
@@ -305,31 +305,37 @@
     "warnings": [],
     "xrp_cost": 7.810486358985575,
     "xrp_usd_entry": 1.28033
-   }
-  ],
-  "day": "2026-10-24",
-  "last_exit": {
-   "rfKYWZ84fm9eVEdoTcsQCo1WdqMPyaUF5z-5349474D41000000000000000000000000000000": 1792873626.694439
-  },
-  "net_fees_xrp": 0.013764,
-  "positions": [
+   },
    {
     "amm_fee": 0.01,
+    "closed_ts": "2026-10-24T21:02:51+00:00",
     "currency": "54494D4500000000000000000000000000000000",
     "entry_eff_px": 6.647545782029425e-07,
     "entry_spot": 6.574188211489212e-07,
     "issuer": "rExSpmk2PAqxKRTT3mhjCrCpqVasBra5v8",
     "key": "rExSpmk2PAqxKRTT3mhjCrCpqVasBra5v8-54494D4500000000000000000000000000000000",
-    "last_ratio_net": 1.0993,
-    "legs": [],
+    "last_ratio_net": 1.1,
+    "legs": [
+     {
+      "fraction_of_buy": 1.0,
+      "pnl_usd_gross": 1.3196,
+      "pnl_usd_net": 1.0706,
+      "pnl_xrp_gross": 0.97438,
+      "pnl_xrp_net": 0.781139,
+      "reason": "take profit (x1.10 net)",
+      "ts": "2026-10-24T21:02:51+00:00"
+     }
+    ],
     "name": "TIME",
+    "pnl_usd_net": 1.0706,
+    "pnl_xrp_net": 0.781139,
     "pool_xrp_entry": 7397.270287,
-    "remaining": 1.0,
+    "remaining": 0.0,
     "t": 1792849072.2342532,
     "tf": 0.0,
     "tokens_gross": 11880533.546842752,
     "tokens_net": 11749428.458394336,
-    "tp_done": false,
+    "tp_done": true,
     "trigger": "dip_bounce: 39.9% below 24h high 1.09353e-06 XRP, age 415.1d",
     "ts": "2026-10-24T13:37:52+00:00",
     "usd_cost": 10.0,
@@ -338,7 +344,15 @@
     ],
     "xrp_cost": 7.810486358985575,
     "xrp_usd_entry": 1.28033
-   },
+   }
+  ],
+  "day": "2026-10-24",
+  "last_exit": {
+   "rExSpmk2PAqxKRTT3mhjCrCpqVasBra5v8-54494D4500000000000000000000000000000000": 1792875771.7698298,
+   "rfKYWZ84fm9eVEdoTcsQCo1WdqMPyaUF5z-5349474D41000000000000000000000000000000": 1792873626.694439
+  },
+  "net_fees_xrp": 0.013803999999999999,
+  "positions": [
    {
     "amm_fee": 0.00062,
     "currency": "42524954544F0000000000000000000000000000",
@@ -422,7 +436,7 @@
     "entry_spot": 0.02672795479936224,
     "issuer": "rBbu9c7zyuiDH4bq7uJhdLhzsRdEkSrYFX",
     "key": "rBbu9c7zyuiDH4bq7uJhdLhzsRdEkSrYFX-NOX",
-    "last_ratio_net": 1.0745,
+    "last_ratio_net": 1.0746,
     "legs": [],
     "name": "NOX",
     "pool_xrp_entry": 3415.520845,
@@ -543,7 +557,7 @@
   "start_ts": "2026-10-24T13:37:52+00:00",
   "start_usd": 100.0,
   "start_xrp_usd": 1.28033,
-  "trustset_fees_xrp": 0.006822
+  "trustset_fees_xrp": 0.006842
  },
  "hold": {
   "buys_today": 10,
@@ -559,7 +573,7 @@
     "entry_spot": 5.727471671679549e-07,
     "issuer": "rnHDzEH4xyW6u4LbXqDoX1uk36v5ovhbFi",
     "key": "rnHDzEH4xyW6u4LbXqDoX1uk36v5ovhbFi-4465657054696465000000000000000000000000",
-    "last_ratio_net": 1.2245,
+    "last_ratio_net": 1.2295,
     "legs": [],
     "name": "DeepTide",
     "pool_xrp_entry": 11714.122001,
@@ -585,7 +599,7 @@
     "entry_spot": 0.00018395865035572009,
     "issuer": "rGLEgQdktoN4Be5thhk6seg1HifGPBxY5Q",
     "key": "rGLEgQdktoN4Be5thhk6seg1HifGPBxY5Q-PLX",
-    "last_ratio_net": 0.997,
+    "last_ratio_net": 0.9976,
     "legs": [],
     "name": "PLX",
     "pool_xrp_entry": 28093.179002,
@@ -824,7 +838,7 @@
     "entry_spot": 5.727471671679549e-07,
     "issuer": "rnHDzEH4xyW6u4LbXqDoX1uk36v5ovhbFi",
     "key": "rnHDzEH4xyW6u4LbXqDoX1uk36v5ovhbFi-4465657054696465000000000000000000000000",
-    "last_ratio_net": 1.2245,
+    "last_ratio_net": 1.2295,
     "legs": [],
     "name": "DeepTide",
     "pool_xrp_entry": 11714.122001,
@@ -850,7 +864,7 @@
     "entry_spot": 0.00018395865035572009,
     "issuer": "rGLEgQdktoN4Be5thhk6seg1HifGPBxY5Q",
     "key": "rGLEgQdktoN4Be5thhk6seg1HifGPBxY5Q-PLX",
-    "last_ratio_net": 0.997,
+    "last_ratio_net": 0.9976,
     "legs": [],
     "name": "PLX",
     "pool_xrp_entry": 28093.179002,
