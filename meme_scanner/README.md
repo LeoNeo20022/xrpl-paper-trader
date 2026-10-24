@@ -1,7 +1,7 @@
 # XRPL meme scanner (PAPER ONLY)
 
 Log-only test of XRPL meme tokens (First Ledger style). It **never** touches a wallet, holds no keys, and signs or submits nothing.
-It runs every 5 minutes on GitHub Actions (`.github/workflows/meme-scanner.yml`) and is completely separate from the XRP/RLUSD grid paper trader in the repo root.
+It scans about every 5 minutes on GitHub Actions (`.github/workflows/meme-scanner.yml`: GitHub fires the cron irregularly, so each run loops 8 scans 300 s apart and commits after each; a new trigger waits for the running loop) and is completely separate from the XRP/RLUSD grid paper trader in the repo root.
 Every logged trade is labelled `PAPER-NOT-ON-LEDGER`.
 
 ## What each run does

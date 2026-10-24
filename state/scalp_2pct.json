@@ -4,17 +4,17 @@
  "anchor": 1.2948290358744394,
  "reserve_xrp": 3.2,
  "core_xrp": 0.0,
- "scalp_xrp": 0.7066240000618456,
- "kept_xrp": 0.7070240000618542,
+ "scalp_xrp": 0.0,
+ "kept_xrp": 0.0,
  "trading_usd": 20.854475358744395,
- "savings_usd": -4.789515020142687e-06,
+ "savings_usd": 0.0,
  "chunk_usd": 2.0854475358744393,
- "fees_usd": 0.0003926725157555597,
- "buys": 20,
- "sells": 20,
- "round_trips": 20,
+ "fees_usd": 0.0,
+ "buys": 0,
+ "sells": 0,
+ "round_trips": 0,
  "reanchors": 0,
- "bar": 1360,
+ "bar": 1362,
  "levels": [
   {
    "buy": 1.268932,
@@ -59,5 +59,6 @@
  ],
  "type": "scalp",
  "created": "2026-10-20T08:43:56+00:00",
- "last_run": "2026-10-24T12:06:54+00:00"
+ "last_run": "2026-10-24T12:22:41+00:00",
+ "replayed": "2026-10-24"
 }

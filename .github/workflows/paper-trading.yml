@@ -1,30 +1,49 @@
 name: xrpl-paper-trading
 # PAPER ONLY: reads public prices, simulates trades, commits the logs. No secrets, no wallet, no orders.
+# GitHub's cron fires irregularly (~every 30 min), so each run loops: 3 ticks 900 s apart (~30 min), committing after each.
+# Each tick pulls first and reads state/market.json from disk, so candle catch-up starts after the last processed candle (no double counting).
 on:
   schedule:
-    - cron: "*/15 * * * *"   # every 15 min (UTC). GitHub may delay scheduled runs.
+    - cron: "*/15 * * * *"
   workflow_dispatch: {}
 permissions:
   contents: write            # only so the job can commit state/ logs/ SUMMARY.md back to this repo
-concurrency:
+concurrency:                 # one run at a time; a new trigger waits (never cancels the running loop)
   group: paper-trading
   cancel-in-progress: false
 jobs:
   tick:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 40
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Paper tick (stdlib only, public APIs only)
-        run: python paper_runner.py
-      - name: Commit updated logs
+      - name: Tick loop (3 x 900 s, stdlib only, public APIs only)
+        env:
+          TICKS: "3"
+          GAP: "900"
         run: |
           git config user.name "paper-trading-bot"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add state/ logs/ SUMMARY.md
-          git diff --cached --quiet || git commit -m "paper tick $(date -u +%FT%TZ)"
-          git pull --rebase --autostash || true
-          git push
+          sync() {
+            for i in 1 2 3 4 5; do
+              git pull --rebase --autostash -q && return 0
+              git rebase --abort 2>/dev/null; sleep $((i * 5))
+            done; return 1
+          }
+          for n in $(seq 1 $TICKS); do
+            t0=$(date +%s)
+            echo "::group::tick $n/$TICKS $(date -u +%FT%TZ)"
+            sync || echo "pull failed; ticking on current checkout"
+            python paper_runner.py || echo "tick $n failed"
+            git add state/ logs/ SUMMARY.md
+            if ! git diff --cached --quiet; then
+              git commit -q -m "paper tick $(date -u +%FT%TZ)"
+              for i in 1 2 3 4 5; do sync && git push -q && break; sleep $((i * 5)); done
+            fi
+            echo "::endgroup::"
+            [ "$n" -lt "$TICKS" ] && sleep $(( GAP - ($(date +%s) - t0) > 0 ? GAP - ($(date +%s) - t0) : 0 ))
+          done
+          exit 0

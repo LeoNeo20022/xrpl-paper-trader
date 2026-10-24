@@ -1,37 +1,50 @@
 name: xrpl-meme-scanner
 # PAPER ONLY: reads public APIs (xrpl.to + public XRPL nodes), simulates $10 meme buys, commits logs.
-# No secrets, no wallet, no transactions. Fully separate from paper-trading.yml.
+# No wallet, no transactions. The only secret is the optional read-only XRPLTO_API_KEY. Separate from paper-trading.yml.
+# GitHub's cron fires irregularly (~every 30 min), so each run loops: 8 scans 300 s apart (~38 min), committing after each.
 on:
   schedule:
-    - cron: "2-59/5 * * * *"   # every 5 min (UTC), offset from the grid trader. Exits every run; xrpl.to discovery every run if the XRPLTO_API_KEY secret is set, else every >=15 min (state timestamp). GitHub often delays scheduled runs.
+    - cron: "*/15 * * * *"
   workflow_dispatch: {}
 permissions:
-  contents: write                  # only to commit meme_scanner/ logs back to this repo
-concurrency:              # at most 1 running + 1 pending; a newer pending run replaces an older pending one, so no queue builds up
+  contents: write
+concurrency:            # one run at a time; a new trigger waits (never cancels the running loop)
   group: meme-scanner
   cancel-in-progress: false
 jobs:
   scan:
     runs-on: ubuntu-latest
-    timeout-minutes: 4
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Meme scan (stdlib only, public read-only APIs)
+      - name: Scan loop (8 x 300 s)
         env:
-          XRPLTO_API_KEY: ${{ secrets.XRPLTO_API_KEY }}   # optional; if unset, discovery throttles to every >=15 min
-        run: python meme_scanner/scanner.py
-      - name: Commit meme_scanner logs only
+          XRPLTO_API_KEY: ${{ secrets.XRPLTO_API_KEY }}
+          SCANS: "8"
+          GAP: "300"
         run: |
           git config user.name "meme-scanner-bot"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add meme_scanner/state meme_scanner/logs meme_scanner/SUMMARY.md
-          git diff --cached --quiet && exit 0
-          git commit -m "meme scan $(date -u +%FT%TZ)"
-          for i in 1 2 3 4 5; do
-            git pull --rebase --autostash && git push && exit 0
-            sleep $((i * 5))
+          sync() {  # bring in other commits so every scan reads the latest state from disk
+            for i in 1 2 3 4 5; do
+              git pull --rebase --autostash -q && return 0
+              git rebase --abort 2>/dev/null; sleep $((i * 5))
+            done; return 1
+          }
+          for n in $(seq 1 $SCANS); do
+            t0=$(date +%s)
+            echo "::group::scan $n/$SCANS $(date -u +%FT%TZ)"
+            sync || echo "pull failed; scanning on current checkout"
+            python meme_scanner/scanner.py || echo "scan $n failed"
+            git add meme_scanner/state meme_scanner/logs meme_scanner/SUMMARY.md
+            if ! git diff --cached --quiet; then
+              git commit -q -m "meme scan $(date -u +%FT%TZ)"
+              for i in 1 2 3 4 5; do sync && git push -q && break; sleep $((i * 5)); done
+            fi
+            echo "::endgroup::"
+            [ "$n" -lt "$SCANS" ] && sleep $(( GAP - ($(date +%s) - t0) > 0 ? GAP - ($(date +%s) - t0) : 0 ))
           done
-          exit 1
+          exit 0
