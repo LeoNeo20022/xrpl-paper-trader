@@ -429,9 +429,18 @@ def write_md(ms, snap, rows, s, lp=None):
             L.append(f"- Dip ladder open buy orders: {r.get('order_prices') or 'none'} (reference {r.get('ladder_ref')}, next refresh {r.get('next_refresh')})")
         else:
             L.append(f"- `{r['strategy']}`: {r['open_buy_orders']} buy orders waiting, {r['open_sell_orders']} sell orders waiting, XRP kept from scalps {r['xrp_kept_from_scalps']}")
+    if len(sep) > 1:   # side-by-side comparison of the XRP-count lines (e.g. 4% vs 6% steps)
+        L += ["", "## XRP stacker side by side (separate $100 lines, PAPER-NOT-ON-LEDGER) — scoreboard is XRP COUNT", "",
+              "| Line | Step | **XRP held** | **vs keep $100 in XRP (XRP)** | XRP-equivalent* vs holding | Value (RLUSD/USD) | vs keep $100 in XRP (USD) | Round trips | Forced rebuys | RLUSD parked |",
+              "|---|---|---|---|---|---|---|---|---|---|"]
+        for r in sep:
+            n = r["strategy"]; c = CFG["strategies"][n]; dx = r["xrp_held"] - r["start_xrp"]
+            L.append(f"| `{n}` | {c['spacing_pct']:g}% | **{r['xrp_held']:.4f}** | **{dx:+.4f}** ({dx / r['start_xrp'] * 100:+.2f}%) | {s[n + '_vs_xrp_equiv_pct']:+.2f}% | "
+                     f"${r['value_usd']:.2f} | {r['value_usd'] - r['start_xrp'] * mid:+.2f} | {r['round_trips']} | {r['forced_rebuys']} | ${r['rlusd_unspent']:.2f} |")
+        L.append(f"| Baseline: keep $100 in XRP | — | {sep[0]['start_xrp']:.4f} | — | — | ${sep[0]['start_xrp'] * mid:.2f} | — | | | |")
     for r in sep:
         n = r["strategy"]; c = CFG["strategies"][n]; dx = r["xrp_held"] - r["start_xrp"]; bv = r["start_xrp"] * mid
-        L += ["", f"## Separate line: XRP stacker (`{n}`, PAPER-NOT-ON-LEDGER) — scoreboard is XRP COUNT", "",
+        L += ["", f"## Separate line: XRP stacker, {c['spacing_pct']:g}% steps (`{n}`, PAPER-NOT-ON-LEDGER) — scoreboard is XRP COUNT", "",
               f"{c['label']}. Separate $100 line, not included in the $300 total. Started {CFG['strategies'][n].get('_start', ms['started'])} at "
               f"${ms['start_mid']:.4f} with **{r['start_xrp']:.4f} XRP** (= keep $100 in XRP).", "",
               "| | **XRP held** | vs start XRP | RLUSD parked (waiting to rebuy) | XRP-equivalent* | Value (RLUSD/USD) | vs keep $100 in XRP (USD) | Round trips | XRP gained from trips | Forced rebuys (XRP lost) | Fees paid USD (network XRP) | Reserve locked XRP |",

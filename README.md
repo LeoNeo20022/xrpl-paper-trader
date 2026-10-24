@@ -66,3 +66,10 @@ limit price (maker, no AMM fee); market buys pay 0.05% taker; xrp_stacker pays 0
 Owner reserves (1 XRP base + 0.2 per trust line/offer) are locked, not spent, and shown separately.
 NOT included: Xaman's own 0.8% service fee on swaps, AMM deposits/withdrawals and DEX trades:
 https://help.xaman.app/app/getting-started-with-xaman/understanding-the-xaman-service-fee
+
+## xrp_stacker_6pct (added 2026-10-24, separate $100 line, PAPER ONLY)
+Side-by-side copy of xrp_stacker with **6% steps instead of 4%**: same 77.19 XRP start (Oct 20), 2.0 XRP reserve never sold,
+4 slices of 15% of the sellable stack at +6%, +12.4%, +19.1%, +26.2% above the reference, each rebuys 6% below its sell price
+with ALL its RLUSD (~+5.5% more XRP per round trip after 2 x 0.25% fill cost). Trail-down at 6% below the reference, 14-day
+forced market rebuy, same network-fee model. Replayed from Oct 20 on the same Bitstamp 5-minute candles. Not in the $300 total.
+`backtest_stacker.py` compares 4% vs 6% over the last 14/30/45/60 days (output in `backtest_stacker_output.txt`).

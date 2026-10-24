@@ -93,6 +93,24 @@
       "owner_reserve_xrp": 0.2,
       "tx_fee_xrp": 2e-05,
       "_note": "Separate $100 line (not in the $300 total). Starts 100% XRP. 4 slices x 15% of the sellable stack at +4/+8.2/+12.5/+17% above the reference; each rebuys 4% lower with ALL its RLUSD. 0.25%/fill = AMM 0.205% + slippage. Trails down when nothing is parked; slice parked >14 days is rebought at market. Replayed from the Oct 20 start on Bitstamp 5-min candles."
+    },
+    "xrp_stacker_6pct": {
+      "type": "stacker",
+      "separate": true,
+      "label": "XRP stacker 6% steps (side-by-side test): sell slices high, buy back 6% lower with all the RLUSD (goal: more XRP)",
+      "budget_usd": 100,
+      "spacing_pct": 6.0,
+      "levels": 4,
+      "slice_pct": 15.0,
+      "fee_pct_per_fill": 0.25,
+      "max_park_days": 14,
+      "trigger_pct": 0.05,
+      "entry_cost_pct": 0.05,
+      "base_reserve_xrp": 1.0,
+      "trustline_reserve_xrp": 0.2,
+      "owner_reserve_xrp": 0.2,
+      "tx_fee_xrp": 2e-05,
+      "_note": "Separate $100 line (not in the $300 total), side-by-side copy of xrp_stacker with 6% steps instead of 4%. Starts 100% XRP. 4 slices x 15% of the sellable stack at +6/+12.4/+19.1/+26.2% above the reference; each rebuys 6% lower with ALL its RLUSD. 0.25%/fill = AMM 0.205% + slippage. Trails down when nothing is parked and price is 6% below the reference; slice parked >14 days is rebought at market. Replayed from the Oct 20 start on Bitstamp 5-min candles."
     }
   },
   "amm_lp": {
