@@ -25,7 +25,10 @@
       "CSC",
       "CORE"
     ],
-    "min_interval_minutes": 15
+    "min_interval_minutes": 15,
+    "xrplto_volume_limit": 100,
+    "xrplto_momentum_limit": 50,
+    "extra_lists_when_anonymous": false
   },
   "safety": {
     "max_transfer_fee_pct": 1.0,
@@ -61,6 +64,22 @@
       "take_profit_fraction": 1.0,
       "stop_mult": 0.9,
       "max_hours": 1
+    },
+    "slow_scalp": {
+      "take_profit_mult": 1.08,
+      "take_profit_fraction": 1.0,
+      "stop_mult": 0.94,
+      "max_hours": 6
+    },
+    "breakout": {
+      "trail_pct": 8.0,
+      "max_hours": 24
+    },
+    "dip_bounce": {
+      "take_profit_mult": 1.1,
+      "take_profit_fraction": 1.0,
+      "stop_mult": 0.9,
+      "max_hours": 24
     }
   },
   "network_fee_xrp": 1.2e-05,
@@ -69,5 +88,26 @@
     "start_usd": 100.0,
     "max_new_buys_per_day_utc": 10,
     "rebuy_cooldown_hours": 24
+  },
+  "entry_v2": {
+    "_note": "Entry rules for the 3 strategies added Oct 24 (slow_scalp, breakout, dip_bounce). hold/plus5/scalp keep using 'entry'.",
+    "slow_scalp": {
+      "same_universe_as_legacy": true,
+      "max_round_trip_cost_pct": 2.0
+    },
+    "breakout": {
+      "min_change_1h_pct": 10.0,
+      "ohlc_resolution_min": 5,
+      "vol_last_hour_above_prev_hour": true,
+      "vol_last_hour_above_24h_hourly_avg": true,
+      "max_ohlc_calls_per_run": 6,
+      "max_round_trip_cost_pct": 6.0
+    },
+    "dip_bounce": {
+      "min_age_hours": 72,
+      "min_dip_from_24h_high_pct": 15.0,
+      "prefilter_slack_pct": 2.0,
+      "max_round_trip_cost_pct": 6.0
+    }
   }
 }

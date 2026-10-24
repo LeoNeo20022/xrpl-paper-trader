@@ -2,7 +2,8 @@
 """XRPL memecoin PAPER scanner. LOG-ONLY: reads public APIs, simulates $10 buys, never signs or submits anything.
 
 Each run: discover new/trending XRPL tokens -> ledger safety checks -> paper-buy passing tokens (AMM math)
--> mark open paper positions to the live AMM pool and apply 3 exit strategies -> write logs + SUMMARY.md.
+-> mark open paper positions to the live AMM pool and apply the exit strategies -> write logs + SUMMARY.md.
+Strategies: hold, plus5, scalp (original, unchanged) + slow_scalp, breakout, dip_bounce (added Oct 24, own entry rules in entry_v2).
 Stdlib only. Every row is labelled PAPER-NOT-ON-LEDGER.
 """
 import csv, json, math, os, sys, time, urllib.request, urllib.error
@@ -120,11 +121,21 @@ def discover(meta):
         e["sources"].append(src if rank is None else f"{src}#{rank}")
         if t.get("_x"): e["x"] = t["_x"]
     ok = 0
-    for src, q, lim in [("new", "sortBy=dateon&sortType=desc", d["xrplto_newest_limit"]),
-                        ("trending", "sortBy=trendingScore&sortType=desc", d["xrplto_trending_limit"])]:
+    lists = [("new", "sortBy=dateon&sortType=desc", d["xrplto_newest_limit"]),
+             ("trending", "sortBy=trendingScore&sortType=desc", d["xrplto_trending_limit"])]
+    keyed = bool(XRPLTO_KEY) and NOW - meta.get("key_rejected_t", 0) > 3600
+    if keyed or d.get("extra_lists_when_anonymous") or os.environ.get("MEME_FORCE_EXTRA") == "1":
+        # v2 universe: top tokens by 24h XRP volume (dip_bounce) and by 1h price change (breakout). 1 credit each.
+        lists += [("volume", "sortBy=vol24hxrp&sortType=desc", d.get("xrplto_volume_limit", 100)),
+                  ("momentum", "sortBy=pro1h&sortType=desc", d.get("xrplto_momentum_limit", 50))]
+    else:
+        WARN.append("no xrpl.to API key: skipped volume/momentum lists (breakout/dip_bounce universe limited to new+trending)")
+    meta["xrplto_calls_last_discovery"] = 0
+    for src, q, lim in lists:
         try:
             url = f"{XRPLTO}?start=0&limit={lim}&{q}&filter="
             use_key = bool(XRPLTO_KEY) and NOW - meta.get("key_rejected_t", 0) > 3600
+            meta["xrplto_calls_last_discovery"] += 1
             try: r = http_json(url, headers={"X-Api-Key": XRPLTO_KEY} if use_key else None)
             except urllib.error.HTTPError as he:
                 if not (use_key and he.code in (401, 402, 403)): raise
@@ -139,8 +150,8 @@ def discover(meta):
                     if age_h > d["new_max_age_hours"]: continue
                     add(t, "new")
                 else:
-                    add(t, "trending", i)
-            ok += 1
+                    add(t, src, i)
+            if src in ("new", "trending"): ok += 1
         except Exception as e:
             msg = repr(e).replace(XRPLTO_KEY, "***") if XRPLTO_KEY else repr(e)
             WARN.append(f"xrpl.to {src} list failed: {msg}")
@@ -246,13 +257,15 @@ def check(tok, seen_entry, need_conc=True):
 
 # ---------------- strategy bankrolls / exits ----------------
 STRATS = list(CFG["exits"].keys())
+LEGACY = ["hold", "plus5", "scalp"]                    # original strategies (unchanged rules)
+V2 = [s for s in ("slow_scalp", "breakout", "dip_bounce") if s in STRATS]  # added Oct 24
 BOOK_FIELDS = ["ts", "label", "strategy", "token", "issuer", "currency", "sources", "usd", "xrp_usd", "xrp_in", "spot_xrp_per_token",
                "fill_xrp_per_token", "tokens", "buy_cost_pct_vs_spot", "amm_fee_pct", "transfer_fee_pct", "round_trip_cost_pct",
                "pool_xrp", "cash_after_usd", "warnings", "note"]
 
 def new_book(px):
     b = CFG["bankroll"]
-    return {"start_usd": b["start_usd"], "start_xrp_usd": px, "cash_usd": b["start_usd"], "day": "", "buys_today": 0,
+    return {"start_usd": b["start_usd"], "start_xrp_usd": px, "start_ts": TS, "cash_usd": b["start_usd"], "day": "", "buys_today": 0,
             "positions": [], "closed": [], "last_exit": {}}
 
 def migrate_v1(books, px):
@@ -307,7 +320,14 @@ def manage(bk, sname, pool, px):
         else:
             net, _ = sim_sell(pl, pos["tokens_net"]); ratio = net / pos["xrp_cost"]
             pos["last_ratio_net"] = round(ratio, 4)
-            if not pos["tp_done"] and ratio >= rule["take_profit_mult"]:
+            if "trail_pct" in rule:  # breakout: trailing stop on spot price vs highest spot seen since entry
+                pos["peak_spot"] = max(pos.get("peak_spot", pos["entry_spot"]), pl["spot"])
+                drop = (1 - pl["spot"] / pos["peak_spot"]) * 100
+                if drop >= rule["trail_pct"]:
+                    close_part(bk, pos, sname, pos["remaining"], f"trailing stop: {drop:.1f}% below high (x{ratio:.2f} net)", pl, px)
+                elif age_h >= rule["max_hours"]:
+                    close_part(bk, pos, sname, pos["remaining"], f"time limit {rule['max_hours']}h (x{ratio:.2f} net)", pl, px)
+            elif not pos["tp_done"] and ratio >= rule["take_profit_mult"]:
                 close_part(bk, pos, sname, min(rule["take_profit_fraction"], pos["remaining"]), f"take profit (x{ratio:.2f} net)", pl, px)
                 pos["tp_done"] = True
             if pos["remaining"] > 1e-9:
@@ -321,22 +341,25 @@ def manage(bk, sname, pool, px):
     bk["positions"] = still
 
 def book_stats(bk, pools, px):
-    open_val = open_cost = 0.0; unknown = 0
+    open_val = open_cost = open_val_x = open_cost_x = 0.0; unknown = 0
     for p in bk["positions"]:
-        pl = pools.get(p["key"])
-        if not isinstance(pl, dict): unknown += 1; open_cost += p["usd_cost"] * p["remaining"]; open_val += p["usd_cost"] * p["remaining"]; continue
-        open_val += sim_sell(pl, p["tokens_net"] * p["remaining"])[0] * px
+        pl = pools.get(p["key"]); open_cost_x += p["xrp_cost"] * p["remaining"]
+        if not isinstance(pl, dict):
+            unknown += 1; open_cost += p["usd_cost"] * p["remaining"]; open_val += p["usd_cost"] * p["remaining"]
+            open_val_x += p["xrp_cost"] * p["remaining"]; continue
+        xn = sim_sell(pl, p["tokens_net"] * p["remaining"])[0]; open_val_x += xn
+        open_val += xn * px
         open_cost += p["usd_cost"] * p["remaining"]
     legs = [l for p in bk["positions"] + bk["closed"] for l in p["legs"]]
     realized = sum(l["pnl_usd_net"] for l in legs); realized_g = sum(l["pnl_usd_gross"] for l in legs)
     realized_x = sum(l["pnl_xrp_net"] for l in legs)
-    wins = sum(1 for p in bk["closed"] if p["pnl_usd_net"] > 0)
+    wins = sum(1 for p in bk["closed"] if p["pnl_usd_net"] > 0); losses = len(bk["closed"]) - wins
     eq = bk["cash_usd"] + open_val
     return {"cash": bk["cash_usd"], "open_n": len(bk["positions"]), "open_val": open_val, "unrealized": open_val - open_cost,
             "realized": realized, "realized_gross": realized_g, "realized_xrp": realized_x, "equity": eq, "equity_xrp": eq / px,
             "start_xrp": bk["start_usd"] / bk["start_xrp_usd"], "closed_n": len(bk["closed"]),
             "trades": len(bk["closed"]) + len(bk["positions"]), "win_rate": (wins / len(bk["closed"]) * 100) if bk["closed"] else None,
-            "unpriced": unknown}
+            "unpriced": unknown, "wins": wins, "losses": losses, "unrealized_xrp": open_val_x - open_cost_x}
 
 # ---------------- main ----------------
 def main():
@@ -383,17 +406,31 @@ def main():
 
 def discover_and_check(meta, seen, books, px, stats):
     found = discover(meta); stats["seen"] = len(found)
-    held_by_all = set.intersection(*[{p["key"] for p in books[s]["positions"]} for s in STRATS])
+    held_by_all = set.intersection(*[{p["key"] for p in books[s]["positions"]} for s in LEGACY])
+    v2 = CFG.get("entry_v2", {}); bo, db = v2.get("breakout", {}), v2.get("dip_bounce", {})
+    min_vol = CFG["entry"]["min_vol24h_xrp"]
+    v2_elig = {s: [] for s in V2}; bo_queue = []
     eligible = []
     cand_fields = ["ts", "label", "token", "issuer", "currency", "sources", "verdict", "reasons", "warnings", "pool_xrp", "amm_fee_pct",
                    "transfer_fee_pct", "blackholed", "no_freeze", "clawback", "global_freeze", "top10_pct", "top10_src",
                    "vol24h_xrp", "age_h", "round_trip_cost_pct", "url"]
     for k, tok in found.items():
-        se = seen.setdefault(k, {"first_seen": TS, "name": tok["name"]})
         x = tok.get("x") or {}
         is_new = any(s.startswith("new") or s.startswith("ledger") for s in tok["sources"])
         top = any(s.startswith("trending#") and int(s.split("#")[1]) <= CFG["discovery"]["trending_top_n"] for s in tok["sources"])
-        try: r = check(tok, se, need_conc=(is_new or top) and k not in held_by_all); stats["checked"] += 1
+        legacy_src = any(s.startswith(("new", "ledger", "trending")) for s in tok["sources"])
+        # cheap v2 prefilters from xrpl.to fields (no ledger calls unless one matches)
+        vol = x.get("vol24hxrp")
+        vol_ok = vol is not None and vol >= min_vol
+        age_h_x = (NOW * 1000 - x["dateon"]) / 3.6e6 if x.get("dateon") else None
+        hi24 = (x.get("maxMin24h") or [0])[0] or 0
+        pre_bo = bool(bo) and vol_ok and (x.get("pro1h") or 0) >= bo["min_change_1h_pct"]
+        pre_db = (bool(db) and vol_ok and age_h_x is not None and age_h_x > db["min_age_hours"] and hi24 > 0 and x.get("exch")
+                  and x["exch"] <= hi24 * (1 - (db["min_dip_from_24h_high_pct"] - db.get("prefilter_slack_pct", 0)) / 100))
+        if not legacy_src and not (pre_bo or pre_db): continue  # extra-list token with no v2 signal: don't spend ledger calls
+        se = seen.setdefault(k, {"first_seen": TS, "name": tok["name"]})
+        need = ((is_new or top) and k not in held_by_all) or pre_bo or pre_db
+        try: r = check(tok, se, need_conc=need); stats["checked"] += 1
         except Exception as e:
             WARN.append(f"safety check error {tok['name']}: {e!r}"); continue
         pool, ii = r["pool"], r["issuer"] or {}
@@ -426,14 +463,82 @@ def discover_and_check(meta, seen, books, px, stats):
         if se.get("sig") != sig: append("candidates.csv", row, cand_fields); se["sig"] = sig
         se.update(last_seen=TS, verdict=verdict, reasons=reasons, warnings=row["warnings"], name=tok["name"], pool_xrp=row["pool_xrp"], url=row["url"])
         if verdict == "PASS": eligible.append((0 if is_new else 1, -(x.get("trendingScore") or 0), k, tok, r, rt))
+        # ---- v2 strategies ----
+        if r["hard_fail"] or not pool: continue
+        if verdict == "PASS":
+            lim = v2["slow_scalp"]["max_round_trip_cost_pct"]
+            ok = rt is not None and rt <= lim
+            if ok: v2_elig["slow_scalp"].append((0 if is_new else 1, -(x.get("trendingScore") or 0), k, tok, r, rt, f"slow_scalp: new/top-15 trending, round trip {rt:.2f}% <= {lim}%"))
+            log_signal(se, "slow_scalp", tok, "ELIGIBLE" if ok else "SKIP", "" if ok else f"round-trip cost {rt if rt is not None else float('nan'):.2f}% > {lim}%", {"round_trip_cost_pct": rt})
+        if pre_bo:
+            if rt is not None and rt <= bo["max_round_trip_cost_pct"]: bo_queue.append((-(x.get("pro1h") or 0), k, tok, r, rt, se, x))
+            else: log_signal(se, "breakout", tok, "SKIP", "round-trip cost too high", {"pro1h_xrplto": x.get("pro1h"), "round_trip_cost_pct": rt})
+        if pre_db:
+            dip = (1 - pool["spot"] / hi24) * 100
+            m = {"high24h_xrp": hi24, "spot_xrp": pool["spot"], "dip_pct": dip, "age_h": age_h_x, "round_trip_cost_pct": rt, "vol24h_xrp": vol}
+            why = []
+            if dip < db["min_dip_from_24h_high_pct"]: why.append(f"only {dip:.1f}% below 24h high (ledger spot)")
+            if rt is None or rt > db["max_round_trip_cost_pct"]: why.append("round-trip cost too high")
+            if not why: v2_elig["dip_bounce"].append((-dip, 0, k, tok, r, rt, f"dip_bounce: {dip:.1f}% below 24h high {hi24:.6g} XRP, age {age_h_x / 24:.1f}d"))
+            log_signal(se, "dip_bounce", tok, "SKIP" if why else "ELIGIBLE", "; ".join(why), m)
+    # breakout confirmation needs 5-min candles (xrpl.to /ohlc, 5 credits each): only for the best few prefiltered tokens
+    bo_queue.sort(key=lambda e: e[0]); calls = 0
+    for _, k, tok, r, rt, se, x in bo_queue:
+        if calls >= bo["max_ohlc_calls_per_run"]: break
+        calls += 1
+        try: m = breakout_metrics(x, r["pool"])
+        except Exception as e:
+            msg = repr(e).replace(XRPLTO_KEY, "***") if XRPLTO_KEY else repr(e)
+            WARN.append(f"ohlc {tok['name']} failed: {msg}"); continue
+        m["round_trip_cost_pct"] = rt
+        why = []
+        if m["change_1h_pct"] < bo["min_change_1h_pct"]: why.append(f"1h change {m['change_1h_pct']:.1f}% < {bo['min_change_1h_pct']}% (ledger spot vs 1h-ago candle)")
+        if bo.get("vol_last_hour_above_prev_hour") and not m["vol_last_h"] > m["vol_prev_h"]: why.append(f"last-hour volume {m['vol_last_h']:.0f} not above prior hour {m['vol_prev_h']:.0f} XRP")
+        if bo.get("vol_last_hour_above_24h_hourly_avg") and not m["vol_last_h"] > m["vol_avg_h"]: why.append(f"last-hour volume {m['vol_last_h']:.0f} not above 24h hourly avg {m['vol_avg_h']:.0f} XRP")
+        if not why: v2_elig["breakout"].append((-m["change_1h_pct"], 0, k, tok, r, rt, f"breakout: +{m['change_1h_pct']:.1f}% in 1h, vol last hour {m['vol_last_h']:.0f} vs prior {m['vol_prev_h']:.0f} / 24h avg {m['vol_avg_h']:.0f} XRP"))
+        log_signal(se, "breakout", tok, "SKIP" if why else "ELIGIBLE", "; ".join(why), m)
+    stats["ohlc_calls"] = calls
     eligible.sort(key=lambda e: (e[0], e[1]))
-    return eligible
+    out = {s: [(k, tok, r, rt, "") for _, _, k, tok, r, rt in eligible] for s in LEGACY}
+    for s in V2:
+        v2_elig[s].sort(key=lambda e: (e[0], e[1]))
+        out[s] = [(k, tok, r, rt, note) for _, _, k, tok, r, rt, note in v2_elig[s]]
+    stats["eligible"] = {s: len(v) for s, v in out.items()}
+    return out
 
-def buy_round(books, eligible, px, stats, pools):
+SIG_FIELDS = ["ts", "label", "strategy", "token", "issuer", "currency", "decision", "reasons", "change_1h_pct", "pro1h_xrplto", "vol_last_h",
+              "vol_prev_h", "vol_avg_h", "high24h_xrp", "spot_xrp", "dip_pct", "age_h", "vol24h_xrp", "round_trip_cost_pct", "url"]
+def log_signal(se, strat, tok, decision, reasons, m):
+    """v2 entry decisions -> logs/signals.csv (a row only when the decision/reasons change for that token+strategy)."""
+    sig = decision + "|" + "".join(ch for ch in reasons if not ch.isdigit())  # ignore changing numbers
+    if se.get("sig_" + strat) == sig: return
+    se["sig_" + strat] = sig
+    row = {"ts": TS, "label": LABEL, "strategy": strat, "token": tok["name"], "issuer": tok["issuer"], "currency": tok["currency"],
+           "decision": decision, "reasons": reasons, "url": f"https://xrpl.to/token/{tok['issuer']}-{tok['currency']}"}
+    row.update({k: (float(f"{v:.6g}") if isinstance(v, float) else v) for k, v in m.items() if v is not None})
+    append("signals.csv", row, SIG_FIELDS)
+
+def breakout_metrics(x, pool):
+    """1h price change and hourly volumes from xrpl.to 5-min candles ([t, o, h, l, c, vol_xrp]); current price from the ledger pool."""
+    md5 = x.get("md5")
+    if not md5: raise RuntimeError("no xrpl.to id")
+    res = CFG["entry_v2"]["breakout"].get("ohlc_resolution_min", 5); per_h = 60 // res
+    url = f"https://api.xrpl.to/v1/ohlc/{md5}?resolution={res}&cb={2 * per_h + 2}"
+    keyed = bool(XRPLTO_KEY)
+    o = http_json(url, headers={"X-Api-Key": XRPLTO_KEY} if keyed else None).get("ohlc") or []
+    o = sorted(o, key=lambda c: c[0])
+    if len(o) < 2 * per_h + 1: raise RuntimeError(f"only {len(o)} candles")
+    last, prev = o[-per_h:], o[-2 * per_h:-per_h]
+    ref = float(o[-per_h - 1][4])  # close of the candle that ended ~60 min ago
+    return {"change_1h_pct": (pool["spot"] / ref - 1) * 100 if ref > 0 else 0.0, "pro1h_xrplto": x.get("pro1h"),
+            "vol_last_h": sum(float(c[5] or 0) for c in last), "vol_prev_h": sum(float(c[5] or 0) for c in prev),
+            "vol_avg_h": (x.get("vol24hxrp") or 0) / 24, "spot_xrp": pool["spot"]}
+
+def buy_round(books, elig, px, stats, pools):
     b = CFG["bankroll"]
     for s in STRATS:
         bk = books[s]; held = {p["key"] for p in bk["positions"]}
-        for _, _, k, tok, r, rt in eligible:
+        for k, tok, r, rt, trig in elig.get(s, []):
             if bk["cash_usd"] + 1e-9 < CFG["buy_usd"] or bk["buys_today"] >= b["max_new_buys_per_day_utc"]: break
             if k in held: continue
             if NOW - bk["last_exit"].get(k, 0) < b["rebuy_cooldown_hours"] * 3600: continue
@@ -443,6 +548,8 @@ def buy_round(books, eligible, px, stats, pools):
                    "usd_cost": CFG["buy_usd"], "xrp_usd_entry": px, "xrp_cost": xin, "tokens_net": tn, "tokens_gross": tg,
                    "entry_spot": pool["spot"], "entry_eff_px": eff, "pool_xrp_entry": pool["x"], "amm_fee": pool["fee"],
                    "warnings": r["warn"], "remaining": 1.0, "tp_done": False, "legs": []}
+            if trig: pos["trigger"] = trig
+            if "trail_pct" in CFG["exits"][s]: pos["peak_spot"] = pool["spot"]
             bk["positions"].append(pos); held.add(k); bk["buys_today"] += 1; stats["bought"][s] += 1
             bk["cash_usd"] = round(bk["cash_usd"] - CFG["buy_usd"], 6); pools.setdefault(k, pool)
             row = {"ts": TS, "label": LABEL, "strategy": s, "token": tok["name"], "issuer": tok["issuer"], "currency": tok["currency"],
@@ -451,42 +558,51 @@ def buy_round(books, eligible, px, stats, pools):
                    "buy_cost_pct_vs_spot": round((eff / pool["spot"] - 1) * 100, 3), "amm_fee_pct": round(pool["fee"] * 100, 3),
                    "transfer_fee_pct": round(pool["tf"] * 100, 3), "round_trip_cost_pct": round(rt, 3) if rt is not None else "",
                    "pool_xrp": round(pool["x"]), "cash_after_usd": round(bk["cash_usd"], 4), "warnings": "; ".join(r["warn"]),
-                   "note": "simulated AMM fill incl. pool fee, slippage, transfer fee; CLOB ignored; trust line reserve 0.2 XRP not counted"}
+                   "note": (trig + " | " if trig else "") + "simulated AMM fill incl. pool fee, slippage, transfer fee; CLOB ignored; trust line reserve 0.2 XRP not counted"}
             append("paper_buys.csv", row, BOOK_FIELDS)
 
 def write_summary(meta, seen, books, pools, px, stats):
     L = [f"# XRPL meme scanner — PAPER ONLY ({LABEL})", "",
          "Log-only experiment: no wallet, no keys, no orders. Every number below is simulated from public data.",
          "Data by <a href=\"https://xrpl.to\">xrpl.to</a> (token discovery); safety checks and prices from the public XRP Ledger.", "",
-         f"Last run: **{meta['last_run']}** (UTC) · XRP/USD {px:.4f} ({meta['xrp_usd_src']}) · last discovery {meta.get('last_discovery', '–')} (UTC, {'every run, API key' if meta.get('xrplto_keyed') else 'every ≥15 min, anonymous'})", ""]
+         f"Last run: **{meta['last_run']}** (UTC) · XRP/USD {px:.4f} ({meta['xrp_usd_src']}) · last discovery {meta.get('last_discovery', '–')} (UTC, {'every run, API key' if meta.get('xrplto_keyed') else 'every ≥15 min, anonymous'}) · "
+         f"xrpl.to credits used by last discovery: {meta.get('xrplto_calls_last_discovery', 0) + 5 * (stats.get('ohlc_calls') or 0)}", ""]
     if meta.get("warnings"): L += ["**Warnings this run:** " + " | ".join(meta["warnings"]), ""]
-    desc = {"hold": "½ at +100%, stop −50%, 72h", "plus5": "all at +50%, stop −50%, 72h", "scalp": "+20% / −10% / 60 min"}
-    L += ["## Bankrolls — scoreboard is USD/RLUSD (each strategy started with its own $100; hold RLUSD = $100 flat)", "",
-          "| Strategy | Rule | **Equity USD** | **vs $100** | Cash | Open (n / value) | Realized net | Unrealized net | Win rate | Trades (closed) | Equity XRP | vs start XRP |",
-          "|---|---|---|---|---|---|---|---|---|---|---|---|"]
+    desc = {"hold": "½ at +100%, stop −50%, 72h", "plus5": "all at +50%, stop −50%, 72h", "scalp": "+20% / −10% / 60 min",
+            "slow_scalp": "new/top-15 trending, round trip ≤2%; +8% / −6% / 6h",
+            "breakout": "up ≥10% in 1h + rising volume; trailing stop 8% below high / 24h",
+            "dip_bounce": ">3 days old, ≥15% below 24h high; +10% / −10% / 24h"}
+    L += ["## Bankrolls — scoreboard is USD/RLUSD (each strategy has its own $100, $10 per trade)", "",
+          "| Strategy | Rule | Started (UTC) | **Equity USD** | **vs $100** | Cash | Open (n / value) | Realized USD | Unrealized USD | Wins / losses (win rate) | Trades (closed) | Realized XRP | Unrealized XRP | Equity XRP | vs start XRP |",
+          "|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|"]
     for s in STRATS:
         st = book_stats(books[s], pools, px)
-        wr = f"{st['win_rate']:.0f}%" if st["win_rate"] is not None else "–"
-        L.append(f"| {s} | {desc.get(s, '')} | **${st['equity']:.2f}** | **{st['equity'] - books[s]['start_usd']:+.2f}** | ${st['cash']:.2f} | {st['open_n']} / ${st['open_val']:.2f} | "
-                 f"${st['realized']:+.2f} | ${st['unrealized']:+.2f} | {wr} | {st['trades']} ({st['closed_n']}) | {st['equity_xrp']:.2f} | {st['equity_xrp'] - st['start_xrp']:+.2f} |")
+        wr = f"{st['wins']} / {st['losses']} ({st['win_rate']:.0f}%)" if st["win_rate"] is not None else "–"
+        started = (books[s].get("start_ts") or "2026-10-24T11:16")[:16].replace("T", " ")
+        L.append(f"| {s} | {desc.get(s, '')} | {started} | **${st['equity']:.2f}** | **{st['equity'] - books[s]['start_usd']:+.2f}** | ${st['cash']:.2f} | {st['open_n']} / ${st['open_val']:.2f} | "
+                 f"${st['realized']:+.2f} | ${st['unrealized']:+.2f} | {wr} | {st['trades']} ({st['closed_n']}) | {st['realized_xrp']:+.2f} | {st['unrealized_xrp']:+.2f} | {st['equity_xrp']:.2f} | {st['equity_xrp'] - st['start_xrp']:+.2f} |")
+    if "hold" in books:  # baseline: the same $100 simply kept in XRP from the original start
+        sp = books["hold"]["start_xrp_usd"]; bx = books["hold"]["start_usd"] / sp; bu = bx * px
+        L.append(f"| *baseline: keep $100 in XRP* | buy XRP at ${sp:.4f}, hold | 2026-10-24 11:16 | **${bu:.2f}** | **{bu - 100:+.2f}** | – | – | – | – | – | – | – | – | {bx:.2f} | +0.00 |")
     L += ["", "Cash is kept in USD at each fill. Values are net of AMM pool fee, price impact, issuer transfer fee and network fee "
           "(open positions valued at what selling right now would return). Equity XRP = equity USD ÷ current XRP/USD; start XRP = $100 at the start price. "
           "Each strategy is an independent hypothetical: their buys of the same token are each simulated against the same pool. "
-          "Exits fire at the price seen at each ~5-min poll, so real fills could be better or worse than the trigger level.", ""]
+          "Exits fire at the price seen at each ~5-min poll, so real fills could be better or worse than the trigger level. "
+          "The 3 newer strategies started later than hold/plus5/scalp (see Started), so compare them per day, not just by total.", ""]
     for s in STRATS:
         bk = books[s]
         L += [f"### {s} — open positions ({len(bk['positions'])})", ""]
         if bk["positions"]:
-            L += ["| Token | Bought (UTC) | Cost | Now (net, x) | Warnings |", "|---|---|---|---|---|"]
+            L += ["| Token | Bought (UTC) | Cost | Now (net, x) | Warnings |" + (" Why bought |" if s in V2 else ""), "|---|---|---|---|---|" + ("---|" if s in V2 else "")]
             for p in sorted(bk["positions"], key=lambda p: p["t"], reverse=True):
                 L.append(f"| [{p['name']}](https://xrpl.to/token/{p['issuer']}-{p['currency']}) | {p['ts'][:16]} | ${p['usd_cost'] * p['remaining']:.2f} | "
-                         f"{p.get('last_ratio_net', 1):.2f} | {'; '.join(p['warnings'])} |")
+                         f"{p.get('last_ratio_net', 1):.2f} | {'; '.join(p['warnings'])} |" + (f" {p.get('trigger', '')} |" if s in V2 else ""))
         else: L.append("None.")
         L.append("")
     L += ["## Recently rejected (latest verdict per token)", "", "| Token | Verdict | Reasons | Pool XRP |", "|---|---|---|---|"]
     rej = sorted([v for v in seen.values() if v.get("verdict") and v["verdict"] != "PASS"], key=lambda v: v.get("last_seen", ""), reverse=True)[:40]
     for v in rej: L.append(f"| [{v['name']}]({v.get('url','')}) | {v['verdict']} | {v.get('reasons','')} | {v.get('pool_xrp','')} |")
-    L += ["", "Logs: `logs/candidates.csv`, `logs/paper_buys.csv`, `logs/exits.csv`. Thresholds: `config.json`. Method: `README.md`."]
+    L += ["", "Logs: `logs/candidates.csv`, `logs/signals.csv` (entry decisions of the 3 newer strategies), `logs/paper_buys.csv`, `logs/exits.csv`. Thresholds: `config.json`. Method: `README.md`."]
     open(os.path.join(HERE, "SUMMARY.md"), "w").write("\n".join(L) + "\n")
 
 if __name__ == "__main__":
