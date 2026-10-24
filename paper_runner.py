@@ -333,10 +333,10 @@ def write_md(ms, snap, rows, s, lp=None):
     L.append(f"| **Experiment total** (dip_ladder + scalp_2pct) | ${tb} | **${s['total_value_usd']:.2f}** | **{s['total_vs_start_usd']:+.2f}** | {s['total_xrp']:.4f} | ${s['total_rlusd']:.2f} | {s['total_xrp_equiv']:.4f} | | |")
     if "alt_total_value_usd" in s:
         L.append(f"| Alt total (dip_ladder + scalp_2pct_rlusd) | ${tb} | ${s['alt_total_value_usd']:.2f} | {s['alt_total_vs_start_usd']:+.2f} | | | | | |")
-    L.append(f"| Baseline: hold RLUSD (do nothing in dollars) | ${tb} | ${tb:.2f} | +0.00 | 0 | ${tb:.2f} | {tb / (mid * 1.0005):.4f} | 0 | 0 |")
-    L.append(f"| Baseline: ${ms['baseline_usd']} lump-sum XRP bought at start | ${tb} | ${s['baseline_xrp_value_usd']:.2f} | {s['baseline_xrp_value_usd'] - tb:+.2f} | {s['baseline_xrp']:.4f} | $0.00 | {s['baseline_xrp']:.4f} | 1 | 0 |")
+    L.append(f"| **Baseline: keep $100 in XRP** (bought at start) | ${tb} | ${s['baseline_xrp_value_usd']:.2f} | {s['baseline_xrp_value_usd'] - tb:+.2f} | {s['baseline_xrp']:.4f} | $0.00 | {s['baseline_xrp']:.4f} | 1 | 0 |")
     L += ["", "_History replayed on 2026-10-24 from Bitstamp 5-min candles after bad XRPL book data was removed (old state/fills archived under `*/archive_phantom_2026-10-24/`)._"]
-    L += ["", f"**Experiment vs $100 in RLUSD: {s['total_vs_start_usd']:+.2f} USD** · vs lump-sum XRP (XRP-equivalent): {s['vs_baseline_pct']:+.2f}%", "",
+    d = s['total_value_usd'] - s['baseline_xrp_value_usd']
+    L += ["", f"**Experiment vs keep $100 in XRP: {d:+.2f} USD ({d / s['baseline_xrp_value_usd'] * 100:+.2f}%)** · XRP-equivalent: {s['vs_baseline_pct']:+.2f}%", "",
           "\\* Value = XRP held × current mid + RLUSD. XRP-equivalent = XRP held + RLUSD converted at the current mid with a 0.05% taker cost. "
           "XRP held includes the XRP locked as ledger reserve (it is still yours).", "",
           "- Note: `dip_ladder` is an **XRP-accumulation** strategy (it only buys and never sells), so it only grows dollar value if XRP rises.",
@@ -354,10 +354,9 @@ def write_md(ms, snap, rows, s, lp=None):
               "| | **Value (RLUSD/USD)** | Change vs $100 | XRP | RLUSD | XRP-equivalent* |", "|---|---|---|---|---|---|",
               f"| AMM LP position now (fees included) | **${lp['value_usd']:.2f}** | {lp['value_usd'] - 100:+.2f} | {lp['xrp']:.4f} | ${lp['rlusd']:.2f} | {lp['xrp_equiv']:.4f} |",
               f"| Hold the same 50/50 (no pool) | ${lp['hold5050_value_usd']:.2f} | {lp['hold5050_value_usd'] - 100:+.2f} | {lp['dep_x']:.4f} | ${lp['dep_r']:.2f} | {lp['hold5050_xrp_equiv']:.4f} |",
-              f"| Hold RLUSD | $100.00 | +0.00 | 0 | $100.00 | |",
-              f"| $100 lump-sum XRP baseline | ${lp['lump_value_usd']:.2f} | {lp['lump_value_usd'] - 100:+.2f} | {lp['lump_xrp']:.4f} | $0.00 | {lp['lump_xrp']:.4f} |", "",
+              f"| Baseline: keep $100 in XRP | ${lp['lump_value_usd']:.2f} | {lp['lump_value_usd'] - 100:+.2f} | {lp['lump_xrp']:.4f} | $0.00 | {lp['lump_xrp']:.4f} |", "",
               f"- LP vs hold-50/50: **{lp['vs_hold5050_pct']:+.3f}%** = impermanent loss {lp['il_pct']:+.3f}% + fees earned ≈ {lp['fees_est_pct']:+.3f}% (pool fee {lp['pool_fee_pct']:.3f}%, pool share {lp['pool_share_pct']:.6f}%)",
-              f"- LP vs lump-sum XRP (XRP-equivalent): **{lp['vs_lump_xrp_pct']:+.2f}%**"]
+              f"- LP vs keep $100 in XRP: **{lp['value_usd'] - lp['lump_value_usd']:+.2f} USD** · XRP-equivalent: {lp['vs_lump_xrp_pct']:+.2f}%"]
     L += ["", "Logs: `logs/summary.csv`, `logs/<strategy>_ticks.csv`, `logs/<strategy>_fills.csv`, `logs/amm_lp_ticks.csv`, `logs/tax_export.csv`."]
     open(os.path.join(HERE, "SUMMARY.md"), "w").write("\n".join(L) + "\n")
 
