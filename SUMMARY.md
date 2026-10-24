@@ -5,22 +5,22 @@
 **Scoreboard: value in RLUSD/USD** (goal: grow dollars; can swap to XRP later). XRP-equivalent is shown second.
 
 - Started: **2026-10-20T08:43:56+00:00** at XRPL mid **$1.2948**
-- Last update: **2026-10-24T12:38:01+00:00**, XRPL XRP/RLUSD mid **$1.2883** (bid 1.2849 / ask 1.2916, node https://xrplcluster.com, ledger 107871456)
+- Last update: **2026-10-24T12:53:01+00:00**, XRPL XRP/RLUSD mid **$1.2857** (bid 1.2856 / ask 1.2858, node https://xrplcluster.com, ledger 107871676)
 - RLUSD issuer transfer fee (live): 0.0000%  |  candles processed this run: 3
 
 | Strategy | Start | **Value (RLUSD/USD)** | **Change vs start** | XRP held | RLUSD | XRP-equivalent* | Fills | XRP sells (taxable) |
 |---|---|---|---|---|---|---|---|---|
-| Weekly dip-buy ladder, never sells (`dip_ladder`) | $75 | **$74.98** | **-0.02** (-0.02%) | 2.2000 | $72.15 | 58.1773 | 1 | 0 |
-| Static 2% scalp ladder, all profit kept as XRP (`scalp_2pct`) | $25 | **$24.98** | **-0.02** (-0.09%) | 3.2000 | $20.85 | 19.3799 | 1 | 0 |
-| Static 2% scalp ladder, profit banked in RLUSD (variant) (`scalp_2pct_rlusd`) | $25 | **$24.98** | **-0.02** (-0.09%) | 3.2000 | $20.85 | 19.3799 | 1 | 0 |
-| **Experiment total** (dip_ladder + scalp_2pct) | $100 | **$99.96** | **-0.04** | 5.4000 | $93.00 | 77.5572 | | |
-| Alt total (dip_ladder + scalp_2pct_rlusd) | $100 | $99.96 | -0.04 | | | | | |
-| Baseline: hold RLUSD (do nothing in dollars) | $100 | $100.00 | +0.00 | 0 | $100.00 | 77.5847 | 0 | 0 |
-| Baseline: $100 lump-sum XRP bought at start | $100 | $99.44 | -0.56 | 77.1917 | $0.00 | 77.1917 | 1 | 0 |
+| Weekly dip-buy ladder, never sells (`dip_ladder`) | $75 | **$74.98** | **-0.02** (-0.03%) | 2.2000 | $72.15 | 58.2887 | 1 | 0 |
+| Static 2% scalp ladder, all profit kept as XRP (`scalp_2pct`) | $25 | **$24.97** | **-0.03** (-0.12%) | 3.2000 | $20.85 | 19.4121 | 1 | 0 |
+| Static 2% scalp ladder, profit banked in RLUSD (variant) (`scalp_2pct_rlusd`) | $25 | **$24.97** | **-0.03** (-0.12%) | 3.2000 | $20.85 | 19.4121 | 1 | 0 |
+| **Experiment total** (dip_ladder + scalp_2pct) | $100 | **$99.95** | **-0.05** | 5.4000 | $93.00 | 77.7008 | | |
+| Alt total (dip_ladder + scalp_2pct_rlusd) | $100 | $99.95 | -0.05 | | | | | |
+| Baseline: hold RLUSD (do nothing in dollars) | $100 | $100.00 | +0.00 | 0 | $100.00 | 77.7391 | 0 | 0 |
+| Baseline: $100 lump-sum XRP bought at start | $100 | $99.25 | -0.75 | 77.1917 | $0.00 | 77.1917 | 1 | 0 |
 
 _History replayed on 2026-10-24 from Bitstamp 5-min candles after bad XRPL book data was removed (old state/fills archived under `*/archive_phantom_2026-10-24/`)._
 
-**Experiment vs $100 in RLUSD: -0.04 USD** · vs lump-sum XRP (XRP-equivalent): +0.47%
+**Experiment vs $100 in RLUSD: -0.05 USD** · vs lump-sum XRP (XRP-equivalent): +0.66%
 
 \* Value = XRP held × current mid + RLUSD. XRP-equivalent = XRP held + RLUSD converted at the current mid with a 0.05% taker cost. XRP held includes the XRP locked as ledger reserve (it is still yours).
 
@@ -37,12 +37,12 @@ $100 deposited 50/50 into the XRP/RLUSD AMM pool on 2026-10-20T08:43:56+00:00 at
 
 | | **Value (RLUSD/USD)** | Change vs $100 | XRP | RLUSD | XRP-equivalent* |
 |---|---|---|---|---|---|
-| AMM LP position now (fees included) | **$99.76** | -0.24 | 38.7336 | $49.86 | 77.4169 |
-| Hold the same 50/50 (no pool) | $99.72 | -0.28 | 38.5793 | $50.02 | 77.3891 |
+| AMM LP position now (fees included) | **$99.66** | -0.34 | 38.7444 | $49.85 | 77.4960 |
+| Hold the same 50/50 (no pool) | $99.62 | -0.38 | 38.5793 | $50.02 | 77.4664 |
 | Hold RLUSD | $100.00 | +0.00 | 0 | $100.00 | |
-| $100 lump-sum XRP baseline | $99.44 | -0.56 | 77.1917 | $0.00 | 77.1917 |
+| $100 lump-sum XRP baseline | $99.25 | -0.75 | 77.1917 | $0.00 | 77.1917 |
 
-- LP vs hold-50/50: **+0.036%** = impermanent loss -0.001% + fees earned ≈ +0.036% (pool fee 0.205%, pool share 0.002125%)
-- LP vs lump-sum XRP (XRP-equivalent): **+0.29%**
+- LP vs hold-50/50: **+0.038%** = impermanent loss -0.001% + fees earned ≈ +0.039% (pool fee 0.205%, pool share 0.002125%)
+- LP vs lump-sum XRP (XRP-equivalent): **+0.39%**
 
 Logs: `logs/summary.csv`, `logs/<strategy>_ticks.csv`, `logs/<strategy>_fills.csv`, `logs/amm_lp_ticks.csv`, `logs/tax_export.csv`.
