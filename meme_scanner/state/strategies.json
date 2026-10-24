@@ -1,7 +1,7 @@
 {
  "breakout": {
-  "buys_today": 7,
-  "cash_usd": 75.719275,
+  "buys_today": 8,
+  "cash_usd": 65.719249,
   "closed": [
    {
     "amm_fee": 0.00311,
@@ -207,7 +207,7 @@
    "razRVbPbtNtFt5TTa63XE122uRzoYooEpJ-4E4F525448000000000000000000000000000000": 1792869640.3525798,
    "rnHDzEH4xyW6u4LbXqDoX1uk36v5ovhbFi-4465657054696465000000000000000000000000": 1792861340.818468
   },
-  "net_fees_xrp": 0.03161399999999999,
+  "net_fees_xrp": 0.03165399999999999,
   "positions": [
    {
     "amm_fee": 0.00089,
@@ -258,12 +258,38 @@
     "warnings": [],
     "xrp_cost": 7.7723630315324765,
     "xrp_usd_entry": 1.28661
+   },
+   {
+    "amm_fee": 0.01,
+    "currency": "54494D4500000000000000000000000000000000",
+    "entry_eff_px": 8.238371102401026e-07,
+    "entry_spot": 8.148400626451478e-07,
+    "issuer": "rExSpmk2PAqxKRTT3mhjCrCpqVasBra5v8",
+    "key": "rExSpmk2PAqxKRTT3mhjCrCpqVasBra5v8-54494D4500000000000000000000000000000000",
+    "legs": [],
+    "name": "TIME",
+    "peak_spot": 8.148400626451478e-07,
+    "pool_xrp_entry": 8261.806301,
+    "remaining": 1.0,
+    "t": 1792884351.9712968,
+    "tf": 0.0,
+    "tokens_gross": 9509245.52880291,
+    "tokens_net": 9405395.952774687,
+    "tp_done": false,
+    "trigger": "breakout: +10.6% in 1h, vol last hour 1664 vs prior 292 / 24h avg 490 XRP",
+    "ts": "2026-10-24T23:25:51+00:00",
+    "usd_cost": 10.0,
+    "warnings": [
+     "top-10 holders own 44%"
+    ],
+    "xrp_cost": 7.748514222397855,
+    "xrp_usd_entry": 1.29057
    }
   ],
   "start_ts": "2026-10-24T13:37:52+00:00",
   "start_usd": 100.0,
   "start_xrp_usd": 1.28033,
-  "trustset_fees_xrp": 0.015800999999999992
+  "trustset_fees_xrp": 0.01582099999999999
  },
  "dip_bounce": {
   "buys_today": 10,
@@ -626,7 +652,7 @@
     "entry_spot": 6.978455044714352e-06,
     "issuer": "raDZ4t8WPXkmDfJWMLBcNZmmSHmBC523NZ",
     "key": "raDZ4t8WPXkmDfJWMLBcNZmmSHmBC523NZ-ATM",
-    "last_ratio_net": 1.0045,
+    "last_ratio_net": 1.0044,
     "legs": [],
     "name": "ATM",
     "pool_xrp_entry": 73591.627978,
@@ -891,7 +917,7 @@
     "entry_spot": 6.978455044714352e-06,
     "issuer": "raDZ4t8WPXkmDfJWMLBcNZmmSHmBC523NZ",
     "key": "raDZ4t8WPXkmDfJWMLBcNZmmSHmBC523NZ-ATM",
-    "last_ratio_net": 1.0045,
+    "last_ratio_net": 1.0044,
     "legs": [],
     "name": "ATM",
     "pool_xrp_entry": 73591.627978,
