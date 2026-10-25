@@ -1195,8 +1195,8 @@
   "start_xrp_usd": 1.28151
  },
  "scalp": {
-  "buys_today": 9,
-  "cash_usd": 98.486172,
+  "buys_today": 10,
+  "cash_usd": 88.486146,
   "closed": [
    {
     "amm_fee": 0.00224,
@@ -1938,15 +1938,38 @@
    "rsENFmELvj92orrCKTkDTug53MzwsB7zBd-24464C4950505900000000000000000000000000": 1792844583.3541927,
    "rszenFJoDdiGjyezQc8pME9KWDQH43Tswh-44524F5000000000000000000000000000000000": 1792913045.1453497
   },
-  "net_fees_xrp": 0.011214000000000002,
-  "positions": [],
+  "net_fees_xrp": 0.011254,
+  "positions": [
+   {
+    "amm_fee": 0.00255,
+    "currency": "5349474D41000000000000000000000000000000",
+    "entry_eff_px": 3.6971769164953115e-06,
+    "entry_spot": 3.685878608325791e-06,
+    "issuer": "rfKYWZ84fm9eVEdoTcsQCo1WdqMPyaUF5z",
+    "key": "rfKYWZ84fm9eVEdoTcsQCo1WdqMPyaUF5z-5349474D41000000000000000000000000000000",
+    "legs": [],
+    "name": "SIGMA",
+    "pool_xrp_entry": 15258.504696,
+    "remaining": 1.0,
+    "t": 1792919487.8834236,
+    "tf": 0.0,
+    "tokens_gross": 2095445.67755943,
+    "tokens_net": 2089042.1454720346,
+    "tp_done": false,
+    "ts": "2026-10-25T09:11:27+00:00",
+    "usd_cost": 10.0,
+    "warnings": [],
+    "xrp_cost": 7.723558397825046,
+    "xrp_usd_entry": 1.29474
+   }
+  ],
   "start_usd": 100.0,
   "start_xrp_usd": 1.28151,
-  "trustset_fees_xrp": 0.005481
+  "trustset_fees_xrp": 0.005501
  },
  "slow_scalp": {
-  "buys_today": 9,
-  "cash_usd": 90.881697,
+  "buys_today": 10,
+  "cash_usd": 80.881671,
   "closed": [
    {
     "amm_fee": 0.00311,
@@ -2657,7 +2680,7 @@
    "rpwAnF1mMZRszxdinETFHwzGQiPgsv3jHR-4245525400000000000000000000000000000000": 1792912444.3082073,
    "rsENFmELvj92orrCKTkDTug53MzwsB7zBd-24464C4950505900000000000000000000000000": 1792870886.49039
   },
-  "net_fees_xrp": 0.08121400000000019,
+  "net_fees_xrp": 0.0812540000000002,
   "positions": [
    {
     "amm_fee": 0.00393,
@@ -2666,7 +2689,7 @@
     "entry_spot": 3.265051063263604,
     "issuer": "rszenFJoDdiGjyezQc8pME9KWDQH43Tswh",
     "key": "rszenFJoDdiGjyezQc8pME9KWDQH43Tswh-44524F5000000000000000000000000000000000",
-    "last_ratio_net": 0.9745,
+    "last_ratio_net": 0.975,
     "legs": [],
     "name": "DROP",
     "pool_xrp_entry": 124976.211403,
@@ -2684,11 +2707,34 @@
     ],
     "xrp_cost": 7.689823287860846,
     "xrp_usd_entry": 1.30042
+   },
+   {
+    "amm_fee": 0.00255,
+    "currency": "5349474D41000000000000000000000000000000",
+    "entry_eff_px": 3.6971769164953115e-06,
+    "entry_spot": 3.685878608325791e-06,
+    "issuer": "rfKYWZ84fm9eVEdoTcsQCo1WdqMPyaUF5z",
+    "key": "rfKYWZ84fm9eVEdoTcsQCo1WdqMPyaUF5z-5349474D41000000000000000000000000000000",
+    "legs": [],
+    "name": "SIGMA",
+    "pool_xrp_entry": 15258.504696,
+    "remaining": 1.0,
+    "t": 1792919487.8834236,
+    "tf": 0.0,
+    "tokens_gross": 2095445.67755943,
+    "tokens_net": 2089042.1454720346,
+    "tp_done": false,
+    "trigger": "slow_scalp: new/top-15 trending, round trip 0.51% <= 2.0%",
+    "ts": "2026-10-25T09:11:27+00:00",
+    "usd_cost": 10.0,
+    "warnings": [],
+    "xrp_cost": 7.723558397825046,
+    "xrp_usd_entry": 1.29474
    }
   ],
   "start_ts": "2026-10-24T13:37:52+00:00",
   "start_usd": 100.0,
   "start_xrp_usd": 1.28033,
-  "trustset_fees_xrp": 0.04054099999999999
+  "trustset_fees_xrp": 0.040560999999999986
  }
 }
