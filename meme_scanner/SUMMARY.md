@@ -3,19 +3,19 @@
 Log-only experiment: no wallet, no keys, no orders. Every number below is simulated from public data.
 Data by <a href="https://xrpl.to">xrpl.to</a> (token discovery); safety checks and prices from the public XRP Ledger.
 
-Last run: **2026-10-25T06:21:00+00:00** (UTC) · XRP/USD 1.2993 (bitstamp) · last discovery 2026-10-25T06:21:00+00:00 (UTC, every run, API key) · xrpl.to credits used by last discovery: 4
+Last run: **2026-10-25T06:21:52+00:00** (UTC) · XRP/USD 1.3004 (bitstamp) · last discovery 2026-10-25T06:21:52+00:00 (UTC, every run, API key) · xrpl.to credits used by last discovery: 4
 
 ## Bankrolls — scoreboard is USD/RLUSD (each strategy has its own $100, $10 per trade)
 
 | Strategy | Rule | Started (UTC) | **Equity USD** | **vs $100** | Cash | Open (n / value) | Realized USD | Unrealized USD | Wins / losses (win rate) | Trades (closed) | Realized XRP | Unrealized XRP | Equity XRP | vs start XRP | Fees paid USD (network XRP) | Reserve locked XRP |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| hold | ½ at +100%, stop −50%, 72h | 2026-10-24 11:16 | **$106.23** | **+6.23** | $0.00 | 10 / $106.23 | $+0.00 | $+6.23 | – | 10 (0) | +0.00 | +3.73 | 81.76 | +3.73 | $0.27 (0.00012) | 2.0 |
-| plus5 | all at +50%, stop −50%, 72h | 2026-10-24 11:16 | **$106.23** | **+6.23** | $0.00 | 10 / $106.23 | $+0.00 | $+6.23 | – | 10 (0) | +0.00 | +3.73 | 81.76 | +3.73 | $0.27 (0.00012) | 2.0 |
-| scalp | +20% / −10% / 60 min | 2026-10-24 11:16 | **$98.83** | **-1.17** | $98.83 | 0 / $0.00 | $-1.17 | $+0.00 | 6 / 12 (33%) | 18 (18) | -1.26 | +0.00 | 76.07 | -1.97 | $1.46 (0.00089) | 0.0 |
-| slow_scalp | new/top-15 trending, round trip ≤2%; +8% / −6% / 6h | 2026-10-24 13:37 | **$100.90** | **+0.90** | $90.41 | 1 / $10.49 | $+0.46 | $+0.49 | 7 / 10 (41%) | 18 (17) | +0.04 | +0.38 | 77.66 | -0.45 | $1.56 (0.08113) | 0.2 |
-| breakout | up ≥10% in 1h + rising volume; trailing stop 8% below high / 24h | 2026-10-24 13:37 | **$96.52** | **-3.48** | $65.72 | 3 / $30.80 | $-4.26 | $+0.80 | 1 / 4 (20%) | 8 (5) | -3.34 | +0.40 | 74.29 | -3.82 | $0.64 (0.03165) | 0.6 |
-| dip_bounce | >3 days old, ≥15% below 24h high; +10% / −10% / 24h | 2026-10-24 13:37 | **$104.62** | **+4.62** | $2.18 | 10 / $102.45 | $+2.19 | $+2.45 | 2 / 0 (100%) | 12 (2) | +1.57 | +0.94 | 80.53 | +2.42 | $0.70 (0.01388) | 2.0 |
-| *baseline: keep $100 in XRP* | buy XRP at $1.2815, hold | 2026-10-24 11:16 | **$101.39** | **+1.39** | – | – | – | – | – | – | – | – | 78.03 | +0.00 | – | – |
+| hold | ½ at +100%, stop −50%, 72h | 2026-10-24 11:16 | **$106.32** | **+6.32** | $0.00 | 10 / $106.32 | $+0.00 | $+6.32 | – | 10 (0) | +0.00 | +3.73 | 81.76 | +3.73 | $0.27 (0.00012) | 2.0 |
+| plus5 | all at +50%, stop −50%, 72h | 2026-10-24 11:16 | **$106.32** | **+6.32** | $0.00 | 10 / $106.32 | $+0.00 | $+6.32 | – | 10 (0) | +0.00 | +3.73 | 81.76 | +3.73 | $0.27 (0.00012) | 2.0 |
+| scalp | +20% / −10% / 60 min | 2026-10-24 11:16 | **$98.75** | **-1.25** | $88.83 | 1 / $9.92 | $-1.17 | $-0.08 | 6 / 12 (33%) | 19 (18) | -1.26 | -0.06 | 75.94 | -2.09 | $1.50 (0.00093) | 0.2 |
+| slow_scalp | new/top-15 trending, round trip ≤2%; +8% / −6% / 6h | 2026-10-24 13:37 | **$100.83** | **+0.83** | $80.41 | 2 / $20.41 | $+0.46 | $+0.41 | 7 / 10 (41%) | 19 (17) | +0.04 | +0.32 | 77.53 | -0.57 | $1.60 (0.08117) | 0.4 |
+| breakout | up ≥10% in 1h + rising volume; trailing stop 8% below high / 24h | 2026-10-24 13:37 | **$96.55** | **-3.45** | $65.72 | 3 / $30.83 | $-4.26 | $+0.83 | 1 / 4 (20%) | 8 (5) | -3.34 | +0.40 | 74.24 | -3.86 | $0.64 (0.03165) | 0.6 |
+| dip_bounce | >3 days old, ≥15% below 24h high; +10% / −10% / 24h | 2026-10-24 13:37 | **$104.72** | **+4.72** | $2.18 | 10 / $102.54 | $+2.19 | $+2.54 | 2 / 0 (100%) | 12 (2) | +1.57 | +0.94 | 80.52 | +2.42 | $0.70 (0.01388) | 2.0 |
+| *baseline: keep $100 in XRP* | buy XRP at $1.2815, hold | 2026-10-24 11:16 | **$101.48** | **+1.48** | – | – | – | – | – | – | – | – | 78.03 | +0.00 | – | – |
 
 **All P/L above is after fees.** Fees paid = AMM pool fee + price impact (slippage) + issuer transfer fee + XRPL network fee, as if each tx were a plain transaction signed in Xaman (network fee now 0.000020 XRP/tx = max(0.00002, live open-ledger fee 1e-05), cap 0.01). Each buy = TrustSet + swap; each exit = swap; a full exit also removes the trust line (TrustSet). TrustSet fees are charged from Oct 24 ~14:30 UTC on; earlier network fees were 0.000012 XRP per swap. Reserve locked = 0.2 XRP per open trust line: held by the ledger and returned when the line is removed, so it is not a cost. Not included: Xaman's own 0.8% service fee on swaps/DEX trades (see README).
 
@@ -51,14 +51,17 @@ Cash is kept in USD at each fill. Values are net of AMM pool fee, price impact, 
 | [FARM](https://xrpl.to/token/rPrAEfVATUNDTJm9CUa8tYeD7oJrVdEGhU-4641524D00000000000000000000000000000000) | 2026-10-24T11:16 | $10.00 | 0.98 | only 15% of LP burned (liquidity can be pulled); top-10 holders own 50% |
 | [PHNIX](https://xrpl.to/token/rDFXbW2ZZCG5WgPtqwNiA2xZokLMm9ivmN-50484E4958000000000000000000000000000000) | 2026-10-24T11:16 | $10.00 | 1.05 |  |
 
-### scalp — open positions (0)
+### scalp — open positions (1)
 
-None.
+| Token | Bought (UTC) | Cost | Now (net, x) | Warnings |
+|---|---|---|---|---|
+| [DROP](https://xrpl.to/token/rszenFJoDdiGjyezQc8pME9KWDQH43Tswh-44524F5000000000000000000000000000000000) | 2026-10-25T06:21 | $10.00 | 1.00 | only 29% of LP burned (liquidity can be pulled) |
 
-### slow_scalp — open positions (1)
+### slow_scalp — open positions (2)
 
 | Token | Bought (UTC) | Cost | Now (net, x) | Warnings | Why bought |
 |---|---|---|---|---|---|
+| [DROP](https://xrpl.to/token/rszenFJoDdiGjyezQc8pME9KWDQH43Tswh-44524F5000000000000000000000000000000000) | 2026-10-25T06:21 | $10.00 | 1.00 | only 29% of LP burned (liquidity can be pulled) | slow_scalp: new/top-15 trending, round trip 0.78% <= 2.0% |
 | [BERT](https://xrpl.to/token/rpwAnF1mMZRszxdinETFHwzGQiPgsv3jHR-4245525400000000000000000000000000000000) | 2026-10-25T01:13 | $10.00 | 1.05 |  | slow_scalp: new/top-15 trending, round trip 0.44% <= 2.0% |
 
 ### breakout — open positions (3)
