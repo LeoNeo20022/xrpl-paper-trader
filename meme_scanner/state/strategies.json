@@ -1,7 +1,7 @@
 {
  "breakout": {
-  "buys_today": 1,
-  "cash_usd": 55.719223,
+  "buys_today": 2,
+  "cash_usd": 45.719197,
   "closed": [
    {
     "amm_fee": 0.00311,
@@ -227,7 +227,7 @@
    "razRVbPbtNtFt5TTa63XE122uRzoYooEpJ-4E4F525448000000000000000000000000000000": 1792869640.3525798,
    "rnHDzEH4xyW6u4LbXqDoX1uk36v5ovhbFi-4465657054696465000000000000000000000000": 1792861340.818468
   },
-  "net_fees_xrp": 0.031693999999999986,
+  "net_fees_xrp": 0.031733999999999984,
   "positions": [
    {
     "amm_fee": 0.00089,
@@ -348,12 +348,38 @@
     ],
     "xrp_cost": 7.7307832056465635,
     "xrp_usd_entry": 1.29353
+   },
+   {
+    "amm_fee": 0.0047,
+    "currency": "OPM",
+    "entry_eff_px": 3.3645603892943803e-05,
+    "entry_spot": 3.3371467498229564e-05,
+    "issuer": "rhdG26oZL6QKzSXsVfHGSzdXsTxR6RZ23X",
+    "key": "rhdG26oZL6QKzSXsVfHGSzdXsTxR6RZ23X-OPM",
+    "legs": [],
+    "name": "OPM",
+    "peak_spot": 3.3371467498229564e-05,
+    "pool_xrp_entry": 2203.527096,
+    "remaining": 1.0,
+    "t": 1792952987.8378775,
+    "tf": 0.0,
+    "tokens_gross": 230438.16784723185,
+    "tokens_net": 228560.6123502582,
+    "tp_done": false,
+    "trigger": "breakout: +12.9% in 1h, vol last hour 663 vs prior 0 / 24h avg 29 XRP",
+    "ts": "2026-10-25T18:29:47+00:00",
+    "usd_cost": 10.0,
+    "warnings": [
+     "top-10 holders own 48%"
+    ],
+    "xrp_cost": 7.690059828665467,
+    "xrp_usd_entry": 1.30038
    }
   ],
   "start_ts": "2026-10-24T13:37:52+00:00",
   "start_usd": 100.0,
   "start_xrp_usd": 1.28033,
-  "trustset_fees_xrp": 0.01584099999999999
+  "trustset_fees_xrp": 0.01586099999999999
  },
  "dip_bounce": {
   "buys_today": 5,
@@ -993,7 +1019,7 @@
     "excursion_src": "5-min candles to 2026-10-25T13:01, live after",
     "issuer": "rGLEgQdktoN4Be5thhk6seg1HifGPBxY5Q",
     "key": "rGLEgQdktoN4Be5thhk6seg1HifGPBxY5Q-PLX",
-    "last_ratio_net": 1.0032,
+    "last_ratio_net": 1.0033,
     "legs": [],
     "name": "PLX",
     "peak_hours": 9.77,
@@ -1229,7 +1255,7 @@
     "excursion_src": "5-min candles to 2026-10-25T13:01, live after",
     "issuer": "rDFXbW2ZZCG5WgPtqwNiA2xZokLMm9ivmN",
     "key": "rDFXbW2ZZCG5WgPtqwNiA2xZokLMm9ivmN-50484E4958000000000000000000000000000000",
-    "last_ratio_net": 1.0554,
+    "last_ratio_net": 1.0558,
     "legs": [],
     "name": "PHNIX",
     "peak_hours": 7.27,
@@ -1298,7 +1324,7 @@
     "excursion_src": "5-min candles to 2026-10-25T13:01, live after",
     "issuer": "rGLEgQdktoN4Be5thhk6seg1HifGPBxY5Q",
     "key": "rGLEgQdktoN4Be5thhk6seg1HifGPBxY5Q-PLX",
-    "last_ratio_net": 1.0032,
+    "last_ratio_net": 1.0033,
     "legs": [],
     "name": "PLX",
     "peak_hours": 9.77,
@@ -1534,7 +1560,7 @@
     "excursion_src": "5-min candles to 2026-10-25T13:01, live after",
     "issuer": "rDFXbW2ZZCG5WgPtqwNiA2xZokLMm9ivmN",
     "key": "rDFXbW2ZZCG5WgPtqwNiA2xZokLMm9ivmN-50484E4958000000000000000000000000000000",
-    "last_ratio_net": 1.0554,
+    "last_ratio_net": 1.0558,
     "legs": [],
     "name": "PHNIX",
     "peak_hours": 7.27,
