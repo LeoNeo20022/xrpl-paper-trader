@@ -1,7 +1,7 @@
 {
  "breakout": {
-  "buys_today": 2,
-  "cash_usd": 55.71087,
+  "buys_today": 3,
+  "cash_usd": 45.710844,
   "closed": [
    {
     "amm_fee": 0.00311,
@@ -270,7 +270,7 @@
    "razRVbPbtNtFt5TTa63XE122uRzoYooEpJ-4E4F525448000000000000000000000000000000": 1792869640.3525798,
    "rnHDzEH4xyW6u4LbXqDoX1uk36v5ovhbFi-4465657054696465000000000000000000000000": 1792861340.818468
   },
-  "net_fees_xrp": 0.03177399999999998,
+  "net_fees_xrp": 0.03181399999999998,
   "positions": [
    {
     "amm_fee": 2e-05,
@@ -309,7 +309,7 @@
     "excursion_src": "5-min candles to 2026-10-25T13:01, live after",
     "issuer": "rExSpmk2PAqxKRTT3mhjCrCpqVasBra5v8",
     "key": "rExSpmk2PAqxKRTT3mhjCrCpqVasBra5v8-54494D4500000000000000000000000000000000",
-    "last_ratio_net": 1.008,
+    "last_ratio_net": 1.0078,
     "legs": [],
     "name": "TIME",
     "peak_hours": 0.94,
@@ -393,12 +393,38 @@
     ],
     "xrp_cost": 7.690059828665467,
     "xrp_usd_entry": 1.30038
+   },
+   {
+    "amm_fee": 0.00562,
+    "currency": "XYZ",
+    "entry_eff_px": 1.4549896032709812e-05,
+    "entry_spot": 1.4417210101547716e-05,
+    "issuer": "rU5nUwkBUPx3MFPQSHmMnr9S9yg4g8cKLc",
+    "key": "rU5nUwkBUPx3MFPQSHmMnr9S9yg4g8cKLc-XYZ",
+    "legs": [],
+    "name": "XYZ",
+    "peak_spot": 1.4417210101547716e-05,
+    "pool_xrp_entry": 2167.554263,
+    "remaining": 1.0,
+    "t": 1792955087.1772134,
+    "tf": 0.0,
+    "tokens_gross": 533562.6766215592,
+    "tokens_net": 528696.9194765106,
+    "tp_done": false,
+    "trigger": "breakout: +12.4% in 1h, vol last hour 840 vs prior 151 / 24h avg 707 XRP",
+    "ts": "2026-10-25T19:04:47+00:00",
+    "usd_cost": 10.0,
+    "warnings": [
+     "top-10 holders own 50%"
+    ],
+    "xrp_cost": 7.692485211197181,
+    "xrp_usd_entry": 1.29997
    }
   ],
   "start_ts": "2026-10-24T13:37:52+00:00",
   "start_usd": 100.0,
   "start_xrp_usd": 1.28033,
-  "trustset_fees_xrp": 0.01588099999999999
+  "trustset_fees_xrp": 0.015900999999999988
  },
  "dip_bounce": {
   "buys_today": 5,
@@ -937,7 +963,7 @@
     "excursion_src": "live from 2026-10-25T13:43",
     "issuer": "rnHDzEH4xyW6u4LbXqDoX1uk36v5ovhbFi",
     "key": "rnHDzEH4xyW6u4LbXqDoX1uk36v5ovhbFi-4465657054696465000000000000000000000000",
-    "last_ratio_net": 0.9296,
+    "last_ratio_net": 0.9376,
     "legs": [],
     "name": "DeepTide",
     "peak_hours": 1.63,
@@ -1008,7 +1034,7 @@
     "excursion_src": "5-min candles to 2026-10-25T13:01, live after",
     "issuer": "rnHDzEH4xyW6u4LbXqDoX1uk36v5ovhbFi",
     "key": "rnHDzEH4xyW6u4LbXqDoX1uk36v5ovhbFi-4465657054696465000000000000000000000000",
-    "last_ratio_net": 1.0499,
+    "last_ratio_net": 1.0589,
     "legs": [],
     "name": "DeepTide",
     "peak_hours": 5.19,
@@ -1038,7 +1064,7 @@
     "excursion_src": "5-min candles to 2026-10-25T13:01, live after",
     "issuer": "rGLEgQdktoN4Be5thhk6seg1HifGPBxY5Q",
     "key": "rGLEgQdktoN4Be5thhk6seg1HifGPBxY5Q-PLX",
-    "last_ratio_net": 1.0033,
+    "last_ratio_net": 1.0034,
     "legs": [],
     "name": "PLX",
     "peak_hours": 9.77,
@@ -1187,7 +1213,7 @@
     "excursion_src": "5-min candles to 2026-10-25T13:01, live after",
     "issuer": "rGG3wQ4kUzd7Jnmk1n5NWPZjjut62kCBfC",
     "key": "rGG3wQ4kUzd7Jnmk1n5NWPZjjut62kCBfC-41524D5900000000000000000000000000000000",
-    "last_ratio_net": 1.0176,
+    "last_ratio_net": 1.0177,
     "legs": [],
     "name": "ARMY",
     "peak_hours": 17.94,
@@ -1215,7 +1241,7 @@
     "excursion_src": "5-min candles to 2026-10-25T13:01, live after",
     "issuer": "rJEApMjV7KVVopB8NB1WXQpQYVu84vRGTa",
     "key": "rJEApMjV7KVVopB8NB1WXQpQYVu84vRGTa-5045504500000000000000000000000000000000",
-    "last_ratio_net": 1.1076,
+    "last_ratio_net": 1.0894,
     "legs": [],
     "name": "PEPE",
     "peak_hours": 23.94,
@@ -1313,7 +1339,7 @@
     "excursion_src": "5-min candles to 2026-10-25T13:01, live after",
     "issuer": "rnHDzEH4xyW6u4LbXqDoX1uk36v5ovhbFi",
     "key": "rnHDzEH4xyW6u4LbXqDoX1uk36v5ovhbFi-4465657054696465000000000000000000000000",
-    "last_ratio_net": 1.0499,
+    "last_ratio_net": 1.0589,
     "legs": [],
     "name": "DeepTide",
     "peak_hours": 5.19,
@@ -1343,7 +1369,7 @@
     "excursion_src": "5-min candles to 2026-10-25T13:01, live after",
     "issuer": "rGLEgQdktoN4Be5thhk6seg1HifGPBxY5Q",
     "key": "rGLEgQdktoN4Be5thhk6seg1HifGPBxY5Q-PLX",
-    "last_ratio_net": 1.0033,
+    "last_ratio_net": 1.0034,
     "legs": [],
     "name": "PLX",
     "peak_hours": 9.77,
@@ -1492,7 +1518,7 @@
     "excursion_src": "5-min candles to 2026-10-25T13:01, live after",
     "issuer": "rGG3wQ4kUzd7Jnmk1n5NWPZjjut62kCBfC",
     "key": "rGG3wQ4kUzd7Jnmk1n5NWPZjjut62kCBfC-41524D5900000000000000000000000000000000",
-    "last_ratio_net": 1.0176,
+    "last_ratio_net": 1.0177,
     "legs": [],
     "name": "ARMY",
     "peak_hours": 17.94,
@@ -1520,7 +1546,7 @@
     "excursion_src": "5-min candles to 2026-10-25T13:01, live after",
     "issuer": "rJEApMjV7KVVopB8NB1WXQpQYVu84vRGTa",
     "key": "rJEApMjV7KVVopB8NB1WXQpQYVu84vRGTa-5045504500000000000000000000000000000000",
-    "last_ratio_net": 1.1076,
+    "last_ratio_net": 1.0894,
     "legs": [],
     "name": "PEPE",
     "peak_hours": 23.94,
