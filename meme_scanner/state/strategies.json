@@ -651,7 +651,7 @@
     "entry_spot": 5.727471671679549e-07,
     "issuer": "rnHDzEH4xyW6u4LbXqDoX1uk36v5ovhbFi",
     "key": "rnHDzEH4xyW6u4LbXqDoX1uk36v5ovhbFi-4465657054696465000000000000000000000000",
-    "last_ratio_net": 1.213,
+    "last_ratio_net": 1.2128,
     "legs": [],
     "name": "DeepTide",
     "pool_xrp_entry": 11714.122001,
@@ -881,7 +881,7 @@
     "entry_spot": 7.903121953734245e-06,
     "issuer": "rDFXbW2ZZCG5WgPtqwNiA2xZokLMm9ivmN",
     "key": "rDFXbW2ZZCG5WgPtqwNiA2xZokLMm9ivmN-50484E4958000000000000000000000000000000",
-    "last_ratio_net": 1.048,
+    "last_ratio_net": 1.0479,
     "legs": [],
     "name": "PHNIX",
     "pool_xrp_entry": 199841.488509,
@@ -916,7 +916,7 @@
     "entry_spot": 5.727471671679549e-07,
     "issuer": "rnHDzEH4xyW6u4LbXqDoX1uk36v5ovhbFi",
     "key": "rnHDzEH4xyW6u4LbXqDoX1uk36v5ovhbFi-4465657054696465000000000000000000000000",
-    "last_ratio_net": 1.213,
+    "last_ratio_net": 1.2128,
     "legs": [],
     "name": "DeepTide",
     "pool_xrp_entry": 11714.122001,
@@ -1146,7 +1146,7 @@
     "entry_spot": 7.903121953734245e-06,
     "issuer": "rDFXbW2ZZCG5WgPtqwNiA2xZokLMm9ivmN",
     "key": "rDFXbW2ZZCG5WgPtqwNiA2xZokLMm9ivmN-50484E4958000000000000000000000000000000",
-    "last_ratio_net": 1.048,
+    "last_ratio_net": 1.0479,
     "legs": [],
     "name": "PHNIX",
     "pool_xrp_entry": 199841.488509,
@@ -1880,7 +1880,7 @@
  },
  "slow_scalp": {
   "buys_today": 8,
-  "cash_usd": 40.771724,
+  "cash_usd": 90.412592,
   "closed": [
    {
     "amm_fee": 0.00311,
@@ -2341,37 +2341,32 @@
     ],
     "xrp_cost": 7.711527190844875,
     "xrp_usd_entry": 1.29676
-   }
-  ],
-  "day": "2026-10-25",
-  "last_exit": {
-   "r9Qk4VGodriw2xKLG9sRbTXWgknkz9TkDd-5465646479000000000000000000000000000000": 1792870886.49039,
-   "rDFXbW2ZZCG5WgPtqwNiA2xZokLMm9ivmN-50484E4958000000000000000000000000000000": 1792870886.49039,
-   "rExSpmk2PAqxKRTT3mhjCrCpqVasBra5v8-54494D4500000000000000000000000000000000": 1792888056.3675976,
-   "rGG3wQ4kUzd7Jnmk1n5NWPZjjut62kCBfC-41524D5900000000000000000000000000000000": 1792870886.49039,
-   "rGLEgQdktoN4Be5thhk6seg1HifGPBxY5Q-PLX": 1792870886.49039,
-   "rMFL2KuFPMuiujdbVGbMzNNjj5QKyd6dZf-586D656E00000000000000000000000000000000": 1792850637.3212926,
-   "rPrAEfVATUNDTJm9CUa8tYeD7oJrVdEGhU-4641524D00000000000000000000000000000000": 1792870886.49039,
-   "raDZ4t8WPXkmDfJWMLBcNZmmSHmBC523NZ-ATM": 1792870886.49039,
-   "razRVbPbtNtFt5TTa63XE122uRzoYooEpJ-4E4F525448000000000000000000000000000000": 1792886807.019625,
-   "rnHDzEH4xyW6u4LbXqDoX1uk36v5ovhbFi-4465657054696465000000000000000000000000": 1792856130.661501,
-   "rnNErmg9xVmcxxNZUwivbJSH6i9GUwYPFj-434F444544000000000000000000000000000000": 1792869340.80202,
-   "rsENFmELvj92orrCKTkDTug53MzwsB7zBd-24464C4950505900000000000000000000000000": 1792870886.49039
-  },
-  "net_fees_xrp": 0.0809340000000001,
-  "positions": [
+   },
    {
     "amm_fee": 0.00831,
+    "closed_ts": "2026-10-25T06:06:00+00:00",
     "currency": "50524F4649540000000000000000000000000000",
     "entry_eff_px": 5.539829203822058e-07,
     "entry_spot": 5.492881668285951e-07,
     "issuer": "rJwLNwaBUh9a7ajk9FeeLAuA791wVe3oyg",
     "key": "rJwLNwaBUh9a7ajk9FeeLAuA791wVe3oyg-50524F4649540000000000000000000000000000",
     "last_ratio_net": 0.985,
-    "legs": [],
+    "legs": [
+     {
+      "fraction_of_buy": 1.0,
+      "pnl_usd_gross": 0.0192,
+      "pnl_usd_net": -0.1499,
+      "pnl_xrp_gross": 0.014409,
+      "pnl_xrp_net": -0.115975,
+      "reason": "time limit 6h (x0.98 net)",
+      "ts": "2026-10-25T06:06:00+00:00"
+     }
+    ],
     "name": "PROFIT",
+    "pnl_usd_net": -0.1499,
+    "pnl_xrp_net": -0.115975,
     "pool_xrp_entry": 46813.874643,
-    "remaining": 1.0,
+    "remaining": 0.0,
     "t": 1792886506.7518013,
     "tf": 0.0,
     "tokens_gross": 14039128.560457869,
@@ -2389,16 +2384,29 @@
    },
    {
     "amm_fee": 0.00089,
+    "closed_ts": "2026-10-25T06:06:00+00:00",
     "currency": "4C61756768000000000000000000000000000000",
     "entry_eff_px": 1.4636137448275967e-10,
     "entry_spot": 1.4611722421564098e-10,
     "issuer": "r32nbPw6cyt3KdxinB4ua6WSLRrrF4SXAC",
     "key": "r32nbPw6cyt3KdxinB4ua6WSLRrrF4SXAC-4C61756768000000000000000000000000000000",
     "last_ratio_net": 0.9594,
-    "legs": [],
+    "legs": [
+     {
+      "fraction_of_buy": 1.0,
+      "pnl_usd_gross": -0.3732,
+      "pnl_usd_net": -0.4052,
+      "pnl_xrp_gross": -0.288223,
+      "pnl_xrp_net": -0.312851,
+      "reason": "time limit 6h (x0.96 net)",
+      "ts": "2026-10-25T06:06:00+00:00"
+     }
+    ],
     "name": "Laugh",
+    "pnl_usd_net": -0.4052,
+    "pnl_xrp_net": -0.312851,
     "pool_xrp_entry": 9917.956412,
-    "remaining": 1.0,
+    "remaining": 0.0,
     "t": 1792886506.7518013,
     "tf": 0.0,
     "tokens_gross": 52776304999.225426,
@@ -2413,16 +2421,29 @@
    },
    {
     "amm_fee": 0.00221,
+    "closed_ts": "2026-10-25T06:06:00+00:00",
     "currency": "5045504500000000000000000000000000000000",
     "entry_eff_px": 1.7457804803554759e-10,
     "entry_spot": 1.740119953305232e-10,
     "issuer": "rJEApMjV7KVVopB8NB1WXQpQYVu84vRGTa",
     "key": "rJEApMjV7KVVopB8NB1WXQpQYVu84vRGTa-5045504500000000000000000000000000000000",
     "last_ratio_net": 1.0,
-    "legs": [],
+    "legs": [
+     {
+      "fraction_of_buy": 1.0,
+      "pnl_usd_gross": 0.066,
+      "pnl_usd_net": 0.0009,
+      "pnl_xrp_gross": 0.050497,
+      "pnl_xrp_net": 0.000243,
+      "reason": "time limit 6h (x1.00 net)",
+      "ts": "2026-10-25T06:06:00+00:00"
+     }
+    ],
     "name": "PEPE",
+    "pnl_usd_net": 0.0009,
+    "pnl_xrp_net": 0.000243,
     "pool_xrp_entry": 7447.455158,
-    "remaining": 1.0,
+    "remaining": 0.0,
     "t": 1792886506.7518013,
     "tf": 0.0,
     "tokens_gross": 44316066695.272285,
@@ -2437,16 +2458,29 @@
    },
    {
     "amm_fee": 0.00131,
+    "closed_ts": "2026-10-25T06:06:00+00:00",
     "currency": "589",
     "entry_eff_px": 0.00011939762675743033,
     "entry_spot": 0.00011920668302172392,
     "issuer": "rfcasq9uRbvwcmLFvc4ti3j8Qt1CYCGgHz",
     "key": "rfcasq9uRbvwcmLFvc4ti3j8Qt1CYCGgHz-589",
     "last_ratio_net": 1.0505,
-    "legs": [],
+    "legs": [
+     {
+      "fraction_of_buy": 1.0,
+      "pnl_usd_gross": 0.539,
+      "pnl_usd_net": 0.5052,
+      "pnl_xrp_gross": 0.415213,
+      "pnl_xrp_net": 0.389184,
+      "reason": "time limit 6h (x1.05 net)",
+      "ts": "2026-10-25T06:06:00+00:00"
+     }
+    ],
     "name": "589",
+    "pnl_usd_net": 0.5052,
+    "pnl_xrp_net": 0.389184,
     "pool_xrp_entry": 26825.325859,
-    "remaining": 1.0,
+    "remaining": 0.0,
     "t": 1792886506.7518013,
     "tf": 0.0,
     "tokens_gross": 64690.39315052115,
@@ -2461,16 +2495,29 @@
    },
    {
     "amm_fee": 0.00627,
+    "closed_ts": "2026-10-25T06:06:00+00:00",
     "currency": "46555A5A59000000000000000000000000000000",
     "entry_eff_px": 7.80810190414221e-05,
     "entry_spot": 7.759049110301681e-05,
     "issuer": "rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62",
     "key": "rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62-46555A5A59000000000000000000000000000000",
     "last_ratio_net": 0.9689,
-    "legs": [],
+    "legs": [
+     {
+      "fraction_of_buy": 1.0,
+      "pnl_usd_gross": -0.1872,
+      "pnl_usd_net": -0.3101,
+      "pnl_xrp_gross": -0.144738,
+      "pnl_xrp_net": -0.239513,
+      "reason": "time limit 6h (x0.97 net)",
+      "ts": "2026-10-25T06:06:00+00:00"
+     }
+    ],
     "name": "FUZZY",
+    "pnl_usd_net": -0.3101,
+    "pnl_xrp_net": -0.239513,
     "pool_xrp_entry": 783678.715338,
-    "remaining": 1.0,
+    "remaining": 0.0,
     "t": 1792886506.7518013,
     "tf": 0.0,
     "tokens_gross": 99387.52908015867,
@@ -2484,7 +2531,30 @@
     ],
     "xrp_cost": 7.711527190844875,
     "xrp_usd_entry": 1.29676
-   },
+   }
+  ],
+  "day": "2026-10-25",
+  "last_exit": {
+   "r32nbPw6cyt3KdxinB4ua6WSLRrrF4SXAC-4C61756768000000000000000000000000000000": 1792908360.995136,
+   "r9Qk4VGodriw2xKLG9sRbTXWgknkz9TkDd-5465646479000000000000000000000000000000": 1792870886.49039,
+   "rDFXbW2ZZCG5WgPtqwNiA2xZokLMm9ivmN-50484E4958000000000000000000000000000000": 1792870886.49039,
+   "rExSpmk2PAqxKRTT3mhjCrCpqVasBra5v8-54494D4500000000000000000000000000000000": 1792888056.3675976,
+   "rGG3wQ4kUzd7Jnmk1n5NWPZjjut62kCBfC-41524D5900000000000000000000000000000000": 1792870886.49039,
+   "rGLEgQdktoN4Be5thhk6seg1HifGPBxY5Q-PLX": 1792870886.49039,
+   "rJEApMjV7KVVopB8NB1WXQpQYVu84vRGTa-5045504500000000000000000000000000000000": 1792908360.995136,
+   "rJwLNwaBUh9a7ajk9FeeLAuA791wVe3oyg-50524F4649540000000000000000000000000000": 1792908360.995136,
+   "rMFL2KuFPMuiujdbVGbMzNNjj5QKyd6dZf-586D656E00000000000000000000000000000000": 1792850637.3212926,
+   "rPrAEfVATUNDTJm9CUa8tYeD7oJrVdEGhU-4641524D00000000000000000000000000000000": 1792870886.49039,
+   "raDZ4t8WPXkmDfJWMLBcNZmmSHmBC523NZ-ATM": 1792870886.49039,
+   "razRVbPbtNtFt5TTa63XE122uRzoYooEpJ-4E4F525448000000000000000000000000000000": 1792886807.019625,
+   "rfcasq9uRbvwcmLFvc4ti3j8Qt1CYCGgHz-589": 1792908360.995136,
+   "rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62-46555A5A59000000000000000000000000000000": 1792908360.995136,
+   "rnHDzEH4xyW6u4LbXqDoX1uk36v5ovhbFi-4465657054696465000000000000000000000000": 1792856130.661501,
+   "rnNErmg9xVmcxxNZUwivbJSH6i9GUwYPFj-434F444544000000000000000000000000000000": 1792869340.80202,
+   "rsENFmELvj92orrCKTkDTug53MzwsB7zBd-24464C4950505900000000000000000000000000": 1792870886.49039
+  },
+  "net_fees_xrp": 0.08113400000000016,
+  "positions": [
    {
     "amm_fee": 0.0022,
     "currency": "4245525400000000000000000000000000000000",
@@ -2513,6 +2583,6 @@
   "start_ts": "2026-10-24T13:37:52+00:00",
   "start_usd": 100.0,
   "start_xrp_usd": 1.28033,
-  "trustset_fees_xrp": 0.04040099999999999
+  "trustset_fees_xrp": 0.04050099999999999
  }
 }
