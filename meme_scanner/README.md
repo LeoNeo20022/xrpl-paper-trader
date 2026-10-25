@@ -46,3 +46,6 @@ Token data by <a href="https://xrpl.to">xrpl.to</a>.
 - AMM pool fee, price impact (slippage) and issuer transfer fees were already inside every simulated fill.
 - Trust line owner reserve (0.2 XRP per open line) is locked by the ledger, not spent; it is shown separately.
 - NOT included: Xaman's own service fee. Xaman charges 0.8% of value on token swaps, AMM deposits/withdrawals and DEX market trades (TrustSet and offer cancels are free): https://help.xaman.app/app/getting-started-with-xaman/understanding-the-xaman-service-fee
+
+## Peak / low tracking (added Oct 25, tracking only)
+Every ~5-min price check records, per open position, the highest net multiple seen (`peak_x`), hours after the buy it happened (`peak_hours`) and the lowest net multiple (`trough_x`). No strategy rule reads these; exits are unchanged. They are written to `logs/exits.csv` (3 columns appended) and to the open-position tables, and SUMMARY.md's "How high do they run?" section counts how many unique buys ever reached +10/+20/+30/+50/+100% net. Positions bought before Oct 25 ~13:00 UTC (and the exits.csv rows before then) were backfilled once from xrpl.to 5-min candles (one /ohlc call per token, ~160 credits), scaled from a known net ratio/spot pair, so those values are approximate.

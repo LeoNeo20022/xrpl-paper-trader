@@ -6,7 +6,7 @@ Each run: discover new/trending XRPL tokens -> ledger safety checks -> paper-buy
 Strategies: hold, plus5, scalp (original, unchanged) + slow_scalp, breakout, dip_bounce (added Oct 24, own entry rules in entry_v2).
 Stdlib only. Every row is labelled PAPER-NOT-ON-LEDGER.
 """
-import csv, json, math, os, sys, time, urllib.request, urllib.error
+import csv, hashlib, json, math, os, statistics, sys, time, urllib.request, urllib.error
 from datetime import datetime, timezone
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -329,10 +329,102 @@ def close_part(bk, pos, sname, frac, reason, pool, px):
            "pnl_xrp_net": round(xrp_net - cost_xrp, 6), "pnl_xrp_gross": round(xrp_gross - cost_xrp, 6),
            "cost_usd": round(cost_usd, 4), "xrp_usd": px, "proceeds_usd_net": round(usd_net, 4),
            "pnl_usd_net": round(usd_net - cost_usd, 4), "pnl_usd_gross": round(usd_gross - cost_usd, 4),
-           "cash_after_usd": round(bk["cash_usd"], 4), "note": "exit at price observed at the ~5-min poll, not the exact trigger level"}
+           "cash_after_usd": round(bk["cash_usd"], 4), "note": "exit at price observed at the ~5-min poll, not the exact trigger level",
+           "peak_x": pos.get("peak_x", ""), "peak_hours": pos.get("peak_hours", ""), "trough_x": pos.get("trough_x", "")}  # tracking only (Oct 25)
     append("exits.csv", row, list(row.keys()))
     pos["remaining"] = round(pos["remaining"] - frac, 10)
     pos["legs"].append({k: row[k] for k in ("ts", "reason", "fraction_of_buy", "pnl_xrp_net", "pnl_xrp_gross", "pnl_usd_net", "pnl_usd_gross")})
+
+EXCURSION_FIELDS = ["peak_x", "peak_hours", "trough_x"]
+
+def track_excursion(pos, ratio):
+    """TRACKING ONLY (added Oct 25): highest / lowest net multiple seen at the ~5-min polls (net = what selling the whole buy
+    would return ÷ XRP cost, after pool fee, slippage, transfer and network fee) and hours after buy of the peak. Never read by exit rules."""
+    h = round((NOW - pos["t"]) / 3600, 2)
+    if ratio > pos.get("peak_x", -1.0): pos["peak_x"], pos["peak_hours"] = round(ratio, 4), h
+    pos["trough_x"] = round(min(pos.get("trough_x", ratio), ratio), 4)
+    pos.setdefault("excursion_src", "live from " + TS[:16])
+
+def ensure_exit_columns():
+    """Append peak_x/peak_hours/trough_x to logs/exits.csv once (older rows get blanks until backfilled)."""
+    p = os.path.join(LOGS, "exits.csv")
+    if not os.path.exists(p): return
+    with open(p, newline="") as f: rows = list(csv.reader(f))
+    if not rows or "peak_x" in rows[0]: return
+    hdr = rows[0] + EXCURSION_FIELDS
+    with open(p + ".tmp", "w", newline="") as f:
+        w = csv.writer(f); w.writerow(hdr)
+        for r in rows[1:]: w.writerow(r + [""] * (len(hdr) - len(r)))
+    os.replace(p + ".tmp", p)
+
+def ohlc_since(issuer, currency, t_from):
+    """xrpl.to 5-min candles [t_ms, o, h, l, c, vol] in XRP per token since t_from (5 credits per call)."""
+    md5 = hashlib.md5(f"{issuer}_{currency}".encode()).hexdigest()
+    cb = min(1000, int((NOW - t_from) / 300) + 3)
+    o = http_json(f"https://api.xrpl.to/v1/ohlc/{md5}?resolution=5&cb={cb}", headers={"X-Api-Key": XRPLTO_KEY} if XRPLTO_KEY else None).get("ohlc") or []
+    return sorted(o, key=lambda c: c[0])
+
+def candle_excursion(candles, t_buy, t_end, ref_ratio, ref_spot):
+    """Peak/trough net multiple between t_buy and t_end from candle highs/lows, scaled from a known (net ratio, spot) pair.
+    Approximation: assumes the sell cost (fee + slippage) at the peak equals the cost at the reference point."""
+    if not ref_spot or ref_spot <= 0: return None
+    win = [c for c in candles if c[0] / 1000 >= t_buy and c[0] / 1000 + 300 <= t_end + 1]
+    pk = (ref_ratio, (t_end - t_buy) / 3600); tr = ref_ratio
+    for c in win:
+        hx, lx = ref_ratio * float(c[2]) / ref_spot, ref_ratio * float(c[3]) / ref_spot
+        if hx > pk[0]: pk = (hx, (c[0] / 1000 + 150 - t_buy) / 3600)
+        tr = min(tr, lx)
+    return round(pk[0], 4), round(max(pk[1], 0), 2), round(tr, 4)
+
+def backfill_excursions(meta, books, pools):
+    """ONE-TIME (Oct 25): backfill peak/trough since entry for positions bought before tracking started, from 5-min candles.
+    One /ohlc call per unique token (~32 tokens = ~160 credits once). Open positions: merged with live tracking.
+    Closed trades: fills the blank peak/trough columns in logs/exits.csv and on closed positions in state."""
+    if meta.get("excursion_backfill_done") or not (XRPLTO_KEY or os.environ.get("MEME_FORCE_BACKFILL") == "1"): return
+    allpos = [(s, p) for s, bk in books.items() for p in bk["positions"] + bk["closed"]]
+    p_ex = os.path.join(LOGS, "exits.csv")
+    rows = list(csv.DictReader(open(p_ex, newline=""))) if os.path.exists(p_ex) else []
+    need = {}
+    for s, p in allpos: need[(p["issuer"], p["currency"])] = min(need.get((p["issuer"], p["currency"]), NOW), p["t"])
+    cache, calls, fails = {}, 0, 0
+    for (iss, cur), t0 in need.items():
+        try: cache[(iss, cur)] = ohlc_since(iss, cur, t0); calls += 1
+        except Exception as e:
+            fails += 1; msg = repr(e).replace(XRPLTO_KEY, "***") if XRPLTO_KEY else repr(e); WARN.append(f"backfill ohlc failed: {msg}")
+    cur_of = {p["issuer"] + "|" + p["name"]: p["currency"] for _, p in allpos}
+    n_open = n_rows = 0
+    for s, bk in books.items():
+        for p in bk["positions"]:
+            pl = pools.get(p["key"]); c = cache.get((p["issuer"], p["currency"]))
+            if not isinstance(pl, dict) or c is None: continue
+            r = candle_excursion(c, p["t"], NOW, sim_sell(pl, p["tokens_net"])[0] / p["xrp_cost"], pl["spot"])
+            if not r: continue
+            if r[0] > p.get("peak_x", -1): p["peak_x"], p["peak_hours"] = r[0], r[1]
+            p["trough_x"] = min(p.get("trough_x", r[2]), r[2]); p["excursion_src"] = "5-min candles to " + TS[:16] + ", live after"; n_open += 1
+    last_row = {}
+    for r in rows:
+        if r.get("peak_x") not in ("", None): continue
+        cur = cur_of.get(r["issuer"] + "|" + r["token"]); c = cache.get((r["issuer"], cur))
+        try:
+            t_end = datetime.fromisoformat(r["ts"]).timestamp(); t_buy = t_end - float(r["hours_held"]) * 3600
+            cost = float(r["cost_xrp"]); ref = float(r["proceeds_xrp_net"]) / cost if cost else 0.0; spot = float(r["exit_spot_xrp"])
+        except Exception: continue
+        if c is None or spot <= 0:
+            if spot <= 0: r.update(peak_x="", peak_hours="", trough_x=0.0)
+            continue
+        ex = candle_excursion(c, t_buy, t_end, ref, spot)
+        if ex: r["peak_x"], r["peak_hours"], r["trough_x"] = ex; n_rows += 1; last_row[(r["strategy"], r["issuer"], round(t_buy))] = ex
+    if rows:
+        with open(p_ex + ".tmp", "w", newline="") as f:
+            w = csv.DictWriter(f, fieldnames=list(rows[0].keys())); w.writeheader(); w.writerows(rows)
+        os.replace(p_ex + ".tmp", p_ex)
+    for s, bk in books.items():   # closed positions in state: take the excursion from their final exit row
+        for p in bk["closed"]:
+            if "peak_x" in p: continue
+            m = [v for (st, iss, tb), v in last_row.items() if st == s and iss == p["issuer"] and abs(tb - p["t"]) < 120]
+            if m: p["peak_x"], p["peak_hours"], p["trough_x"] = max(m); p["excursion_src"] = "5-min candles (backfill)"
+    meta.update(excursion_backfill_done=TS, excursion_backfill_calls=calls, excursion_backfill_fails=fails,
+                excursion_backfill_open=n_open, excursion_backfill_exit_rows=n_rows)
 
 def manage(bk, sname, pool, px):
     rule = CFG["exits"][sname]; still = []
@@ -340,10 +432,11 @@ def manage(bk, sname, pool, px):
         age_h = (NOW - pos["t"]) / 3600
         if pool.get(pos["key"], "err") == "err": still.append(pos); continue  # couldn't price this run: hold
         pl = pool[pos["key"]]
-        if pl is None: close_part(bk, pos, sname, pos["remaining"], "pool gone (rug?) -> 0", None, px)
+        if pl is None: track_excursion(pos, 0.0); close_part(bk, pos, sname, pos["remaining"], "pool gone (rug?) -> 0", None, px)
         else:
             net, _ = sim_sell(pl, pos["tokens_net"]); ratio = net / pos["xrp_cost"]
             pos["last_ratio_net"] = round(ratio, 4)
+            track_excursion(pos, ratio)   # tracking only: does not affect any exit below
             if "trail_pct" in rule:  # breakout: trailing stop on spot price vs highest spot seen since entry
                 pos["peak_spot"] = max(pos.get("peak_spot", pos["entry_spot"]), pl["spot"])
                 drop = (1 - pl["spot"] / pos["peak_spot"]) * 100
@@ -412,6 +505,9 @@ def main():
             if p["key"] in pools: continue
             try: pools[p["key"]] = get_pool(p["currency"], p["issuer"], p["tf"])
             except Exception as e: pools[p["key"]] = "err"; WARN.append(f"could not price {p['name']}: {e!r}")
+    ensure_exit_columns()
+    try: backfill_excursions(meta, books, pools)   # one-time, tracking only
+    except Exception as e: WARN.append(f"peak backfill failed: {e!r}")
     for s in STRATS: manage(books[s], s, pools, px)
 
     # 2) discovery + safety only if >= 15 min since the last one (keeps xrpl.to at <= 2 calls / 15 min)
@@ -593,6 +689,32 @@ def buy_round(books, elig, px, stats, pools):
                    "note": (trig + " | " if trig else "") + "simulated AMM fill incl. pool fee, slippage, transfer fee; CLOB ignored; network fee per tx; TrustSet fee charged; trust line reserve 0.2 XRP locked, not spent"}
             append("paper_buys.csv", row, BOOK_FIELDS)
 
+def fmt_x(v): return "–" if v in (None, "") else f"{float(v):.2f}"
+def fmt_peak(p): return "–" if p.get("peak_x") is None else f"{p['peak_x']:.2f} @ {p.get('peak_hours', 0):.1f}h"
+
+def how_high(books):
+    """Tracking-only stats: how far positions ran up (net multiple), deduped by token + buy time across strategies."""
+    best = {}
+    for s, bk in books.items():
+        for p in bk["positions"] + bk["closed"]:
+            if p.get("peak_x") is None: continue
+            k = (p["key"], p["ts"][:16])
+            if k not in best or p["peak_x"] > best[k]["peak_x"]: best[k] = p
+    v = list(best.values()); n = len(v)
+    L = ["## How high do they run? (tracking only — no rule uses this)", ""]
+    if not n: return L + ["No peak data yet.", ""]
+    L += [f"{n} unique buys (same token + buy time counted once across strategies, using whichever strategy watched it longest/highest). "
+          "Multiples are **net** (what selling the whole $10 buy would return, after pool fee, slippage, transfer and network fee), "
+          "seen at the ~5-min polls; buys made before Oct 25 were backfilled from xrpl.to 5-min candles (approximate).", "",
+          "| Reached at any point | Buys | Share |", "|---|---|---|"]
+    for lvl in (10, 20, 30, 50, 100):
+        c = sum(1 for p in v if p["peak_x"] >= 1 + lvl / 100)
+        L.append(f"| ≥ +{lvl}% | {c} | {c / n * 100:.0f}% |")
+    pk = [p["peak_x"] for p in v]; hrs = [p.get("peak_hours", 0) for p in v]; lo = [p["trough_x"] for p in v if p.get("trough_x") is not None]
+    L += ["", f"Median peak **x{statistics.median(pk):.2f}** · median hours to peak **{statistics.median(hrs):.1f}h** · "
+          f"best x{max(pk):.2f} · median low x{statistics.median(lo):.2f} · ≤ −10% at some point: {sum(1 for x in lo if x <= 0.9)} of {len(lo)}", ""]
+    return L
+
 def write_summary(meta, seen, books, pools, px, stats):
     L = [f"# XRPL meme scanner — PAPER ONLY ({LABEL})", "",
          "Log-only experiment: no wallet, no keys, no orders. Every number below is simulated from public data.",
@@ -630,12 +752,13 @@ def write_summary(meta, seen, books, pools, px, stats):
         bk = books[s]
         L += [f"### {s} — open positions ({len(bk['positions'])})", ""]
         if bk["positions"]:
-            L += ["| Token | Bought (UTC) | Cost | Now (net, x) | Warnings |" + (" Why bought |" if s in V2 else ""), "|---|---|---|---|---|" + ("---|" if s in V2 else "")]
+            L += ["| Token | Bought (UTC) | Cost | Now (net, x) | Peak (x, h after buy) | Low (x) | Warnings |" + (" Why bought |" if s in V2 else ""), "|---|---|---|---|---|---|---|" + ("---|" if s in V2 else "")]
             for p in sorted(bk["positions"], key=lambda p: p["t"], reverse=True):
                 L.append(f"| [{p['name']}](https://xrpl.to/token/{p['issuer']}-{p['currency']}) | {p['ts'][:16]} | ${p['usd_cost'] * p['remaining']:.2f} | "
-                         f"{p.get('last_ratio_net', 1):.2f} | {'; '.join(p['warnings'])} |" + (f" {p.get('trigger', '')} |" if s in V2 else ""))
+                         f"{p.get('last_ratio_net', 1):.2f} | {fmt_peak(p)} | {fmt_x(p.get('trough_x'))} | {'; '.join(p['warnings'])} |" + (f" {p.get('trigger', '')} |" if s in V2 else ""))
         else: L.append("None.")
         L.append("")
+    L += how_high(books)
     L += ["## Recently rejected (latest verdict per token)", "", "| Token | Verdict | Reasons | Pool XRP |", "|---|---|---|---|"]
     rej = sorted([v for v in seen.values() if v.get("verdict") and v["verdict"] != "PASS"], key=lambda v: v.get("last_seen", ""), reverse=True)[:40]
     for v in rej: L.append(f"| [{v['name']}]({v.get('url','')}) | {v['verdict']} | {v.get('reasons','')} | {v.get('pool_xrp','')} |")
