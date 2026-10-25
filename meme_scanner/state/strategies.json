@@ -1,7 +1,7 @@
 {
  "breakout": {
-  "buys_today": 0,
-  "cash_usd": 65.719249,
+  "buys_today": 1,
+  "cash_usd": 55.719223,
   "closed": [
    {
     "amm_fee": 0.00311,
@@ -207,7 +207,7 @@
    "razRVbPbtNtFt5TTa63XE122uRzoYooEpJ-4E4F525448000000000000000000000000000000": 1792869640.3525798,
    "rnHDzEH4xyW6u4LbXqDoX1uk36v5ovhbFi-4465657054696465000000000000000000000000": 1792861340.818468
   },
-  "net_fees_xrp": 0.03165399999999999,
+  "net_fees_xrp": 0.031693999999999986,
   "positions": [
    {
     "amm_fee": 0.00089,
@@ -266,7 +266,7 @@
     "entry_spot": 8.148400626451478e-07,
     "issuer": "rExSpmk2PAqxKRTT3mhjCrCpqVasBra5v8",
     "key": "rExSpmk2PAqxKRTT3mhjCrCpqVasBra5v8-54494D4500000000000000000000000000000000",
-    "last_ratio_net": 0.9874,
+    "last_ratio_net": 0.9891,
     "legs": [],
     "name": "TIME",
     "peak_spot": 8.640389234650731e-07,
@@ -285,12 +285,38 @@
     ],
     "xrp_cost": 7.748514222397855,
     "xrp_usd_entry": 1.29057
+   },
+   {
+    "amm_fee": 0.00213,
+    "currency": "4C55544845520000000000000000000000000000",
+    "entry_eff_px": 28.2435037593365,
+    "entry_spot": 28.134936458784647,
+    "issuer": "rPBWcjbyqcrGxpUe4awobqMmB2WaeUhuFb",
+    "key": "rPBWcjbyqcrGxpUe4awobqMmB2WaeUhuFb-4C55544845520000000000000000000000000000",
+    "legs": [],
+    "name": "LUTHER",
+    "peak_spot": 28.134936458784647,
+    "pool_xrp_entry": 4490.286315,
+    "remaining": 1.0,
+    "t": 1792911112.8499897,
+    "tf": 0.0,
+    "tokens_gross": 0.2747752146862503,
+    "tokens_net": 0.27371898584257576,
+    "tp_done": false,
+    "trigger": "breakout: +14.2% in 1h, vol last hour 742 vs prior 5 / 24h avg 37 XRP",
+    "ts": "2026-10-25T06:51:52+00:00",
+    "usd_cost": 10.0,
+    "warnings": [
+     "top-10 holders own 36%"
+    ],
+    "xrp_cost": 7.7307832056465635,
+    "xrp_usd_entry": 1.29353
    }
   ],
   "start_ts": "2026-10-24T13:37:52+00:00",
   "start_usd": 100.0,
   "start_xrp_usd": 1.28033,
-  "trustset_fees_xrp": 0.01582099999999999
+  "trustset_fees_xrp": 0.01584099999999999
  },
  "dip_bounce": {
   "buys_today": 2,
@@ -487,7 +513,7 @@
     "entry_spot": 2.284709432792641e-05,
     "issuer": "rDAgpQSwp41PCrG7LyqxtAxbvssFM7rH6d",
     "key": "rDAgpQSwp41PCrG7LyqxtAxbvssFM7rH6d-246D617800000000000000000000000000000000",
-    "last_ratio_net": 1.007,
+    "last_ratio_net": 1.0019,
     "legs": [],
     "name": "$max",
     "pool_xrp_entry": 2232.533301,
@@ -537,7 +563,7 @@
     "entry_spot": 4.878825158639864e-07,
     "issuer": "r4pXXQzJ8soYSX4QKeeW4BzRQS1PCtVYLJ",
     "key": "r4pXXQzJ8soYSX4QKeeW4BzRQS1PCtVYLJ-5345414C00000000000000000000000000000000",
-    "last_ratio_net": 0.9767,
+    "last_ratio_net": 0.9724,
     "legs": [],
     "name": "SEAL",
     "pool_xrp_entry": 26497.909172,
@@ -651,7 +677,7 @@
     "entry_spot": 5.727471671679549e-07,
     "issuer": "rnHDzEH4xyW6u4LbXqDoX1uk36v5ovhbFi",
     "key": "rnHDzEH4xyW6u4LbXqDoX1uk36v5ovhbFi-4465657054696465000000000000000000000000",
-    "last_ratio_net": 1.2114,
+    "last_ratio_net": 1.213,
     "legs": [],
     "name": "DeepTide",
     "pool_xrp_entry": 11714.122001,
@@ -881,7 +907,7 @@
     "entry_spot": 7.903121953734245e-06,
     "issuer": "rDFXbW2ZZCG5WgPtqwNiA2xZokLMm9ivmN",
     "key": "rDFXbW2ZZCG5WgPtqwNiA2xZokLMm9ivmN-50484E4958000000000000000000000000000000",
-    "last_ratio_net": 1.0459,
+    "last_ratio_net": 1.0458,
     "legs": [],
     "name": "PHNIX",
     "pool_xrp_entry": 199841.488509,
@@ -916,7 +942,7 @@
     "entry_spot": 5.727471671679549e-07,
     "issuer": "rnHDzEH4xyW6u4LbXqDoX1uk36v5ovhbFi",
     "key": "rnHDzEH4xyW6u4LbXqDoX1uk36v5ovhbFi-4465657054696465000000000000000000000000",
-    "last_ratio_net": 1.2114,
+    "last_ratio_net": 1.213,
     "legs": [],
     "name": "DeepTide",
     "pool_xrp_entry": 11714.122001,
@@ -1146,7 +1172,7 @@
     "entry_spot": 7.903121953734245e-06,
     "issuer": "rDFXbW2ZZCG5WgPtqwNiA2xZokLMm9ivmN",
     "key": "rDFXbW2ZZCG5WgPtqwNiA2xZokLMm9ivmN-50484E4958000000000000000000000000000000",
-    "last_ratio_net": 1.0459,
+    "last_ratio_net": 1.0458,
     "legs": [],
     "name": "PHNIX",
     "pool_xrp_entry": 199841.488509,
@@ -1881,7 +1907,7 @@
     "entry_spot": 3.265051063263604,
     "issuer": "rszenFJoDdiGjyezQc8pME9KWDQH43Tswh",
     "key": "rszenFJoDdiGjyezQc8pME9KWDQH43Tswh-44524F5000000000000000000000000000000000",
-    "last_ratio_net": 0.9681,
+    "last_ratio_net": 0.9686,
     "legs": [],
     "name": "DROP",
     "pool_xrp_entry": 124976.211403,
@@ -2588,7 +2614,7 @@
     "entry_spot": 0.00021930915262757139,
     "issuer": "rpwAnF1mMZRszxdinETFHwzGQiPgsv3jHR",
     "key": "rpwAnF1mMZRszxdinETFHwzGQiPgsv3jHR-4245525400000000000000000000000000000000",
-    "last_ratio_net": 1.0499,
+    "last_ratio_net": 1.0498,
     "legs": [],
     "name": "BERT",
     "pool_xrp_entry": 24527.442304,
@@ -2612,7 +2638,7 @@
     "entry_spot": 3.265051063263604,
     "issuer": "rszenFJoDdiGjyezQc8pME9KWDQH43Tswh",
     "key": "rszenFJoDdiGjyezQc8pME9KWDQH43Tswh-44524F5000000000000000000000000000000000",
-    "last_ratio_net": 0.9681,
+    "last_ratio_net": 0.9686,
     "legs": [],
     "name": "DROP",
     "pool_xrp_entry": 124976.211403,
