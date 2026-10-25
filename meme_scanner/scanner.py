@@ -601,7 +601,7 @@ def write_summary(meta, seen, books, pools, px, stats):
          f"xrpl.to credits used by last discovery: {meta.get('xrplto_calls_last_discovery', 0) + 5 * (stats.get('ohlc_calls') or 0)}", ""]
     if meta.get("warnings"): L += ["**Warnings this run:** " + " | ".join(meta["warnings"]), ""]
     desc = {"hold": "½ at +100%, stop −50%, 72h", "plus5": "all at +50%, stop −50%, 72h", "scalp": "+20% / −10% / 60 min",
-            "slow_scalp": "new/top-15 trending, round trip ≤2%; +8% / −6% / 6h",
+            "slow_scalp": "new/top-15 trending, round trip ≤2%; +8% / −6% / 24h (was 6h until Oct 25)",
             "breakout": "up ≥10% in 1h + rising volume; trailing stop 8% below high / 24h",
             "dip_bounce": ">3 days old, ≥15% below 24h high; +10% / −10% / 24h"}
     L += ["## Bankrolls — scoreboard is USD/RLUSD (each strategy has its own $100, $10 per trade)", "",

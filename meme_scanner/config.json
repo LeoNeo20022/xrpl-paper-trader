@@ -69,7 +69,7 @@
       "take_profit_mult": 1.08,
       "take_profit_fraction": 1.0,
       "stop_mult": 0.94,
-      "max_hours": 6
+      "max_hours": 24
     },
     "breakout": {
       "trail_pct": 8.0,
