@@ -3,19 +3,19 @@
 Log-only experiment: no wallet, no keys, no orders. Every number below is simulated from public data.
 Data by <a href="https://xrpl.to">xrpl.to</a> (token discovery); safety checks and prices from the public XRP Ledger.
 
-Last run: **2026-10-25T02:09:15+00:00** (UTC) · XRP/USD 1.3061 (bitstamp) · last discovery 2026-10-25T02:09:15+00:00 (UTC, every run, API key) · xrpl.to credits used by last discovery: 4
+Last run: **2026-10-25T02:10:09+00:00** (UTC) · XRP/USD 1.3058 (bitstamp) · last discovery 2026-10-25T02:10:09+00:00 (UTC, every run, API key) · xrpl.to credits used by last discovery: 4
 
 ## Bankrolls — scoreboard is USD/RLUSD (each strategy has its own $100, $10 per trade)
 
 | Strategy | Rule | Started (UTC) | **Equity USD** | **vs $100** | Cash | Open (n / value) | Realized USD | Unrealized USD | Wins / losses (win rate) | Trades (closed) | Realized XRP | Unrealized XRP | Equity XRP | vs start XRP | Fees paid USD (network XRP) | Reserve locked XRP |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| hold | ½ at +100%, stop −50%, 72h | 2026-10-24 11:16 | **$105.29** | **+5.29** | $0.00 | 10 / $105.29 | $+0.00 | $+5.29 | – | 10 (0) | +0.00 | +2.59 | 80.62 | +2.59 | $0.27 (0.00012) | 2.0 |
-| plus5 | all at +50%, stop −50%, 72h | 2026-10-24 11:16 | **$105.29** | **+5.29** | $0.00 | 10 / $105.29 | $+0.00 | $+5.29 | – | 10 (0) | +0.00 | +2.59 | 80.62 | +2.59 | $0.27 (0.00012) | 2.0 |
-| scalp | +20% / −10% / 60 min | 2026-10-24 11:16 | **$98.85** | **-1.15** | $88.18 | 1 / $10.67 | $-1.82 | $+0.67 | 5 / 12 (29%) | 18 (17) | -1.74 | +0.48 | 75.68 | -2.35 | $1.43 (0.00085) | 0.2 |
-| slow_scalp | new/top-15 trending, round trip ≤2%; +8% / −6% / 6h | 2026-10-24 13:37 | **$101.11** | **+1.11** | $40.77 | 6 / $60.34 | $+0.82 | $+0.34 | 5 / 7 (42%) | 18 (12) | +0.32 | -0.05 | 77.42 | -0.69 | $1.35 (0.08093) | 1.2 |
-| breakout | up ≥10% in 1h + rising volume; trailing stop 8% below high / 24h | 2026-10-24 13:37 | **$96.49** | **-3.51** | $65.72 | 3 / $30.77 | $-4.26 | $+0.77 | 1 / 4 (20%) | 8 (5) | -3.34 | +0.25 | 73.88 | -4.23 | $0.64 (0.03165) | 0.6 |
-| dip_bounce | >3 days old, ≥15% below 24h high; +10% / −10% / 24h | 2026-10-24 13:37 | **$104.47** | **+4.47** | $2.18 | 10 / $102.29 | $+2.19 | $+2.29 | 2 / 0 (100%) | 12 (2) | +1.57 | +0.41 | 79.99 | +1.88 | $0.70 (0.01388) | 2.0 |
-| *baseline: keep $100 in XRP* | buy XRP at $1.2815, hold | 2026-10-24 11:16 | **$101.92** | **+1.92** | – | – | – | – | – | – | – | – | 78.03 | +0.00 | – | – |
+| hold | ½ at +100%, stop −50%, 72h | 2026-10-24 11:16 | **$105.27** | **+5.27** | $0.00 | 10 / $105.27 | $+0.00 | $+5.27 | – | 10 (0) | +0.00 | +2.58 | 80.62 | +2.58 | $0.27 (0.00012) | 2.0 |
+| plus5 | all at +50%, stop −50%, 72h | 2026-10-24 11:16 | **$105.27** | **+5.27** | $0.00 | 10 / $105.27 | $+0.00 | $+5.27 | – | 10 (0) | +0.00 | +2.58 | 80.62 | +2.58 | $0.27 (0.00012) | 2.0 |
+| scalp | +20% / −10% / 60 min | 2026-10-24 11:16 | **$98.84** | **-1.16** | $88.18 | 1 / $10.67 | $-1.82 | $+0.67 | 5 / 12 (29%) | 18 (17) | -1.74 | +0.48 | 75.70 | -2.34 | $1.43 (0.00085) | 0.2 |
+| slow_scalp | new/top-15 trending, round trip ≤2%; +8% / −6% / 6h | 2026-10-24 13:37 | **$101.10** | **+1.10** | $40.77 | 6 / $60.33 | $+0.82 | $+0.33 | 5 / 7 (42%) | 18 (12) | +0.32 | -0.05 | 77.42 | -0.68 | $1.35 (0.08093) | 1.2 |
+| breakout | up ≥10% in 1h + rising volume; trailing stop 8% below high / 24h | 2026-10-24 13:37 | **$96.48** | **-3.52** | $65.72 | 3 / $30.76 | $-4.26 | $+0.76 | 1 / 4 (20%) | 8 (5) | -3.34 | +0.25 | 73.89 | -4.22 | $0.64 (0.03165) | 0.6 |
+| dip_bounce | >3 days old, ≥15% below 24h high; +10% / −10% / 24h | 2026-10-24 13:37 | **$104.45** | **+4.45** | $2.18 | 10 / $102.27 | $+2.19 | $+2.27 | 2 / 0 (100%) | 12 (2) | +1.57 | +0.41 | 79.99 | +1.88 | $0.70 (0.01388) | 2.0 |
+| *baseline: keep $100 in XRP* | buy XRP at $1.2815, hold | 2026-10-24 11:16 | **$101.90** | **+1.90** | – | – | – | – | – | – | – | – | 78.03 | +0.00 | – | – |
 
 **All P/L above is after fees.** Fees paid = AMM pool fee + price impact (slippage) + issuer transfer fee + XRPL network fee, as if each tx were a plain transaction signed in Xaman (network fee now 0.000020 XRP/tx = max(0.00002, live open-ledger fee 1e-05), cap 0.01). Each buy = TrustSet + swap; each exit = swap; a full exit also removes the trust line (TrustSet). TrustSet fees are charged from Oct 24 ~14:30 UTC on; earlier network fees were 0.000012 XRP per swap. Reserve locked = 0.2 XRP per open trust line: held by the ledger and returned when the line is removed, so it is not a cost. Not included: Xaman's own 0.8% service fee on swaps/DEX trades (see README).
 
@@ -119,7 +119,7 @@ Cash is kept in USD at each fill. Values are net of AMM pool fee, price impact, 
 | [BUZZY](https://xrpl.to/token/rLFDsYQcd7uerRnmYy3sRVTZ6P2uTjfrak-42555A5A59000000000000000000000000000000) | FAIL_SAFETY | pool too small (xrpl.to TVL 243 XRP) | 121 |
 | [KOTL](https://xrpl.to/token/rLFucYbEhZ7sLae1QMmvBCAs14eDttZWWS-4B4F544C00000000000000000000000000000000) | FAIL_SAFETY | pool too small (xrpl.to TVL 2,496 XRP) | 1248 |
 | [ROCK](https://xrpl.to/token/rM2LZ53PobDBpEWZJp9cCAZhViRyy1TbyL-524F434B00000000000000000000000000000000) | SKIP_ENTRY | not new and not top trending; 24h volume 371 XRP too low | 3903 |
-| [ZELLE](https://xrpl.to/token/rM8Qdyff1EPUvrPb71ZXMMRsHzAkbyS2zH-5A454C4C45000000000000000000000000000000) | FAIL_SAFETY | pool too small (xrpl.to TVL 1,252 XRP) | 626 |
+| [ZELLE](https://xrpl.to/token/rM8Qdyff1EPUvrPb71ZXMMRsHzAkbyS2zH-5A454C4C45000000000000000000000000000000) | FAIL_SAFETY | pool too small (xrpl.to TVL 1,254 XRP) | 627 |
 | [RIPPLE](https://xrpl.to/token/rMgrYs2XYgbGaLZ19HbUXfi9rpsaFQYwgc-524950504C450000000000000000000000000000) | SKIP_ENTRY | not new and not top trending | 3905 |
 | [WBLV](https://xrpl.to/token/rMhk9GPrsoWWAgWB4ai9QrELm8G1rMDySM-57424C5600000000000000000000000000000000) | FAIL_SAFETY | pool too small (xrpl.to TVL 3,069 XRP) | 1534 |
 | [HOOTS](https://xrpl.to/token/rNPWp2RX2GHVbFbG77k76Ak8nhKwrHu17b-484F4F5453000000000000000000000000000000) | FAIL_SAFETY | top-10 holders own 55% (excl. AMM) | 4555 |
