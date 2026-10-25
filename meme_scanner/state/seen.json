@@ -1,7 +1,7 @@
 {
  "r32nbPw6cyt3KdxinB4ua6WSLRrrF4SXAC-4C61756768000000000000000000000000000000": {
   "first_seen": "2026-10-24T11:16:14+00:00",
-  "last_seen": "2026-10-25T15:55:59+00:00",
+  "last_seen": "2026-10-25T16:00:58+00:00",
   "name": "Laugh",
   "pool_xrp": 9786,
   "reasons": "",
@@ -19,7 +19,7 @@
  },
  "r33jHP8k9eFY9Vf1SLU2XKfoQ8A3SkXPEh-6277696600000000000000000000000000000000": {
   "first_seen": "2026-10-24T11:16:14+00:00",
-  "last_seen": "2026-10-25T15:55:59+00:00",
+  "last_seen": "2026-10-25T16:00:58+00:00",
   "name": "bwif",
   "pool_xrp": 9722,
   "reasons": "top-10 holders own 56% (excl. AMM)",
@@ -51,7 +51,7 @@
  },
  "r39mx8HT42TVUsF25AffcaLdMPehdactJf-BTC": {
   "first_seen": "2026-10-25T12:25:46+00:00",
-  "last_seen": "2026-10-25T15:55:59+00:00",
+  "last_seen": "2026-10-25T16:00:58+00:00",
   "name": "BTC",
   "pool_xrp": 1631,
   "reasons": "not a meme (stablecoin/major/KYC issuer)",
@@ -73,7 +73,7 @@
  },
  "r3dVizzUAS3U29WKaaSALqkieytA2LCoRe-58434F5245000000000000000000000000000000": {
   "first_seen": "2026-10-25T00:21:46+00:00",
-  "last_seen": "2026-10-25T15:55:59+00:00",
+  "last_seen": "2026-10-25T16:00:58+00:00",
   "name": "XCORE",
   "pool_xrp": 1448,
   "reasons": "pool too small (xrpl.to TVL 2,895 XRP)",
@@ -111,7 +111,7 @@
  },
  "r4pXXQzJ8soYSX4QKeeW4BzRQS1PCtVYLJ-5345414C00000000000000000000000000000000": {
   "first_seen": "2026-10-24T11:16:14+00:00",
-  "last_seen": "2026-10-25T15:55:59+00:00",
+  "last_seen": "2026-10-25T16:00:58+00:00",
   "name": "SEAL",
   "pool_xrp": 26985,
   "reasons": "not new and not top trending",
@@ -128,11 +128,11 @@
  },
  "r4tPgvSFTJYMxqLZsz9R6i2mykXUAZ6298-5852505800000000000000000000000000000000": {
   "first_seen": "2026-10-24T13:37:52+00:00",
-  "last_seen": "2026-10-25T15:55:59+00:00",
+  "last_seen": "2026-10-25T16:00:58+00:00",
   "name": "XRPX",
   "pool_xrp": 535,
-  "reasons": "pool too small (xrpl.to TVL 1,070 XRP)",
-  "sig": "FAIL_SAFETY|pool too small (xrpl.to TVL 1,070 XRP)",
+  "reasons": "pool too small (xrpl.to TVL 1,071 XRP)",
+  "sig": "FAIL_SAFETY|pool too small (xrpl.to TVL 1,071 XRP)",
   "url": "https://xrpl.to/token/r4tPgvSFTJYMxqLZsz9R6i2mykXUAZ6298-5852505800000000000000000000000000000000",
   "verdict": "FAIL_SAFETY",
   "warnings": ""
@@ -150,7 +150,7 @@
  },
  "r9QYoVFNFZV1rZtFZEypPPpka2iEVDgqY1-5452495050520000000000000000000000000000": {
   "first_seen": "2026-10-24T13:37:52+00:00",
-  "last_seen": "2026-10-25T15:55:59+00:00",
+  "last_seen": "2026-10-25T16:00:58+00:00",
   "name": "TRIPPR",
   "pool_xrp": 730,
   "reasons": "pool too small (xrpl.to TVL 1,461 XRP)",
@@ -161,7 +161,7 @@
  },
  "r9Qk4VGodriw2xKLG9sRbTXWgknkz9TkDd-5465646479000000000000000000000000000000": {
   "first_seen": "2026-10-24T11:16:14+00:00",
-  "last_seen": "2026-10-25T15:55:59+00:00",
+  "last_seen": "2026-10-25T16:00:58+00:00",
   "name": "Teddy",
   "pool_xrp": 25231,
   "reasons": "",
@@ -194,7 +194,7 @@
  },
  "r9sH6YEVRyg8uYaKfyk1EfH36Lfq7a8PUD-544F544F00000000000000000000000000000000": {
   "first_seen": "2026-10-24T11:16:14+00:00",
-  "last_seen": "2026-10-25T15:55:59+00:00",
+  "last_seen": "2026-10-25T16:00:58+00:00",
   "name": "TOTO",
   "pool_xrp": 18752,
   "reasons": "not new and not top trending",
@@ -238,7 +238,7 @@
  },
  "rBFJGmWj6YaabVCxfsjiCM8pfYXs8xFdeC-UGA": {
   "first_seen": "2026-10-24T13:37:52+00:00",
-  "last_seen": "2026-10-25T15:55:59+00:00",
+  "last_seen": "2026-10-25T16:00:58+00:00",
   "name": "UGA",
   "pool_xrp": 8497,
   "reasons": "not new and not top trending",
@@ -311,7 +311,7 @@
  },
  "rDFXbW2ZZCG5WgPtqwNiA2xZokLMm9ivmN-50484E4958000000000000000000000000000000": {
   "first_seen": "2026-10-24T11:16:14+00:00",
-  "last_seen": "2026-10-25T15:55:59+00:00",
+  "last_seen": "2026-10-25T16:00:58+00:00",
   "name": "PHNIX",
   "pool_xrp": 206019,
   "reasons": "",
@@ -328,7 +328,7 @@
  },
  "rDKJWtrPqKiMBzK9FTVvebMVec7FJtJLx6-486F72697A6F6E00000000000000000000000000": {
   "first_seen": "2026-10-24T20:01:27+00:00",
-  "last_seen": "2026-10-25T15:55:59+00:00",
+  "last_seen": "2026-10-25T16:00:58+00:00",
   "name": "Horizon",
   "pool_xrp": 19464,
   "reasons": "not new and not top trending; 24h volume 95 XRP too low",
@@ -350,7 +350,7 @@
  },
  "rEjQsRE5gJDng9bnkV2WUYPtgtkD28fWMd-42464F4F54000000000000000000000000000000": {
   "first_seen": "2026-10-24T17:23:16+00:00",
-  "last_seen": "2026-10-25T15:55:59+00:00",
+  "last_seen": "2026-10-25T16:00:58+00:00",
   "name": "BFOOT",
   "pool_xrp": 3363,
   "reasons": "not new and not top trending",
@@ -367,9 +367,9 @@
  },
  "rExSpmk2PAqxKRTT3mhjCrCpqVasBra5v8-54494D4500000000000000000000000000000000": {
   "first_seen": "2026-10-24T11:16:14+00:00",
-  "last_seen": "2026-10-25T15:55:59+00:00",
+  "last_seen": "2026-10-25T16:00:58+00:00",
   "name": "TIME",
-  "pool_xrp": 8399,
+  "pool_xrp": 8322,
   "reasons": "",
   "sig": "PASS|",
   "sig_breakout": "ELIGIBLE|",
@@ -386,9 +386,9 @@
  },
  "rGG3wQ4kUzd7Jnmk1n5NWPZjjut62kCBfC-41524D5900000000000000000000000000000000": {
   "first_seen": "2026-10-24T11:16:14+00:00",
-  "last_seen": "2026-10-25T15:55:59+00:00",
+  "last_seen": "2026-10-25T16:00:58+00:00",
   "name": "ARMY",
-  "pool_xrp": 264776,
+  "pool_xrp": 264775,
   "reasons": "",
   "sig": "PASS|",
   "sig_slow_scalp": "ELIGIBLE|",
@@ -420,7 +420,7 @@
  },
  "rGJbFqiLdh23e9WigQ5sxTfFqTENveLX21-XOX": {
   "first_seen": "2026-10-24T13:43:58+00:00",
-  "last_seen": "2026-10-25T15:55:59+00:00",
+  "last_seen": "2026-10-25T16:00:58+00:00",
   "name": "XOX",
   "pool_xrp": 11474,
   "reasons": "not new and not top trending",
@@ -437,7 +437,7 @@
  },
  "rGLEgQdktoN4Be5thhk6seg1HifGPBxY5Q-PLX": {
   "first_seen": "2026-10-24T11:16:14+00:00",
-  "last_seen": "2026-10-25T15:55:59+00:00",
+  "last_seen": "2026-10-25T16:00:58+00:00",
   "name": "PLX",
   "pool_xrp": 28284,
   "reasons": "",
@@ -454,7 +454,7 @@
  },
  "rGu3gexApNkWR3ST7LW1mc1rZACXcxwcfi-41464642414C0000000000000000000000000000": {
   "first_seen": "2026-10-24T14:59:54+00:00",
-  "last_seen": "2026-10-25T15:55:59+00:00",
+  "last_seen": "2026-10-25T16:00:58+00:00",
   "name": "AFFBAL",
   "pool_xrp": 885,
   "reasons": "pool too small (xrpl.to TVL 1,770 XRP)",
@@ -465,7 +465,7 @@
  },
  "rH5g41CxkBi7wtYEgnkFGoRrsPU4TVyuiG-B3B": {
   "first_seen": "2026-10-24T11:16:14+00:00",
-  "last_seen": "2026-10-25T15:55:59+00:00",
+  "last_seen": "2026-10-25T16:00:58+00:00",
   "name": "B3B",
   "pool_xrp": 505,
   "reasons": "pool too small (xrpl.to TVL 1,011 XRP)",
@@ -476,11 +476,11 @@
  },
  "rH8XeTmXoF9cKVk1GnvsA8ZTEKGbpQTP7h-53515749445A0000000000000000000000000000": {
   "first_seen": "2026-10-25T14:44:22+00:00",
-  "last_seen": "2026-10-25T15:55:59+00:00",
+  "last_seen": "2026-10-25T16:00:58+00:00",
   "name": "SQWIDZ",
-  "pool_xrp": 211,
-  "reasons": "pool too small (xrpl.to TVL 421 XRP)",
-  "sig": "FAIL_SAFETY|pool too small (xrpl.to TVL 421 XRP)",
+  "pool_xrp": 208,
+  "reasons": "pool too small (xrpl.to TVL 416 XRP)",
+  "sig": "FAIL_SAFETY|pool too small (xrpl.to TVL 416 XRP)",
   "url": "https://xrpl.to/token/rH8XeTmXoF9cKVk1GnvsA8ZTEKGbpQTP7h-53515749445A0000000000000000000000000000",
   "verdict": "FAIL_SAFETY",
   "warnings": ""
@@ -509,7 +509,7 @@
  },
  "rHLRdLwXiBZSD53ZQz8ogGJz25LzNCCjSz-4752494D00000000000000000000000000000000": {
   "first_seen": "2026-10-25T12:56:31+00:00",
-  "last_seen": "2026-10-25T15:55:59+00:00",
+  "last_seen": "2026-10-25T16:00:58+00:00",
   "name": "GRIM",
   "pool_xrp": 17894,
   "reasons": "not new and not top trending",
@@ -580,7 +580,7 @@
  },
  "rJEApMjV7KVVopB8NB1WXQpQYVu84vRGTa-5045504500000000000000000000000000000000": {
   "first_seen": "2026-10-24T11:16:14+00:00",
-  "last_seen": "2026-10-25T15:55:59+00:00",
+  "last_seen": "2026-10-25T16:00:58+00:00",
   "name": "PEPE",
   "pool_xrp": 7592,
   "reasons": "not new and not top trending",
@@ -615,7 +615,7 @@
  },
  "rJeCmBFjiz1TBD32wSeLEGKXofYxekiwjZ-3332314247000000000000000000000000000000": {
   "first_seen": "2026-10-24T21:07:52+00:00",
-  "last_seen": "2026-10-25T15:55:59+00:00",
+  "last_seen": "2026-10-25T16:00:58+00:00",
   "name": "321BG",
   "pool_xrp": 188,
   "reasons": "pool too small (xrpl.to TVL 376 XRP)",
@@ -654,7 +654,7 @@
  },
  "rJfQFeHTZcnRsY4Ba5sJVKUhLs48E9apBn-5055505045540000000000000000000000000000": {
   "first_seen": "2026-10-25T14:34:21+00:00",
-  "last_seen": "2026-10-25T15:55:59+00:00",
+  "last_seen": "2026-10-25T16:00:58+00:00",
   "name": "PUPPET",
   "pool_xrp": 4874,
   "reasons": "not new and not top trending; 24h volume 333 XRP too low",
@@ -681,7 +681,7 @@
  },
  "rJwLNwaBUh9a7ajk9FeeLAuA791wVe3oyg-50524F4649540000000000000000000000000000": {
   "first_seen": "2026-10-24T11:16:14+00:00",
-  "last_seen": "2026-10-25T15:55:59+00:00",
+  "last_seen": "2026-10-25T16:00:58+00:00",
   "name": "PROFIT",
   "pool_xrp": 46727,
   "reasons": "",
@@ -698,7 +698,7 @@
  },
  "rKiCet8SdvWxPXnAgYarFUXMh1zCPz432Y-XLM": {
   "first_seen": "2026-10-24T11:16:14+00:00",
-  "last_seen": "2026-10-25T15:55:59+00:00",
+  "last_seen": "2026-10-25T16:00:58+00:00",
   "name": "XLM",
   "pool_xrp": 155076,
   "reasons": "issuer not blackholed (can still mint/freeze)",
@@ -720,7 +720,7 @@
  },
  "rLFDsYQcd7uerRnmYy3sRVTZ6P2uTjfrak-42555A5A59000000000000000000000000000000": {
   "first_seen": "2026-10-24T11:16:14+00:00",
-  "last_seen": "2026-10-25T15:55:59+00:00",
+  "last_seen": "2026-10-25T16:00:58+00:00",
   "name": "BUZZY",
   "pool_xrp": 112,
   "reasons": "pool too small (xrpl.to TVL 224 XRP)",
@@ -731,7 +731,7 @@
  },
  "rLFucYbEhZ7sLae1QMmvBCAs14eDttZWWS-4B4F544C00000000000000000000000000000000": {
   "first_seen": "2026-10-25T01:54:15+00:00",
-  "last_seen": "2026-10-25T15:55:59+00:00",
+  "last_seen": "2026-10-25T16:00:58+00:00",
   "name": "KOTL",
   "pool_xrp": 1049,
   "reasons": "pool too small (xrpl.to TVL 2,097 XRP)",
@@ -760,18 +760,18 @@
  },
  "rM1J2Mc2eCSFpCz5QXxhDG2KWkGQWgy87r-BXE": {
   "first_seen": "2026-10-24T19:35:41+00:00",
-  "last_seen": "2026-10-25T15:55:59+00:00",
+  "last_seen": "2026-10-25T16:00:58+00:00",
   "name": "BXE",
-  "pool_xrp": 1138,
-  "reasons": "pool too small (xrpl.to TVL 2,276 XRP)",
-  "sig": "FAIL_SAFETY|pool too small (xrpl.to TVL 2,276 XRP)",
+  "pool_xrp": 1150,
+  "reasons": "pool too small (xrpl.to TVL 2,300 XRP)",
+  "sig": "FAIL_SAFETY|pool too small (xrpl.to TVL 2,300 XRP)",
   "url": "https://xrpl.to/token/rM1J2Mc2eCSFpCz5QXxhDG2KWkGQWgy87r-BXE",
   "verdict": "FAIL_SAFETY",
   "warnings": ""
  },
  "rM2LZ53PobDBpEWZJp9cCAZhViRyy1TbyL-524F434B00000000000000000000000000000000": {
   "first_seen": "2026-10-24T20:17:07+00:00",
-  "last_seen": "2026-10-25T15:55:59+00:00",
+  "last_seen": "2026-10-25T16:00:58+00:00",
   "name": "ROCK",
   "pool_xrp": 3887,
   "reasons": "not new and not top trending; 24h volume 277 XRP too low",
@@ -782,7 +782,7 @@
  },
  "rM8Qdyff1EPUvrPb71ZXMMRsHzAkbyS2zH-5A454C4C45000000000000000000000000000000": {
   "first_seen": "2026-10-24T23:56:46+00:00",
-  "last_seen": "2026-10-25T15:55:59+00:00",
+  "last_seen": "2026-10-25T16:00:58+00:00",
   "name": "ZELLE",
   "pool_xrp": 431,
   "reasons": "pool too small (xrpl.to TVL 862 XRP)",
@@ -793,7 +793,7 @@
  },
  "rMFL2KuFPMuiujdbVGbMzNNjj5QKyd6dZf-586D656E00000000000000000000000000000000": {
   "first_seen": "2026-10-24T11:16:14+00:00",
-  "last_seen": "2026-10-25T15:55:59+00:00",
+  "last_seen": "2026-10-25T16:00:58+00:00",
   "name": "Xmen",
   "pool_xrp": 11321,
   "reasons": "",
@@ -812,7 +812,7 @@
  },
  "rMKUCQ5G3YJHVJ7pEDncew2WCJpJUGuWC6-58444E4100000000000000000000000000000000": {
   "first_seen": "2026-10-25T12:05:46+00:00",
-  "last_seen": "2026-10-25T15:55:59+00:00",
+  "last_seen": "2026-10-25T16:00:58+00:00",
   "name": "XDNA",
   "pool_xrp": 218,
   "reasons": "pool too small (xrpl.to TVL 436 XRP)",
@@ -840,7 +840,7 @@
  },
  "rMhk9GPrsoWWAgWB4ai9QrELm8G1rMDySM-57424C5600000000000000000000000000000000": {
   "first_seen": "2026-10-24T13:37:52+00:00",
-  "last_seen": "2026-10-25T15:55:59+00:00",
+  "last_seen": "2026-10-25T16:00:58+00:00",
   "name": "WBLV",
   "pool_xrp": 1545,
   "reasons": "pool too small (xrpl.to TVL 3,090 XRP)",
@@ -883,7 +883,7 @@
  },
  "rPBWcjbyqcrGxpUe4awobqMmB2WaeUhuFb-4C55544845520000000000000000000000000000": {
   "first_seen": "2026-10-24T11:16:14+00:00",
-  "last_seen": "2026-10-25T15:55:59+00:00",
+  "last_seen": "2026-10-25T16:00:58+00:00",
   "name": "LUTHER",
   "pool_xrp": 4454,
   "reasons": "not new and not top trending",
@@ -900,7 +900,7 @@
  },
  "rPeZtayaDWY7oygidnkSPK99bdLPFbYYAW-F09F8C8A4A656574546964650000000000000000": {
   "first_seen": "2026-10-24T16:31:25+00:00",
-  "last_seen": "2026-10-25T15:55:59+00:00",
+  "last_seen": "2026-10-25T16:00:58+00:00",
   "name": "\ud83c\udf0aJeetTide",
   "pool_xrp": 581,
   "reasons": "pool too small (xrpl.to TVL 1,163 XRP)",
@@ -961,11 +961,11 @@
  },
  "rU5nUwkBUPx3MFPQSHmMnr9S9yg4g8cKLc-XYZ": {
   "first_seen": "2026-10-24T11:16:14+00:00",
-  "last_seen": "2026-10-25T15:55:59+00:00",
+  "last_seen": "2026-10-25T16:00:58+00:00",
   "name": "XYZ",
-  "pool_xrp": 1935,
-  "reasons": "pool 1,935 XRP < 2,000",
-  "sig": "FAIL_SAFETY|pool 1,935 XRP < 2,000",
+  "pool_xrp": 1994,
+  "reasons": "pool 1,994 XRP < 2,000",
+  "sig": "FAIL_SAFETY|pool 1,994 XRP < 2,000",
   "top10_cache": {
    "src": "ledger (124 holders)",
    "t": 1792933292.32102,
@@ -977,7 +977,7 @@
  },
  "rU5wZyCbZ2WhT51SLDV12vUHtcsqJn9631-4849594F00000000000000000000000000000000": {
   "first_seen": "2026-10-24T11:16:14+00:00",
-  "last_seen": "2026-10-25T15:55:59+00:00",
+  "last_seen": "2026-10-25T16:00:58+00:00",
   "name": "HIYO",
   "pool_xrp": 7300,
   "reasons": "top-10 holders own 56% (excl. AMM)",
@@ -993,7 +993,7 @@
  },
  "rUgeZXZvcXX9UstkspHr1gHJKj89PqogtU-4254434C00000000000000000000000000000000": {
   "first_seen": "2026-10-24T23:20:51+00:00",
-  "last_seen": "2026-10-25T15:55:59+00:00",
+  "last_seen": "2026-10-25T16:00:58+00:00",
   "name": "BTCL",
   "pool_xrp": 1688,
   "reasons": "pool 1,688 XRP < 2,000",
@@ -1015,7 +1015,7 @@
  },
  "rXPMxBeefHGxx2K7g5qmmWq3gFsgawkoa-XPM": {
   "first_seen": "2026-10-24T11:45:43+00:00",
-  "last_seen": "2026-10-25T15:55:59+00:00",
+  "last_seen": "2026-10-25T16:00:58+00:00",
   "name": "XPM",
   "pool_xrp": 232696,
   "reasons": "not a meme (stablecoin/major/KYC issuer)",
@@ -1048,7 +1048,7 @@
  },
  "ra9g3LAJm9xJu8Awe7oWzR6VXFB1mpFtSe-EVR": {
   "first_seen": "2026-10-24T11:16:14+00:00",
-  "last_seen": "2026-10-25T15:55:59+00:00",
+  "last_seen": "2026-10-25T16:00:58+00:00",
   "name": "EVR",
   "pool_xrp": 82007,
   "reasons": "not a meme (stablecoin/major/KYC issuer)",
@@ -1059,7 +1059,7 @@
  },
  "raCwgDN3QmiBrDQCdsYSnZECh1qtbTqp8N-W&B": {
   "first_seen": "2026-10-24T20:01:27+00:00",
-  "last_seen": "2026-10-25T15:55:59+00:00",
+  "last_seen": "2026-10-25T16:00:58+00:00",
   "name": "W&B",
   "pool_xrp": 4025,
   "reasons": "not new and not top trending",
@@ -1077,7 +1077,7 @@
  },
  "raDZ4t8WPXkmDfJWMLBcNZmmSHmBC523NZ-ATM": {
   "first_seen": "2026-10-24T11:16:14+00:00",
-  "last_seen": "2026-10-25T15:55:59+00:00",
+  "last_seen": "2026-10-25T16:00:58+00:00",
   "name": "ATM",
   "pool_xrp": 77534,
   "reasons": "",
@@ -1124,7 +1124,7 @@
  },
  "rfGCeDUdtbzKbXfgvrpG745qdC1hcZBz8S-SLT": {
   "first_seen": "2026-10-24T11:16:14+00:00",
-  "last_seen": "2026-10-25T15:55:59+00:00",
+  "last_seen": "2026-10-25T16:00:58+00:00",
   "name": "SLT",
   "pool_xrp": 46758,
   "reasons": "top-10 holders own 62% (excl. AMM)",
@@ -1140,18 +1140,18 @@
  },
  "rfGrJ5R5GB1SR48LRBJrD5vkvhXVgUxX4G-54454D504C415200000000000000000000000000": {
   "first_seen": "2026-10-25T06:31:52+00:00",
-  "last_seen": "2026-10-25T15:55:59+00:00",
+  "last_seen": "2026-10-25T16:00:58+00:00",
   "name": "TEMPLAR",
-  "pool_xrp": 197,
-  "reasons": "pool too small (xrpl.to TVL 394 XRP)",
-  "sig": "FAIL_SAFETY|pool too small (xrpl.to TVL 394 XRP)",
+  "pool_xrp": 177,
+  "reasons": "pool too small (xrpl.to TVL 355 XRP)",
+  "sig": "FAIL_SAFETY|pool too small (xrpl.to TVL 355 XRP)",
   "url": "https://xrpl.to/token/rfGrJ5R5GB1SR48LRBJrD5vkvhXVgUxX4G-54454D504C415200000000000000000000000000",
   "verdict": "FAIL_SAFETY",
   "warnings": ""
  },
  "rfKYWZ84fm9eVEdoTcsQCo1WdqMPyaUF5z-5349474D41000000000000000000000000000000": {
   "first_seen": "2026-10-24T11:16:14+00:00",
-  "last_seen": "2026-10-25T15:55:59+00:00",
+  "last_seen": "2026-10-25T16:00:58+00:00",
   "name": "SIGMA",
   "pool_xrp": 15257,
   "reasons": "not new and not top trending",
@@ -1169,7 +1169,7 @@
  },
  "rfQVVT7X5FynwK87EczgP2T8RQXmQcQSf-504947454F4E5300000000000000000000000000": {
   "first_seen": "2026-10-24T11:19:59+00:00",
-  "last_seen": "2026-10-25T15:55:59+00:00",
+  "last_seen": "2026-10-25T16:00:58+00:00",
   "name": "PIGEONS",
   "pool_xrp": 10604,
   "reasons": "not new and not top trending",
@@ -1186,7 +1186,7 @@
  },
  "rfcasq9uRbvwcmLFvc4ti3j8Qt1CYCGgHz-589": {
   "first_seen": "2026-10-24T11:16:14+00:00",
-  "last_seen": "2026-10-25T15:55:59+00:00",
+  "last_seen": "2026-10-25T16:00:58+00:00",
   "name": "589",
   "pool_xrp": 27678,
   "reasons": "",
@@ -1214,7 +1214,7 @@
  },
  "rfmS3zqrQrka8wVyhXifEeyTwe8AMz2Yhw-5745544800000000000000000000000000000000": {
   "first_seen": "2026-10-24T11:16:14+00:00",
-  "last_seen": "2026-10-25T15:55:59+00:00",
+  "last_seen": "2026-10-25T16:00:58+00:00",
   "name": "WETH",
   "pool_xrp": 90793,
   "reasons": "issuer not blackholed (can still mint)",
@@ -1225,7 +1225,7 @@
  },
  "rfmS3zqrQrka8wVyhXifEeyTwe8AMz2Yhw-SHX": {
   "first_seen": "2026-10-24T11:16:14+00:00",
-  "last_seen": "2026-10-25T15:55:59+00:00",
+  "last_seen": "2026-10-25T16:00:58+00:00",
   "name": "SHX",
   "pool_xrp": 83531,
   "reasons": "issuer not blackholed (can still mint)",
@@ -1275,9 +1275,9 @@
  },
  "rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62-46555A5A59000000000000000000000000000000": {
   "first_seen": "2026-10-24T11:16:14+00:00",
-  "last_seen": "2026-10-25T15:55:59+00:00",
+  "last_seen": "2026-10-25T16:00:58+00:00",
   "name": "FUZZY",
-  "pool_xrp": 774693,
+  "pool_xrp": 774787,
   "reasons": "not new and not top trending",
   "sig": "SKIP_ENTRY|not new and not top trending",
   "sig_slow_scalp": "ELIGIBLE|",
@@ -1326,7 +1326,7 @@
  },
  "rhnvCzgjfeK6Qabq7iTYcJc2h23483nriX-SPC": {
   "first_seen": "2026-10-24T22:14:24+00:00",
-  "last_seen": "2026-10-25T15:55:59+00:00",
+  "last_seen": "2026-10-25T16:00:58+00:00",
   "name": "SPC",
   "pool_xrp": 7225,
   "reasons": "top-10 holders own 56% (excl. AMM)",
@@ -1337,7 +1337,7 @@
  },
  "rhu8q21DEWekDcvqakABXPJbm3MAnQa8oy-545249534B000000000000000000000000000000": {
   "first_seen": "2026-10-25T09:42:21+00:00",
-  "last_seen": "2026-10-25T15:55:59+00:00",
+  "last_seen": "2026-10-25T16:00:58+00:00",
   "name": "TRISK",
   "pool_xrp": 9478,
   "reasons": "not new and not top trending; 24h volume 390 XRP too low",
@@ -1348,7 +1348,7 @@
  },
  "rhuQ5tKUHG77J5ovRN4GVSwZJT5SDTZZCD-5741525000000000000000000000000000000000": {
   "first_seen": "2026-10-24T11:16:14+00:00",
-  "last_seen": "2026-10-25T15:55:59+00:00",
+  "last_seen": "2026-10-25T16:00:58+00:00",
   "name": "WARP",
   "pool_xrp": 420,
   "reasons": "pool too small (xrpl.to TVL 839 XRP)",
@@ -1370,9 +1370,9 @@
  },
  "rnHDzEH4xyW6u4LbXqDoX1uk36v5ovhbFi-4465657054696465000000000000000000000000": {
   "first_seen": "2026-10-24T11:16:14+00:00",
-  "last_seen": "2026-10-25T15:55:59+00:00",
+  "last_seen": "2026-10-25T16:00:58+00:00",
   "name": "DeepTide",
-  "pool_xrp": 11328,
+  "pool_xrp": 11329,
   "reasons": "",
   "sig": "PASS|",
   "sig_breakout": "ELIGIBLE|",
@@ -1389,7 +1389,7 @@
  },
  "rnNErmg9xVmcxxNZUwivbJSH6i9GUwYPFj-434F444544000000000000000000000000000000": {
   "first_seen": "2026-10-24T11:16:14+00:00",
-  "last_seen": "2026-10-25T15:55:59+00:00",
+  "last_seen": "2026-10-25T16:00:58+00:00",
   "name": "CODED",
   "pool_xrp": 5464,
   "reasons": "not new and not top trending",
@@ -1407,11 +1407,11 @@
  },
  "rndx27LVQUEe3KvVDiBDz8DaqBwWJzFPP4-5852502E45584500000000000000000000000000": {
   "first_seen": "2026-10-24T11:16:14+00:00",
-  "last_seen": "2026-10-25T15:55:59+00:00",
+  "last_seen": "2026-10-25T16:00:58+00:00",
   "name": "XRP.EXE",
-  "pool_xrp": 895,
-  "reasons": "pool too small (xrpl.to TVL 1,790 XRP)",
-  "sig": "FAIL_SAFETY|pool too small (xrpl.to TVL 1,790 XRP)",
+  "pool_xrp": 876,
+  "reasons": "pool too small (xrpl.to TVL 1,751 XRP)",
+  "sig": "FAIL_SAFETY|pool too small (xrpl.to TVL 1,751 XRP)",
   "url": "https://xrpl.to/token/rndx27LVQUEe3KvVDiBDz8DaqBwWJzFPP4-5852502E45584500000000000000000000000000",
   "verdict": "FAIL_SAFETY",
   "warnings": ""
@@ -1429,7 +1429,7 @@
  },
  "rnhtvpHsAgigmVemgtzt7pujj4gv6LVL2a-4C49485541000000000000000000000000000000": {
   "first_seen": "2026-10-24T21:17:51+00:00",
-  "last_seen": "2026-10-25T15:55:59+00:00",
+  "last_seen": "2026-10-25T16:00:58+00:00",
   "name": "LIHUA",
   "pool_xrp": 5290,
   "reasons": "not new and not top trending",
@@ -1446,7 +1446,7 @@
  },
  "rnmJEi7hzEL34R7x48e732qvSnmF5wsLtQ-SPY": {
   "first_seen": "2026-10-24T13:43:58+00:00",
-  "last_seen": "2026-10-25T15:55:59+00:00",
+  "last_seen": "2026-10-25T16:00:58+00:00",
   "name": "SPY",
   "pool_xrp": 10021,
   "reasons": "top-10 holders own 79% (excl. AMM)",
@@ -1527,7 +1527,7 @@
  },
  "rpwAnF1mMZRszxdinETFHwzGQiPgsv3jHR-4245525400000000000000000000000000000000": {
   "first_seen": "2026-10-24T11:16:14+00:00",
-  "last_seen": "2026-10-25T15:55:59+00:00",
+  "last_seen": "2026-10-25T16:00:58+00:00",
   "name": "BERT",
   "pool_xrp": 25288,
   "reasons": "not new and not top trending",
@@ -1556,7 +1556,7 @@
  },
  "rsENFmELvj92orrCKTkDTug53MzwsB7zBd-24464C4950505900000000000000000000000000": {
   "first_seen": "2026-10-24T11:16:14+00:00",
-  "last_seen": "2026-10-25T15:55:59+00:00",
+  "last_seen": "2026-10-25T16:00:58+00:00",
   "name": "$FLIPPY",
   "pool_xrp": 14020,
   "reasons": "not new and not top trending",
@@ -1573,7 +1573,7 @@
  },
  "rsU4M9r6MZ6nhZZvFSiK8uWfq4hfz8188t-5461626279000000000000000000000000000000": {
   "first_seen": "2026-10-24T17:28:15+00:00",
-  "last_seen": "2026-10-25T15:55:59+00:00",
+  "last_seen": "2026-10-25T16:00:58+00:00",
   "name": "Tabby",
   "pool_xrp": 10531,
   "reasons": "not new and not top trending",
@@ -1612,9 +1612,9 @@
  },
  "rszenFJoDdiGjyezQc8pME9KWDQH43Tswh-44524F5000000000000000000000000000000000": {
   "first_seen": "2026-10-24T11:16:14+00:00",
-  "last_seen": "2026-10-25T15:55:59+00:00",
+  "last_seen": "2026-10-25T16:00:58+00:00",
   "name": "DROP",
-  "pool_xrp": 127794,
+  "pool_xrp": 127687,
   "reasons": "",
   "sig": "PASS|",
   "sig_dip_bounce": "SKIP|only .% below h high (ledger spot)",
@@ -1658,7 +1658,7 @@
  },
  "rwgNTwrsZKPe7xYCy4emjFAYpgnuioHSkd-4255524E00000000000000000000000000000000": {
   "first_seen": "2026-10-24T16:57:21+00:00",
-  "last_seen": "2026-10-25T15:55:59+00:00",
+  "last_seen": "2026-10-25T16:00:58+00:00",
   "name": "BURN",
   "pool_xrp": 16823,
   "reasons": "not new and not top trending",
