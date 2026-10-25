@@ -3,7 +3,7 @@
 Log-only experiment: no wallet, no keys, no orders. Every number below is simulated from public data.
 Data by <a href="https://xrpl.to">xrpl.to</a> (token discovery); safety checks and prices from the public XRP Ledger.
 
-Last run: **2026-10-25T17:17:35+00:00** (UTC) · XRP/USD 1.3044 (bitstamp) · last discovery 2026-10-25T17:17:35+00:00 (UTC, every run, API key) · xrpl.to credits used by last discovery: 4
+Last run: **2026-10-25T17:18:12+00:00** (UTC) · XRP/USD 1.3043 (bitstamp) · last discovery 2026-10-25T17:18:12+00:00 (UTC, every run, API key) · xrpl.to credits used by last discovery: 4
 
 ## Bankrolls — scoreboard is USD/RLUSD (each strategy has its own $100, $10 per trade)
 
@@ -11,11 +11,11 @@ Last run: **2026-10-25T17:17:35+00:00** (UTC) · XRP/USD 1.3044 (bitstamp) · la
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | hold | ½ at +100%, stop −50%, 72h | 2026-10-24 11:16 | **$106.40** | **+6.40** | $0.00 | 10 / $106.40 | $+0.00 | $+6.40 | – | 10 (0) | +0.00 | +3.54 | 81.57 | +3.54 | $0.27 (0.00012) | 2.0 |
 | plus5 | all at +50%, stop −50%, 72h | 2026-10-24 11:16 | **$106.40** | **+6.40** | $0.00 | 10 / $106.40 | $+0.00 | $+6.40 | – | 10 (0) | +0.00 | +3.54 | 81.57 | +3.54 | $0.27 (0.00012) | 2.0 |
-| scalp | +20% / −10% / 60 min | 2026-10-24 11:16 | **$98.42** | **-1.58** | $98.42 | 0 / $0.00 | $-1.57 | $+0.00 | 6 / 14 (30%) | 20 (20) | -1.56 | +0.00 | 75.45 | -2.58 | $1.61 (0.01129) | 0.0 |
-| slow_scalp | new/top-15 trending, round trip ≤2%; +8% / −6% / 24h (was 6h until Oct 25) | 2026-10-24 13:37 | **$100.76** | **+0.76** | $90.75 | 1 / $10.01 | $+0.80 | $+0.01 | 8 / 11 (42%) | 20 (19) | +0.36 | -0.05 | 77.25 | -0.86 | $1.70 (0.08129) | 0.2 |
-| breakout | up ≥10% in 1h + rising volume; trailing stop 8% below high / 24h | 2026-10-24 13:37 | **$96.80** | **-3.20** | $55.72 | 4 / $41.08 | $-4.26 | $+1.08 | 1 / 4 (20%) | 9 (5) | -3.34 | +0.45 | 74.21 | -3.90 | $0.67 (0.03169) | 0.8 |
-| dip_bounce | >3 days old, ≥15% below 24h high; +10% / −10% / 24h | 2026-10-24 13:37 | **$103.08** | **+3.08** | $63.75 | 4 / $39.33 | $+3.76 | $-0.67 | 8 / 2 (80%) | 14 (10) | +1.97 | -0.69 | 79.02 | +0.92 | $1.14 (0.01428) | 0.8 |
-| *baseline: keep $100 in XRP* | buy XRP at $1.2815, hold | 2026-10-24 11:16 | **$101.79** | **+1.79** | – | – | – | – | – | – | – | – | 78.03 | +0.00 | – | – |
+| scalp | +20% / −10% / 60 min | 2026-10-24 11:16 | **$98.42** | **-1.58** | $98.42 | 0 / $0.00 | $-1.57 | $+0.00 | 6 / 14 (30%) | 20 (20) | -1.56 | +0.00 | 75.46 | -2.57 | $1.61 (0.01129) | 0.0 |
+| slow_scalp | new/top-15 trending, round trip ≤2%; +8% / −6% / 24h (was 6h until Oct 25) | 2026-10-24 13:37 | **$100.76** | **+0.76** | $90.75 | 1 / $10.01 | $+0.80 | $+0.01 | 8 / 11 (42%) | 20 (19) | +0.36 | -0.05 | 77.25 | -0.85 | $1.70 (0.08129) | 0.2 |
+| breakout | up ≥10% in 1h + rising volume; trailing stop 8% below high / 24h | 2026-10-24 13:37 | **$96.80** | **-3.20** | $55.72 | 4 / $41.08 | $-4.26 | $+1.08 | 1 / 4 (20%) | 9 (5) | -3.34 | +0.45 | 74.21 | -3.89 | $0.67 (0.03169) | 0.8 |
+| dip_bounce | >3 days old, ≥15% below 24h high; +10% / −10% / 24h | 2026-10-24 13:37 | **$103.08** | **+3.08** | $63.75 | 4 / $39.33 | $+3.76 | $-0.67 | 8 / 2 (80%) | 14 (10) | +1.97 | -0.69 | 79.03 | +0.92 | $1.14 (0.01428) | 0.8 |
+| *baseline: keep $100 in XRP* | buy XRP at $1.2815, hold | 2026-10-24 11:16 | **$101.78** | **+1.78** | – | – | – | – | – | – | – | – | 78.03 | +0.00 | – | – |
 
 **All P/L above is after fees.** Fees paid = AMM pool fee + price impact (slippage) + issuer transfer fee + XRPL network fee, as if each tx were a plain transaction signed in Xaman (network fee now 0.000020 XRP/tx = max(0.00002, live open-ledger fee 1e-05), cap 0.01). Each buy = TrustSet + swap; each exit = swap; a full exit also removes the trust line (TrustSet). TrustSet fees are charged from Oct 24 ~14:30 UTC on; earlier network fees were 0.000012 XRP per swap. Reserve locked = 0.2 XRP per open trust line: held by the ledger and returned when the line is removed, so it is not a cost. Not included: Xaman's own 0.8% service fee on swaps/DEX trades (see README).
 
