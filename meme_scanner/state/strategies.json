@@ -216,7 +216,7 @@
     "entry_spot": 1.4362143111817006e-10,
     "issuer": "r32nbPw6cyt3KdxinB4ua6WSLRrrF4SXAC",
     "key": "r32nbPw6cyt3KdxinB4ua6WSLRrrF4SXAC-4C61756768000000000000000000000000000000",
-    "last_ratio_net": 0.9868,
+    "last_ratio_net": 0.9867,
     "legs": [],
     "name": "Laugh",
     "peak_spot": 1.4611839100632655e-10,
@@ -833,7 +833,7 @@
     "entry_spot": 0.006719266742395926,
     "issuer": "rGG3wQ4kUzd7Jnmk1n5NWPZjjut62kCBfC",
     "key": "rGG3wQ4kUzd7Jnmk1n5NWPZjjut62kCBfC-41524D5900000000000000000000000000000000",
-    "last_ratio_net": 1.0174,
+    "last_ratio_net": 1.0175,
     "legs": [],
     "name": "ARMY",
     "pool_xrp_entry": 260837.745261,
@@ -1098,7 +1098,7 @@
     "entry_spot": 0.006719266742395926,
     "issuer": "rGG3wQ4kUzd7Jnmk1n5NWPZjjut62kCBfC",
     "key": "rGG3wQ4kUzd7Jnmk1n5NWPZjjut62kCBfC-41524D5900000000000000000000000000000000",
-    "last_ratio_net": 1.0174,
+    "last_ratio_net": 1.0175,
     "legs": [],
     "name": "ARMY",
     "pool_xrp_entry": 260837.745261,
@@ -1983,7 +1983,7 @@
  },
  "slow_scalp": {
   "buys_today": 10,
-  "cash_usd": 80.881671,
+  "cash_usd": 90.751668,
   "closed": [
    {
     "amm_fee": 0.00311,
@@ -2671,6 +2671,45 @@
     "warnings": [],
     "xrp_cost": 7.686808667645454,
     "xrp_usd_entry": 1.30093
+   },
+   {
+    "amm_fee": 0.00393,
+    "closed_ts": "2026-10-25T12:25:46+00:00",
+    "currency": "44524F5000000000000000000000000000000000",
+    "entry_eff_px": 3.2781427662557854,
+    "entry_spot": 3.265051063263604,
+    "issuer": "rszenFJoDdiGjyezQc8pME9KWDQH43Tswh",
+    "key": "rszenFJoDdiGjyezQc8pME9KWDQH43Tswh-44524F5000000000000000000000000000000000",
+    "last_ratio_net": 0.9922,
+    "legs": [
+     {
+      "fraction_of_buy": 1.0,
+      "pnl_usd_gross": -0.0507,
+      "pnl_usd_net": -0.13,
+      "pnl_xrp_gross": 0.001014,
+      "pnl_xrp_net": -0.060289,
+      "reason": "time limit 6h (x0.99 net)",
+      "ts": "2026-10-25T12:25:46+00:00"
+     }
+    ],
+    "name": "DROP",
+    "pnl_usd_net": -0.13,
+    "pnl_xrp_net": -0.060289,
+    "pool_xrp_entry": 124976.211403,
+    "remaining": 0.0,
+    "t": 1792909312.8759859,
+    "tf": 0.0,
+    "tokens_gross": 2.3551923503990873,
+    "tokens_net": 2.345786573732411,
+    "tp_done": false,
+    "trigger": "slow_scalp: new/top-15 trending, round trip 0.78% <= 2.0%",
+    "ts": "2026-10-25T06:21:52+00:00",
+    "usd_cost": 10.0,
+    "warnings": [
+     "only 29% of LP burned (liquidity can be pulled)"
+    ],
+    "xrp_cost": 7.689823287860846,
+    "xrp_usd_entry": 1.30042
    }
   ],
   "day": "2026-10-25",
@@ -2692,36 +2731,11 @@
    "rnHDzEH4xyW6u4LbXqDoX1uk36v5ovhbFi-4465657054696465000000000000000000000000": 1792856130.661501,
    "rnNErmg9xVmcxxNZUwivbJSH6i9GUwYPFj-434F444544000000000000000000000000000000": 1792869340.80202,
    "rpwAnF1mMZRszxdinETFHwzGQiPgsv3jHR-4245525400000000000000000000000000000000": 1792912444.3082073,
-   "rsENFmELvj92orrCKTkDTug53MzwsB7zBd-24464C4950505900000000000000000000000000": 1792870886.49039
+   "rsENFmELvj92orrCKTkDTug53MzwsB7zBd-24464C4950505900000000000000000000000000": 1792870886.49039,
+   "rszenFJoDdiGjyezQc8pME9KWDQH43Tswh-44524F5000000000000000000000000000000000": 1792931146.7011752
   },
-  "net_fees_xrp": 0.0812540000000002,
+  "net_fees_xrp": 0.08129400000000021,
   "positions": [
-   {
-    "amm_fee": 0.00393,
-    "currency": "44524F5000000000000000000000000000000000",
-    "entry_eff_px": 3.2781427662557854,
-    "entry_spot": 3.265051063263604,
-    "issuer": "rszenFJoDdiGjyezQc8pME9KWDQH43Tswh",
-    "key": "rszenFJoDdiGjyezQc8pME9KWDQH43Tswh-44524F5000000000000000000000000000000000",
-    "last_ratio_net": 0.9909,
-    "legs": [],
-    "name": "DROP",
-    "pool_xrp_entry": 124976.211403,
-    "remaining": 1.0,
-    "t": 1792909312.8759859,
-    "tf": 0.0,
-    "tokens_gross": 2.3551923503990873,
-    "tokens_net": 2.345786573732411,
-    "tp_done": false,
-    "trigger": "slow_scalp: new/top-15 trending, round trip 0.78% <= 2.0%",
-    "ts": "2026-10-25T06:21:52+00:00",
-    "usd_cost": 10.0,
-    "warnings": [
-     "only 29% of LP burned (liquidity can be pulled)"
-    ],
-    "xrp_cost": 7.689823287860846,
-    "xrp_usd_entry": 1.30042
-   },
    {
     "amm_fee": 0.00255,
     "currency": "5349474D41000000000000000000000000000000",
@@ -2750,6 +2764,6 @@
   "start_ts": "2026-10-24T13:37:52+00:00",
   "start_usd": 100.0,
   "start_xrp_usd": 1.28033,
-  "trustset_fees_xrp": 0.040560999999999986
+  "trustset_fees_xrp": 0.040580999999999985
  }
 }
