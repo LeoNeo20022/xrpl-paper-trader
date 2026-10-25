@@ -2466,7 +2466,7 @@
     "entry_spot": 7.759049110301681e-05,
     "issuer": "rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62",
     "key": "rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62-46555A5A59000000000000000000000000000000",
-    "last_ratio_net": 1.007,
+    "last_ratio_net": 0.993,
     "legs": [],
     "name": "FUZZY",
     "pool_xrp_entry": 783678.715338,
