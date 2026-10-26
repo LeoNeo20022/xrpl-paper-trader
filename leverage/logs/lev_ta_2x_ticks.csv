@@ -1,3 +1,4 @@
 ts,line,leverage,price,prices_5m,prices_1h,funding_source,trend_1h,rsi_1h,value_usd,vs_start_usd,vs_keep_xrp_usd,position,entry,stop,target,liq_price,trades,wins,longs,shorts,fees_usd,funding_usd,fees_paid_usd,liquidations,liq_margin_lost_usd,max_drawdown_pct,keep_xrp_value_usd,new_events
 2026-10-26T16:18:55+00:00,lev_ta_2x,2,1.2938,binance_spot_data_api,binance_spot_data_api,none needed,down,52.44,100.0,0.0,0.05,FLAT,,,,,0,0,0,0,0.0,0.0,0.0,0,0.0,0.0,99.95,0
 2026-10-26T16:18:56+00:00,lev_ta_2x,2,1.2938,binance_spot_data_api,binance_spot_data_api,none needed,down,52.44,100.0,0.0,0.05,FLAT,,,,,0,0,0,0,0.0,0.0,0.0,0,0.0,0.0,99.95,0
+2026-10-26T16:46:44+00:00,lev_ta_2x,2,1.2881,binance_spot_data_api,binance_spot_data_api,okx_proxy,down,52.44,100.0,0.0,0.4903,FLAT,,,,,0,0,0,0,0.0,0.0,0.0,0,0.0,0.0,99.5097,0
