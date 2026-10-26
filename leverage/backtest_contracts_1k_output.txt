@@ -1,0 +1,175 @@
+PAPER backtest, run 2026-10-26 17:57 UTC. PAPER backtest: backtest_contracts.py models at $500 and $1,000 budgets (whole contracts, US fee schedules).
+Models: Kraken $0.0113/contract/side at up to 5x, and with leverage capped at 3x and 2x (Kraken's PXRPUH margin is unverified);
+Coinbase 0.02% + $0.15/contract capped by ~$370 overnight margin per XPP contract (~57% of notional, third-party figure).
+Same data/rules/windows as backtest_contracts.py.
+
+## XRPUSDT - Last 14 days (1.41 -> 1.296, 14 days)
+
+| Budget | Line | Model | P/L after fees+funding | Per day | Worst drawdown | Trades | Win rate | Fees | Contracts (eff. lev) | Skipped | Longs: n, win%, P/L | Shorts: n, win%, P/L |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| $500 | Committee 5x get-on-base +1.5% | Kraken, up to 5x | **+130.39** | +9.31 | -96.75 (14%) | 14 | 57% | $1.29 | 3-5 (3.8x-5.0x) | 0 | 0 | 14, 57%, +123.98 |
+| $500 | Committee 5x get-on-base +1.5% | Kraken, capped 3x | **+78.34** | +5.60 | -45.40 (9%) | 14 | 57% | $0.66 | 2-2 (2.1x-2.8x) | 0 | 0 | 14, 57%, +75.13 |
+| $500 | Committee 5x get-on-base +1.5% | Kraken, capped 2x | **+39.17** | +2.80 | -22.70 (4%) | 14 | 57% | $0.33 | 1-1 (1.1x-1.4x) | 0 | 0 | 14, 57%, +37.57 |
+| $500 | Committee 5x get-on-base +1.5% | Coinbase 0.02%+$0.15, overnight-margin cap | **+31.09** | +2.22 | -23.79 (5%) | 14 | 57% | $8.14 | 1-1 (1.2x-1.4x) | 0 | 0 | 14, 57%, +30.03 |
+| $500 | Committee 2x | Kraken, up to 5x | **+19.05** | +1.36 | -32.66 (6%) | 9 | 44% | $0.21 | 1-1 (1.2x-1.4x) | 0 | 0 | 9, 44%, +17.45 |
+| $500 | Committee 2x | Coinbase 0.02%+$0.15, overnight-margin cap | **+13.67** | +0.98 | -33.75 (6%) | 9 | 44% | $5.33 | 1-1 (1.2x-1.4x) | 0 | 0 | 9, 44%, +12.60 |
+| $500 | Just hold XRP | — | **-40.60** | -2.90 | | | | | | | | |
+| $1000 | Committee 5x get-on-base +1.5% | Kraken, up to 5x | **+293.99** | +21.00 | -207.25 (14%) | 14 | 57% | $2.81 | 7-11 (4.4x-4.9x) | 0 | 0 | 14, 57%, +279.56 |
+| $1000 | Committee 5x get-on-base +1.5% | Kraken, capped 3x | **+170.24** | +12.16 | -102.55 (9%) | 14 | 57% | $1.50 | 4-5 (2.5x-2.9x) | 0 | 0 | 14, 57%, +162.23 |
+| $1000 | Committee 5x get-on-base +1.5% | Kraken, capped 2x | **+104.58** | +7.47 | -61.53 (5%) | 14 | 57% | $0.92 | 2-3 (1.3x-2.0x) | 0 | 0 | 14, 57%, +99.77 |
+| $1000 | Committee 5x get-on-base +1.5% | Coinbase 0.02%+$0.15, overnight-margin cap | **+47.85** | +3.42 | -51.12 (5%) | 14 | 57% | $17.38 | 2-3 (1.2x-1.7x) | 0 | 0 | 14, 57%, +45.72 |
+| $1000 | Committee 2x | Kraken, up to 5x | **+59.39** | +4.24 | -97.99 (9%) | 9 | 44% | $0.62 | 2-3 (1.4x-2.0x) | 0 | 0 | 9, 44%, +54.58 |
+| $1000 | Committee 2x | Coinbase 0.02%+$0.15, overnight-margin cap | **+27.33** | +1.95 | -67.49 (6%) | 9 | 44% | $10.66 | 2-2 (1.2x-1.4x) | 0 | 0 | 9, 44%, +25.20 |
+| $1000 | Just hold XRP | — | **-81.19** | -5.80 | | | | | | | | |
+
+## XRPUSDT - Last 30 days (1.568 -> 1.296, 30 days)
+
+| Budget | Line | Model | P/L after fees+funding | Per day | Worst drawdown | Trades | Win rate | Fees | Contracts (eff. lev) | Skipped | Longs: n, win%, P/L | Shorts: n, win%, P/L |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| $500 | Committee 5x get-on-base +1.5% | Kraken, up to 5x | **+218.72** | +7.29 | -110.50 (15%) | 19 | 58% | $1.93 | 3-6 (3.8x-5.0x) | 0 | 0 | 19, 58%, +210.71 |
+| $500 | Committee 5x get-on-base +1.5% | Kraken, capped 3x | **+109.60** | +3.65 | -48.97 (8%) | 19 | 58% | $0.90 | 2-3 (2.0x-2.9x) | 0 | 0 | 19, 58%, +106.40 |
+| $500 | Committee 5x get-on-base +1.5% | Kraken, capped 2x | **+58.12** | +1.94 | -22.70 (4%) | 19 | 58% | $0.44 | 1-1 (1.1x-1.4x) | 0 | 0 | 19, 58%, +56.52 |
+| $500 | Committee 5x get-on-base +1.5% | Coinbase 0.02%+$0.15, overnight-margin cap | **+47.28** | +1.58 | -25.34 (5%) | 19 | 58% | $11.02 | 1-1 (1.1x-1.4x) | 0 | 0 | 19, 58%, +46.21 |
+| $500 | Committee 2x | Kraken, up to 5x | **+15.67** | +0.52 | -47.41 (9%) | 12 | 42% | $0.28 | 1-1 (1.2x-1.4x) | 0 | 0 | 12, 42%, +14.06 |
+| $500 | Committee 2x | Coinbase 0.02%+$0.15, overnight-margin cap | **+8.61** | +0.29 | -49.07 (9%) | 12 | 42% | $7.07 | 1-1 (1.2x-1.4x) | 0 | 0 | 12, 42%, +7.55 |
+| $500 | Just hold XRP | — | **-86.95** | -2.90 | | | | | | | | |
+| $1000 | Committee 5x get-on-base +1.5% | Kraken, up to 5x | **+461.83** | +15.39 | -233.56 (15%) | 19 | 58% | $4.08 | 7-12 (4.4x-5.0x) | 0 | 0 | 19, 58%, +444.21 |
+| $1000 | Committee 5x get-on-base +1.5% | Kraken, capped 3x | **+252.43** | +8.41 | -110.50 (8%) | 19 | 58% | $2.05 | 4-6 (2.4x-3.0x) | 0 | 0 | 19, 58%, +244.42 |
+| $1000 | Committee 5x get-on-base +1.5% | Kraken, capped 2x | **+163.78** | +5.46 | -68.10 (6%) | 19 | 58% | $1.30 | 2-3 (1.4x-2.0x) | 0 | 0 | 19, 58%, +158.97 |
+| $1000 | Committee 5x get-on-base +1.5% | Coinbase 0.02%+$0.15, overnight-margin cap | **+81.96** | +2.73 | -58.42 (5%) | 19 | 58% | $24.26 | 2-3 (1.2x-1.8x) | 0 | 0 | 19, 58%, +79.83 |
+| $1000 | Committee 2x | Kraken, up to 5x | **+36.48** | +1.22 | -121.55 (11%) | 12 | 42% | $0.76 | 2-3 (1.4x-2.0x) | 0 | 0 | 12, 42%, +31.67 |
+| $1000 | Committee 2x | Coinbase 0.02%+$0.15, overnight-margin cap | **+17.23** | +0.57 | -98.14 (9%) | 12 | 42% | $14.13 | 2-2 (1.2x-1.4x) | 0 | 0 | 12, 42%, +15.10 |
+| $1000 | Just hold XRP | — | **-173.90** | -5.80 | | | | | | | | |
+
+## XRPUSDT - Last 60 days (1.422 -> 1.296, 60 days)
+
+| Budget | Line | Model | P/L after fees+funding | Per day | Worst drawdown | Trades | Win rate | Fees | Contracts (eff. lev) | Skipped | Longs: n, win%, P/L | Shorts: n, win%, P/L |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| $500 | Committee 5x get-on-base +1.5% | Kraken, up to 5x | **+233.86** | +3.90 | -110.50 (14%) | 27 | 56% | $2.52 | 3-6 (4.0x-5.0x) | 0 | 0 | 27, 56%, +225.85 |
+| $500 | Committee 5x get-on-base +1.5% | Kraken, capped 3x | **+110.75** | +1.85 | -48.97 (9%) | 27 | 56% | $1.29 | 2-3 (2.1x-3.0x) | 0 | 0 | 27, 56%, +107.54 |
+| $500 | Committee 5x get-on-base +1.5% | Kraken, capped 2x | **+62.01** | +1.03 | -22.91 (5%) | 27 | 56% | $0.62 | 1-1 (1.1x-1.4x) | 0 | 0 | 27, 56%, +60.41 |
+| $500 | Committee 5x get-on-base +1.5% | Coinbase 0.02%+$0.15, overnight-margin cap | **+46.80** | +0.78 | -26.19 (5%) | 27 | 56% | $15.56 | 1-1 (1.1x-1.4x) | 0 | 0 | 27, 56%, +45.74 |
+| $500 | Committee 2x | Kraken, up to 5x | **+24.89** | +0.41 | -47.41 (9%) | 19 | 42% | $0.44 | 1-1 (1.2x-1.4x) | 0 | 0 | 19, 42%, +23.29 |
+| $500 | Committee 2x | Coinbase 0.02%+$0.15, overnight-margin cap | **+14.02** | +0.23 | -49.07 (9%) | 19 | 42% | $11.04 | 1-1 (1.2x-1.4x) | 0 | 0 | 19, 42%, +12.96 |
+| $500 | Just hold XRP | — | **-44.51** | -0.74 | | | | | | | | |
+| $1000 | Committee 5x get-on-base +1.5% | Kraken, up to 5x | **+479.61** | +7.99 | -240.33 (16%) | 27 | 56% | $5.34 | 6-12 (4.4x-5.0x) | 0 | 0 | 27, 56%, +461.99 |
+| $1000 | Committee 5x get-on-base +1.5% | Kraken, capped 3x | **+254.25** | +4.24 | -117.26 (9%) | 27 | 56% | $2.81 | 4-6 (2.4x-3.0x) | 0 | 0 | 27, 56%, +246.24 |
+| $1000 | Committee 5x get-on-base +1.5% | Kraken, capped 2x | **+181.24** | +3.02 | -68.10 (6%) | 27 | 56% | $1.68 | 2-3 (1.3x-2.0x) | 0 | 0 | 27, 56%, +176.44 |
+| $1000 | Committee 5x get-on-base +1.5% | Coinbase 0.02%+$0.15, overnight-margin cap | **+81.01** | +1.35 | -58.42 (5%) | 27 | 56% | $33.35 | 2-3 (1.2x-1.8x) | 0 | 0 | 27, 56%, +78.88 |
+| $1000 | Committee 2x | Kraken, up to 5x | **+80.84** | +1.35 | -128.83 (11%) | 19 | 42% | $1.12 | 2-3 (1.3x-2.0x) | 0 | 0 | 19, 42%, +76.03 |
+| $1000 | Committee 2x | Coinbase 0.02%+$0.15, overnight-margin cap | **+28.05** | +0.47 | -98.14 (9%) | 19 | 42% | $22.08 | 2-2 (1.2x-1.4x) | 0 | 0 | 19, 42%, +25.92 |
+| $1000 | Just hold XRP | — | **-89.01** | -1.48 | | | | | | | | |
+
+## XRPUSDT - Oct 2024 - Mar 2025 (0.5243 -> 2.09, 173 days)
+
+| Budget | Line | Model | P/L after fees+funding | Per day | Worst drawdown | Trades | Win rate | Fees | Contracts (eff. lev) | Skipped | Longs: n, win%, P/L | Shorts: n, win%, P/L |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| $500 | Committee 5x get-on-base +1.5% | Kraken, up to 5x | **-103.29** | -0.60 | -193.29 (35%) | 34 | 35% | $3.95 | 1-10 (2.5x-5.0x) | 0 | 5, 20%, -38.87 | 29, 38%, -64.41 |
+| $500 | Committee 5x get-on-base +1.5% | Kraken, capped 3x | **-26.54** | -0.15 | -101.01 (19%) | 30 | 37% | $2.31 | 1-6 (2.1x-3.0x) | 22 | 1, 0%, -14.33 | 29, 38%, -12.21 |
+| $500 | Committee 5x get-on-base +1.5% | Kraken, capped 2x | **-16.60** | -0.10 | -32.83 (6%) | 17 | 35% | $1.22 | 3-4 (1.5x-2.0x) | 63 | 0 | 17, 35%, -16.60 |
+| $500 | Committee 5x get-on-base +1.5% | Coinbase 0.02%+$0.15, overnight-margin cap | **-28.17** | -0.16 | -34.75 (7%) | 17 | 35% | $20.56 | 3-3 (1.5x-1.7x) | 63 | 0 | 17, 35%, -28.17 |
+| $500 | Committee 2x | Kraken, up to 5x | **-13.43** | -0.08 | -32.41 (6%) | 17 | 35% | $1.22 | 3-4 (1.5x-2.0x) | 63 | 0 | 17, 35%, -13.43 |
+| $500 | Committee 2x | Coinbase 0.02%+$0.15, overnight-margin cap | **-24.43** | -0.14 | -34.10 (7%) | 17 | 35% | $20.56 | 3-3 (1.5x-1.6x) | 63 | 0 | 17, 35%, -24.43 |
+| $500 | Just hold XRP | — | **+1492.18** | +8.63 | | | | | | | | |
+| $1000 | Committee 5x get-on-base +1.5% | Kraken, up to 5x | **-191.15** | -1.10 | -406.99 (37%) | 34 | 35% | $8.34 | 2-21 (3.4x-5.0x) | 0 | 5, 20%, -77.75 | 29, 38%, -113.40 |
+| $1000 | Committee 5x get-on-base +1.5% | Kraken, capped 3x | **-62.31** | -0.36 | -233.24 (22%) | 34 | 35% | $4.90 | 1-12 (1.5x-3.0x) | 0 | 5, 20%, -38.87 | 29, 38%, -23.43 |
+| $1000 | Committee 5x get-on-base +1.5% | Kraken, capped 2x | **-54.50** | -0.32 | -145.51 (14%) | 34 | 35% | $3.14 | 1-8 (1.0x-1.9x) | 0 | 5, 20%, -38.87 | 29, 38%, -15.62 |
+| $1000 | Committee 5x get-on-base +1.5% | Coinbase 0.02%+$0.15, overnight-margin cap | **-101.60** | -0.59 | -152.24 (15%) | 34 | 35% | $55.39 | 1-7 (1.1x-1.7x) | 0 | 5, 20%, -43.05 | 29, 38%, -58.56 |
+| $1000 | Committee 2x | Kraken, up to 5x | **-140.52** | -0.81 | -305.36 (29%) | 29 | 31% | $3.07 | 1-8 (1.0x-2.0x) | 0 | 2, 0%, -74.14 | 27, 33%, -66.38 |
+| $1000 | Committee 2x | Coinbase 0.02%+$0.15, overnight-margin cap | **-228.55** | -1.32 | -321.07 (32%) | 28 | 29% | $50.78 | 1-7 (1.1x-1.8x) | 4 | 2, 0%, -75.79 | 26, 31%, -152.76 |
+| $1000 | Just hold XRP | — | **+2984.35** | +17.25 | | | | | | | | |
+
+## BTCUSDT - Last 14 days (8.372e+04 -> 8.011e+04, 14 days)
+
+| Budget | Line | Model | P/L after fees+funding | Per day | Worst drawdown | Trades | Win rate | Fees | Contracts (eff. lev) | Skipped | Longs: n, win%, P/L | Shorts: n, win%, P/L |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| $500 | Committee 5x get-on-base +1.5% | Kraken, up to 5x | **-24.99** | -1.78 | -72.49 (14%) | 7 | 29% | $0.36 | 2-3 (3.4x-4.9x) | 0 | 1, 0%, -13.89 | 6, 33%, -25.28 |
+| $500 | Committee 5x get-on-base +1.5% | Kraken, capped 3x | **-9.00** | -0.64 | -30.42 (6%) | 7 | 29% | $0.17 | 1-1 (1.6x-1.7x) | 0 | 1, 0%, -6.95 | 6, 33%, -9.14 |
+| $500 | Committee 5x get-on-base +1.5% | Kraken, capped 2x | **-9.00** | -0.64 | -30.42 (6%) | 7 | 29% | $0.17 | 1-1 (1.6x-1.7x) | 0 | 1, 0%, -6.95 | 6, 33%, -9.14 |
+| $500 | Committee 5x get-on-base +1.5% | Coinbase 0.02%+$0.15, overnight-margin cap | **-13.83** | -0.99 | -33.46 (7%) | 7 | 29% | $4.71 | 1-1 (1.6x-1.8x) | 0 | 1, 0%, -7.56 | 6, 33%, -12.77 |
+| $500 | Committee 2x | Kraken, up to 5x | **-3.93** | -0.28 | -30.42 (6%) | 10 | 40% | $0.23 | 1-1 (1.6x-1.7x) | 0 | 1, 0%, -6.95 | 9, 44%, +3.02 |
+| $500 | Committee 2x | Coinbase 0.02%+$0.15, overnight-margin cap | **-9.96** | -0.71 | -33.46 (7%) | 10 | 40% | $6.26 | 1-1 (1.6x-1.8x) | 0 | 1, 0%, -7.56 | 9, 44%, -2.39 |
+| $500 | Just hold BTC | — | **-21.79** | -1.56 | | | | | | | | |
+| $1000 | Committee 5x get-on-base +1.5% | Kraken, up to 5x | **-51.98** | -3.71 | -163.75 (16%) | 7 | 29% | $0.87 | 5-6 (4.3x-4.9x) | 0 | 1, 0%, -34.74 | 6, 33%, -52.70 |
+| $1000 | Committee 5x get-on-base +1.5% | Kraken, capped 3x | **-26.99** | -1.93 | -91.26 (9%) | 7 | 29% | $0.51 | 3-3 (2.4x-2.7x) | 0 | 1, 0%, -20.84 | 6, 33%, -27.42 |
+| $1000 | Committee 5x get-on-base +1.5% | Kraken, capped 2x | **-17.99** | -1.29 | -60.84 (6%) | 7 | 29% | $0.34 | 2-2 (1.6x-1.7x) | 0 | 1, 0%, -13.89 | 6, 33%, -18.28 |
+| $1000 | Committee 5x get-on-base +1.5% | Coinbase 0.02%+$0.15, overnight-margin cap | **-27.67** | -1.98 | -66.92 (7%) | 7 | 29% | $9.42 | 2-2 (1.6x-1.8x) | 0 | 1, 0%, -15.12 | 6, 33%, -25.53 |
+| $1000 | Committee 2x | Kraken, up to 5x | **-7.85** | -0.56 | -60.84 (6%) | 10 | 40% | $0.45 | 2-2 (1.6x-1.7x) | 0 | 1, 0%, -13.89 | 9, 44%, +6.04 |
+| $1000 | Committee 2x | Coinbase 0.02%+$0.15, overnight-margin cap | **-19.91** | -1.42 | -66.92 (7%) | 10 | 40% | $12.51 | 2-2 (1.6x-1.8x) | 0 | 1, 0%, -15.12 | 9, 44%, -4.79 |
+| $1000 | Just hold BTC | — | **-43.58** | -3.11 | | | | | | | | |
+
+## BTCUSDT - Last 30 days (8.406e+04 -> 8.011e+04, 30 days)
+
+| Budget | Line | Model | P/L after fees+funding | Per day | Worst drawdown | Trades | Win rate | Fees | Contracts (eff. lev) | Skipped | Longs: n, win%, P/L | Shorts: n, win%, P/L |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| $500 | Committee 5x get-on-base +1.5% | Kraken, up to 5x | **-31.09** | -1.04 | -89.53 (17%) | 10 | 30% | $0.50 | 2-3 (3.3x-4.9x) | 0 | 4, 25%, -27.00 | 6, 33%, -18.28 |
+| $500 | Committee 5x get-on-base +1.5% | Kraken, capped 3x | **-11.02** | -0.37 | -41.29 (8%) | 10 | 30% | $0.24 | 1-1 (1.6x-1.8x) | 0 | 4, 25%, -8.97 | 6, 33%, -9.14 |
+| $500 | Committee 5x get-on-base +1.5% | Kraken, capped 2x | **-11.02** | -0.37 | -41.29 (8%) | 10 | 30% | $0.24 | 1-1 (1.6x-1.8x) | 0 | 4, 25%, -8.97 | 6, 33%, -9.14 |
+| $500 | Committee 5x get-on-base +1.5% | Coinbase 0.02%+$0.15, overnight-margin cap | **-10.15** | -0.34 | -38.13 (7%) | 9 | 33% | $5.99 | 1-1 (1.6x-1.7x) | 2 | 3, 33%, -3.88 | 6, 33%, -12.77 |
+| $500 | Committee 2x | Kraken, up to 5x | **+14.59** | +0.49 | -30.42 (6%) | 13 | 46% | $0.29 | 1-1 (1.5x-1.7x) | 0 | 4, 50%, +11.57 | 9, 44%, +3.02 |
+| $500 | Committee 2x | Coinbase 0.02%+$0.15, overnight-margin cap | **+6.70** | +0.22 | -33.46 (6%) | 13 | 46% | $8.18 | 1-1 (1.5x-1.7x) | 0 | 4, 50%, +9.10 | 9, 44%, -2.39 |
+| $500 | Just hold BTC | — | **-23.69** | -0.79 | | | | | | | | |
+| $1000 | Committee 5x get-on-base +1.5% | Kraken, up to 5x | **-71.15** | -2.37 | -217.25 (20%) | 10 | 30% | $1.23 | 5-6 (4.2x-5.0x) | 0 | 4, 25%, -53.91 | 6, 33%, -52.70 |
+| $1000 | Committee 5x get-on-base +1.5% | Kraken, capped 3x | **-33.06** | -1.10 | -123.88 (12%) | 10 | 30% | $0.71 | 3-3 (2.5x-2.7x) | 0 | 4, 25%, -26.91 | 6, 33%, -27.42 |
+| $1000 | Committee 5x get-on-base +1.5% | Kraken, capped 2x | **-22.04** | -0.73 | -82.59 (8%) | 10 | 30% | $0.47 | 2-2 (1.6x-1.8x) | 0 | 4, 25%, -17.94 | 6, 33%, -18.28 |
+| $1000 | Committee 5x get-on-base +1.5% | Coinbase 0.02%+$0.15, overnight-margin cap | **-27.86** | -0.93 | -82.67 (8%) | 10 | 30% | $12.62 | 1-2 (0.9x-1.7x) | 0 | 4, 25%, -15.31 | 6, 33%, -25.53 |
+| $1000 | Committee 2x | Kraken, up to 5x | **+29.17** | +0.97 | -60.84 (6%) | 13 | 46% | $0.59 | 2-2 (1.5x-1.7x) | 0 | 4, 50%, +23.13 | 9, 44%, +6.04 |
+| $1000 | Committee 2x | Coinbase 0.02%+$0.15, overnight-margin cap | **+13.40** | +0.45 | -66.92 (6%) | 13 | 46% | $16.36 | 2-2 (1.5x-1.7x) | 0 | 4, 50%, +18.19 | 9, 44%, -4.79 |
+| $1000 | Just hold BTC | — | **-47.37** | -1.58 | | | | | | | | |
+
+## BTCUSDT - Last 60 days (7.899e+04 -> 8.011e+04, 60 days)
+
+| Budget | Line | Model | P/L after fees+funding | Per day | Worst drawdown | Trades | Win rate | Fees | Contracts (eff. lev) | Skipped | Longs: n, win%, P/L | Shorts: n, win%, P/L |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| $500 | Committee 5x get-on-base +1.5% | Kraken, up to 5x | **-143.28** | -2.39 | -215.51 (40%) | 26 | 27% | $1.29 | 2-3 (3.5x-5.0x) | 0 | 14, 21%, -97.39 | 12, 33%, -60.07 |
+| $500 | Committee 5x get-on-base +1.5% | Kraken, capped 3x | **-66.31** | -1.11 | -95.98 (19%) | 26 | 27% | $0.60 | 1-1 (1.6x-2.0x) | 0 | 14, 21%, -46.77 | 12, 33%, -26.64 |
+| $500 | Committee 5x get-on-base +1.5% | Kraken, capped 2x | **-66.31** | -1.11 | -95.98 (19%) | 26 | 27% | $0.60 | 1-1 (1.6x-2.0x) | 0 | 14, 21%, -46.77 | 12, 33%, -26.64 |
+| $500 | Committee 5x get-on-base +1.5% | Coinbase 0.02%+$0.15, overnight-margin cap | **-50.61** | -0.84 | -66.12 (13%) | 12 | 25% | $7.38 | 1-1 (1.6x-1.7x) | 99 | 6, 17%, -29.58 | 6, 33%, -21.03 |
+| $500 | Committee 2x | Kraken, up to 5x | **-16.92** | -0.28 | -61.78 (12%) | 30 | 40% | $0.68 | 1-1 (1.5x-1.8x) | 0 | 15, 33%, -12.58 | 15, 47%, -4.34 |
+| $500 | Committee 2x | Coinbase 0.02%+$0.15, overnight-margin cap | **-52.01** | -0.87 | -67.48 (13%) | 14 | 29% | $8.62 | 1-1 (1.6x-1.8x) | 88 | 7, 14%, -34.90 | 7, 43%, -17.11 |
+| $500 | Just hold BTC | — | **+6.87** | +0.11 | | | | | | | | |
+| $1000 | Committee 5x get-on-base +1.5% | Kraken, up to 5x | **-340.80** | -5.68 | -463.04 (43%) | 26 | 27% | $2.66 | 3-6 (3.8x-4.9x) | 0 | 14, 21%, -209.99 | 12, 33%, -152.09 |
+| $1000 | Committee 5x get-on-base +1.5% | Kraken, capped 3x | **-203.97** | -3.40 | -276.20 (27%) | 26 | 27% | $1.60 | 2-3 (2.0x-3.0x) | 0 | 14, 21%, -140.38 | 12, 33%, -77.77 |
+| $1000 | Committee 5x get-on-base +1.5% | Kraken, capped 2x | **-132.62** | -2.21 | -191.96 (19%) | 26 | 27% | $1.20 | 2-2 (1.6x-2.0x) | 0 | 14, 21%, -93.53 | 12, 33%, -53.27 |
+| $1000 | Committee 5x get-on-base +1.5% | Coinbase 0.02%+$0.15, overnight-margin cap | **-133.16** | -2.22 | -172.14 (17%) | 26 | 27% | $23.92 | 1-2 (0.9x-1.7x) | 0 | 14, 21%, -84.83 | 12, 33%, -54.82 |
+| $1000 | Committee 2x | Kraken, up to 5x | **-33.84** | -0.56 | -123.57 (12%) | 30 | 40% | $1.36 | 2-2 (1.5x-1.8x) | 0 | 15, 33%, -25.16 | 15, 47%, -8.69 |
+| $1000 | Committee 2x | Coinbase 0.02%+$0.15, overnight-margin cap | **-94.57** | -1.58 | -138.75 (13%) | 30 | 40% | $27.96 | 1-2 (0.9x-1.8x) | 0 | 15, 33%, -56.57 | 15, 47%, -38.00 |
+| $1000 | Just hold BTC | — | **+13.73** | +0.23 | | | | | | | | |
+
+## BTCUSDT - Oct 2024 - Mar 2025 (6.061e+04 -> 8.252e+04, 173 days)
+
+| Budget | Line | Model | P/L after fees+funding | Per day | Worst drawdown | Trades | Win rate | Fees | Contracts (eff. lev) | Skipped | Longs: n, win%, P/L | Shorts: n, win%, P/L |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| $500 | Committee 5x get-on-base +1.5% | Kraken, up to 5x | **-77.35** | -0.45 | -200.81 (32%) | 58 | 38% | $3.12 | 2-4 (3.4x-5.0x) | 0 | 24, 46%, +54.67 | 34, 32%, -132.02 |
+| $500 | Committee 5x get-on-base +1.5% | Kraken, capped 3x | **-6.14** | -0.04 | -89.84 (15%) | 58 | 38% | $1.67 | 1-2 (1.5x-3.0x) | 0 | 24, 46%, +59.18 | 34, 32%, -65.32 |
+| $500 | Committee 5x get-on-base +1.5% | Kraken, capped 2x | **-48.59** | -0.28 | -91.86 (17%) | 44 | 36% | $0.99 | 1-1 (1.2x-2.0x) | 101 | 19, 53%, +32.18 | 25, 24%, -80.77 |
+| $500 | Committee 5x get-on-base +1.5% | Coinbase 0.02%+$0.15, overnight-margin cap | **-16.24** | -0.09 | -63.85 (12%) | 30 | 40% | $18.14 | 1-1 (1.2x-1.7x) | 183 | 15, 53%, +28.65 | 15, 27%, -44.89 |
+| $500 | Committee 2x | Kraken, up to 5x | **-10.67** | -0.06 | -86.14 (15%) | 52 | 37% | $1.18 | 1-1 (1.2x-2.0x) | 6 | 19, 53%, +54.36 | 33, 27%, -65.03 |
+| $500 | Committee 2x | Coinbase 0.02%+$0.15, overnight-margin cap | **-5.03** | -0.03 | -72.81 (13%) | 29 | 38% | $17.65 | 1-1 (1.2x-1.8x) | 180 | 13, 62%, +54.75 | 16, 19%, -59.78 |
+| $500 | Just hold BTC | — | **+180.43** | +1.04 | | | | | | | | |
+| $1000 | Committee 5x get-on-base +1.5% | Kraken, up to 5x | **-213.04** | -1.23 | -481.94 (38%) | 58 | 38% | $6.87 | 4-8 (4.0x-5.0x) | 0 | 24, 46%, +140.05 | 34, 32%, -353.09 |
+| $1000 | Committee 5x get-on-base +1.5% | Kraken, capped 3x | **-79.64** | -0.46 | -249.88 (21%) | 58 | 38% | $4.16 | 2-4 (2.0x-3.0x) | 0 | 24, 46%, +93.90 | 34, 32%, -173.54 |
+| $1000 | Committee 5x get-on-base +1.5% | Kraken, capped 2x | **-94.78** | -0.55 | -164.01 (15%) | 58 | 38% | $2.35 | 1-3 (1.0x-2.0x) | 0 | 24, 46%, +33.62 | 34, 32%, -128.40 |
+| $1000 | Committee 5x get-on-base +1.5% | Coinbase 0.02%+$0.15, overnight-margin cap | **-79.24** | -0.46 | -145.72 (14%) | 58 | 36% | $51.71 | 1-2 (0.9x-1.7x) | 0 | 24, 42%, +37.36 | 34, 32%, -116.60 |
+| $1000 | Committee 2x | Kraken, up to 5x | **-113.27** | -0.65 | -192.91 (18%) | 54 | 35% | $2.21 | 1-3 (1.0x-2.0x) | 0 | 21, 48%, +71.41 | 33, 27%, -184.68 |
+| $1000 | Committee 2x | Coinbase 0.02%+$0.15, overnight-margin cap | **-53.95** | -0.31 | -169.02 (15%) | 54 | 33% | $49.90 | 1-2 (0.9x-1.8x) | 0 | 21, 43%, +66.08 | 33, 27%, -120.02 |
+| $1000 | Just hold BTC | — | **+360.85** | +2.09 | | | | | | | | |
+
+## Totals: 4 windows per coin (overlapping) and 8-window total
+
+| Budget | Line | Model | XRP 4-window | BTC 4-window | 8-window |
+|---|---|---|---|---|---|
+| $500 | Committee 2x | Coinbase 0.02%+$0.15, overnight-margin cap | +11.88 | -60.30 | -48.42 |
+| $500 | Committee 2x | Kraken, up to 5x | +46.18 | -16.93 | +29.26 |
+| $500 | Committee 5x get-on-base +1.5% | Coinbase 0.02%+$0.15, overnight-margin cap | +97.00 | -90.84 | +6.16 |
+| $500 | Committee 5x get-on-base +1.5% | Kraken, capped 2x | +142.70 | -134.91 | +7.79 |
+| $500 | Committee 5x get-on-base +1.5% | Kraken, capped 3x | +272.15 | -92.47 | +179.68 |
+| $500 | Committee 5x get-on-base +1.5% | Kraken, up to 5x | +479.69 | -276.71 | +202.98 |
+| $1000 | Committee 2x | Coinbase 0.02%+$0.15, overnight-margin cap | -155.94 | -155.03 | -310.97 |
+| $1000 | Committee 2x | Kraken, up to 5x | +36.18 | -125.79 | -89.61 |
+| $1000 | Committee 5x get-on-base +1.5% | Coinbase 0.02%+$0.15, overnight-margin cap | +109.21 | -267.92 | -158.71 |
+| $1000 | Committee 5x get-on-base +1.5% | Kraken, capped 2x | +395.11 | -267.43 | +127.68 |
+| $1000 | Committee 5x get-on-base +1.5% | Kraken, capped 3x | +614.61 | -343.65 | +270.96 |
+| $1000 | Committee 5x get-on-base +1.5% | Kraken, up to 5x | +1044.28 | -676.96 | +367.32 |
+| $500 | Just hold | — | +1320.12 | +141.82 | +1461.94 |
+| $1000 | Just hold | — | +2640.24 | +283.63 | +2923.88 |

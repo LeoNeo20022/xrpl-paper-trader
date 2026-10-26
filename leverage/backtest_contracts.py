@@ -40,7 +40,7 @@ def fee(n, notional):
 def open_pos(st, cfg, side, px, atr, ts, why):
     if MODEL["fee"] is None: return _orig[0](st, cfg, side, px, atr, ts, why)
     slip = cfg["slippage_pct"] / 100; fill = px * (1 + slip) if side == "LONG" else px * (1 - slip)
-    lev = cfg["leverage"]; M0 = st["cash"]; cs = MODEL["csize"]
+    lev = min(cfg["leverage"], MODEL["fee"].get("lev_cap", 99)); M0 = st["cash"]; cs = MODEL["csize"]
     n = int(M0 * lev // (fill * cs))
     if MODEL["fee"].get("margin_pct"): n = min(n, int(M0 // (fill * cs * MODEL["fee"]["margin_pct"] / 100)))
     while n > 0 and fee(n, n * cs * fill) >= M0: n -= 1
