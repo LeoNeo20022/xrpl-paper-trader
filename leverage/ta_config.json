@@ -1,0 +1,13 @@
+{
+  "_note": "PAPER ONLY leverage_ta line. Modelled on Binance USDⓈ-M XRPUSDT perps, isolated margin, long AND short. No keys, no logins, no orders. Parameters fixed up front (textbook defaults), not tuned on the backtest.",
+  "baseline_cost_pct": 0.05,
+  "variants": {
+    "lev_ta_2x": {"label": "TA trend-pullback long/short, 2x (paper perp)", "leverage": 2},
+    "lev_ta_5x": {"label": "TA trend-pullback long/short, 5x (paper perp)", "leverage": 5}
+  },
+  "common": {
+    "budget_usd": 100, "ema_fast": 50, "ema_slow": 200, "rsi_len": 14, "rsi_long_below": 40, "rsi_short_above": 60,
+    "macd": [12, 26, 9], "atr_len": 14, "stop_atr": 1.5, "target_atr": 3.0,
+    "maker_pct": 0.02, "taker_pct": 0.05, "slippage_pct": 0.05, "trigger_pct": 0.05, "mmr_pct": 0.5
+  }
+}
