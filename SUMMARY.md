@@ -5,21 +5,21 @@
 **Scoreboard: value in RLUSD/USD**, XRP-equivalent second. Each strategy has its own **$100** (paper total **$300**) and is compared with **keep $100 in XRP** (bought at the start).
 
 - Started: **2026-10-20T08:43:56+00:00** at XRPL mid **$1.2948**
-- Last update: **2026-10-26T03:42:27+00:00**, XRPL XRP/RLUSD mid **$1.2807** (bid 1.2801 / ask 1.2814, node https://xrplcluster.com, ledger 107907114)
+- Last update: **2026-10-26T03:57:27+00:00**, XRPL XRP/RLUSD mid **$1.2744** (bid 1.2737 / ask 1.2751, node https://xrplcluster.com, ledger 107907339)
 - RLUSD issuer transfer fee (live): 0.0000%  |  candles processed this run: 3
 
 | Strategy | Start | **Value (RLUSD/USD)** | Change vs start | **vs keep $100 in XRP** | XRP held | RLUSD | XRP-equivalent* | vs XRP baseline (XRP-eq.) | Fills | XRP sells (taxable) | Fees paid USD (network XRP) | Reserve locked XRP |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| Weekly dip-buy ladder, never sells (`dip_ladder`) | $100 | **$100.15** | +0.15 | **+1.29** (+1.30%) | 17.5119 | $77.72 | 78.1667 | +1.26% | 2 | 0 | $0.00 (0.00014) | 2.2 |
-| Static 2% scalp ladder, all profit kept as XRP (`scalp_2pct`) | $100 | **$100.14** | +0.14 | **+1.28** (+1.30%) | 3.3479 | $95.85 | 78.1553 | +1.25% | 3 | 1 | $0.00 (0.00026) | 3.2 |
-| Static 2% scalp ladder, profit banked in RLUSD (variant) (`scalp_2pct_rlusd`) | $100 | **$100.14** | +0.14 | **+1.28** (+1.30%) | 3.1997 | $96.05 | 78.1568 | +1.25% | 3 | 1 | $0.00 (0.00026) | 3.2 |
-| **Experiment total** (all 3) | $300 | **$300.43** | +0.43 | **+3.85** (+1.30%) | 24.0595 | $269.62 | 234.4788 | +1.25% | | | $0.01 (0.00066) | 8.6 |
-| **Baseline: keep $100 in XRP** (bought at start) | $100 | $98.86 | -1.14 | — | 77.1917 | $0.00 | 77.1917 | — | 1 | 0 | $0.05 | — |
-| Baseline for the total: keep $300 in XRP | $300 | $296.58 | -3.42 | — | 231.5750 | $0.00 | 231.5750 | — | | | | |
+| Weekly dip-buy ladder, never sells (`dip_ladder`) | $100 | **$100.04** | +0.04 | **+1.66** (+1.69%) | 17.5119 | $77.72 | 78.4670 | +1.65% | 2 | 0 | $0.00 (0.00014) | 2.2 |
+| Static 2% scalp ladder, all profit kept as XRP (`scalp_2pct`) | $100 | **$100.12** | +0.12 | **+1.75** (+1.78%) | 3.3479 | $95.85 | 78.5257 | +1.73% | 3 | 1 | $0.00 (0.00026) | 3.2 |
+| Static 2% scalp ladder, profit banked in RLUSD (variant) (`scalp_2pct_rlusd`) | $100 | **$100.12** | +0.12 | **+1.75** (+1.78%) | 3.1997 | $96.05 | 78.5279 | +1.73% | 3 | 1 | $0.00 (0.00026) | 3.2 |
+| **Experiment total** (all 3) | $300 | **$300.28** | +0.28 | **+5.16** (+1.75%) | 24.0595 | $269.62 | 235.5206 | +1.70% | | | $0.01 (0.00066) | 8.6 |
+| **Baseline: keep $100 in XRP** (bought at start) | $100 | $98.37 | -1.63 | — | 77.1917 | $0.00 | 77.1917 | — | 1 | 0 | $0.05 | — |
+| Baseline for the total: keep $300 in XRP | $300 | $295.12 | -4.88 | — | 231.5750 | $0.00 | 231.5750 | — | | | | |
 
 _History replayed on 2026-10-24 from Bitstamp 5-min candles after bad XRPL book data was removed, then re-sized to $100 per strategy (earlier versions archived under `*/archive_phantom_2026-10-24/` and `*/archive_resize_2026-10-24/`)._
 
-**Experiment ($300) vs keep $300 in XRP: +3.85 USD (+1.30%)** · XRP-equivalent: +1.25%
+**Experiment ($300) vs keep $300 in XRP: +5.16 USD (+1.75%)** · XRP-equivalent: +1.70%
 
 \* Value = XRP held × current mid + RLUSD. XRP-equivalent = XRP held + RLUSD converted at the current mid with a 0.05% taker cost. XRP held includes the XRP locked as ledger reserve (it is still yours).
 
@@ -36,9 +36,9 @@ _History replayed on 2026-10-24 from Bitstamp 5-min candles after bad XRPL book 
 
 | Line | Step | **XRP held** | **vs keep $100 in XRP (XRP)** | XRP-equivalent* vs holding | Value (RLUSD/USD) | vs keep $100 in XRP (USD) | Round trips | Forced rebuys | RLUSD parked |
 |---|---|---|---|---|---|---|---|---|---|
-| `xrp_stacker` | 4% | **77.5841** | **+0.3924** (+0.51%) | +0.51% | $99.36 | +0.50 | 1 | 0 | $0.00 |
-| `xrp_stacker_6pct` | 6% | **77.8086** | **+0.6169** (+0.80%) | +0.80% | $99.65 | +0.79 | 1 | 0 | $0.00 |
-| Baseline: keep $100 in XRP | — | 77.1917 | — | — | $98.86 | — | | | |
+| `xrp_stacker` | 4% | **77.5841** | **+0.3924** (+0.51%) | +0.51% | $98.87 | +0.50 | 1 | 0 | $0.00 |
+| `xrp_stacker_6pct` | 6% | **77.8086** | **+0.6169** (+0.80%) | +0.80% | $99.16 | +0.79 | 1 | 0 | $0.00 |
+| Baseline: keep $100 in XRP | — | 77.1917 | — | — | $98.37 | — | | | |
 
 ## Separate line: XRP stacker, 4% steps (`xrp_stacker`, PAPER-NOT-ON-LEDGER) — scoreboard is XRP COUNT
 
@@ -46,8 +46,8 @@ XRP stacker: sell slices high, buy back lower with all the RLUSD (goal: more XRP
 
 | | **XRP held** | vs start XRP | RLUSD parked (waiting to rebuy) | XRP-equivalent* | Value (RLUSD/USD) | vs keep $100 in XRP (USD) | Round trips | XRP gained from trips | Forced rebuys (XRP lost) | Fees paid USD (network XRP) | Reserve locked XRP |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| `xrp_stacker` | **77.5841** | **+0.3924** (+0.51%) | $0.00 | 77.5841 (+0.51%) | $99.36 | +0.50 | 1 | +0.3925 | 0 (+0.0000) | $0.13 (0.00014) | 2.0 |
-| Baseline: keep $100 in XRP | 77.1917 | +0.0000 | $0.00 | 77.1917 | $98.86 | — | | | | | |
+| `xrp_stacker` | **77.5841** | **+0.3924** (+0.51%) | $0.00 | 77.5841 (+0.51%) | $98.87 | +0.50 | 1 | +0.3925 | 0 (+0.0000) | $0.13 (0.00014) | 2.0 |
+| Baseline: keep $100 in XRP | 77.1917 | +0.0000 | $0.00 | 77.1917 | $98.37 | — | | | | | |
 
 - Rules: 4 sell slices of 15% of the sellable stack at +4% steps above the reference; each sold slice rebuys with ALL its RLUSD one step (4%) lower, so each round trip ends with more XRP. No RLUSD profit is banked. Cost 0.25% per fill (AMM 0.205% + slippage) + network fee. Ladder trails down when nothing is parked and price is 4% below the reference. A slice parked over 14 days is bought back at market (can lose XRP).
 - Orders now (reference 1.294829): sell 1.3466 sell 1.4005 sell 1.4565 sell 1.5148
@@ -59,8 +59,8 @@ XRP stacker 6% steps (side-by-side test): sell slices high, buy back 6% lower wi
 
 | | **XRP held** | vs start XRP | RLUSD parked (waiting to rebuy) | XRP-equivalent* | Value (RLUSD/USD) | vs keep $100 in XRP (USD) | Round trips | XRP gained from trips | Forced rebuys (XRP lost) | Fees paid USD (network XRP) | Reserve locked XRP |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| `xrp_stacker_6pct` | **77.8086** | **+0.6169** (+0.80%) | $0.00 | 77.8086 (+0.80%) | $99.65 | +0.79 | 1 | +0.6170 | 0 (+0.0000) | $0.13 (0.00014) | 2.0 |
-| Baseline: keep $100 in XRP | 77.1917 | +0.0000 | $0.00 | 77.1917 | $98.86 | — | | | | | |
+| `xrp_stacker_6pct` | **77.8086** | **+0.6169** (+0.80%) | $0.00 | 77.8086 (+0.80%) | $99.16 | +0.79 | 1 | +0.6170 | 0 (+0.0000) | $0.13 (0.00014) | 2.0 |
+| Baseline: keep $100 in XRP | 77.1917 | +0.0000 | $0.00 | 77.1917 | $98.37 | — | | | | | |
 
 - Rules: 4 sell slices of 15% of the sellable stack at +6% steps above the reference; each sold slice rebuys with ALL its RLUSD one step (6%) lower, so each round trip ends with more XRP. No RLUSD profit is banked. Cost 0.25% per fill (AMM 0.205% + slippage) + network fee. Ladder trails down when nothing is parked and price is 6% below the reference. A slice parked over 14 days is bought back at market (can lose XRP).
 - Orders now (reference 1.294829): sell 1.3725 sell 1.4549 sell 1.5422 sell 1.6347
@@ -72,12 +72,12 @@ $100 deposited 50/50 into the XRP/RLUSD AMM pool on 2026-10-20T08:43:56+00:00 at
 
 | | **Value (RLUSD/USD)** | Change vs $100 | XRP | RLUSD | XRP-equivalent* |
 |---|---|---|---|---|---|
-| AMM LP position now (fees included) | **$99.48** | -0.52 | 38.8430 | $49.74 | 77.6597 |
-| Hold the same 50/50 (no pool) | $99.43 | -0.57 | 38.5793 | $50.02 | 77.6182 |
-| Baseline: keep $100 in XRP | $98.86 | -1.14 | 77.1917 | $0.00 | 77.1917 |
+| AMM LP position now (fees included) | **$99.24** | -0.76 | 38.9295 | $49.63 | 77.8519 |
+| Hold the same 50/50 (no pool) | $99.19 | -0.81 | 38.5793 | $50.02 | 77.8115 |
+| Baseline: keep $100 in XRP | $98.37 | -1.63 | 77.1917 | $0.00 | 77.1917 |
 
-- LP vs hold-50/50: **+0.053%** = impermanent loss -0.002% + fees earned ≈ +0.055% (pool fee 0.214%, pool share 0.002101%)
-- LP vs keep $100 in XRP: **+0.62 USD** · XRP-equivalent: +0.61%
+- LP vs hold-50/50: **+0.052%** = impermanent loss -0.004% + fees earned ≈ +0.055% (pool fee 0.214%, pool share 0.002101%)
+- LP vs keep $100 in XRP: **+0.87 USD** · XRP-equivalent: +0.85%
 - Fees paid: $0.03 (taker cost on the XRP half + 0.00008 XRP network fees for TrustSet, OfferCreate, AMMDeposit and the future AMMWithdraw, already deducted). Reserve locked: 1.4 XRP (base + RLUSD line + LP-token line), not spent.
 
 Logs: `logs/summary.csv`, `logs/<strategy>_ticks.csv`, `logs/<strategy>_fills.csv`, `logs/amm_lp_ticks.csv`, `logs/tax_export.csv`.
