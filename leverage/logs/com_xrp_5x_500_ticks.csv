@@ -1,0 +1,2 @@
+ts,line,coin,leverage,started,mix_5x_trades,price,source,funding_source,budget_usd,value_usd,vs_start_usd,max_drawdown_usd,max_loss_usd,vs_hold_usd,position,entry,stop,target,liq_price,trades,wins,longs,shorts,ties,decisions,fees_usd,funding_usd,liquidations,max_drawdown_pct,hold_value_usd,last_votes,rules_fired,news_flats
+2026-10-26T17:32:06+00:00,com_xrp_5x_500,XRPUSDT,5,2026-10-26T16:40:00+00:00,0,1.2975,binance_spot_data_api,okx_proxy,500,500.0,0.0,0.0,0,-2.8896,FLAT,,,,,0,0,0,0,0,"{""LONG"": 0, ""SHORT"": 0, ""TIE"": 0, ""IDLE"": 3}",0.0,0.0,0,0.0,502.8896,,{},0
