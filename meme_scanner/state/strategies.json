@@ -711,8 +711,8 @@
   "trustset_fees_xrp": 0.026301999999999978
  },
  "dip_bounce": {
-  "buys_today": 0,
-  "cash_usd": 90.503302,
+  "buys_today": 1,
+  "cash_usd": 80.503276,
   "closed": [
    {
     "amm_fee": 0.00255,
@@ -1365,7 +1365,7 @@
    "rnHDzEH4xyW6u4LbXqDoX1uk36v5ovhbFi-4465657054696465000000000000000000000000": 1792962193.4355211,
    "rnNErmg9xVmcxxNZUwivbJSH6i9GUwYPFj-434F444544000000000000000000000000000000": 1792935736.109439
   },
-  "net_fees_xrp": 0.024845999999999965,
+  "net_fees_xrp": 0.024885999999999964,
   "positions": [
    {
     "amm_fee": 0.00013,
@@ -1422,12 +1422,38 @@
     "warnings": [],
     "xrp_cost": 7.715930309717443,
     "xrp_usd_entry": 1.29602
+   },
+   {
+    "amm_fee": 0.00471,
+    "currency": "5055505045540000000000000000000000000000",
+    "entry_eff_px": 0.05094034003260282,
+    "entry_spot": 0.050632749791098136,
+    "issuer": "rJfQFeHTZcnRsY4Ba5sJVKUhLs48E9apBn",
+    "key": "rJfQFeHTZcnRsY4Ba5sJVKUhLs48E9apBn-5055505045540000000000000000000000000000",
+    "legs": [],
+    "name": "PUPPET",
+    "pool_xrp_entry": 5795.100082,
+    "remaining": 1.0,
+    "t": 1793012231.825345,
+    "tf": 0.0,
+    "tokens_gross": 153.37353157784725,
+    "tokens_net": 152.44742465378152,
+    "tp_done": false,
+    "trigger": "dip_bounce: 15.7% below 24h high 0.0600786 XRP, age 541.8d",
+    "ts": "2026-10-26T10:57:11+00:00",
+    "usd_cost": 10.0,
+    "warnings": [
+     "only 45% of LP burned (liquidity can be pulled)",
+     "top-10 holders own 44%"
+    ],
+    "xrp_cost": 7.765723648958229,
+    "xrp_usd_entry": 1.28771
    }
   ],
   "start_ts": "2026-10-24T13:37:52+00:00",
   "start_usd": 100.0,
   "start_xrp_usd": 1.28033,
-  "trustset_fees_xrp": 0.012362999999999996
+  "trustset_fees_xrp": 0.012382999999999995
  },
  "hold": {
   "buys_today": 0,
@@ -1474,7 +1500,7 @@
     "excursion_src": "5-min candles to 2026-10-25T13:01, live after",
     "issuer": "rGLEgQdktoN4Be5thhk6seg1HifGPBxY5Q",
     "key": "rGLEgQdktoN4Be5thhk6seg1HifGPBxY5Q-PLX",
-    "last_ratio_net": 1.0018,
+    "last_ratio_net": 1.0017,
     "legs": [],
     "name": "PLX",
     "peak_hours": 9.77,
@@ -1839,7 +1865,7 @@
     "excursion_src": "5-min candles to 2026-10-25T13:01, live after",
     "issuer": "rGLEgQdktoN4Be5thhk6seg1HifGPBxY5Q",
     "key": "rGLEgQdktoN4Be5thhk6seg1HifGPBxY5Q-PLX",
-    "last_ratio_net": 1.0018,
+    "last_ratio_net": 1.0017,
     "legs": [],
     "name": "PLX",
     "peak_hours": 9.77,
@@ -2103,7 +2129,7 @@
     "excursion_src": "live from 2026-10-25T22:29",
     "issuer": "rExSpmk2PAqxKRTT3mhjCrCpqVasBra5v8",
     "key": "rExSpmk2PAqxKRTT3mhjCrCpqVasBra5v8-54494D4500000000000000000000000000000000",
-    "last_ratio_net": 0.8937,
+    "last_ratio_net": 0.8959,
     "legs": [],
     "name": "TIME",
     "peak_hours": 0.08,
@@ -4583,7 +4609,7 @@
     "last_ratio_net": 1.022,
     "legs": [],
     "name": "Teddy",
-    "peak_hours": 10.83,
+    "peak_hours": 10.92,
     "peak_x": 1.022,
     "pool_xrp_entry": 25692.095031,
     "remaining": 1.0,
@@ -4638,7 +4664,7 @@
     "excursion_src": "live from 2026-10-26T00:07",
     "issuer": "rGLEgQdktoN4Be5thhk6seg1HifGPBxY5Q",
     "key": "rGLEgQdktoN4Be5thhk6seg1HifGPBxY5Q-PLX",
-    "last_ratio_net": 0.9865,
+    "last_ratio_net": 0.9864,
     "legs": [],
     "name": "PLX",
     "peak_hours": 0.25,
