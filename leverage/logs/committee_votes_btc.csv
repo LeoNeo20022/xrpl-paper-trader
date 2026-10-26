@@ -1,2 +1,3 @@
 ts,coin,decision,in_position,long_scout,short_scout,idle_guard,chart_reader,long_scout_why,short_scout_why,idle_guard_why,chart_reader_why
 2026-10-26T16:45:00+00:00,BTCUSDT,IDLE,FLAT,IDLE,IDLE,SHORT,SHORT,no uptrend,"downtrend, no bounce/breakdown","no red flags, big trend down",lower highs + lower lows below EMA50
+2026-10-26T17:00:00+00:00,BTCUSDT,IDLE,FLAT,IDLE,SHORT,IDLE,SHORT,0,0.5,0,0.7,no uptrend,"contrarian: longs crowded, price turning down",R6 OI +5.5%/24h with price flat (-0.7%): leverage building in chop,lower highs + lower lows below EMA50,0.01,5.54,2.22,92,50,longs,2,1,down,down,below,-0.71,,R6 OI chop,
