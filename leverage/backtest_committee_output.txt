@@ -1,36 +1,64 @@
-PAPER backtest: committee vs leverage_ta vs hold. Run 2026-10-26 16:41 UTC. P/L after fees, slippage, funding; open positions valued as if closed at the end.
+PAPER backtest: committee (+crowding, F&G, Theo R1-R6) vs leverage_ta vs hold. Run 2026-10-26 17:04 UTC. P/L after fees, slippage, funding; open positions valued as if closed at the end. Votes every 15 min.
 
-## XRPUSDT (recent data to 2026-10-26 00:00 UTC)
+## XRPUSDT (recent data to 2026-10-26 00:00 UTC; crowding metrics hours: recent 1800, stress 4368)
 
-| Window (price) | Line | P/L | Closed trades (entries L/S) | Win rate | Liquidations | Max drawdown | Fees / funding | Committee decisions L/S/tie/idle | vs hold |
-|---|---|---|---|---|---|---|---|---|---|
-| 14d (1.41 -> 1.296) | Committee 2x | +5.25 | 9 (0/10) | 44% | 0 | 10.0% | $1.77 / $-0.03 | 0/54/0/1290 (ties: if-long +0.00, if-short +0.00) | +13.37 |
-| 14d (1.41 -> 1.296) | Committee 5x | +11.22 | 9 (0/10) | 44% | 0 | 23.2% | $4.83 / $-0.08 | 0/54/0/1290 (ties: if-long +0.00, if-short +0.00) | +19.33 |
-| | leverage_ta 2x | +13.18 | 11 (0/12) | 55% | 0 | 9.2% | $2.09 / $-0.12 | — | +21.30 |
-| | leverage_ta 5x | +32.46 | 11 (0/12) | 55% | 0 | 21.5% | $5.78 / $-0.34 | — | +40.58 |
-| | Hold $100 of XRP | -8.12 | — | — | 0 | — | $0.05 | — | — |
-| 30d (1.568 -> 1.296) | Committee 2x | -1.69 | 16 (2/15) | 38% | 0 | 12.3% | $2.89 / $+0.03 | 10/86/0/2784 (ties: if-long +0.00, if-short +0.00) | +15.70 |
-| 30d (1.568 -> 1.296) | Committee 5x | -7.70 | 16 (2/15) | 38% | 0 | 28.0% | $6.90 / $+0.08 | 10/86/0/2784 (ties: if-long +0.00, if-short +0.00) | +9.69 |
-| | leverage_ta 2x | -16.91 | 24 (7/18) | 29% | 0 | 29.4% | $3.69 / $-0.06 | — | +0.48 |
-| | leverage_ta 5x | -40.07 | 24 (7/18) | 29% | 0 | 58.9% | $6.87 / $-0.10 | — | -22.68 |
-| | Hold $100 of XRP | -17.39 | — | — | 0 | — | $0.05 | — | — |
-| 60d (1.422 -> 1.296) | Committee 2x | -18.50 | 31 (11/21) | 32% | 0 | 30.2% | $4.74 / $+0.20 | 50/104/0/5606 (ties: if-long +0.00, if-short +0.00) | -9.60 |
-| 60d (1.422 -> 1.296) | Committee 5x | -45.85 | 31 (11/21) | 32% | 0 | 60.5% | $8.63 / $+0.33 | 50/104/0/5606 (ties: if-long +0.00, if-short +0.00) | -36.95 |
-| | leverage_ta 2x | -46.67 | 40 (17/24) | 22% | 0 | 56.0% | $4.76 / $+0.01 | — | -37.77 |
-| | leverage_ta 5x | -81.62 | 40 (17/24) | 22% | 0 | 88.2% | $6.33 / $+0.06 | — | -72.71 |
-| | Hold $100 of XRP | -8.90 | — | — | 0 | — | $0.05 | — | — |
-| Stress whole (0.5243 -> 2.09) | Committee 2x | -45.94 | 70 (26/44) | 31% | 0 | 62.1% | $9.75 / $-0.14 | 154/112/0/16342 (ties: if-long +0.00, if-short +0.00) | -344.37 |
-| Stress whole (0.5243 -> 2.09) | Committee 5x | -87.72 | 70 (26/44) | 31% | 0 | 93.8% | $15.60 / $-0.43 | 154/112/0/16342 (ties: if-long +0.00, if-short +0.00) | -386.15 |
-| | leverage_ta 2x | -65.17 | 114 (59/55) | 32% | 0 | 81.4% | $14.31 / $+0.81 | — | -363.60 |
-| | leverage_ta 5x | -97.99 | 114 (59/55) | 32% | 0 | 99.3% | $19.24 / $+1.33 | — | -396.43 |
-| | Hold $100 of XRP | +298.44 | — | — | 0 | — | $0.05 | — | — |
+| Window (price) | Line | P/L | Closed trades (entries L/S) | Trades/day | Win rate | Liquidations | Max drawdown | Fees / funding | Decisions L/S/tie/idle | Rules fired (votes) | vs hold |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| 14d (1.41 -> 1.296) | Committee+Theo 2x | +3.61 | 9 (0/10) | 0.71 | 44% | 0 | 10.0% | $1.80 / $-0.03 | 0/54/0/1290 | R1:84, R3:248; news flats 2; crowded votes 0 | +11.73 |
+| 14d (1.41 -> 1.296) | Committee+Theo 5x | +7.72 | 9 (0/10) | 0.71 | 44% | 0 | 23.2% | $4.77 / $-0.08 | 0/54/0/1290 | R1:84, R3:248; news flats 2; crowded votes 0 | +15.84 |
+| 14d (1.41 -> 1.296) | Committee+Theo mix [5x trades 0] | +3.61 | 9 (0/10) | 0.71 | 44% | 0 | 10.0% | $1.80 / $-0.03 | 0/54/0/1290 | R1:84, R3:248; news flats 2; crowded votes 0 | +11.73 |
+| 14d (1.41 -> 1.296) | Committee 2x, no Theo rules | +5.25 | 9 (0/10) | 0.71 | 44% | 0 | 10.0% | $1.77 / $-0.03 | 0/54/0/1290 | —; news flats 0; crowded votes 0 | +13.37 |
+| 14d (1.41 -> 1.296) | Committee 2x, no Theo, no crowding/F&G | +5.25 | 9 (0/10) | 0.71 | 44% | 0 | 10.0% | $1.77 / $-0.03 | 0/54/0/1290 | —; news flats 0; crowded votes 0 | +13.37 |
+| 14d (1.41 -> 1.296) | Proxy team (Casey/Pip/Theo/Remy) 2x | +0.00 | 0 (0/0) | 0.00 | — | 0 | 0.0% | $0.00 / $+0.00 | 0/0/0/1344 | casey:35, remy:152, theo:112; news flats 0; crowded votes 0 | +8.12 |
+| 14d (1.41 -> 1.296) | Proxy team 5x | +0.00 | 0 (0/0) | 0.00 | — | 0 | 0.0% | $0.00 / $+0.00 | 0/0/0/1344 | casey:35, remy:152, theo:112; news flats 0; crowded votes 0 | +8.12 |
+| 14d (1.41 -> 1.296) | Proxy team mix [5x trades 0] | +0.00 | 0 (0/0) | 0.00 | — | 0 | 0.0% | $0.00 / $+0.00 | 0/0/0/1344 | casey:35, remy:152, theo:112; news flats 0; crowded votes 0 | +8.12 |
+| | leverage_ta 2x | +13.18 | 11 (0/12) | 0.86 | 55% | 0 | 9.2% | $2.09 / $-0.12 | — | — | +21.30 |
+| | leverage_ta 5x | +32.46 | 11 (0/12) | 0.86 | 55% | 0 | 21.5% | $5.78 / $-0.34 | — | — | +40.58 |
+| | Hold $100 of XRP | -8.12 | — | — | — | 0 | — | $0.05 | — | — | — |
+| 30d (1.568 -> 1.296) | Committee+Theo 2x | +1.69 | 12 (0/13) | 0.43 | 42% | 0 | 13.5% | $2.32 / $-0.02 | 0/79/0/2801 | R1:140, R3:692, R6:12; news flats 2; crowded votes 12 | +19.08 |
+| 30d (1.568 -> 1.296) | Committee+Theo 5x | +1.98 | 12 (0/13) | 0.43 | 42% | 0 | 30.6% | $5.94 / $-0.05 | 0/79/0/2801 | R1:140, R3:692, R6:12; news flats 2; crowded votes 12 | +19.37 |
+| 30d (1.568 -> 1.296) | Committee+Theo mix [5x trades 0] | +1.69 | 12 (0/13) | 0.43 | 42% | 0 | 13.5% | $2.32 / $-0.02 | 0/79/0/2801 | R1:140, R3:692, R6:12; news flats 2; crowded votes 12 | +19.08 |
+| 30d (1.568 -> 1.296) | Committee 2x, no Theo rules | -1.69 | 16 (2/15) | 0.57 | 38% | 0 | 12.3% | $2.89 / $+0.03 | 10/86/0/2784 | —; news flats 0; crowded votes 12 | +15.70 |
+| 30d (1.568 -> 1.296) | Committee 2x, no Theo, no crowding/F&G | -1.69 | 16 (2/15) | 0.57 | 38% | 0 | 12.3% | $2.89 / $+0.03 | 10/86/0/2784 | —; news flats 0; crowded votes 0 | +15.70 |
+| 30d (1.568 -> 1.296) | Proxy team (Casey/Pip/Theo/Remy) 2x | +0.00 | 0 (0/0) | 0.00 | — | 0 | 0.0% | $0.00 / $+0.00 | 0/0/0/2880 | casey:43, remy:504, theo:868; news flats 0; crowded votes 12 | +17.39 |
+| 30d (1.568 -> 1.296) | Proxy team 5x | +0.00 | 0 (0/0) | 0.00 | — | 0 | 0.0% | $0.00 / $+0.00 | 0/0/0/2880 | casey:43, remy:504, theo:868; news flats 0; crowded votes 12 | +17.39 |
+| 30d (1.568 -> 1.296) | Proxy team mix [5x trades 0] | +0.00 | 0 (0/0) | 0.00 | — | 0 | 0.0% | $0.00 / $+0.00 | 0/0/0/2880 | casey:43, remy:504, theo:868; news flats 0; crowded votes 12 | +17.39 |
+| | leverage_ta 2x | -16.91 | 24 (7/18) | 0.83 | 29% | 0 | 29.4% | $3.69 / $-0.06 | — | — | +0.48 |
+| | leverage_ta 5x | -40.07 | 24 (7/18) | 0.83 | 29% | 0 | 58.9% | $6.87 / $-0.10 | — | — | -22.68 |
+| | Hold $100 of XRP | -17.39 | — | — | — | 0 | — | $0.05 | — | — | — |
+| 60d (1.422 -> 1.296) | Committee+Theo 2x | +2.80 | 19 (0/20) | 0.33 | 42% | 0 | 13.5% | $3.65 / $-0.02 | 0/100/0/5660 | R1:228, R3:872, R4:1, R6:40; news flats 4; crowded votes 232 | +11.71 |
+| 60d (1.422 -> 1.296) | Committee+Theo 5x | +2.92 | 19 (0/20) | 0.33 | 42% | 0 | 30.6% | $9.11 / $-0.05 | 0/100/0/5660 | R1:228, R3:872, R4:1, R6:40; news flats 4; crowded votes 232 | +11.83 |
+| 60d (1.422 -> 1.296) | Committee+Theo mix [5x trades 0] | +2.80 | 19 (0/20) | 0.33 | 42% | 0 | 13.5% | $3.65 / $-0.02 | 0/100/0/5660 | R1:228, R3:872, R4:1, R6:40; news flats 4; crowded votes 232 | +11.71 |
+| 60d (1.422 -> 1.296) | Committee 2x, no Theo rules | -20.41 | 34 (13/22) | 0.58 | 32% | 0 | 33.6% | $5.31 / $+0.22 | 114/106/0/5540 | —; news flats 0; crowded votes 232 | -11.51 |
+| 60d (1.422 -> 1.296) | Committee 2x, no Theo, no crowding/F&G | -18.50 | 31 (11/21) | 0.53 | 32% | 0 | 30.2% | $4.74 / $+0.20 | 50/104/0/5606 | —; news flats 0; crowded votes 0 | -9.60 |
+| 60d (1.422 -> 1.296) | Proxy team (Casey/Pip/Theo/Remy) 2x | +0.00 | 0 (0/0) | 0.00 | — | 0 | 0.0% | $0.00 / $+0.00 | 0/0/0/5760 | casey:43, remy:552, theo:2746; news flats 0; crowded votes 232 | +8.90 |
+| 60d (1.422 -> 1.296) | Proxy team 5x | +0.00 | 0 (0/0) | 0.00 | — | 0 | 0.0% | $0.00 / $+0.00 | 0/0/0/5760 | casey:43, remy:552, theo:2746; news flats 0; crowded votes 232 | +8.90 |
+| 60d (1.422 -> 1.296) | Proxy team mix [5x trades 0] | +0.00 | 0 (0/0) | 0.00 | — | 0 | 0.0% | $0.00 / $+0.00 | 0/0/0/5760 | casey:43, remy:552, theo:2746; news flats 0; crowded votes 232 | +8.90 |
+| | leverage_ta 2x | -46.67 | 40 (17/24) | 0.68 | 22% | 0 | 56.0% | $4.76 / $+0.01 | — | — | -37.77 |
+| | leverage_ta 5x | -81.62 | 40 (17/24) | 0.68 | 22% | 0 | 88.2% | $6.33 / $+0.06 | — | — | -72.71 |
+| | Hold $100 of XRP | -8.90 | — | — | — | 0 | — | $0.05 | — | — | — |
+| Stress whole (0.5243 -> 2.09) | Committee+Theo 2x | -25.14 | 29 (2/27) | 0.17 | 31% | 0 | 38.0% | $4.81 / $-0.46 | 34/94/0/16480 | R3:3244, R6:200; news flats 0; crowded votes 2188 | -323.58 |
+| Stress whole (0.5243 -> 2.09) | Committee+Theo 5x | -56.01 | 29 (2/27) | 0.17 | 31% | 0 | 71.0% | $10.54 / $-1.05 | 34/94/0/16480 | R3:3244, R6:200; news flats 0; crowded votes 2188 | -354.45 |
+| Stress whole (0.5243 -> 2.09) | Committee+Theo mix [5x trades 0] | -25.14 | 29 (2/27) | 0.17 | 31% | 0 | 38.0% | $4.81 / $-0.46 | 34/94/0/16480 | R3:3244, R6:200; news flats 0; crowded votes 2188 | -323.58 |
+| Stress whole (0.5243 -> 2.09) | Committee 2x, no Theo rules | -23.28 | 58 (22/36) | 0.34 | 34% | 0 | 35.4% | $9.29 / $-0.21 | 207/140/0/16261 | —; news flats 0; crowded votes 2188 | -321.72 |
+| Stress whole (0.5243 -> 2.09) | Committee 2x, no Theo, no crowding/F&G | -45.94 | 70 (26/44) | 0.40 | 31% | 0 | 62.1% | $9.75 / $-0.14 | 154/112/0/16342 | —; news flats 0; crowded votes 0 | -344.37 |
+| Stress whole (0.5243 -> 2.09) | Proxy team (Casey/Pip/Theo/Remy) 2x | -8.95 | 10 (10/0) | 0.06 | 40% | 0 | 34.2% | $1.84 / $+0.45 | 69/0/0/16539 | casey:109, remy:1968, theo:8688; news flats 1; crowded votes 2188 | -307.38 |
+| Stress whole (0.5243 -> 2.09) | Proxy team 5x | -36.26 | 10 (10/0) | 0.06 | 40% | 0 | 67.7% | $4.24 / $+1.06 | 69/0/0/16539 | casey:109, remy:1968, theo:8688; news flats 1; crowded votes 2188 | -334.69 |
+| Stress whole (0.5243 -> 2.09) | Proxy team mix [5x trades 0] | -8.95 | 10 (10/0) | 0.06 | 40% | 0 | 34.2% | $1.84 / $+0.45 | 69/0/0/16539 | casey:109, remy:1968, theo:8688; news flats 1; crowded votes 2188 | -307.38 |
+| | leverage_ta 2x | -65.17 | 114 (59/55) | 0.66 | 32% | 0 | 81.4% | $14.31 / $+0.81 | — | — | -363.60 |
+| | leverage_ta 5x | -97.99 | 114 (59/55) | 0.66 | 32% | 0 | 99.3% | $19.24 / $+1.33 | — | — | -396.43 |
+| | Hold $100 of XRP | +298.44 | — | — | — | 0 | — | $0.05 | — | — | — |
 
 14-day runs, one starting every day: XRPUSDT last 60 days (53 runs)
 
 | Line | Median P/L | Worst run | Best run | Losing runs | Runs with a liquidation | Median trades | Median vs hold |
 |---|---|---|---|---|---|---|---|
-| Committee 2x | -3.62 | -17.56 | +10.57 | 32 of 53 | 0 | 6 | -6.99 |
-| Committee 5x | -10.73 | -39.37 | +25.30 | 37 of 53 | 0 | 6 | -9.63 |
+| Committee+Theo 2x | +0.00 | -6.86 | +8.55 | 21 of 53 | 0 | 3 | +1.94 |
+| Committee+Theo 5x | +0.00 | -16.67 | +21.12 | 21 of 53 | 0 | 3 | +2.75 |
+| Committee+Theo mix | +0.00 | -6.86 | +8.55 | 21 of 53 | 0 | 3 | +1.94 |
+| Committee 2x, no Theo rules | -5.74 | -17.47 | +10.57 | 39 of 53 | 0 | 7 | -7.17 |
+| Proxy team (Casey/Pip/Theo/Remy) 2x | +0.00 | +0.00 | +0.00 | 0 of 53 | 0 | 0 | +3.89 |
+| Proxy team mix | +0.00 | +0.00 | +0.00 | 0 of 53 | 0 | 0 | +3.89 |
 | leverage_ta 2x | -18.48 | -31.44 | +14.51 | 45 of 53 | 0 | 11 | -17.23 |
 | leverage_ta 5x | -41.95 | -63.49 | +36.22 | 45 of 53 | 0 | 11 | -42.75 |
 
@@ -38,42 +66,74 @@ PAPER backtest: committee vs leverage_ta vs hold. Run 2026-10-26 16:41 UTC. P/L 
 
 | Line | Median P/L | Worst run | Best run | Losing runs | Runs with a liquidation | Median trades | Median vs hold |
 |---|---|---|---|---|---|---|---|
-| Committee 2x | -5.58 | -21.81 | +24.36 | 106 of 160 | 0 | 4 | -9.30 |
-| Committee 5x | -15.90 | -52.34 | +59.66 | 118 of 160 | 0 | 4 | -19.11 |
+| Committee+Theo 2x | +0.00 | -20.05 | +17.82 | 70 of 160 | 0 | 1 | -6.39 |
+| Committee+Theo 5x | +0.00 | -44.25 | +47.13 | 73 of 160 | 0 | 1 | -12.63 |
+| Committee+Theo mix | +0.00 | -20.05 | +17.82 | 70 of 160 | 0 | 1 | -6.39 |
+| Committee 2x, no Theo rules | -0.81 | -20.13 | +18.25 | 87 of 160 | 0 | 4 | -9.36 |
+| Proxy team (Casey/Pip/Theo/Remy) 2x | +0.00 | -14.22 | +22.72 | 35 of 160 | 0 | 0 | -4.52 |
+| Proxy team mix | +0.00 | -14.22 | +22.72 | 35 of 160 | 0 | 0 | -4.52 |
 | leverage_ta 2x | -11.54 | -42.27 | +64.67 | 112 of 160 | 0 | 9 | -18.56 |
 | leverage_ta 5x | -32.73 | -78.36 | +199.23 | 122 of 160 | 0 | 9 | -41.45 |
 
-## BTCUSDT (recent data to 2026-10-26 00:00 UTC)
+## BTCUSDT (recent data to 2026-10-26 00:00 UTC; crowding metrics hours: recent 1800, stress 4368)
 
-| Window (price) | Line | P/L | Closed trades (entries L/S) | Win rate | Liquidations | Max drawdown | Fees / funding | Committee decisions L/S/tie/idle | vs hold |
-|---|---|---|---|---|---|---|---|---|---|
-| 14d (8.372e+04 -> 8.011e+04) | Committee 2x | +1.88 | 9 (1/8) | 44% | 0 | 5.3% | $1.57 / $-0.10 | 2/44/0/1298 (ties: if-long +0.00, if-short +0.00) | +6.24 |
-| 14d (8.372e+04 -> 8.011e+04) | Committee 5x | +3.93 | 9 (1/8) | 44% | 0 | 12.8% | $3.93 / $-0.25 | 2/44/0/1298 (ties: if-long +0.00, if-short +0.00) | +8.29 |
-| | leverage_ta 2x | -5.88 | 13 (2/11) | 31% | 0 | 10.1% | $2.33 / $-0.19 | — | -1.52 |
-| | leverage_ta 5x | -14.97 | 13 (2/11) | 31% | 0 | 23.9% | $5.67 / $-0.45 | — | -10.62 |
-| | Hold $100 of BTC | -4.36 | — | — | 0 | — | $0.05 | — | — |
-| 30d (8.406e+04 -> 8.011e+04) | Committee 2x | +4.50 | 15 (4/11) | 47% | 0 | 8.9% | $2.67 / $-0.07 | 17/56/0/2807 (ties: if-long +0.00, if-short +0.00) | +9.24 |
-| 30d (8.406e+04 -> 8.011e+04) | Committee 5x | +9.84 | 15 (4/11) | 47% | 0 | 20.9% | $6.94 / $-0.18 | 17/56/0/2807 (ties: if-long +0.00, if-short +0.00) | +14.58 |
-| | leverage_ta 2x | -3.09 | 23 (9/14) | 35% | 0 | 10.1% | $4.18 / $-0.14 | — | +1.64 |
-| | leverage_ta 5x | -9.57 | 23 (9/14) | 35% | 0 | 24.0% | $10.53 / $-0.34 | — | -4.83 |
-| | Hold $100 of BTC | -4.74 | — | — | 0 | — | $0.05 | — | — |
-| 60d (7.899e+04 -> 8.011e+04) | Committee 2x | -5.31 | 34 (14/20) | 38% | 0 | 15.9% | $5.63 / $+0.04 | 85/84/0/5591 (ties: if-long +0.00, if-short +0.00) | -6.68 |
-| 60d (7.899e+04 -> 8.011e+04) | Committee 5x | -15.85 | 34 (14/20) | 38% | 0 | 35.5% | $12.57 / $+0.11 | 85/84/0/5591 (ties: if-long +0.00, if-short +0.00) | -17.23 |
-| | leverage_ta 2x | -13.10 | 31 (14/17) | 32% | 0 | 17.1% | $5.15 / $+0.06 | — | -14.48 |
-| | leverage_ta 5x | -31.88 | 31 (14/17) | 32% | 0 | 38.0% | $11.20 / $+0.20 | — | -33.25 |
-| | Hold $100 of BTC | +1.37 | — | — | 0 | — | $0.05 | — | — |
-| Stress whole (6.061e+04 -> 8.252e+04) | Committee 2x | -33.57 | 78 (35/43) | 32% | 0 | 41.6% | $11.90 / $+0.75 | 162/133/0/16313 (ties: if-long +0.00, if-short +0.00) | -69.66 |
-| Stress whole (6.061e+04 -> 8.252e+04) | Committee 5x | -69.26 | 78 (35/43) | 32% | 0 | 77.0% | $22.25 / $+1.83 | 162/133/0/16313 (ties: if-long +0.00, if-short +0.00) | -105.34 |
-| | leverage_ta 2x | -9.69 | 108 (56/53) | 38% | 0 | 31.5% | $19.46 / $+1.42 | — | -45.78 |
-| | leverage_ta 5x | -43.49 | 108 (56/53) | 38% | 0 | 68.2% | $43.33 / $+3.85 | — | -79.57 |
-| | Hold $100 of BTC | +36.09 | — | — | 0 | — | $0.05 | — | — |
+| Window (price) | Line | P/L | Closed trades (entries L/S) | Trades/day | Win rate | Liquidations | Max drawdown | Fees / funding | Decisions L/S/tie/idle | Rules fired (votes) | vs hold |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| 14d (8.372e+04 -> 8.011e+04) | Committee+Theo 2x | -2.80 | 10 (1/9) | 0.71 | 40% | 0 | 8.1% | $1.76 / $-0.09 | 2/42/0/1300 | R3:156; news flats 1; crowded votes 0 | +1.56 |
+| 14d (8.372e+04 -> 8.011e+04) | Committee+Theo 5x | -7.51 | 10 (1/9) | 0.71 | 40% | 0 | 19.1% | $4.18 / $-0.21 | 2/42/0/1300 | R3:156; news flats 1; crowded votes 0 | -3.15 |
+| 14d (8.372e+04 -> 8.011e+04) | Committee+Theo mix [5x trades 0] | -2.80 | 10 (1/9) | 0.71 | 40% | 0 | 8.1% | $1.76 / $-0.09 | 2/42/0/1300 | R3:156; news flats 1; crowded votes 0 | +1.56 |
+| 14d (8.372e+04 -> 8.011e+04) | Committee 2x, no Theo rules | +1.88 | 9 (1/8) | 0.64 | 44% | 0 | 5.3% | $1.57 / $-0.10 | 2/44/0/1298 | —; news flats 0; crowded votes 0 | +6.24 |
+| 14d (8.372e+04 -> 8.011e+04) | Committee 2x, no Theo, no crowding/F&G | +1.88 | 9 (1/8) | 0.64 | 44% | 0 | 5.3% | $1.57 / $-0.10 | 2/44/0/1298 | —; news flats 0; crowded votes 0 | +6.24 |
+| 14d (8.372e+04 -> 8.011e+04) | Proxy team (Casey/Pip/Theo/Remy) 2x | -1.84 | 1 (1/0) | 0.07 | 0% | 0 | 2.7% | $0.20 / $-0.01 | 2/0/0/1342 | casey:8, remy:20, theo:48; news flats 0; crowded votes 0 | +2.52 |
+| 14d (8.372e+04 -> 8.011e+04) | Proxy team 5x | -4.59 | 1 (1/0) | 0.07 | 0% | 0 | 6.6% | $0.50 / $-0.02 | 2/0/0/1342 | casey:8, remy:20, theo:48; news flats 0; crowded votes 0 | -0.23 |
+| 14d (8.372e+04 -> 8.011e+04) | Proxy team mix [5x trades 0] | -1.84 | 1 (1/0) | 0.07 | 0% | 0 | 2.7% | $0.20 / $-0.01 | 2/0/0/1342 | casey:8, remy:20, theo:48; news flats 0; crowded votes 0 | +2.52 |
+| | leverage_ta 2x | -5.88 | 13 (2/11) | 0.93 | 31% | 0 | 10.1% | $2.33 / $-0.19 | — | — | -1.52 |
+| | leverage_ta 5x | -14.97 | 13 (2/11) | 0.93 | 31% | 0 | 23.9% | $5.67 / $-0.45 | — | — | -10.62 |
+| | Hold $100 of BTC | -4.36 | — | — | — | 0 | — | $0.05 | — | — | — |
+| 30d (8.406e+04 -> 8.011e+04) | Committee+Theo 2x | +0.97 | 13 (4/9) | 0.43 | 46% | 0 | 8.1% | $2.32 / $-0.05 | 17/42/0/2821 | R1:40, R3:464; news flats 1; crowded votes 0 | +5.71 |
+| 30d (8.406e+04 -> 8.011e+04) | Committee+Theo 5x | +1.23 | 13 (4/9) | 0.43 | 46% | 0 | 19.1% | $5.84 / $-0.11 | 17/42/0/2821 | R1:40, R3:464; news flats 1; crowded votes 0 | +5.97 |
+| 30d (8.406e+04 -> 8.011e+04) | Committee+Theo mix [5x trades 0] | +0.97 | 13 (4/9) | 0.43 | 46% | 0 | 8.1% | $2.32 / $-0.05 | 17/42/0/2821 | R1:40, R3:464; news flats 1; crowded votes 0 | +5.71 |
+| 30d (8.406e+04 -> 8.011e+04) | Committee 2x, no Theo rules | +4.50 | 15 (4/11) | 0.50 | 47% | 0 | 8.9% | $2.67 / $-0.07 | 17/56/0/2807 | —; news flats 0; crowded votes 0 | +9.24 |
+| 30d (8.406e+04 -> 8.011e+04) | Committee 2x, no Theo, no crowding/F&G | +4.50 | 15 (4/11) | 0.50 | 47% | 0 | 8.9% | $2.67 / $-0.07 | 17/56/0/2807 | —; news flats 0; crowded votes 0 | +9.24 |
+| 30d (8.406e+04 -> 8.011e+04) | Proxy team (Casey/Pip/Theo/Remy) 2x | +3.41 | 7 (7/0) | 0.23 | 43% | 0 | 4.6% | $1.23 / $+0.07 | 25/0/0/2855 | casey:8, remy:220, theo:48; news flats 0; crowded votes 0 | +8.14 |
+| 30d (8.406e+04 -> 8.011e+04) | Proxy team 5x | +7.78 | 7 (7/0) | 0.23 | 43% | 0 | 11.3% | $3.10 / $+0.16 | 25/0/0/2855 | casey:8, remy:220, theo:48; news flats 0; crowded votes 0 | +12.51 |
+| 30d (8.406e+04 -> 8.011e+04) | Proxy team mix [5x trades 0] | +3.41 | 7 (7/0) | 0.23 | 43% | 0 | 4.6% | $1.23 / $+0.07 | 25/0/0/2855 | casey:8, remy:220, theo:48; news flats 0; crowded votes 0 | +8.14 |
+| | leverage_ta 2x | -3.09 | 23 (9/14) | 0.77 | 35% | 0 | 10.1% | $4.18 / $-0.14 | — | — | +1.64 |
+| | leverage_ta 5x | -9.57 | 23 (9/14) | 0.77 | 35% | 0 | 24.0% | $10.53 / $-0.34 | — | — | -4.83 |
+| | Hold $100 of BTC | -4.74 | — | — | — | 0 | — | $0.05 | — | — | — |
+| 60d (7.899e+04 -> 8.011e+04) | Committee+Theo 2x | -9.65 | 30 (15/15) | 0.50 | 40% | 0 | 16.9% | $5.03 / $+0.07 | 75/52/0/5633 | R1:88, R3:720; news flats 3; crowded votes 8 | -11.03 |
+| 60d (7.899e+04 -> 8.011e+04) | Committee+Theo 5x | -24.42 | 30 (15/15) | 0.50 | 40% | 0 | 38.3% | $11.05 / $+0.18 | 75/52/0/5633 | R1:88, R3:720; news flats 3; crowded votes 8 | -25.80 |
+| 60d (7.899e+04 -> 8.011e+04) | Committee+Theo mix [5x trades 0] | -9.65 | 30 (15/15) | 0.50 | 40% | 0 | 16.9% | $5.03 / $+0.07 | 75/52/0/5633 | R1:88, R3:720; news flats 3; crowded votes 8 | -11.03 |
+| 60d (7.899e+04 -> 8.011e+04) | Committee 2x, no Theo rules | -6.70 | 35 (15/20) | 0.58 | 37% | 0 | 15.9% | $5.78 / $+0.02 | 75/84/0/5601 | —; news flats 0; crowded votes 8 | -8.07 |
+| 60d (7.899e+04 -> 8.011e+04) | Committee 2x, no Theo, no crowding/F&G | -5.31 | 34 (14/20) | 0.57 | 38% | 0 | 15.9% | $5.63 / $+0.04 | 85/84/0/5591 | —; news flats 0; crowded votes 0 | -6.68 |
+| 60d (7.899e+04 -> 8.011e+04) | Proxy team (Casey/Pip/Theo/Remy) 2x | -4.15 | 18 (18/0) | 0.30 | 33% | 0 | 14.7% | $3.08 / $+0.28 | 94/0/0/5666 | casey:8, remy:304, theo:54; news flats 0; crowded votes 8 | -5.52 |
+| 60d (7.899e+04 -> 8.011e+04) | Proxy team 5x | -11.86 | 18 (18/0) | 0.30 | 33% | 0 | 33.5% | $7.14 / $+0.66 | 94/0/0/5666 | casey:8, remy:304, theo:54; news flats 0; crowded votes 8 | -13.23 |
+| 60d (7.899e+04 -> 8.011e+04) | Proxy team mix [5x trades 0] | -4.15 | 18 (18/0) | 0.30 | 33% | 0 | 14.7% | $3.08 / $+0.28 | 94/0/0/5666 | casey:8, remy:304, theo:54; news flats 0; crowded votes 8 | -5.52 |
+| | leverage_ta 2x | -13.10 | 31 (14/17) | 0.52 | 32% | 0 | 17.1% | $5.15 / $+0.06 | — | — | -14.48 |
+| | leverage_ta 5x | -31.88 | 31 (14/17) | 0.52 | 32% | 0 | 38.0% | $11.20 / $+0.20 | — | — | -33.25 |
+| | Hold $100 of BTC | +1.37 | — | — | — | 0 | — | $0.05 | — | — | — |
+| Stress whole (6.061e+04 -> 8.252e+04) | Committee+Theo 2x | -16.50 | 54 (21/33) | 0.31 | 33% | 0 | 24.3% | $9.40 / $+0.40 | 259/107/0/16242 | R1:1108, R3:2740, R6:32; news flats 2; crowded votes 1964 | -52.59 |
+| Stress whole (6.061e+04 -> 8.252e+04) | Committee+Theo 5x | -41.19 | 54 (21/33) | 0.31 | 33% | 0 | 53.1% | $21.38 / $+1.02 | 259/107/0/16242 | R1:1108, R3:2740, R6:32; news flats 2; crowded votes 1964 | -77.28 |
+| Stress whole (6.061e+04 -> 8.252e+04) | Committee+Theo mix [5x trades 0] | -16.50 | 54 (21/33) | 0.31 | 33% | 0 | 24.3% | $9.40 / $+0.40 | 259/107/0/16242 | R1:1108, R3:2740, R6:32; news flats 2; crowded votes 1964 | -52.59 |
+| Stress whole (6.061e+04 -> 8.252e+04) | Committee 2x, no Theo rules | -22.55 | 67 (27/40) | 0.39 | 34% | 0 | 32.6% | $11.00 / $+0.57 | 319/153/0/16136 | —; news flats 0; crowded votes 1964 | -58.63 |
+| Stress whole (6.061e+04 -> 8.252e+04) | Committee 2x, no Theo, no crowding/F&G | -33.57 | 78 (35/43) | 0.45 | 32% | 0 | 41.6% | $11.90 / $+0.75 | 162/133/0/16313 | —; news flats 0; crowded votes 0 | -69.66 |
+| Stress whole (6.061e+04 -> 8.252e+04) | Proxy team (Casey/Pip/Theo/Remy) 2x | +4.10 | 47 (47/0) | 0.27 | 36% | 0 | 28.4% | $10.30 / $+1.92 | 178/0/0/16430 | casey:292, remy:1700, theo:728; news flats 3; crowded votes 1964 | -31.99 |
+| Stress whole (6.061e+04 -> 8.252e+04) | Proxy team 5x | -1.44 | 47 (47/0) | 0.27 | 36% | 0 | 58.3% | $33.47 / $+6.22 | 178/0/0/16430 | casey:292, remy:1700, theo:728; news flats 3; crowded votes 1964 | -37.53 |
+| Stress whole (6.061e+04 -> 8.252e+04) | Proxy team mix [5x trades 0] | +4.10 | 47 (47/0) | 0.27 | 36% | 0 | 28.4% | $10.30 / $+1.92 | 178/0/0/16430 | casey:292, remy:1700, theo:728; news flats 3; crowded votes 1964 | -31.99 |
+| | leverage_ta 2x | -9.69 | 108 (56/53) | 0.63 | 38% | 0 | 31.5% | $19.46 / $+1.42 | — | — | -45.78 |
+| | leverage_ta 5x | -43.49 | 108 (56/53) | 0.63 | 38% | 0 | 68.2% | $43.33 / $+3.85 | — | — | -79.57 |
+| | Hold $100 of BTC | +36.09 | — | — | — | 0 | — | $0.05 | — | — | — |
 
 14-day runs, one starting every day: BTCUSDT last 60 days (53 runs)
 
 | Line | Median P/L | Worst run | Best run | Losing runs | Runs with a liquidation | Median trades | Median vs hold |
 |---|---|---|---|---|---|---|---|
-| Committee 2x | -0.30 | -12.27 | +4.74 | 32 of 53 | 0 | 7 | -4.63 |
-| Committee 5x | -1.90 | -28.49 | +11.45 | 33 of 53 | 0 | 7 | -8.32 |
+| Committee+Theo 2x | -2.57 | -14.24 | +3.88 | 39 of 53 | 0 | 6 | -6.19 |
+| Committee+Theo 5x | -6.57 | -32.31 | +9.45 | 39 of 53 | 0 | 6 | -9.53 |
+| Committee+Theo mix | -2.57 | -14.24 | +3.88 | 39 of 53 | 0 | 6 | -6.19 |
+| Committee 2x, no Theo rules | -1.29 | -12.27 | +4.74 | 36 of 53 | 0 | 7 | -5.95 |
+| Proxy team (Casey/Pip/Theo/Remy) 2x | -1.02 | -11.83 | +7.98 | 29 of 53 | 0 | 4 | -5.42 |
+| Proxy team mix | -1.02 | -11.83 | +7.98 | 29 of 53 | 0 | 4 | -5.42 |
 | leverage_ta 2x | -2.50 | -8.61 | +13.09 | 39 of 53 | 0 | 7 | -1.70 |
 | leverage_ta 5x | -6.76 | -20.58 | +33.45 | 40 of 53 | 0 | 7 | -7.15 |
 
@@ -81,8 +141,12 @@ PAPER backtest: committee vs leverage_ta vs hold. Run 2026-10-26 16:41 UTC. P/L 
 
 | Line | Median P/L | Worst run | Best run | Losing runs | Runs with a liquidation | Median trades | Median vs hold |
 |---|---|---|---|---|---|---|---|
-| Committee 2x | -2.71 | -19.58 | +22.70 | 101 of 160 | 0 | 6 | -5.77 |
-| Committee 5x | -7.41 | -42.84 | +63.25 | 105 of 160 | 0 | 6 | -10.43 |
+| Committee+Theo 2x | -0.86 | -13.16 | +17.33 | 93 of 160 | 0 | 4 | -3.32 |
+| Committee+Theo 5x | -3.09 | -30.10 | +46.80 | 95 of 160 | 0 | 4 | -6.02 |
+| Committee+Theo mix | -0.86 | -13.16 | +17.33 | 93 of 160 | 0 | 4 | -3.32 |
+| Committee 2x, no Theo rules | -1.01 | -13.88 | +18.11 | 90 of 160 | 0 | 5 | -3.55 |
+| Proxy team (Casey/Pip/Theo/Remy) 2x | +0.00 | -17.84 | +29.92 | 78 of 160 | 0 | 3 | -1.31 |
+| Proxy team mix | +0.00 | -17.84 | +29.92 | 78 of 160 | 0 | 3 | -1.31 |
 | leverage_ta 2x | -1.03 | -20.31 | +32.82 | 93 of 160 | 0 | 9 | -2.96 |
 | leverage_ta 5x | -3.77 | -44.71 | +93.92 | 95 of 160 | 0 | 9 | -9.55 |
 

@@ -15,6 +15,13 @@ MS = os.path.join(SDIR, "committee_market.json")
 EV = ["ts", "event", "price", "qty_xrp", "notional_usd", "margin_usd", "fee_usd", "stop", "target", "liq_price", "why",
       "trade_net_usd", "funding_usd", "rate", "mkt", "margin_lost_usd", "label"]
 VOTERS = ["long_scout", "short_scout", "idle_guard", "chart_reader"]
+CROWD = ["funding_pct", "oi_24h_pct", "ls_ratio", "ls_pctile", "fng", "crowded", "long_signals", "short_signals"]
+VOTE_FIELDS = (["ts", "coin", "decision", "in_position"] + VOTERS + [x + "_conf" for x in VOTERS] + [x + "_why" for x in VOTERS]
+               + ["crowd_" + x for x in CROWD] + ["trend_1h", "trend_4h", "ema200_4h", "price_24h_pct", "r1_healthy_trend", "theo_rules_fired", "mix_leverage"])
+PROXIES = ["casey", "pip", "theo", "remy"]
+PROXY_FIELDS = (["ts", "coin", "decision", "in_position"] + PROXIES + [x + "_conf" for x in PROXIES] + [x + "_why" for x in PROXIES]
+                + ["crowd_" + x for x in CROWD] + ["trend_1h", "trend_4h", "ema200_4h", "price_24h_pct", "r1_healthy_trend", "theo_rules_fired", "mix_leverage"])
+FNG = levdata.fear_greed()
 BEGIN, END = "<!-- COMMITTEE-BEGIN -->", "<!-- COMMITTEE-END -->"
 
 def iso(u): return datetime.fromtimestamp(u, timezone.utc).isoformat(timespec="seconds")
@@ -28,9 +35,9 @@ def append(p, row, fields):
         w.writerow(row)
 
 def history(sym, now):
-    """Context data: last 500 closed 1h candles and last 1000 closed 5-min candles (Binance spot data-api; OKX perp fallback)."""
+    """Context data: last 1000 closed 1h candles and last 1000 closed 5-min candles (Binance spot data-api; OKX perp fallback)."""
     try:
-        h = json.loads(levdata._get(f"https://data-api.binance.vision/api/v3/klines?symbol={sym}&interval=1h&limit=500"))
+        h = json.loads(levdata._get(f"https://data-api.binance.vision/api/v3/klines?symbol={sym}&interval=1h&limit=1000"))
         bars = [(int(r[0]) // 1000, *map(float, r[1:5])) for r in h if int(r[0]) // 1000 + 3600 <= now]
         k = json.loads(levdata._get(f"https://data-api.binance.vision/api/v3/klines?symbol={sym}&interval=5m&limit=1000"))
         c5 = [(int(r[0]) // 1000, levdata._path(*map(float, r[1:5]))) for r in k if int(r[0]) // 1000 + 300 <= now]
@@ -45,70 +52,90 @@ def history(sym, now):
 
 def main():
     now = time.time(); ts = iso(now); ms = load(MS) or {}
-    rows = []
+    rows = []; snap = {}
     for coin, sym in CC["coins"].items():
         try:
             src, bars, c5 = history(sym, now)
             m = ms.get(coin)
             fund, fsrc = levdata.funding_since(now - 5 * 86400, sym)
-            ctx = committee.Context(c5, bars, fund, dict(CC["common"], mmr_pct=CC["common"]["mmr_pct"][sym]))
+            crowd, csrc = levdata.crowd_live(sym); fng, gsrc = FNG
+            ctx = committee.Context(c5, bars, fund, dict(CC["common"], mmr_pct=CC["common"]["mmr_pct"][sym]), crowd, fng)
+            fi = max([x for x in fund if x <= now], default=None)
+            snap[coin] = dict(ctx.crowding(int(now) // 300 * 300, fund.get(fi)), symbol=sym, crowd_source=csrc, fng_source=gsrc, funding_source=fsrc,
+                              trend_1h=None, ts=ts)
             if m is None:
                 p0 = c5[-1][1][-1]
                 m = ms[coin] = {"started": iso(c5[-1][0] + 300), "start_price": p0, "last_candle_ts": c5[-1][0], "last_close": p0,
                                 "baseline_units": 100 / (p0 * (1 + CC["baseline_cost_pct"] / 100))}
-                for lev in CC["leverages"]: save(os.path.join(SDIR, f"com_{coin}_{lev}x.json"), committee.new_state(dict(CC["common"], leverage=lev)))
                 print(f"committee {coin} started at {p0}")
             new = [(t, p) for t, p in c5 if t > m["last_candle_ts"]]
             price = new[-1][1][-1] if new else m["last_close"]
-            for lev in CC["leverages"]:
-                n = f"com_{coin}_{lev}x"; cfg = dict(CC["common"], leverage=lev, mmr_pct=CC["common"]["mmr_pct"][sym])
+            for kind, lev in [(k, l) for k in ("rule", "proxy") for l in CC["leverages"]]:
+                n = f"com_{coin}_" + ("proxy_" if kind == "proxy" else "") + f"{lev}" + ("" if lev == "mix" else "x")
+                cfg = dict(CC["common"], leverage=lev, mmr_pct=CC["common"]["mmr_pct"][sym])
+                if lev == "mix": cfg.update(leverage=CC["common"]["mix_base"], sizing="mix")
+                if kind == "proxy": cfg["voters"] = "proxy"
                 sp = os.path.join(SDIR, f"{n}.json"); st = load(sp); vlog, tlog, evs = [], [], []
+                if st is None:   # a line added later starts at the current price
+                    st = committee.new_state(cfg); st.update(started=iso(m["last_candle_ts"] + 300), start_price=m["last_close"])
+                    print(f"{n} started at {m['last_close']}")
                 for t, path in new:
                     evs += committee.step(st, cfg, ctx, t, path, iso(t), fund.get(t, levdata.FUNDING_ASSUMED), vlog, tlog)
                 for e in evs:
                     append(os.path.join(LDIR, f"{n}_events.csv"), dict(e, label="PAPER-NOT-REAL"), EV)
                     print(("*** PAPER LIQUIDATION " if e["event"].startswith("LIQ") else "") + f"[{n}]", e)
                 if lev == CC["leverages"][0]:
-                    for v in vlog: append(os.path.join(LDIR, f"committee_votes_{coin}.csv"), dict(v, coin=sym), ["ts", "coin", "decision", "in_position"] + VOTERS + [x + "_why" for x in VOTERS])
+                    for v in vlog:
+                        if kind == "rule": append(os.path.join(LDIR, f"committee_votes_{coin}.csv"), dict(v, coin=sym), VOTE_FIELDS)
+                        else: append(os.path.join(LDIR, f"committee_proxy_votes_{coin}.csv"), dict(v, coin=sym), PROXY_FIELDS)
                 st["last_run"] = ts; save(sp, st)
-                val = ta.equity(st, price, cfg); p = st["pos"]; hold = m["baseline_units"] * price
-                row = {"ts": ts, "line": n, "coin": sym, "leverage": lev, "price": round(price, 6), "source": src, "funding_source": fsrc,
+                val = ta.equity(st, price, cfg); p = st["pos"]
+                hold = (100 / (st["start_price"] * 1.0005) if st.get("start_price") else m["baseline_units"]) * price
+                row = {"ts": ts, "line": n, "coin": sym, "leverage": lev, "started": st.get("started", m["started"]), "mix_5x_trades": st.get("mix_high_trades", 0), "price": round(price, 6), "source": src, "funding_source": fsrc,
                        "value_usd": round(val, 4), "vs_start_usd": round(val - 100, 4), "vs_hold_usd": round(val - hold, 4),
                        "position": p["side"] if p else "FLAT", "entry": round(p["entry"], 6) if p else "", "stop": round(p["stop"], 6) if p else "",
                        "target": round(p["target"], 6) if p else "", "liq_price": round(ta.liq_price(p, cfg), 6) if p else "",
                        "trades": st["trades"], "wins": st["wins"], "longs": st["longs"], "shorts": st["shorts"], "ties": len(st["ties"]),
                        "decisions": json.dumps(st["decisions"]), "fees_usd": round(st["fees_usd"], 4), "funding_usd": round(st["funding_usd"], 4),
                        "liquidations": st["liquidations"], "max_drawdown_pct": round(st["max_dd_pct"], 2), "hold_value_usd": round(hold, 4),
-                       "last_votes": json.dumps({k: vlog[-1][k] for k in VOTERS}) if vlog else ""}
+                       "last_votes": json.dumps({k: vlog[-1][k] for k in (PROXIES if kind == "proxy" else VOTERS)}) if vlog else "",
+                       "rules_fired": json.dumps(st.get("rules_fired", {})), "news_flats": st.get("news_flats", 0)}
                 append(os.path.join(LDIR, f"{n}_ticks.csv"), row, list(row.keys())); rows.append(row)
             if new: m["last_candle_ts"] = new[-1][0]; m["last_close"] = price
             m.update(last_run=ts, source=src, funding_source=fsrc)
         except Exception as e:
             print(f"committee {coin} tick failed (other coin unaffected):", repr(e))
     save(MS, ms)
+    if snap: save(os.path.join(LDIR, "crowding_latest.json"), snap)
     ties = []
     for f in sorted(os.listdir(SDIR)):
         if f.startswith("com_") and f.endswith(".json"):
             for t in load(os.path.join(SDIR, f))["ties"]: ties.append(dict(t, line=f[:-5], user_vote=""))
     if ties:
-        fields = ["ts", "line", "price", "atr"] + VOTERS + ["if_long_usd", "if_short_usd", "user_vote"]
+        fields = ["ts", "line", "price", "atr", "crowded"] + VOTERS + ["if_long_usd", "if_short_usd", "user_vote"]
         with open(os.path.join(LDIR, "committee_ties.csv"), "w", newline="") as fh:
             w = csv.DictWriter(fh, fieldnames=fields, extrasaction="ignore"); w.writeheader(); w.writerows(ties)
-    if rows: write_md(ms, rows)
+    if rows: write_md(ms, rows, snap)
     print(json.dumps(rows, indent=1))
 
-def write_md(ms, rows):
-    L = [BEGIN, "## Separate lines: rule-based COMMITTEE, paper perps on XRP and BTC (`com_*`, PAPER-NOT-REAL)", "",
-         "Four rule-based voters (long scout, short scout, idle guard, chart reader) vote every 15 min; 3 of 4 must agree to open; a 2-2 LONG/SHORT split is a tie "
+def write_md(ms, rows, snap):
+    L = [BEGIN, "## Separate lines: COMMITTEE, paper perps on XRP and BTC (`com_*` rule-based, `com_*_proxy_*` team proxies; PAPER-NOT-REAL)", "",
+         "Rule-based: long scout, short scout, idle guard, chart reader, with crowding, Fear & Greed and Theo's rules R1-R6 (toggleable). Proxy lines: automated "
+         "Casey/Pip/Theo/Remy following each teammate's spec. Votes every 15 min; 3 of 4 must agree to open; a 2-2 LONG/SHORT split is a tie "
          "(stay flat, logged to `leverage/logs/committee_ties.csv` with shadow outcomes). $100 each, isolated margin; same costs/funding/liquidation as leverage_ta.", "",
          "| Line | Started | **Value (USD, if closed now)** | Change vs $100 | **vs holding the coin** | Position (entry / stop / target / liq) | Trades (wins) | Longs / shorts | Ties | Fees + funding | **Liquidations** | Max drawdown | Last votes |",
          "|---|---|---|---|---|---|---|---|---|---|---|---|---|"]
     for r in rows:
         coin = r["line"].split("_")[1]
         pos = f"{r['position']} ({r['entry']} / {r['stop']} / {r['target']} / {r['liq_price']})" if r["position"] != "FLAT" else "FLAT"
-        L.append(f"| `{r['line']}` | {ms[coin]['started']} @ {ms[coin]['start_price']:g} | **${r['value_usd']:.2f}** | {r['vs_start_usd']:+.2f} | **{r['vs_hold_usd']:+.2f}** | {pos} | "
+        L.append(f"| `{r['line']}`{' (5x trades: ' + str(r['mix_5x_trades']) + ')' if r['line'].endswith('mix') else ''} | {r['started']} | **${r['value_usd']:.2f}** | {r['vs_start_usd']:+.2f} | **{r['vs_hold_usd']:+.2f}** | {pos} | "
                  f"{r['trades']} ({r['wins']}) | {r['longs']} / {r['shorts']} | {r['ties']} | ${r['fees_usd'] + r['funding_usd']:.2f} | **{r['liquidations']}** | {r['max_drawdown_pct']:.1f}% | {r['last_votes'] or '—'} |")
-    L += ["", "Backtest: `leverage/backtest_committee_output.txt`. Team committee (human/agent votes): `leverage/team/TEAM_SUMMARY.md`.", END]
+    for coin, c in snap.items():
+        L.append(f"- Crowding {c['symbol']} now: funding {c['funding_pct']}%/8h, OI 24h {c['oi_24h_pct']}%, long/short accounts {c['ls_ratio']} "
+                 f"({c['ls_pctile']}th pct of 7d), Fear & Greed {c['fng']} -> **{c['crowded'] or 'not crowded'}** (sources: {c['crowd_source']}, {c['fng_source']})")
+    L += ["", "Mix = 2x, stepping to 5x only on strong reads (4/4 agree, or avg confidence >= 0.75 with 1h and 4h trends aligned). "
+          "Crowding = >= 2 of funding extreme, OI +5%/24h, long/short ratio extreme vs 7 days, Fear & Greed extreme.",
+          "", "Backtest: `leverage/backtest_committee_output.txt`. Team committee (human/agent votes): `leverage/team/TEAM_SUMMARY.md`.", END]
     md = "\n".join(L) + "\n"
     open(os.path.join(HERE, "SUMMARY_COMMITTEE.md"), "w").write(md)
     p = os.path.join(ROOT, "SUMMARY.md"); s = open(p).read() if os.path.exists(p) else ""

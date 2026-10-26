@@ -127,7 +127,10 @@ def step(st, cfg, t, path, ind, ts):
     if sig and t != st.get("last_signal_ts"):
         st["last_signal_ts"] = t
         if sig["signal"] and not st["pos"] and st["cash"] > 1.0:
-            ev.append(open_pos(st, cfg, sig["signal"], path[0], sig["atr"], ts, f"{sig['why']} in {sig['trend']}trend, ATR {sig['atr']:.4f}"))
+            lev = sig.get("leverage", cfg["leverage"])            # 'mix' sizing passes a per-trade leverage; other lines use cfg
+            if lev != cfg["leverage"]: st["mix_high_trades"] = st.get("mix_high_trades", 0) + 1
+            why = f"{sig['why']} in {sig['trend']}trend, ATR {sig['atr']:.4f}" if sig.get("trend") else f"{sig['why']}, stop dist {sig['atr'] * cfg['stop_atr']:.5g}"
+            ev.append(dict(open_pos(st, dict(cfg, leverage=lev), sig["signal"], path[0], sig["atr"], ts, why), leverage=lev))
     trig = cfg["trigger_pct"] / 100
     for i, p in enumerate(path):
         pos = st["pos"]
