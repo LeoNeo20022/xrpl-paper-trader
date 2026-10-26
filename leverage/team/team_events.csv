@@ -1,0 +1,5 @@
+ts,account,event,price,qty_xrp,notional_usd,margin_usd,fee_usd,stop,target,liq_price,why,trade_net_usd,funding_usd,rate,margin_lost_usd,label
+2026-10-26T17:15:00+00:00,theo_XRP_2x,OPEN_SHORT,1.30035,153.651,199.8002,99.9001,0.0999,1.31716,1.26672,1.94082,"theo proxy call, 1.5x ATR, stop dist 0.016815",,,,,PAPER-NOT-REAL
+2026-10-26T17:15:00+00:00,theo_XRP_5x,OPEN_SHORT,1.30035,383.553,498.7531,99.7506,0.24938,1.31716,1.26672,1.55266,"theo proxy call, 1.5x ATR, stop dist 0.016815",,,,,PAPER-NOT-REAL
+2026-10-26T17:15:00+00:00,remy_BTC_2x,OPEN_SHORT,80457.761,0.002,199.8002,99.9001,0.0999,81138.27062,79096.74174,120205.81822,"remy proxy call, 1.5x ATR, stop dist 680.51",,,,,PAPER-NOT-REAL
+2026-10-26T17:15:00+00:00,remy_BTC_5x,OPEN_SHORT,80457.761,0.006,498.7531,99.7506,0.24938,81138.27062,79096.74174,96164.65458,"remy proxy call, 1.5x ATR, stop dist 680.51",,,,,PAPER-NOT-REAL
