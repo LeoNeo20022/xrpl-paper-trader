@@ -24,6 +24,8 @@ def append(p, row, fields):
         if new: w.writeheader()
         w.writerow(row)
 
+BUDGETS = [100, 50, 500]   # each line also runs as $50 and $500 twins (suffix _50 / _500)
+
 def hourly(now):
     """Closed 1h candles (>= 250 for the EMA200): Binance futures -> Binance spot data-api -> OKX perp."""
     for name, url in [("binance_futures_perp", "https://fapi.binance.com/fapi/v1/klines?symbol=XRPUSDT&interval=1h&limit=500"),
@@ -42,7 +44,7 @@ def main():
         t0, p0 = c5[-1][0], c5[-1][1][-1]
         ms = {"started": iso(t0 + 300), "start_price": p0, "last_candle_ts": t0, "last_close": p0,
               "baseline_xrp": TC["common"]["budget_usd"] / (p0 * (1 + TC["baseline_cost_pct"] / 100))}
-        for n, v in TC["variants"].items(): save(os.path.join(SDIR, f"{n}.json"), ta.new_state(dict(TC["common"], **v)))
+        for n, v in TC["variants"].items(): save(os.path.join(SDIR, f"{n}.json"), ta.new_state(dict(TC["common"], **v)))   # $500 twins copy these
         c5 = []; print("leverage_ta started at", p0, src5)
     src1, bars = hourly(now)
     ind = ta.indicators(bars, TC["common"])
@@ -50,9 +52,12 @@ def main():
     price = c5[-1][1][-1] if c5 else ms["last_close"]
     last = ind[max(ind)] if ind else {}
     rows = []
-    for n, v in TC["variants"].items():
-        cfg = dict(TC["common"], **v); sp = os.path.join(SDIR, f"{n}.json"); st = load(sp); evs = []
-        for t, path in c5:
+    for n, v, bud in [(n + ("" if b == 100 else f"_{b}"), v, b) for n, v in TC["variants"].items() for b in BUDGETS]:
+        cfg = dict(TC["common"], **v, budget_usd=bud); sp = os.path.join(SDIR, f"{n}.json"); st = load(sp); evs = []; twin = False
+        if st is None and bud != 100:   # $500 twin: copy of the $100 line x5 (same start date and history; exact, all costs are percentages)
+            st = ta.scaled_copy(load(os.path.join(SDIR, n[:-len(f"_{bud}")] + ".json")), bud / 100); twin = True
+            print(f"{n} started as a x{bud / 100:g} copy of {n[:-len(f'_{bud}')]}")
+        for t, path in ([] if twin else c5):
             if t % 28800 == 0 and t > (st.get("last_funding_ts") or 0):
                 e = ta.funding(st, t, fund.get(t, levdata.FUNDING_ASSUMED), path[0], iso(t))
                 if e: evs.append(dict(e, why="assumed rate" if t not in fund else fsrc))
@@ -63,13 +68,14 @@ def main():
         st["last_run"] = ts; save(sp, st)
         val = ta.equity(st, price, cfg); p = st["pos"]
         row = {"ts": ts, "line": n, "leverage": cfg["leverage"], "price": round(price, 5), "prices_5m": src5, "prices_1h": src1, "funding_source": fsrc,
-               "trend_1h": last.get("trend"), "rsi_1h": last.get("rsi"), "value_usd": round(val, 4), "vs_start_usd": round(val - cfg["budget_usd"], 4),
-               "vs_keep_xrp_usd": round(val - ms["baseline_xrp"] * price, 4), "position": p["side"] if p else "FLAT",
+               "trend_1h": last.get("trend"), "rsi_1h": last.get("rsi"), "budget_usd": bud, "value_usd": round(val, 4), "vs_start_usd": round(val - cfg["budget_usd"], 4),
+               "max_drawdown_usd": round(st.get("max_dd_usd", 0), 4), "max_loss_usd": round(min(0, st.get("min_equity", bud) - bud), 4),
+               "vs_keep_xrp_usd": round(val - ms["baseline_xrp"] * bud / 100 * price, 4), "position": p["side"] if p else "FLAT",
                "entry": round(p["entry"], 5) if p else "", "stop": round(p["stop"], 5) if p else "", "target": round(p["target"], 5) if p else "",
                "liq_price": round(ta.liq_price(p, cfg), 5) if p else "", "trades": st["trades"], "wins": st["wins"], "longs": st["longs"], "shorts": st["shorts"],
                "fees_usd": round(st["fees_usd"], 4), "funding_usd": round(st["funding_usd"], 4), "fees_paid_usd": round(st["fees_usd"] + st["funding_usd"], 4),
                "liquidations": st["liquidations"], "liq_margin_lost_usd": round(st["liq_lost_usd"], 4), "max_drawdown_pct": round(st["max_dd_pct"], 2),
-               "keep_xrp_value_usd": round(ms["baseline_xrp"] * price, 4), "new_events": len(evs)}
+               "keep_xrp_value_usd": round(ms["baseline_xrp"] * bud / 100 * price, 4), "new_events": len(evs)}
         append(os.path.join(LDIR, f"{n}_ticks.csv"), row, list(row.keys())); rows.append(row)
     if c5: ms["last_candle_ts"] = c5[-1][0]; ms["last_close"] = price
     ms.update(last_run=ts, last_source_5m=src5, last_source_1h=src1, last_funding_source=fsrc, candles_this_run=len(c5)); save(MS, ms)
@@ -80,9 +86,17 @@ def write_md(ms, rows):
     L = [BEGIN, "## Separate line: TA long/short on leverage, paper perpetual futures (`lev_ta_2x`, `lev_ta_5x`, PAPER-NOT-REAL)", "",
          f"Started **{ms['started']}** at **${ms['start_price']:.4f}**, $100 paper each, not in the $300 total. Last update {r0['ts']} at ${r0['price']:.4f}. "
          f"1h trend now: **{r0['trend_1h']}**, RSI(14) {r0['rsi_1h']} (prices `{r0['prices_5m']}`, funding `{r0['funding_source']}`).", "",
+         "### $50 / $100 / $500 side by side (`_50` / `_500` lines are the same strategy with $50 / $500; profit after fees + funding; worst drawdown = biggest drop from a high; max loss = lowest value vs start)", "",
+         "| Line | Position | Trades (wins) | " + " | ".join(f"**${x}: profit** | ${x}: worst drawdown, low | ${x}: liq." for x in (50, 100, 500)) + " |",
+         "|---|---|---|" + "---|---|---|" * 3]
+    by = {r["line"]: r for r in rows}
+    f = lambda x: (f"**{x['vs_start_usd']:+.2f}** | -{x['max_drawdown_usd']:.2f} ({x['max_drawdown_pct']:.1f}%), low {x['max_loss_usd']:+.2f} | {x['liquidations']}") if x else "— | — | —"
+    for r in rows:
+        if r["budget_usd"] == 100: L.append(f"| `{r['line']}` ({r['leverage']}x) | {r['position']} | {r['trades']} ({r['wins']}) | " + " | ".join(f(by.get(r["line"] + ("" if x == 100 else f"_{x}"))) for x in (50, 100, 500)) + " |")
+    L += ["", f"Keep $50 / $100 / $500 in XRP: {(hold - 100) / 2:+.2f} / {hold - 100:+.2f} / {(hold - 100) * 5:+.2f}.", "", "### Details ($100 lines)", "",
          "| Line | **Value (USD, if closed now)** | Change vs $100 | **vs keep $100 in XRP** | Position (entry / stop / target / liq) | Trades (wins) | Longs / shorts | Fees paid (trading + funding) | **Liquidations** | Max drawdown |",
          "|---|---|---|---|---|---|---|---|---|---|"]
-    for r in rows:
+    for r in [x for x in rows if x["budget_usd"] == 100]:
         pos = f"{r['position']} ({r['entry']} / {r['stop']} / {r['target']} / {r['liq_price']})" if r["position"] != "FLAT" else "FLAT"
         L.append(f"| `{r['line']}` ({r['leverage']}x) | **${r['value_usd']:.2f}** | {r['vs_start_usd']:+.2f} | **{r['vs_keep_xrp_usd']:+.2f}** | {pos} | {r['trades']} ({r['wins']}) | "
                  f"{r['longs']} / {r['shorts']} | ${r['fees_paid_usd']:.2f} (${r['fees_usd']:.2f} + ${r['funding_usd']:.2f}) | **{r['liquidations']}** (${r['liq_margin_lost_usd']:.2f}) | {r['max_drawdown_pct']:.1f}% |")

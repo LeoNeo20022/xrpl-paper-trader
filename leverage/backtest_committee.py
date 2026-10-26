@@ -59,16 +59,16 @@ def prep(c5, fund, sym):
     ctx = {(th, cr): committee.Context(c5, bars, fund, base(sym, th, cr), crowd if cr else None, FNG if cr else None) for th, cr in {(v[2], v[3]) for v in VARIANTS}}
     return ctx, ta.indicators(bars, TC["common"]), len(crowd)
 
-def run_com(sub, ctxs, fund, var, sym, ties=None):
-    _, lev, th, cr = var[:4]; c = base(sym, th, cr)
+def run_com(sub, ctxs, fund, var, sym, ties=None, budget=100, extra=None):
+    _, lev, th, cr = var[:4]; c = dict(base(sym, th, cr), budget_usd=budget, **(extra or {}))
     cfg = dict(c, leverage=c["mix_base"], sizing="mix") if lev == "mix" else dict(c, leverage=lev)
     if len(var) > 4: cfg["voters"] = var[4]
     st = committee.new_state(cfg); ctx = ctxs[(th, cr)]
     for t, path in sub: committee.step(st, cfg, ctx, t, path, iso(t), fund.get(t, levdata.FUNDING_ASSUMED), None, ties)
     return ta.equity(st, sub[-1][1][-1], cfg), st
 
-def run_ta(sub, ind, fund, lev, sym):
-    cfg = dict(TC["common"], leverage=lev, mmr_pct=CC["common"]["mmr_pct"][sym]); st = ta.new_state(cfg)
+def run_ta(sub, ind, fund, lev, sym, budget=100, extra=None):
+    cfg = dict(TC["common"], leverage=lev, mmr_pct=CC["common"]["mmr_pct"][sym], budget_usd=budget, **(extra or {})); st = ta.new_state(cfg)
     for t, path in sub:
         if t % 28800 == 0: ta.funding(st, t, fund.get(t, levdata.FUNDING_ASSUMED), path[0], iso(t))
         ta.step(st, cfg, t, list(path), ind, iso(t))
@@ -77,49 +77,53 @@ def run_ta(sub, ind, fund, lev, sym):
 def hold(sub): return 100 / (sub[0][1][0] * 1.0005) * sub[-1][1][-1]
 def wr(st): return f"{st['wins'] / st['trades'] * 100:.0f}%" if st["trades"] else "—"
 
-L = [f"PAPER backtest: committee (+crowding, F&G, Theo R1-R6) vs leverage_ta vs hold. Run {iso(time.time())} UTC. "
-     "P/L after fees, slippage, funding; open positions valued as if closed at the end. Votes every 15 min.", ""]
-for coin, sym in CC["coins"].items():
-    rec, fund, old, ofund = load(sym)
-    ctx_r, ind_r, nm_r = prep(rec, fund, sym); ctx_o, ind_o, nm_o = prep(old, ofund, sym)
-    end = rec[-1][0] + 300
-    L += [f"## {sym} (recent data to {iso(end)} UTC; crowding metrics hours: recent {nm_r}, stress {nm_o})", "",
-          "| Window (price) | Line | P/L | Closed trades (entries L/S) | Trades/day | Win rate | Liquidations | Max drawdown | Fees / funding | Decisions L/S/tie/idle | Rules fired (votes) | vs hold |",
-          "|---|---|---|---|---|---|---|---|---|---|---|---|"]
-    def window(sub, ctxs, ind, fm, label):
-        h = hold(sub); days = len(sub) / 288
-        for var in VARIANTS:
-            ties = []; v, st = run_com(sub, ctxs, fm, var, sym, ties); d = st["decisions"]
-            rf = ", ".join(f"{k}:{n}" for k, n in sorted(st.get("rules_fired", {}).items()))
-            extra = f" [5x trades {st.get('mix_high_trades', 0)}]" if var[1] == "mix" else ""
-            L.append(f"| {label} ({sub[0][1][0]:.4g} -> {sub[-1][1][-1]:.4g}) | {var[0]}{extra} | {v - 100:+.2f} | {st['trades']} ({st['longs']}/{st['shorts']}) | "
-                     f"{(st['longs'] + st['shorts']) / days:.2f} | {wr(st)} | {st['liquidations']} | {st['max_dd_pct']:.1f}% | ${st['fees_usd']:.2f} / ${st['funding_usd']:+.2f} | "
-                     f"{d['LONG']}/{d['SHORT']}/{d['TIE']}/{d['IDLE']} | {rf or '—'}; news flats {st.get('news_flats', 0)}; crowded votes {st.get('crowded_votes', 0)} | {v - h:+.2f} |")
-        for lev in (2, 5):
-            v, st = run_ta(sub, ind, fm, lev, sym)
-            L.append(f"| | leverage_ta {lev}x | {v - 100:+.2f} | {st['trades']} ({st['longs']}/{st['shorts']}) | {(st['longs'] + st['shorts']) / days:.2f} | {wr(st)} | "
-                     f"{st['liquidations']} | {st['max_dd_pct']:.1f}% | ${st['fees_usd']:.2f} / ${st['funding_usd']:+.2f} | — | — | {v - h:+.2f} |")
-        L.append(f"| | Hold $100 of {coin.upper()} | {h - 100:+.2f} | — | — | — | 0 | — | $0.05 | — | — | — |")
-    for w in (14, 30, 60): window([c for c in rec if c[0] >= end - w * 86400], ctx_r, ind_r, fund, f"{w}d")
-    s0 = min(t for t in ctx_o[(True, True)].t5 if ctx_o[(True, True)].ready(t)) // 86400 * 86400 + 86400
-    window([c for c in old if c[0] >= s0], ctx_o, ind_o, ofund, "Stress whole")
-    def rolling(cs, ctxs, ind, fm, title):
-        first = min(t for t in ctxs[(True, True)].t5 if ctxs[(True, True)].ready(t))
-        starts = [i for i, (t, _) in enumerate(cs) if t % 86400 == 0 and t >= first and t + 14 * 86400 <= cs[-1][0] + 300]
-        R = ["", f"14-day runs, one starting every day: {sym} {title} ({len(starts)} runs)", "",
-             "| Line | Median P/L | Worst run | Best run | Losing runs | Runs with a liquidation | Median trades | Median vs hold |", "|---|---|---|---|---|---|---|---|"]
-        lines = [(VARIANTS[i][0], ("c", VARIANTS[i])) for i in ROLL] + [(f"leverage_ta {l}x", ("t", l)) for l in (2, 5)]
-        for name, (kind, x) in lines:
-            res = []
-            for i in starts:
-                sub = cs[i:i + 14 * 288]
-                v, st = run_com(sub, ctxs, fm, x, sym) if kind == "c" else run_ta(sub, ind, fm, x, sym)
-                res.append((v - 100, v - hold(sub), st["liquidations"], st["trades"]))
-            pl = sorted(r[0] for r in res); vh = sorted(r[1] for r in res); nt = sorted(r[3] for r in res)
-            R.append(f"| {name} | {pl[len(pl) // 2]:+.2f} | {pl[0]:+.2f} | {pl[-1]:+.2f} | {sum(r[0] < 0 for r in res)} of {len(res)} | "
-                     f"{sum(r[2] > 0 for r in res)} | {nt[len(nt) // 2]} | {vh[len(vh) // 2]:+.2f} |")
-        return R
-    L += rolling(rec, ctx_r, ind_r, fund, "last 60 days")
-    L += rolling(old, ctx_o, ind_o, ofund, "STRESS Oct 2024 - Mar 2025")
-    L.append(""); print("\n".join(L[-45:]), flush=True)
-    open(os.path.join(HERE, "backtest_committee_output.txt"), "w").write("\n".join(L) + "\n")
+def main():
+    L = [f"PAPER backtest: committee (+crowding, F&G, Theo R1-R6) vs leverage_ta vs hold. Run {iso(time.time())} UTC. "
+         "P/L after fees, slippage, funding; open positions valued as if closed at the end. Votes every 15 min.", ""]
+    for coin, sym in CC["coins"].items():
+        rec, fund, old, ofund = load(sym)
+        ctx_r, ind_r, nm_r = prep(rec, fund, sym); ctx_o, ind_o, nm_o = prep(old, ofund, sym)
+        end = rec[-1][0] + 300
+        L += [f"## {sym} (recent data to {iso(end)} UTC; crowding metrics hours: recent {nm_r}, stress {nm_o})", "",
+              "| Window (price) | Line | P/L | Closed trades (entries L/S) | Trades/day | Win rate | Liquidations | Max drawdown | Fees / funding | Decisions L/S/tie/idle | Rules fired (votes) | vs hold |",
+              "|---|---|---|---|---|---|---|---|---|---|---|---|"]
+        def window(sub, ctxs, ind, fm, label):
+            h = hold(sub); days = len(sub) / 288
+            for var in VARIANTS:
+                ties = []; v, st = run_com(sub, ctxs, fm, var, sym, ties); d = st["decisions"]
+                rf = ", ".join(f"{k}:{n}" for k, n in sorted(st.get("rules_fired", {}).items()))
+                extra = f" [5x trades {st.get('mix_high_trades', 0)}]" if var[1] == "mix" else ""
+                L.append(f"| {label} ({sub[0][1][0]:.4g} -> {sub[-1][1][-1]:.4g}) | {var[0]}{extra} | {v - 100:+.2f} | {st['trades']} ({st['longs']}/{st['shorts']}) | "
+                         f"{(st['longs'] + st['shorts']) / days:.2f} | {wr(st)} | {st['liquidations']} | {st['max_dd_pct']:.1f}% | ${st['fees_usd']:.2f} / ${st['funding_usd']:+.2f} | "
+                         f"{d['LONG']}/{d['SHORT']}/{d['TIE']}/{d['IDLE']} | {rf or '—'}; news flats {st.get('news_flats', 0)}; crowded votes {st.get('crowded_votes', 0)} | {v - h:+.2f} |")
+            for lev in (2, 5):
+                v, st = run_ta(sub, ind, fm, lev, sym)
+                L.append(f"| | leverage_ta {lev}x | {v - 100:+.2f} | {st['trades']} ({st['longs']}/{st['shorts']}) | {(st['longs'] + st['shorts']) / days:.2f} | {wr(st)} | "
+                         f"{st['liquidations']} | {st['max_dd_pct']:.1f}% | ${st['fees_usd']:.2f} / ${st['funding_usd']:+.2f} | — | — | {v - h:+.2f} |")
+            L.append(f"| | Hold $100 of {coin.upper()} | {h - 100:+.2f} | — | — | — | 0 | — | $0.05 | — | — | — |")
+        for w in (14, 30, 60): window([c for c in rec if c[0] >= end - w * 86400], ctx_r, ind_r, fund, f"{w}d")
+        s0 = min(t for t in ctx_o[(True, True)].t5 if ctx_o[(True, True)].ready(t)) // 86400 * 86400 + 86400
+        window([c for c in old if c[0] >= s0], ctx_o, ind_o, ofund, "Stress whole")
+        def rolling(cs, ctxs, ind, fm, title):
+            first = min(t for t in ctxs[(True, True)].t5 if ctxs[(True, True)].ready(t))
+            starts = [i for i, (t, _) in enumerate(cs) if t % 86400 == 0 and t >= first and t + 14 * 86400 <= cs[-1][0] + 300]
+            R = ["", f"14-day runs, one starting every day: {sym} {title} ({len(starts)} runs)", "",
+                 "| Line | Median P/L | Worst run | Best run | Losing runs | Runs with a liquidation | Median trades | Median vs hold |", "|---|---|---|---|---|---|---|---|"]
+            lines = [(VARIANTS[i][0], ("c", VARIANTS[i])) for i in ROLL] + [(f"leverage_ta {l}x", ("t", l)) for l in (2, 5)]
+            for name, (kind, x) in lines:
+                res = []
+                for i in starts:
+                    sub = cs[i:i + 14 * 288]
+                    v, st = run_com(sub, ctxs, fm, x, sym) if kind == "c" else run_ta(sub, ind, fm, x, sym)
+                    res.append((v - 100, v - hold(sub), st["liquidations"], st["trades"]))
+                pl = sorted(r[0] for r in res); vh = sorted(r[1] for r in res); nt = sorted(r[3] for r in res)
+                R.append(f"| {name} | {pl[len(pl) // 2]:+.2f} | {pl[0]:+.2f} | {pl[-1]:+.2f} | {sum(r[0] < 0 for r in res)} of {len(res)} | "
+                         f"{sum(r[2] > 0 for r in res)} | {nt[len(nt) // 2]} | {vh[len(vh) // 2]:+.2f} |")
+            return R
+        L += rolling(rec, ctx_r, ind_r, fund, "last 60 days")
+        L += rolling(old, ctx_o, ind_o, ofund, "STRESS Oct 2024 - Mar 2025")
+        L.append(""); print("\n".join(L[-45:]), flush=True)
+        open(os.path.join(HERE, "backtest_committee_output.txt"), "w").write("\n".join(L) + "\n")
+
+if __name__ == "__main__":
+    main()

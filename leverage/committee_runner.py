@@ -18,6 +18,8 @@ VOTERS = ["long_scout", "short_scout", "idle_guard", "chart_reader"]
 CROWD = ["funding_pct", "oi_24h_pct", "ls_ratio", "ls_pctile", "fng", "crowded", "long_signals", "short_signals"]
 VOTE_FIELDS = (["ts", "coin", "decision", "in_position"] + VOTERS + [x + "_conf" for x in VOTERS] + [x + "_why" for x in VOTERS]
                + ["crowd_" + x for x in CROWD] + ["trend_1h", "trend_4h", "ema200_4h", "price_24h_pct", "r1_healthy_trend", "theo_rules_fired", "mix_leverage"])
+BUDGETS = [100, 50, 500]   # every committee line runs at $100 plus $50 and $500 twins (suffix _50 / _500); $100 first so twins can copy it
+QUICK = {"quick_tp_pct": 1.5, "quick_stop_pct": 1.0}   # +1.5% beat +1% in backtest_sizes_output.txt (committee 5x, 8 windows: -44.76 vs -108.99 per $100; regular 5x -115.28)
 PROXIES = ["casey", "pip", "theo", "remy"]
 PROXY_FIELDS = (["ts", "coin", "decision", "in_position"] + PROXIES + [x + "_conf" for x in PROXIES] + [x + "_why" for x in PROXIES]
                 + ["crowd_" + x for x in CROWD] + ["trend_1h", "trend_4h", "ema200_4h", "price_24h_pct", "r1_healthy_trend", "theo_rules_fired", "mix_leverage"])
@@ -70,29 +72,38 @@ def main():
                 print(f"committee {coin} started at {p0}")
             new = [(t, p) for t, p in c5 if t > m["last_candle_ts"]]
             price = new[-1][1][-1] if new else m["last_close"]
-            for kind, lev in [(k, l) for k in ("rule", "proxy") for l in CC["leverages"]]:
-                n = f"com_{coin}_" + ("proxy_" if kind == "proxy" else "") + f"{lev}" + ("" if lev == "mix" else "x")
-                cfg = dict(CC["common"], leverage=lev, mmr_pct=CC["common"]["mmr_pct"][sym])
+            specs = [(k, l, None) for k in ("rule", "proxy") for l in CC["leverages"]] + [("rule", 5, "quick")]   # mix+quick dropped: mix never reached 5x in backtests, so it was identical to mix
+            for kind, lev, qk, bud in [(k, l, q, b) for k, l, q in specs for b in BUDGETS]:
+                n = f"com_{coin}_" + ("proxy_" if kind == "proxy" else "") + f"{lev}" + ("" if lev == "mix" else "x") + ("_quick" if qk else "") + ("" if bud == 100 else f"_{bud}")
+                cfg = dict(CC["common"], leverage=lev, mmr_pct=CC["common"]["mmr_pct"][sym], budget_usd=bud)
+                if qk: cfg.update(QUICK, quick_tp_min_lev=5)   # 'get on base': fixed small take-profit + tight stop (on mix: its 5x trades only)
                 if lev == "mix": cfg.update(leverage=CC["common"]["mix_base"], sizing="mix")
                 if kind == "proxy": cfg["voters"] = "proxy"
                 sp = os.path.join(SDIR, f"{n}.json"); st = load(sp); vlog, tlog, evs = [], [], []
+                base = os.path.join(SDIR, n[:-len(f"_{bud}")] + ".json") if bud != 100 else None
+                if st is None and base and os.path.exists(base):   # $500 twin: copy of the $100 line x5, same start date and history
+                    st = ta.scaled_copy(load(base), bud / 100); st["last_run"] = None
+                    print(f"{n} started as a x{bud / 100:g} copy of {os.path.basename(base)[:-5]}")
+                    twin = True
+                else: twin = False
                 if st is None:   # a line added later starts at the current price
                     st = committee.new_state(cfg); st.update(started=iso(m["last_candle_ts"] + 300), start_price=m["last_close"])
                     print(f"{n} started at {m['last_close']}")
-                for t, path in new:
+                for t, path in ([] if twin else new):   # a fresh twin already includes this tick's candles
                     evs += committee.step(st, cfg, ctx, t, path, iso(t), fund.get(t, levdata.FUNDING_ASSUMED), vlog, tlog)
                 for e in evs:
                     append(os.path.join(LDIR, f"{n}_events.csv"), dict(e, label="PAPER-NOT-REAL"), EV)
                     print(("*** PAPER LIQUIDATION " if e["event"].startswith("LIQ") else "") + f"[{n}]", e)
-                if lev == CC["leverages"][0]:
+                if lev == CC["leverages"][0] and bud == 100 and not qk:
                     for v in vlog:
                         if kind == "rule": append(os.path.join(LDIR, f"committee_votes_{coin}.csv"), dict(v, coin=sym), VOTE_FIELDS)
                         else: append(os.path.join(LDIR, f"committee_proxy_votes_{coin}.csv"), dict(v, coin=sym), PROXY_FIELDS)
                 st["last_run"] = ts; save(sp, st)
                 val = ta.equity(st, price, cfg); p = st["pos"]
-                hold = (100 / (st["start_price"] * 1.0005) if st.get("start_price") else m["baseline_units"]) * price
+                hold = (bud / (st["start_price"] * 1.0005) if st.get("start_price") else m["baseline_units"] * bud / 100) * price
                 row = {"ts": ts, "line": n, "coin": sym, "leverage": lev, "started": st.get("started", m["started"]), "mix_5x_trades": st.get("mix_high_trades", 0), "price": round(price, 6), "source": src, "funding_source": fsrc,
-                       "value_usd": round(val, 4), "vs_start_usd": round(val - 100, 4), "vs_hold_usd": round(val - hold, 4),
+                       "budget_usd": bud, "value_usd": round(val, 4), "vs_start_usd": round(val - bud, 4),
+                       "max_drawdown_usd": round(st.get("max_dd_usd", 0), 4), "max_loss_usd": round(min(0, st.get("min_equity", bud) - bud), 4), "vs_hold_usd": round(val - hold, 4),
                        "position": p["side"] if p else "FLAT", "entry": round(p["entry"], 6) if p else "", "stop": round(p["stop"], 6) if p else "",
                        "target": round(p["target"], 6) if p else "", "liq_price": round(ta.liq_price(p, cfg), 6) if p else "",
                        "trades": st["trades"], "wins": st["wins"], "longs": st["longs"], "shorts": st["shorts"], "ties": len(st["ties"]),
@@ -109,7 +120,7 @@ def main():
     if snap: save(os.path.join(LDIR, "crowding_latest.json"), snap)
     ties = []
     for f in sorted(os.listdir(SDIR)):
-        if f.startswith("com_") and f.endswith(".json"):
+        if f.startswith("com_") and f.endswith(".json") and not f.endswith("_500.json"):   # ties are the same for the $500 twins
             for t in load(os.path.join(SDIR, f))["ties"]: ties.append(dict(t, line=f[:-5], user_vote=""))
     if ties:
         fields = ["ts", "line", "price", "atr", "crowded"] + VOTERS + ["if_long_usd", "if_short_usd", "user_vote"]
@@ -122,10 +133,19 @@ def write_md(ms, rows, snap):
     L = [BEGIN, "## Separate lines: COMMITTEE, paper perps on XRP and BTC (`com_*` rule-based, `com_*_proxy_*` team proxies; PAPER-NOT-REAL)", "",
          "Rule-based: long scout, short scout, idle guard, chart reader, with crowding, Fear & Greed and Theo's rules R1-R6 (toggleable). Proxy lines: automated "
          "Casey/Pip/Theo/Remy following each teammate's spec. Votes every 15 min; 3 of 4 must agree to open; a 2-2 LONG/SHORT split is a tie "
-         "(stay flat, logged to `leverage/logs/committee_ties.csv` with shadow outcomes). $100 each, isolated margin; same costs/funding/liquidation as leverage_ta.", "",
+         "(stay flat, logged to `leverage/logs/committee_ties.csv` with shadow outcomes). Every line runs at $100 plus $50 and $500 twins (`_50`, `_500`), isolated margin; `com_*_5x_quick` = 'get on base' 5x: take profit at +1.5% underlying (about +7.5% on margin; +1.5% backtested better than +1%, see `leverage/backtest_sizes_output.txt`), stop the tighter of 1% or 1.5x ATR; same costs/funding/liquidation as leverage_ta.", "",
+         "### $50 / $100 / $500 side by side (profit after fees + funding; worst drawdown = biggest drop from a high; max loss = lowest value vs start)", "",
+         "| Line | Started | Position | Trades (wins) | " + " | ".join(f"**${x}: profit** | ${x}: worst drawdown, low | ${x}: liq." for x in (50, 100, 500)) + " |",
+         "|---|---|---|---|" + "---|---|---|" * 3]
+    by = {r["line"]: r for r in rows}
+    f = lambda x: (f"**{x['vs_start_usd']:+.2f}** | -{x['max_drawdown_usd']:.2f} ({x['max_drawdown_pct']:.1f}%), low {x['max_loss_usd']:+.2f} | {x['liquidations']}") if x else "— | — | —"
+    for r in rows:
+        if r["budget_usd"] != 100: continue
+        L.append(f"| `{r['line']}` | {r['started']} | {r['position']} | {r['trades']} ({r['wins']}) | " + " | ".join(f(by.get(r["line"] + ("" if x == 100 else f"_{x}"))) for x in (50, 100, 500)) + " |")
+    L += ["", "### Details ($100 lines; the `_50` / `_500` twins hold the same positions at 0.5x / 5x the size)", "",
          "| Line | Started | **Value (USD, if closed now)** | Change vs $100 | **vs holding the coin** | Position (entry / stop / target / liq) | Trades (wins) | Longs / shorts | Ties | Fees + funding | **Liquidations** | Max drawdown | Last votes |",
          "|---|---|---|---|---|---|---|---|---|---|---|---|---|"]
-    for r in rows:
+    for r in [x for x in rows if x["budget_usd"] == 100]:
         coin = r["line"].split("_")[1]
         pos = f"{r['position']} ({r['entry']} / {r['stop']} / {r['target']} / {r['liq_price']})" if r["position"] != "FLAT" else "FLAT"
         L.append(f"| `{r['line']}`{' (5x trades: ' + str(r['mix_5x_trades']) + ')' if r['line'].endswith('mix') else ''} | {r['started']} | **${r['value_usd']:.2f}** | {r['vs_start_usd']:+.2f} | **{r['vs_hold_usd']:+.2f}** | {pos} | "

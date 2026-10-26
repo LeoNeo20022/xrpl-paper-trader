@@ -88,6 +88,9 @@ def open_pos(st, cfg, side, px, atr, ts, why):
     d = 1 if side == "LONG" else -1
     st["pos"] = {"side": side, "entry": fill, "qty": q, "margin": M, "stop": fill - d * cfg["stop_atr"] * atr,
                  "target": fill + d * cfg["target_atr"] * atr, "opened": ts, "fees": fee, "funding": 0.0, "start_cash": M0}
+    if cfg.get("quick_tp_pct") and lev >= cfg.get("quick_tp_min_lev", 0):   # 'get on base': small fixed take-profit, tight stop
+        sd = min(cfg["stop_atr"] * atr, fill * cfg.get("quick_stop_pct", 1.0) / 100)
+        st["pos"].update(target=fill * (1 + d * cfg["quick_tp_pct"] / 100), stop=fill - d * sd, quick_tp=True)
     st["cash"] = 0.0; st["fees_usd"] += fee
     st["longs" if side == "LONG" else "shorts"] += 1
     return {"ts": ts, "event": f"OPEN_{side}", "price": round(fill, 5), "qty_xrp": round(q, 3), "notional_usd": round(notional, 4),
@@ -102,12 +105,14 @@ def close_pos(st, cfg, px, kind, ts):
     st["cash"] = pos["margin"] + pnl - fee; st["fees_usd"] += fee
     net = st["cash"] - pos["start_cash"]
     st["trades"] += 1; st["wins"] += net > 0; st["realised_usd"] += net; st["pos"] = None
+    k = "win_usd" if net > 0 else "loss_usd"; st[k] = st.get(k, 0.0) + net                     # for average win / average loss
     return {"ts": ts, "event": f"{kind}_{pos['side']}", "price": round(fill, 5), "qty_xrp": round(pos["qty"], 3), "fee_usd": round(fee, 5),
             "trade_net_usd": round(net, 4), "funding_usd": round(pos["funding"], 5)}
 
 def liquidate(st, cfg, p, ts):
     pos = st["pos"]; lost = pos["margin"]
     st["liquidations"] += 1; st["liq_lost_usd"] += lost; st["trades"] += 1; st["realised_usd"] -= pos["start_cash"]
+    st["loss_usd"] = st.get("loss_usd", 0.0) - pos["start_cash"]
     st["cash"] = 0.0; st["pos"] = None
     return {"ts": ts, "event": f"LIQUIDATION_{pos['side']}", "price": round(liq_price(pos, cfg), 5), "mkt": round(p, 5),
             "qty_xrp": round(pos["qty"], 3), "margin_lost_usd": round(lost, 4)}
@@ -144,4 +149,19 @@ def step(st, cfg, t, path, ind, ts):
     eqs = [equity(st, x, cfg) for x in path]
     st["peak_equity"] = max(st["peak_equity"], max(eqs)); worst = min(eqs)
     st["max_dd_pct"] = max(st["max_dd_pct"], (1 - worst / st["peak_equity"]) * 100) if st["peak_equity"] > 0 else 100
+    st["max_dd_usd"] = max(st.get("max_dd_usd", 0.0), st["peak_equity"] - worst)              # worst peak-to-trough drop in dollars
+    st["min_equity"] = min(st.get("min_equity", float(cfg["budget_usd"])), worst)              # lowest value seen (max loss vs start)
     return ev
+
+def scaled_copy(st, k):
+    """Copy of a paper account with every dollar amount multiplied by k (used to start a $500 twin of a $100 line from the same
+    start date: exact, because all fees, slippage, funding and liquidation rules are percentages with no fixed minimums)."""
+    import copy
+    s = copy.deepcopy(st)
+    for f in ("cash", "liq_lost_usd", "fees_usd", "funding_usd", "peak_equity", "realised_usd", "max_dd_usd", "min_equity"):
+        if isinstance(s.get(f), (int, float)): s[f] *= k
+    if s.get("pos"):
+        for f in ("qty", "margin", "fees", "funding", "start_cash"):
+            if isinstance(s["pos"].get(f), (int, float)): s["pos"][f] *= k
+    s["scaled_from_100"] = True
+    return s
