@@ -1,0 +1,2 @@
+ts,line,leverage_cap,started,price,source,funding_source,value_usd,pl_usd,days,pl_per_day,max_drawdown_usd,max_drawdown_pct,trades,wins,long_closed,long_wins,long_pl,short_closed,short_wins,short_pl,position,contracts,entry,stop,target,liq_price,fees_usd,funding_usd,liquidations,skipped,hold_value_usd,decisions
+2026-10-26T18:19:09+00:00,com_xrp_kraken_1k_2x,2,2026-10-26T18:15:00+00:00,1.2998,binance_spot_data_api,okx_proxy,1000.0,0.0,0.003,0.0,0,0.0,0,0,0,0,0.0,0,0,0.0,FLAT,0,,,,,0.0,0.0,0,0,999.5002,"{""LONG"": 0, ""SHORT"": 0, ""TIE"": 0, ""IDLE"": 0}"

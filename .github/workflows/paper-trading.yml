@@ -41,6 +41,7 @@ jobs:
             python leverage/lev_runner.py || echo "leverage tick $n failed (main lines unaffected)"   # PAPER-only leveraged line, separate state
             python leverage/ta_runner.py || echo "leverage_ta tick $n failed (other lines unaffected)"   # PAPER-only TA long/short line
             python leverage/committee_runner.py || echo "committee tick $n failed (other lines unaffected)"   # PAPER-only 4-voter committee, XRP+BTC
+            python leverage/kraken_runner.py || echo "kraken 1k tick $n failed (other lines unaffected)"   # PAPER-only candidate live setup: $1k Kraken PXRPUH, committee quick 2x/3x
             python sizes_summary.py || echo "sizes table tick $n failed (other lines unaffected)"   # $100 vs $500 view of the XRPL lines (display only)
             git add state/ logs/ SUMMARY.md leverage/
             if ! git diff --cached --quiet; then
