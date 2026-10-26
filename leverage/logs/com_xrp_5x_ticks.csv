@@ -1,3 +1,4 @@
 ts,line,coin,leverage,price,source,funding_source,value_usd,vs_start_usd,vs_hold_usd,position,entry,stop,target,liq_price,trades,wins,longs,shorts,ties,decisions,fees_usd,funding_usd,liquidations,max_drawdown_pct,hold_value_usd,last_votes
 2026-10-26T16:43:35+00:00,com_xrp_5x,XRPUSDT,5,1.2894,binance_spot_data_api,okx_proxy,100.0,0.0,0.05,FLAT,,,,,0,0,0,0,0,"{""LONG"": 0, ""SHORT"": 0, ""TIE"": 0, ""IDLE"": 0}",0.0,0.0,0,0.0,99.95,
 2026-10-26T16:46:46+00:00,com_xrp_5x,XRPUSDT,5,1.2881,binance_spot_data_api,okx_proxy,100.0,0.0,0.1507,FLAT,,,,,0,0,0,0,0,"{""LONG"": 0, ""SHORT"": 0, ""TIE"": 0, ""IDLE"": 0}",0.0,0.0,0,0.0,99.8493,
+2026-10-26T17:01:44+00:00,com_xrp_5x,XRPUSDT,5,1.296,binance_spot_data_api,okx_proxy,100.0,0.0,-0.4616,FLAT,,,,,0,0,0,0,0,"{""LONG"": 0, ""SHORT"": 0, ""TIE"": 0, ""IDLE"": 1}",0.0,0.0,0,0.0,100.4616,"{""long_scout"": ""IDLE"", ""short_scout"": ""IDLE"", ""idle_guard"": ""SHORT"", ""chart_reader"": ""IDLE""}"

@@ -5,10 +5,10 @@ Four rule-based voters (long scout, short scout, idle guard, chart reader) vote 
 
 | Line | Started | **Value (USD, if closed now)** | Change vs $100 | **vs holding the coin** | Position (entry / stop / target / liq) | Trades (wins) | Longs / shorts | Ties | Fees + funding | **Liquidations** | Max drawdown | Last votes |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| `com_xrp_2x` | 2026-10-26T16:40:00+00:00 @ 1.2894 | **$100.00** | +0.00 | **+0.15** | FLAT | 0 (0) | 0 / 0 | 0 | $0.00 | **0** | 0.0% | — |
-| `com_xrp_5x` | 2026-10-26T16:40:00+00:00 @ 1.2894 | **$100.00** | +0.00 | **+0.15** | FLAT | 0 (0) | 0 / 0 | 0 | $0.00 | **0** | 0.0% | — |
-| `com_btc_2x` | 2026-10-26T16:40:00+00:00 @ 79940 | **$100.00** | +0.00 | **+0.12** | FLAT | 0 (0) | 0 / 0 | 0 | $0.00 | **0** | 0.0% | — |
-| `com_btc_5x` | 2026-10-26T16:40:00+00:00 @ 79940 | **$100.00** | +0.00 | **+0.12** | FLAT | 0 (0) | 0 / 0 | 0 | $0.00 | **0** | 0.0% | — |
+| `com_xrp_2x` | 2026-10-26T16:40:00+00:00 @ 1.2894 | **$100.00** | +0.00 | **-0.46** | FLAT | 0 (0) | 0 / 0 | 0 | $0.00 | **0** | 0.0% | {"long_scout": "IDLE", "short_scout": "IDLE", "idle_guard": "SHORT", "chart_reader": "IDLE"} |
+| `com_xrp_5x` | 2026-10-26T16:40:00+00:00 @ 1.2894 | **$100.00** | +0.00 | **-0.46** | FLAT | 0 (0) | 0 / 0 | 0 | $0.00 | **0** | 0.0% | {"long_scout": "IDLE", "short_scout": "IDLE", "idle_guard": "SHORT", "chart_reader": "IDLE"} |
+| `com_btc_2x` | 2026-10-26T16:40:00+00:00 @ 79940 | **$100.00** | +0.00 | **-0.32** | FLAT | 0 (0) | 0 / 0 | 0 | $0.00 | **0** | 0.0% | {"long_scout": "IDLE", "short_scout": "IDLE", "idle_guard": "SHORT", "chart_reader": "SHORT"} |
+| `com_btc_5x` | 2026-10-26T16:40:00+00:00 @ 79940 | **$100.00** | +0.00 | **-0.32** | FLAT | 0 (0) | 0 / 0 | 0 | $0.00 | **0** | 0.0% | {"long_scout": "IDLE", "short_scout": "IDLE", "idle_guard": "SHORT", "chart_reader": "SHORT"} |
 
 Backtest: `leverage/backtest_committee_output.txt`. Team committee (human/agent votes): `leverage/team/TEAM_SUMMARY.md`.
 <!-- COMMITTEE-END -->
