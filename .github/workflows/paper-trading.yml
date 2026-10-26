@@ -40,6 +40,7 @@ jobs:
             python paper_runner.py || echo "tick $n failed"
             python leverage/lev_runner.py || echo "leverage tick $n failed (main lines unaffected)"   # PAPER-only leveraged line, separate state
             python leverage/ta_runner.py || echo "leverage_ta tick $n failed (other lines unaffected)"   # PAPER-only TA long/short line
+            python leverage/committee_runner.py || echo "committee tick $n failed (other lines unaffected)"   # PAPER-only 4-voter committee, XRP+BTC
             git add state/ logs/ SUMMARY.md leverage/
             if ! git diff --cached --quiet; then
               git commit -q -m "paper tick $(date -u +%FT%TZ)"

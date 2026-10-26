@@ -1,0 +1,2 @@
+ts,line,coin,leverage,price,source,funding_source,value_usd,vs_start_usd,vs_hold_usd,position,entry,stop,target,liq_price,trades,wins,longs,shorts,ties,decisions,fees_usd,funding_usd,liquidations,max_drawdown_pct,hold_value_usd,last_votes
+2026-10-26T16:43:35+00:00,com_btc_2x,BTCUSDT,2,79940.0,binance_spot_data_api,okx_proxy,100.0,0.0,0.05,FLAT,,,,,0,0,0,0,0,"{""LONG"": 0, ""SHORT"": 0, ""TIE"": 0, ""IDLE"": 0}",0.0,0.0,0,0.0,99.95,
