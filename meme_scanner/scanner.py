@@ -258,6 +258,7 @@ def check(tok, seen_entry, need_conc=True):
 # ---------------- strategy bankrolls / exits ----------------
 STRATS = list(CFG["exits"].keys())
 LEGACY = ["hold", "plus5", "scalp"]                    # original strategies (unchanged rules)
+PAUSED = CFG.get("paused", {})   # strategy -> note; paused strategies open no new positions (Oct 26)
 V2 = [s for s in ("slow_scalp", "breakout", "dip_bounce") if s in STRATS]  # added Oct 24
 BOOK_FIELDS = ["ts", "label", "strategy", "token", "issuer", "currency", "sources", "usd", "xrp_usd", "xrp_in", "spot_xrp_per_token",
                "fill_xrp_per_token", "tokens", "buy_cost_pct_vs_spot", "amm_fee_pct", "transfer_fee_pct", "round_trip_cost_pct",
@@ -610,7 +611,7 @@ def discover_and_check(meta, seen, books, px, stats):
             log_signal(se, "dip_bounce", tok, "SKIP" if why else "ELIGIBLE", "; ".join(why), m)
     # breakout confirmation needs 5-min candles (xrpl.to /ohlc, 5 credits each): only for the best few prefiltered tokens
     bo_queue.sort(key=lambda e: e[0]); calls = 0
-    for _, k, tok, r, rt, se, x in bo_queue:
+    for _, k, tok, r, rt, se, x in ([] if "breakout" in PAUSED else bo_queue):
         if calls >= bo["max_ohlc_calls_per_run"]: break
         calls += 1
         try: m = breakout_metrics(x, r["pool"])
@@ -630,6 +631,7 @@ def discover_and_check(meta, seen, books, px, stats):
     for s in V2:
         v2_elig[s].sort(key=lambda e: (e[0], e[1]))
         out[s] = [(k, tok, r, rt, note) for _, _, k, tok, r, rt, note in v2_elig[s]]
+    for s in PAUSED: out[s] = []   # paused: no new buys; open positions still exit via manage()
     stats["eligible"] = {s: len(v) for s, v in out.items()}
     return out
 
@@ -733,7 +735,7 @@ def write_summary(meta, seen, books, pools, px, stats):
         st = book_stats(books[s], pools, px)
         wr = f"{st['wins']} / {st['losses']} ({st['win_rate']:.0f}%)" if st["win_rate"] is not None else "–"
         started = (books[s].get("start_ts") or "2026-10-24T11:16")[:16].replace("T", " ")
-        L.append(f"| {s} | {desc.get(s, '')} | {started} | **${st['equity']:.2f}** | **{st['equity'] - books[s]['start_usd']:+.2f}** | ${st['cash']:.2f} | {st['open_n']} / ${st['open_val']:.2f} | "
+        L.append(f"| {s}{' — **' + PAUSED[s] + '**' if s in PAUSED else ''} | {desc.get(s, '')} | {started} | **${st['equity']:.2f}** | **{st['equity'] - books[s]['start_usd']:+.2f}** | ${st['cash']:.2f} | {st['open_n']} / ${st['open_val']:.2f} | "
                  f"${st['realized']:+.2f} | ${st['unrealized']:+.2f} | {wr} | {st['trades']} ({st['closed_n']}) | {st['realized_xrp']:+.2f} | {st['unrealized_xrp']:+.2f} | {st['equity_xrp']:.2f} | {st['equity_xrp'] - st['start_xrp']:+.2f} | ${st['fees_usd']:.2f} ({st['net_fees_xrp']:.5f}) | {st['reserve_locked_xrp']:.1f} |")
     if "hold" in books:  # baseline: the same $100 simply kept in XRP from the original start
         sp = books["hold"]["start_xrp_usd"]; bx = books["hold"]["start_usd"] / sp; bu = bx * px
@@ -750,7 +752,7 @@ def write_summary(meta, seen, books, pools, px, stats):
           "The 3 newer strategies started later than hold/plus5/scalp (see Started), so compare them per day, not just by total.", ""]
     for s in STRATS:
         bk = books[s]
-        L += [f"### {s} — open positions ({len(bk['positions'])})", ""]
+        L += [f"### {s}{' (' + PAUSED[s] + ', exits only)' if s in PAUSED else ''} — open positions ({len(bk['positions'])})", ""]
         if bk["positions"]:
             L += ["| Token | Bought (UTC) | Cost | Now (net, x) | Peak (x, h after buy) | Low (x) | Warnings |" + (" Why bought |" if s in V2 else ""), "|---|---|---|---|---|---|---|" + ("---|" if s in V2 else "")]
             for p in sorted(bk["positions"], key=lambda p: p["t"], reverse=True):
