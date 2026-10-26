@@ -171,11 +171,11 @@ def main():
                                     s = ta.new_state(dict(cfg, budget_usd=100)); ta.open_pos(s, cfg, side, price, atr, tsx, "shadow")
                                     a["shadows"].append({"tie_ts": tsx, "side": side, "opened_t": t, "st": s})
                                 a["ties"].append(tie)
-                            for v in VOTERS:
+                            for v in (VOTERS if l != "mix" else []):   # voters have 2x/5x accounts only
                                 c = calls[v]; b = st["accounts"][f"{v}_{coin}_{l}x"]
                                 if c and c["call"] in ("LONG", "SHORT") and not b["pos"]:
                                     d, how = stop_dist(c["call"], price, [c["stop_price"]], atr, l)
-                                    sig[f"{v}_{coin}_{l}x"] = {t: {"signal": c["call"], "atr": d / 1.5, "trend": "", "why": f"{v} call, {how}"}}
+                                    sig[f"{v}_{coin}_{l}x"] = {t: {"signal": c["call"], "atr": d / 1.5, "trend": "", "why": f"{v}{' proxy' if c.get('proxy') else ''} call, {how}"}}
                 for n in names:
                     l = 2 if n.endswith("mix") else int(n.split("_")[-1][:-1]); cfg = dict(CC["common"], leverage=l, mmr_pct=CC["common"]["mmr_pct"][sym]); a = st["accounts"][n]
                     for e in ta.step(a, cfg, t, list(path), sig.get(n, {}), tsx):
