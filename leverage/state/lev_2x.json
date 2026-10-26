@@ -1,0 +1,64 @@
+{
+ "budget_usd": 100,
+ "start_price": 1.3024,
+ "anchor": 1.3024,
+ "cash": 100.0,
+ "margin": 0.0,
+ "qty": 0.0,
+ "entry": 0.0,
+ "chunk": 10.0,
+ "realised_usd": 0.0,
+ "fees_trade_usd": 0.0,
+ "funding_usd": 0.0,
+ "liq_lost_usd": 0.0,
+ "liquidations": 0,
+ "buys": 0,
+ "sells": 0,
+ "bar": 0,
+ "last_funding_ts": 1793001600,
+ "peak_equity": 100.0,
+ "max_dd_pct": 0.0,
+ "levels": [
+  {
+   "buy": 1.2764,
+   "state": "buy"
+  },
+  {
+   "buy": 1.2508,
+   "state": "buy"
+  },
+  {
+   "buy": 1.2258,
+   "state": "buy"
+  },
+  {
+   "buy": 1.2013,
+   "state": "buy"
+  },
+  {
+   "buy": 1.1773,
+   "state": "buy"
+  },
+  {
+   "buy": 1.1537,
+   "state": "buy"
+  },
+  {
+   "buy": 1.1306,
+   "state": "buy"
+  },
+  {
+   "buy": 1.108,
+   "state": "buy"
+  },
+  {
+   "buy": 1.0859,
+   "state": "buy"
+  },
+  {
+   "buy": 1.0642,
+   "state": "buy"
+  }
+ ],
+ "last_run": "2026-10-26T15:45:15+00:00"
+}

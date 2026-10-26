@@ -38,7 +38,8 @@ jobs:
             echo "::group::tick $n/$TICKS $(date -u +%FT%TZ)"
             sync || echo "pull failed; ticking on current checkout"
             python paper_runner.py || echo "tick $n failed"
-            git add state/ logs/ SUMMARY.md
+            python leverage/lev_runner.py || echo "leverage tick $n failed (main lines unaffected)"   # PAPER-only leveraged line, separate state
+            git add state/ logs/ SUMMARY.md leverage/
             if ! git diff --cached --quiet; then
               git commit -q -m "paper tick $(date -u +%FT%TZ)"
               for i in 1 2 3 4 5; do sync && git push -q && break; sleep $((i * 5)); done

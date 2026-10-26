@@ -73,3 +73,14 @@ Side-by-side copy of xrp_stacker with **6% steps instead of 4%**: same 77.19 XRP
 with ALL its RLUSD (~+5.5% more XRP per round trip after 2 x 0.25% fill cost). Trail-down at 6% below the reference, 14-day
 forced market rebuy, same network-fee model. Replayed from Oct 20 on the same Bitstamp 5-minute candles. Not in the $300 total.
 `backtest_stacker.py` compares 4% vs 6% over the last 14/30/45/60 days (output in `backtest_stacker_output.txt`).
+
+## Leveraged XRP grid (`leverage/`, added 2026-10-26, separate $100 lines, PAPER ONLY)
+A learning line that asks "would leverage have helped?". Modelled on Binance USDⓈ-M XRPUSDT perpetual futures, isolated margin,
+in two variants: `lev_2x` and `lev_5x`. Same idea as `scalp_2pct`: 10 buy levels 2% apart, $10 of margin each, +2% take profit per level,
+profit kept in USDT, static ladder, all levels form one long position. Costs: 0.02% maker per fill, real 8-hourly funding,
+0.05% taker + 0.05% slippage to close, and **liquidation** (whole margin lost) when the 5-min low takes margin + unrealised P/L down to 0.5% of the position.
+Prices come from public keyless endpoints (Binance futures API is geo-blocked in the US, so the runner falls back to Binance spot klines from
+data-api.binance.vision; funding falls back to OKX's public XRP perp funding as a proxy). No keys, no accounts, no orders.
+Files: `leverage/levgrid.py` (logic), `leverage/lev_runner.py` (runs after `paper_runner.py` each tick), `leverage/backtest_leverage.py`
+and its output `leverage/backtest_leverage_output.txt`, `leverage/SUMMARY_LEVERAGE.md`, `leverage/logs/` (events incl. LIQUIDATION rows, ticks).
+Binance.com futures are not available to US residents and Binance.US has no futures or margin, so this is not a live candidate as-is.

@@ -1,0 +1,35 @@
+PAPER backtest, leveraged 2% grid on Binance XRPUSDT perp 5-min candles. Data 2026-08-26 00:00 -> 2026-10-26 00:00 UTC (17568 candles). Funding: 183 real Binance settlements + OKX proxy for the rest. Run 2026-10-26 15:44 UTC.
+Value = close-everything-now (taker 0.05% + 0.05% slippage). Baseline = keep $100 in XRP bought at the window start (0.05% cost).
+
+| Window | XRP price | Line | End value | P/L after fees | vs keep $100 in XRP | Liquidations (margin lost) | Max drawdown | Trading fees | Funding paid | Round trips |
+|---|---|---|---|---|---|---|---|---|---|---|
+| 14d | 1.4096 -> 1.2958 (low 1.2535) | 1x (reference) | $100.74 | +0.74 | +8.86 | 0 ($0.00) | 2.7% | $0.05 | $0.05 | 11 |
+| 14d | 1.4096 -> 1.2958 (low 1.2535) | 2x | $101.49 | +1.49 | +9.61 | 0 ($0.00) | 5.3% | $0.10 | $0.10 | 11 |
+| 14d | 1.4096 -> 1.2958 (low 1.2535) | 5x | $103.72 | +3.72 | +11.84 | 0 ($0.00) | 12.5% | $0.26 | $0.25 | 11 |
+| 14d | | keep $100 in XRP | $91.88 | -8.12 | — | 0 | 11.8% (peak-to-low) | $0.05 | $0 | — |
+| 30d | 1.5678 -> 1.2958 (low 1.2535) | 1x (reference) | $96.47 | -3.53 | +13.86 | 0 ($0.00) | 9.1% | $0.11 | $0.15 | 22 |
+| 30d | 1.5678 -> 1.2958 (low 1.2535) | 2x | $92.93 | -7.07 | +10.32 | 0 ($0.00) | 17.8% | $0.21 | $0.30 | 22 |
+| 30d | 1.5678 -> 1.2958 (low 1.2535) | 5x | $82.34 | -17.66 | -0.27 | 0 ($0.00) | 42.0% | $0.53 | $0.74 | 22 |
+| 30d | | keep $100 in XRP | $82.61 | -17.39 | — | 0 | 20.7% (peak-to-low) | $0.05 | $0 | — |
+| 60d | 1.4217 -> 1.2958 (low 1.2457) | 1x (reference) | $107.52 | +7.52 | +16.42 | 0 ($0.00) | 3.3% | $0.20 | $0.07 | 47 |
+| 60d | 1.4217 -> 1.2958 (low 1.2457) | 2x | $115.04 | +15.04 | +23.95 | 0 ($0.00) | 6.3% | $0.40 | $0.15 | 47 |
+| 60d | 1.4217 -> 1.2958 (low 1.2457) | 5x | $137.61 | +37.61 | +46.51 | 0 ($0.00) | 14.2% | $1.00 | $0.36 | 47 |
+| 60d | | keep $100 in XRP | $91.10 | -8.90 | — | 0 | 24.9% (peak-to-low) | $0.05 | $0 | — |
+
+### Rolling 14-day runs, one starting every day: last 60 days, Binance perp (48 runs)
+
+| Line | Median P/L | Worst P/L | Best P/L | Median vs keep $100 in XRP | Worst vs keep $100 in XRP | Runs with a liquidation | Worst max drawdown |
+|---|---|---|---|---|---|---|---|
+| 1x (reference) | +0.97 | -3.05 | +3.62 | +4.60 | -15.93 | 0 of 48 | 6.3% |
+| 2x | +1.95 | -6.10 | +7.25 | +7.00 | -15.73 | 0 of 48 | 12.5% |
+| 5x | +4.87 | -15.25 | +18.12 | +7.83 | -15.25 | 0 of 48 | 31.1% |
+
+### Rolling 14-day runs, one starting every day: STRESS TEST Oct 2024 - Mar 2025 (Bitstamp spot candles saved in data/, big rally then -40% swings; funding assumed 0.01%/8h, real funding was often higher then) (169 runs)
+
+| Line | Median P/L | Worst P/L | Best P/L | Median vs keep $100 in XRP | Worst vs keep $100 in XRP | Runs with a liquidation | Worst max drawdown |
+|---|---|---|---|---|---|---|---|
+| 1x (reference) | +0.78 | -9.34 | +20.06 | -0.14 | -166.14 | 0 of 169 | 35.5% |
+| 2x | +1.57 | -18.68 | +40.12 | +2.03 | -166.14 | 0 of 169 | 68.3% |
+| 5x | +3.88 | -98.78 | +100.31 | -1.42 | -166.14 | 15 of 169 | 99.0% |
+
+Liquidations: none in any window.
