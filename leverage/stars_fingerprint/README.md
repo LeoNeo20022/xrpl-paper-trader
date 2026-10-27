@@ -26,3 +26,18 @@ Run: `python3 leverage/stars_fingerprint/fingerprint.py` (about 30 s once the da
 **Key caveats.** Neighbouring hours overlap heavily: one big move counts as many "winning hours", so the trade counts in fingerprints.md and rules.md are the honest ones.
 The samples are small: 10–20 trades per rule per period. Most rules picked on one period failed on the other. 10x leaves no room for error: one −1.5% stop costs about 17% of the margin,
 and a gap of about 9.5% would wipe the margin out (no liquidations occurred in this data). A stake of $100 per trade can lose more than $100 in a streak; see the worst-drawdown figures.
+
+## Follow-up tests (2026-10-27): Pip's pop fade, Theo's guarded long, the starsg variant
+All of these are in fingerprints.md, which also counts the signal hours that won and lost.
+- **Pop fade SHORT** (24h up 3%+, RSI 65+, funding above 0, F&G 55+): it lost money in every period.
+  - Oct–Dec 2024: 27% wins, −$542.
+  - Jan–Mar 2025: 28% wins, −$137.
+  - Last 60 days: 35% wins, −$10.
+  - In most of its signal hours, price kept rising before the short could make +3%.
+- **Theo's guarded LONG** (OI up 5%+ AND funding −0.01..+0.03% or crowded shorts) versus F1 without the guard:
+  - It made less in Oct–Dec 2024: +$450 vs +$677.
+  - It lost a little less in Jan–Mar 2025: −$94 vs −$126.
+  - It was identical in the last 60 days.
+  - Its worst drawdown was the same or smaller.
+- **starsg** (Stars plus Theo's guarded and Pip's pop-fade stand-ins) fired 2 times in 3 periods. It is paper only, for comparison with Stars.
+Live paper lines: `leverage/stars_extra.py` (see the main README).

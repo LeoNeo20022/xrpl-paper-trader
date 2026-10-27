@@ -28,6 +28,8 @@ Rules:
 import json, os, csv, sys, time, hashlib, subprocess, statistics
 from datetime import datetime, timezone
 import ta, committee, levdata, stars
+try: import stars_extra   # extra PAPER 10x lines (f2 / f3 / popfade / starsg); failure-isolated
+except Exception as _e: stars_extra = None; print('stars_extra import failed (other lines unaffected):', repr(_e))
 from committee_runner import history
 FNG = levdata.fear_greed()
 
@@ -109,6 +111,15 @@ def main():
         for b in stars.BUDGETS: S["accounts"].setdefault(stars.name(b), ta.new_state(stars.cfg(CC["common"], b)))
     except Exception as e:
         print("stars setup failed (other lines unaffected):", repr(e)); S = None
+    X = None
+    try:   # extra 10x paper lines (stars_extra.py): own accounts/log, never touch the 3-of-4 lines or the original Stars line
+        if stars_extra is not None:
+            X = st.setdefault("stars_extra", {})
+            for ln in stars_extra.LINES:
+                L_ = X.setdefault(ln, {"started": None, "signals": 0, "opened": 0, "in_position_skips": 0, "log": [], "open_row": None, "accounts": {}})
+                for b in stars.BUDGETS: L_["accounts"].setdefault(stars_extra.name(ln, b), ta.new_state(stars.cfg(CC["common"], b)))
+    except Exception as e:
+        print("stars_extra setup failed (other lines unaffected):", repr(e)); X = None
     for coin, sym in COINS.items():
         try:
             src, bars, c5 = history(sym, now)
@@ -179,6 +190,25 @@ def main():
                                 S.setdefault("log", []).append(row)
                                 if action == "OPEN": S["open_row"] = len(S["log"]) - 1
                         except Exception as e: print("stars round failed (other lines unaffected):", repr(e))
+                    if coin == "XRP" and X is not None and ctx.ready(t):
+                        try:
+                            xf = stars_extra.feats(ctx, t, pcr, ptrend)
+                            xs = stars_extra.signals(t, calls, stars.standins(calls, pcr, ptrend.get("ema200_4h"), CC["common"]), xf)
+                            for ln, (side, used, why) in xs.items():
+                                L_ = X[ln]; L_["signals"] += 1
+                                busy = any(a["pos"] for a in L_["accounts"].values())
+                                row = {"line": ln, "ts_utc": tsx, "direction": side, "result": "BLOCKED" if busy else "OPENED", "block_reason": "already in a trade" if busy else "",
+                                       "price_at_vote": price, "why": why, **{f"feat_{k}": v for k, v in xf.items()}}
+                                if used:
+                                    for v in VOTERS:
+                                        c = used[v]; row.update({f"{v}_call": c["call"], f"{v}_source": ("stand-in" if c.get("standin") else "proxy") if c.get("proxy") else "real", f"{v}_note": c.get("note", "")})
+                                if busy: L_["in_position_skips"] += 1
+                                else:
+                                    L_["opened"] += 1
+                                    for b in stars.BUDGETS: sig[stars_extra.name(ln, b)] = stars.signal(t, price, side, f"{ln} {side}: {why}")
+                                L_["log"].append(row)
+                                if not busy: L_["open_row"] = len(L_["log"]) - 1
+                        except Exception as e: print("stars_extra round failed (other lines unaffected):", repr(e))
                     if atr:
                         for l in LEVS + ["mix"]:
                             an = f"team_{coin}_{l}" + ("" if l == "mix" else "x"); a = st["accounts"][an]; a["decisions"][dec] += 1
@@ -236,6 +266,27 @@ def main():
                         if S.get("open_row") is not None and all(not S["accounts"][stars.name(b)]["pos"] for b in stars.BUDGETS) \
                                 and "exit_price" in S["log"][S["open_row"]]: S["open_row"] = None
                     except Exception as e: print("stars step failed (other lines unaffected):", repr(e))
+                if coin == "XRP" and X is not None:
+                    try:
+                        for ln, L_ in X.items():
+                            if L_["started"] is None: L_["started"] = tsx
+                            for b in stars.BUDGETS:
+                                n = stars_extra.name(ln, b); a = L_["accounts"][n]; scfg = stars.cfg(CC["common"], b)
+                                if t % 28800 == 0 and t > (a.get("last_funding_ts") or 0):
+                                    e = ta.funding(a, t, rate, path[0], tsx)
+                                    if e: append(os.path.join(OUT, "team_events.csv"), dict(e, account=n, label="PAPER-NOT-REAL"), EV)
+                                pre = a["pos"]["start_cash"] if a["pos"] else a["cash"]
+                                for e in ta.step(a, scfg, t, list(path), sig.get(n, {}), tsx):
+                                    append(os.path.join(OUT, "team_events.csv"), dict(e, account=n, label="PAPER-NOT-REAL"), EV)
+                                    r = L_["log"][L_["open_row"]] if L_.get("open_row") is not None and L_["open_row"] < len(L_["log"]) else None
+                                    if r is None: continue
+                                    if e["event"].startswith("OPEN_"): r["entry_price"] = e["price"]; r[f"liq_price_{b}"] = e.get("liq_price", "")
+                                    elif e["event"].startswith(("TAKE_PROFIT", "STOP_LOSS", "LIQUIDATION")):
+                                        r.update(exit_ts_utc=tsx, exit_price=e["price"], exit_reason=e["event"].rsplit("_", 1)[0])
+                                        r[f"pnl_{b}"] = e["trade_net_usd"] if "trade_net_usd" in e else round(-pre, 4)
+                            if L_.get("open_row") is not None and all(not L_["accounts"][stars_extra.name(ln, b)]["pos"] for b in stars.BUDGETS) \
+                                    and "exit_price" in L_["log"][L_["open_row"]]: L_["open_row"] = None
+                    except Exception as e: print("stars_extra step failed (other lines unaffected):", repr(e))
             if new: cs["last_candle_ts"] = new[-1][0]; cs["last_close"] = new[-1][1][-1]
             price = cs["last_close"]; hold = 100 / (cs["start_price"] * 1.0005) * price
             for n in names:
@@ -310,6 +361,28 @@ def main():
                 L.append(f"| `{n}` | ${v:.2f} | {v - b:+.2f} | {a['trades']} ({a['wins']}) | {a['longs']}/{a['shorts']} | ${a['fees_usd'] + a['funding_usd']:.2f} | "
                          f"{a['liquidations']} | {a['max_dd_pct']:.1f}% | {a['pos']['side'] if a['pos'] else 'FLAT'} |")
     except Exception as e: print("stars summary failed (other lines unaffected):", repr(e))
+    try:   # extra 10x paper lines: one shared log with a 'line' tag + repo copy, and a summary table
+        if X is not None:
+            F = ["line", "ts_utc", "direction", "result", "block_reason", "price_at_vote", "why", "entry_price", "exit_ts_utc", "exit_price", "exit_reason"] + \
+                [f"pnl_{b}" for b in stars.BUDGETS] + [f"liq_price_{b}" for b in stars.BUDGETS] + \
+                [f"feat_{k}" for k in ("p24", "rsi1h", "funding_pct", "fng", "oi24", "crowded", "e4")] + [f"{v}_{k}" for v in VOTERS for k in ("call", "source", "note")]
+            rows = sorted((r for L_ in X.values() for r in L_["log"]), key=lambda r: r["ts_utc"])
+            for fp in (os.path.join(SHARED, "stars_extra_log.csv"), os.path.join(OUT, "stars_extra_log.csv")):
+                try:
+                    with open(fp, "w", newline="") as f:
+                        w = csv.DictWriter(f, fieldnames=F, extrasaction="ignore"); w.writeheader(); w.writerows(rows)
+                except Exception as e: print("stars_extra log write failed:", fp, repr(e))
+            px = st["coins"]["XRP"]["last_close"]
+            L += ["", "## Extra 10x paper lines (PAPER-NOT-REAL): f2 / f3 / popfade / starsg", "",
+                  "Same model as Stars (XRPUSDT 10x isolated, TP +3% / stop -1.5%, $50/$100/$500). Rules: `leverage/stars_extra.py`; backtests: `leverage/stars_fingerprint/fingerprints.md`. "
+                  "popfade is FLAGGED WEAK (lost money in all 3 backtest periods). Every signal: `/home/box/shared/strategy-lab/stars_extra_log.csv` (column `line`).", "",
+                  "| Account | Rule | Value | P/L | Signals / opened / skipped in-trade | Trades (wins) | Longs/shorts | Fees+funding | Liq. | Max DD | Now |", "|---|---|---|---|---|---|---|---|---|---|---|"]
+            for ln, L_ in X.items():
+                for b in stars.BUDGETS:
+                    n = stars_extra.name(ln, b); a = L_["accounts"][n]; v = ta.equity(a, px, stars.cfg(CC["common"], b))
+                    L.append(f"| `{n}` | {stars_extra.LINES[ln]} | ${v:.2f} | {v - b:+.2f} | {L_['signals']} / {L_['opened']} / {L_['in_position_skips']} | {a['trades']} ({a['wins']}) | "
+                             f"{a['longs']}/{a['shorts']} | ${a['fees_usd'] + a['funding_usd']:.2f} | {a['liquidations']} | {a['max_dd_pct']:.1f}% | {a['pos']['side'] if a['pos'] else 'FLAT'} |")
+    except Exception as e: print("stars_extra summary failed (other lines unaffected):", repr(e))
     open(os.path.join(OUT, "TEAM_SUMMARY.md"), "w").write("\n".join(L) + "\n")
     print("\n".join(L))
     if "--commit" in args:

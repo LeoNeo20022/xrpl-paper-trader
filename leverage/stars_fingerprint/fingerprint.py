@@ -178,10 +178,23 @@ def fmt_seq(s): return f"{s['trades']} trades, {s['wr'] * 100:.0f}% wins, ${s['p
 
 
 # ---- fingerprints: built only from signs that beat break-even in BOTH periods (>=30 hours each); checked per sub-period ----
+def popfade(r): return r["p24_pct"] >= 3 and nz(r["rsi1h"], 50) >= 65 and nz(r["funding_pct"]) > 0 and nz(r["fng"], 50) >= 55
+def theo_guard(r):
+    f = r["funding_pct"]
+    return nz(r["oi24_pct"]) >= 5 and ((f is not None and -0.01 <= f <= 0.03) or r["crowded"] == "shorts")
+def starsg(r):
+    th = "LONG" if theo_guard(r) else ("SHORT" if r["theo"] == "SHORT" else "IDLE")
+    pp = "SHORT" if popfade(r) else r["pip"]
+    cv = [r["casey"], pp, th, r["remy"]]
+    return cv[0] if cv[0] in ("LONG", "SHORT") and len(set(cv)) == 1 else None
 FINGERPRINTS = [
  ("F1 positioning surge LONG: OI +5% in 24h", "LONG", lambda r: nz(r["oi24_pct"]) >= 5),
  ("F2 squeeze LONG: crowded shorts, or OI +5% with 4h above EMA200", "LONG", lambda r: r["crowded"] == "shorts" or (nz(r["oi24_pct"]) >= 5 and r["ema200_4h"] == "above")),
  ("F3 failed-pullback SHORT: Casey's long trigger fires but funding is not hot (<0.03%)", "SHORT", lambda r: r["casey"] == "LONG" and nz(r["funding_pct"]) < 0.03),
+ ("POPFADE Pip pop-fade SHORT: 24h >= +3%, RSI1h >= 65, funding > 0, F&G >= 55 (EMA200 side ignored)", "SHORT", popfade),
+ ("THEO guarded LONG: OI +5% in 24h AND (funding -0.01..+0.03% OR crowded shorts)", "LONG", theo_guard),
+ ("STARSG Stars variant (Theo guarded + Pip pop-fade stand-ins) LONG", "LONG", lambda r: starsg(r) == "LONG"),
+ ("STARSG Stars variant (Theo guarded + Pip pop-fade stand-ins) SHORT", "SHORT", lambda r: starsg(r) == "SHORT"),
  ("ref: current Stars rule (4/4 incl. stand-ins) LONG", "LONG", lambda r: nvotes(r, "LONG") == 4),
  ("ref: current Stars rule (4/4 incl. stand-ins) SHORT", "SHORT", lambda r: nvotes(r, "SHORT") == 4),
  ("ref: any hour, LONG", "LONG", lambda r: True), ("ref: any hour, SHORT", "SHORT", lambda r: True),
@@ -194,7 +207,10 @@ def fingerprints(R, O):
          "Signs were picked because they beat break-even in BOTH the rally and the last 60 days (so this is NOT a clean out-of-sample test; the clean one is rules.md).",
          "", "| Rule | " + " | ".join(p for p, _ in parts) + " |", "|---|" + "---|" * len(parts)]
     for name, side, fn in FINGERPRINTS:
-        L.append(f"| {name} | " + " | ".join(fmt_seq(seq(rows, side, fn)) for _, rows in parts) + " |")
+        cells = []
+        for _, rows in parts:
+            n, w = stat(rows, side, fn); cells.append(fmt_seq(seq(rows, side, fn)) + f"; signal hours {n}: {w} won / {n - w} lost")
+        L.append(f"| {name} | " + " | ".join(cells) + " |")
     open(os.path.join(HERE, "fingerprints.md"), "w").write("\n".join(L) + "\n"); print("\n".join(L))
 
 def main():
