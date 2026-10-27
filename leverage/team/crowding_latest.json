@@ -1,43 +1,31 @@
 {
  "XRP": {
   "funding_pct": 0.0085,
-  "oi_24h_pct": -3.73,
-  "ls_ratio": 3.24,
-  "ls_pctile": 8,
+  "oi_24h_pct": -2.32,
+  "ls_ratio": 3.26,
+  "ls_pctile": 10,
   "fng": 48,
   "crowded": null,
   "long_signals": 0,
   "short_signals": 1,
   "symbol": "XRPUSDT",
   "sources": "crowd okx_rubik, F&G alternative.me, funding okx_proxy",
-  "ts": "2026-10-27T01:20:57+00:00",
+  "ts": "2026-10-27T03:04:55+00:00",
   "trend_1h": "down",
   "trend_4h": "down"
  },
  "BTC": {
   "funding_pct": 0.01,
-<<<<<<< Updated upstream
-  "oi_24h_pct": 5.49,
-  "ls_ratio": 2.22,
-  "ls_pctile": 90,
-  "fng": 48,
-  "crowded": "longs",
-  "long_signals": 2,
-  "short_signals": 1,
-  "symbol": "BTCUSDT",
-  "sources": "crowd okx_rubik, F&G alternative.me, funding okx_proxy",
-=======
-  "oi_24h_pct": null,
-  "ls_ratio": null,
-  "ls_pctile": null,
+  "oi_24h_pct": 3.0,
+  "ls_ratio": 2.26,
+  "ls_pctile": 98,
   "fng": 48,
   "crowded": null,
-  "long_signals": 0,
+  "long_signals": 1,
   "short_signals": 0,
   "symbol": "BTCUSDT",
-  "sources": "crowd binance_archive_metrics_lagged, F&G alternative.me, funding okx_proxy",
->>>>>>> Stashed changes
-  "ts": "2026-10-27T01:20:57+00:00",
+  "sources": "crowd okx_rubik, F&G alternative.me, funding okx_proxy",
+  "ts": "2026-10-27T03:04:55+00:00",
   "trend_1h": "down",
   "trend_4h": "down"
  }
