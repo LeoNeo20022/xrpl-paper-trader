@@ -170,9 +170,14 @@ def main():
                                     S["opened"] += 1
                                     for b in stars.BUDGETS: sig[stars.name(b)] = stars.signal(t, price, side, f"stars 4/4 {side} ({nr} real, {4 - nr} proxy)")
                                 else: S["blackout_skips" if action == "NEWS_BLACKOUT" else "in_position_skips"] += 1
-                                append(os.path.join(OUT, "stars_signals.csv"), {"ts": tsx, "price": price, "side": side, "real_votes": nr, "proxy_votes": 4 - nr, "action": action,
-                                       **{v: calls[v]["call"] + (" (proxy)" if calls[v].get("proxy") else "") for v in VOTERS}},
-                                       ["ts", "price", "side", "real_votes", "proxy_votes", "action"] + VOTERS)
+                                reason = {"IN_POSITION": "already in a Stars trade", "NEWS_BLACKOUT": "news blackout (3h of a calendar event or high news item)"}.get(action, "")
+                                row = {"ts_utc": tsx, "direction": side, "result": "OPENED" if action == "OPEN" else "BLOCKED", "block_reason": reason,
+                                       "price_at_vote": price, "real_votes": nr, "proxy_votes": 4 - nr}
+                                for v in VOTERS:
+                                    c = calls[v]; row.update({f"{v}_call": c["call"], f"{v}_source": "proxy" if c.get("proxy") else "real",
+                                                              f"{v}_conf": "" if c.get("confidence") is None else c["confidence"], f"{v}_note": c.get("note", "")})
+                                S.setdefault("log", []).append(row)
+                                if action == "OPEN": S["open_row"] = len(S["log"]) - 1
                         except Exception as e: print("stars round failed (other lines unaffected):", repr(e))
                     if atr:
                         for l in LEVS + ["mix"]:
@@ -219,8 +224,17 @@ def main():
                             if t % 28800 == 0 and t > (a.get("last_funding_ts") or 0):
                                 e = ta.funding(a, t, rate, path[0], tsx)
                                 if e: append(os.path.join(OUT, "team_events.csv"), dict(e, account=n, label="PAPER-NOT-REAL"), EV)
+                            pre = a["pos"]["start_cash"] if a["pos"] else a["cash"]
                             for e in ta.step(a, scfg, t, list(path), sig.get(n, {}), tsx):
                                 append(os.path.join(OUT, "team_events.csv"), dict(e, account=n, label="PAPER-NOT-REAL"), EV)
+                                r = S["log"][S["open_row"]] if S.get("open_row") is not None and S["open_row"] < len(S.get("log", [])) else None
+                                if r is None: continue
+                                if e["event"].startswith("OPEN_"): r["entry_price"] = e["price"]; r[f"liq_price_{b}"] = e.get("liq_price", "")
+                                elif e["event"].startswith(("TAKE_PROFIT", "STOP_LOSS", "LIQUIDATION")):
+                                    r.update(exit_ts_utc=tsx, exit_price=e["price"], exit_reason=e["event"].rsplit("_", 1)[0])
+                                    r[f"pnl_{b}"] = e["trade_net_usd"] if "trade_net_usd" in e else round(-pre, 4)
+                        if S.get("open_row") is not None and all(not S["accounts"][stars.name(b)]["pos"] for b in stars.BUDGETS) \
+                                and "exit_price" in S["log"][S["open_row"]]: S["open_row"] = None
                     except Exception as e: print("stars step failed (other lines unaffected):", repr(e))
             if new: cs["last_candle_ts"] = new[-1][0]; cs["last_close"] = new[-1][1][-1]
             price = cs["last_close"]; hold = 100 / (cs["start_price"] * 1.0005) * price
@@ -271,6 +285,17 @@ def main():
     for r in score:
         L.append(f"| `{r['account']}` | {r['who']}{' (' + r['note'] + ')' if r.get('note') else ''} | {r['coin']} | {r['lev']} | **${r['value']:.2f}** | **{r['value'] - 100:+.2f}** | "
                  f"{r['value'] - r['hold']:+.2f} | {r['trades']} ({r['wins']}) | {r['longs']}/{r['shorts']} | {r['ties']} | ${r['fees']:.2f} | {r['liq']} | {r['dd']:.1f}% | {r['pos']} |")
+    try:   # every 4/4 moment (opened or blocked), with exit and P/L per size once closed: shared log + repo copy
+        if S is not None:
+            F = ["ts_utc", "direction", "result", "block_reason", "price_at_vote", "entry_price", "exit_ts_utc", "exit_price", "exit_reason"] + \
+                [f"pnl_{b}" for b in stars.BUDGETS] + [f"liq_price_{b}" for b in stars.BUDGETS] + ["real_votes", "proxy_votes"] + \
+                [f"{v}_{k}" for v in VOTERS for k in ("call", "source", "conf", "note")]
+            for fp in (os.path.join(SHARED, "stars_aligned_log.csv"), os.path.join(OUT, "stars_aligned_log.csv")):
+                try:
+                    with open(fp, "w", newline="") as f:
+                        w = csv.DictWriter(f, fieldnames=F, extrasaction="ignore"); w.writeheader(); w.writerows(S.get("log", []))
+                except Exception as e: print("stars log write failed:", fp, repr(e))
+    except Exception as e: print("stars log failed (other lines unaffected):", repr(e))
     try:
         if S is not None and S.get("started"):
             px = st["coins"]["XRP"]["last_close"]
@@ -278,7 +303,7 @@ def main():
                   f"Started {S['started']}. TP +{stars.TP_PCT:g}% / stop -{stars.STOP_PCT:g}% price move, isolated margin, Binance-style XRPUSDT rules (offshore-rules paper only; "
                   "Kraken US's 17% maintenance margin cannot do 10x). No entry within 3h of events_calendar.csv events or 'high' items in Riley's news log. "
                   f"Unanimous rounds: {S['unanimous']} (votes real {S['real_votes']} / proxy {S['proxy_votes']}; all-real rounds {S['all_real']}); "
-                  f"opened {S['opened']}, skipped for news {S['blackout_skips']}, already in a trade {S['in_position_skips']}. Rounds: `stars_signals.csv`.", "",
+                  f"opened {S['opened']}, skipped for news {S['blackout_skips']}, already in a trade {S['in_position_skips']}. Every 4/4 moment: `/home/box/shared/strategy-lab/stars_aligned_log.csv` (copy: `leverage/team/stars_aligned_log.csv`).", "",
                   "| Account | Value | P/L | Trades (wins) | Longs/shorts | Fees+funding | Liquidations | Max DD | Now |", "|---|---|---|---|---|---|---|---|---|"]
             for b in stars.BUDGETS:
                 n = stars.name(b); a = S["accounts"][n]; v = ta.equity(a, px, stars.cfg(CC["common"], b))
