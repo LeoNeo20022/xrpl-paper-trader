@@ -7,16 +7,16 @@
   "XRP": {
    "started": "2026-10-26T17:15:00+00:00",
    "start_price": 1.301,
-   "last_candle_ts": 1793141700,
-   "last_close": 1.3273,
-   "last_round_ts": 1793141100
+   "last_candle_ts": 1793143500,
+   "last_close": 1.3278,
+   "last_round_ts": 1793142900
   },
   "BTC": {
    "started": "2026-10-26T17:15:00+00:00",
    "start_price": 80498.0,
-   "last_candle_ts": 1793141700,
-   "last_close": 80905.75,
-   "last_round_ts": 1793141100
+   "last_candle_ts": 1793143500,
+   "last_close": 80942.08,
+   "last_round_ts": 1793142900
   }
  },
  "accounts": {
@@ -43,7 +43,7 @@
     "LONG": 0,
     "SHORT": 0,
     "TIE": 0,
-    "IDLE": 119
+    "IDLE": 121
    },
    "max_dd_usd": 0.0,
    "min_equity": 100.0
@@ -71,7 +71,7 @@
     "LONG": 0,
     "SHORT": 0,
     "TIE": 0,
-    "IDLE": 119
+    "IDLE": 121
    },
    "max_dd_usd": 0.0,
    "min_equity": 100.0
@@ -99,7 +99,7 @@
     "LONG": 0,
     "SHORT": 0,
     "TIE": 0,
-    "IDLE": 119
+    "IDLE": 121
    },
    "max_dd_usd": 0.0,
    "min_equity": 100.0
@@ -239,7 +239,7 @@
    "fees_usd": 0.49089339982466,
    "funding_usd": -0.05668535215787286,
    "peak_equity": 102.01498509834076,
-   "max_dd_pct": 8.158001494351087,
+   "max_dd_pct": 8.563872310286468,
    "realised_usd": -5.501313498378565,
    "last_signal_ts": 1793137500,
    "last_funding_ts": 1793116800,
@@ -252,8 +252,8 @@
     "TIE": 0,
     "IDLE": 0
    },
-   "max_dd_usd": 8.322384008784681,
-   "min_equity": 93.69260108955608,
+   "max_dd_usd": 8.736433061179667,
+   "min_equity": 93.27855203716109,
    "loss_usd": -5.501313498378565
   },
   "theo_XRP_5x": {
@@ -279,7 +279,7 @@
    "fees_usd": 1.1841988747728565,
    "funding_usd": -0.13936391565490927,
    "peak_equity": 105.02992539510997,
-   "max_dd_pct": 19.342321957298005,
+   "max_dd_pct": 20.243704050036058,
    "realised_usd": -13.442190951221718,
    "last_signal_ts": 1793137500,
    "last_funding_ts": 1793116800,
@@ -292,8 +292,8 @@
     "TIE": 0,
     "IDLE": 0
    },
-   "max_dd_usd": 20.315226321432064,
-   "min_equity": 84.7146990736779,
+   "max_dd_usd": 21.26194726095973,
+   "min_equity": 83.76797813415024,
    "loss_usd": -13.442190951221718
   },
   "remy_XRP_2x": {
@@ -375,7 +375,7 @@
     "LONG": 0,
     "SHORT": 0,
     "TIE": 0,
-    "IDLE": 119
+    "IDLE": 121
    },
    "max_dd_usd": 0.0,
    "min_equity": 100.0
@@ -403,7 +403,7 @@
     "LONG": 0,
     "SHORT": 0,
     "TIE": 0,
-    "IDLE": 119
+    "IDLE": 121
    },
    "max_dd_usd": 0.0,
    "min_equity": 100.0
@@ -431,7 +431,7 @@
     "LONG": 0,
     "SHORT": 0,
     "TIE": 0,
-    "IDLE": 119
+    "IDLE": 121
    },
    "max_dd_usd": 0.0,
    "min_equity": 100.0
