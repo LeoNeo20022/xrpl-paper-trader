@@ -27,7 +27,7 @@ Rules:
   /home/box/shared/strategy-lab/crowding.json and crowding.md so voters can read it before voting; it is also logged per round."""
 import json, os, csv, sys, time, hashlib, subprocess, statistics
 from datetime import datetime, timezone
-import ta, committee, levdata
+import ta, committee, levdata, stars
 from committee_runner import history
 FNG = levdata.fear_greed()
 
@@ -103,6 +103,13 @@ def main():
         w = csv.DictWriter(f, fieldnames=["timestamp_utc", "voter", "coin", "call", "confidence", "stop_price", "note"]); w.writeheader()
         for v in sorted(votes, key=lambda v: v["t"]): w.writerow({"timestamp_utc": iso(v["t"]), **{k: v[k] for k in ("voter", "coin", "call", "confidence", "stop_price", "note")}})
     score = []; snaps = {}
+    try:   # Stars Aligned (4/4, 10x XRP): failure-isolated, never blocks the 3-of-4 lines
+        S = st.setdefault("stars", {"started": None, "accounts": {}, "unanimous": 0, "real_votes": 0, "proxy_votes": 0, "all_real": 0,
+                                    "opened": 0, "blackout_skips": 0, "in_position_skips": 0})
+        for b in stars.BUDGETS: S["accounts"].setdefault(stars.name(b), ta.new_state(stars.cfg(CC["common"], b)))
+        star_times = stars.blackout_times(os.path.join(SHARED, "xrp-news-events.csv"))
+    except Exception as e:
+        print("stars setup failed (other lines unaffected):", repr(e)); S = None
     for coin, sym in COINS.items():
         try:
             src, bars, c5 = history(sym, now)
@@ -151,6 +158,22 @@ def main():
                                **{f"{v}_note": (c["note"] if c else "") for v, c in calls.items()}},
                                ["ts", "coin", "price", "decision"] + VOTERS + [f"{v}_note" for v in VOTERS]
                                + [f"crowd_{k}" for k in ("funding_pct", "oi_24h_pct", "ls_ratio", "ls_pctile", "fng", "crowded")])
+                    if coin == "XRP" and S is not None:
+                        try:
+                            side = stars.unanimous(calls)
+                            if side:
+                                nr = sum(1 for c in calls.values() if c and not c.get("proxy")); S["unanimous"] += 1
+                                S["real_votes"] += nr; S["proxy_votes"] += 4 - nr; S["all_real"] += nr == 4
+                                busy = any(a["pos"] for a in S["accounts"].values())
+                                action = "IN_POSITION" if busy else "NEWS_BLACKOUT" if stars.in_blackout(t, star_times) else "OPEN"
+                                if action == "OPEN":
+                                    S["opened"] += 1
+                                    for b in stars.BUDGETS: sig[stars.name(b)] = stars.signal(t, price, side, f"stars 4/4 {side} ({nr} real, {4 - nr} proxy)")
+                                else: S["blackout_skips" if action == "NEWS_BLACKOUT" else "in_position_skips"] += 1
+                                append(os.path.join(OUT, "stars_signals.csv"), {"ts": tsx, "price": price, "side": side, "real_votes": nr, "proxy_votes": 4 - nr, "action": action,
+                                       **{v: calls[v]["call"] + (" (proxy)" if calls[v].get("proxy") else "") for v in VOTERS}},
+                                       ["ts", "price", "side", "real_votes", "proxy_votes", "action"] + VOTERS)
+                        except Exception as e: print("stars round failed (other lines unaffected):", repr(e))
                     if atr:
                         for l in LEVS + ["mix"]:
                             an = f"team_{coin}_{l}" + ("" if l == "mix" else "x"); a = st["accounts"][an]; a["decisions"][dec] += 1
@@ -188,6 +211,17 @@ def main():
                                 if tie["ts"] == sh["tie_ts"]: tie[f"if_{sh['side'].lower()}_usd"] = round(sh["st"]["cash"] - 100, 4)
                         else: keep.append(sh)
                     a["shadows"] = keep
+                if coin == "XRP" and S is not None:
+                    try:
+                        if S["started"] is None: S["started"] = tsx; S["start_price"] = path[0]
+                        for b in stars.BUDGETS:
+                            n = stars.name(b); a = S["accounts"][n]; scfg = stars.cfg(CC["common"], b)
+                            if t % 28800 == 0 and t > (a.get("last_funding_ts") or 0):
+                                e = ta.funding(a, t, rate, path[0], tsx)
+                                if e: append(os.path.join(OUT, "team_events.csv"), dict(e, account=n, label="PAPER-NOT-REAL"), EV)
+                            for e in ta.step(a, scfg, t, list(path), sig.get(n, {}), tsx):
+                                append(os.path.join(OUT, "team_events.csv"), dict(e, account=n, label="PAPER-NOT-REAL"), EV)
+                    except Exception as e: print("stars step failed (other lines unaffected):", repr(e))
             if new: cs["last_candle_ts"] = new[-1][0]; cs["last_close"] = new[-1][1][-1]
             price = cs["last_close"]; hold = 100 / (cs["start_price"] * 1.0005) * price
             for n in names:
@@ -237,6 +271,20 @@ def main():
     for r in score:
         L.append(f"| `{r['account']}` | {r['who']}{' (' + r['note'] + ')' if r.get('note') else ''} | {r['coin']} | {r['lev']} | **${r['value']:.2f}** | **{r['value'] - 100:+.2f}** | "
                  f"{r['value'] - r['hold']:+.2f} | {r['trades']} ({r['wins']}) | {r['longs']}/{r['shorts']} | {r['ties']} | ${r['fees']:.2f} | {r['liq']} | {r['dd']:.1f}% | {r['pos']} |")
+    try:
+        if S is not None and S.get("started"):
+            px = st["coins"]["XRP"]["last_close"]
+            L += ["", "## Stars Aligned (curiosity line, PAPER-NOT-REAL): XRP 10x, only on a 4 of 4 vote", "",
+                  f"Started {S['started']}. TP +{stars.TP_PCT:g}% / stop -{stars.STOP_PCT:g}% price move, isolated margin, Binance-style XRPUSDT rules (offshore-rules paper only; "
+                  "Kraken US's 17% maintenance margin cannot do 10x). No entry within 3h of events_calendar.csv events or 'high' items in Riley's news log. "
+                  f"Unanimous rounds: {S['unanimous']} (votes real {S['real_votes']} / proxy {S['proxy_votes']}; all-real rounds {S['all_real']}); "
+                  f"opened {S['opened']}, skipped for news {S['blackout_skips']}, already in a trade {S['in_position_skips']}. Rounds: `stars_signals.csv`.", "",
+                  "| Account | Value | P/L | Trades (wins) | Longs/shorts | Fees+funding | Liquidations | Max DD | Now |", "|---|---|---|---|---|---|---|---|---|"]
+            for b in stars.BUDGETS:
+                n = stars.name(b); a = S["accounts"][n]; v = ta.equity(a, px, stars.cfg(CC["common"], b))
+                L.append(f"| `{n}` | ${v:.2f} | {v - b:+.2f} | {a['trades']} ({a['wins']}) | {a['longs']}/{a['shorts']} | ${a['fees_usd'] + a['funding_usd']:.2f} | "
+                         f"{a['liquidations']} | {a['max_dd_pct']:.1f}% | {a['pos']['side'] if a['pos'] else 'FLAT'} |")
+    except Exception as e: print("stars summary failed (other lines unaffected):", repr(e))
     open(os.path.join(OUT, "TEAM_SUMMARY.md"), "w").write("\n".join(L) + "\n")
     print("\n".join(L))
     if "--commit" in args:

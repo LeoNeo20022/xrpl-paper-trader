@@ -84,3 +84,13 @@ data-api.binance.vision; funding falls back to OKX's public XRP perp funding as 
 Files: `leverage/levgrid.py` (logic), `leverage/lev_runner.py` (runs after `paper_runner.py` each tick), `leverage/backtest_leverage.py`
 and its output `leverage/backtest_leverage_output.txt`, `leverage/SUMMARY_LEVERAGE.md`, `leverage/logs/` (events incl. LIQUIDATION rows, ticks).
 Binance.com futures are not available to US residents and Binance.US has no futures or margin, so this is not a live candidate as-is.
+
+## Stars Aligned (added 2026-10-27, curiosity line, PAPER ONLY): `com_xrp_10x_stars_{50,100,500}`
+- XRP at **10x**, long or short, opens ONLY when the team vote is **unanimous, 4 of 4** (Casey, Pip, Theo, Remy). Every other line keeps the 3-of-4 rule.
+- Votes = the team committee's effective calls (`leverage/team_committee.py`): a teammate's own row in `/home/box/shared/strategy-lab/votes.csv`, else its automated proxy (`committee.proxy_votes`). Each unanimous round is logged to `leverage/team/stars_signals.csv` with how many votes were real vs proxy; totals in `leverage/team/TEAM_SUMMARY.md`.
+- Note: Casey's proxy only ever votes LONG/IDLE and Pip's only SHORT/IDLE, so an all-proxy 4/4 cannot happen. The line fires only if Pip casts a real LONG or Casey a real SHORT (with the other three agreeing, real or proxy).
+- Exits: take profit **+2%** price move (~ +20% on margin; raised from +1% because 4/4 trades are rare), stop **-1%** price move, isolated margin, one position at a time. At 10x a +2% win nets about +19.2% and a stop about -11.4% of margin after fees, so fees-only break-even is about a 37% win rate (+1%: 55%, +1.5%: 45%, +3%: 28%; see the backtest).
+- News blackout: no new entry within 3h before/after any event in `leverage/events_calendar.csv` or any `high` item in Riley's `/home/box/shared/strategy-lab/xrp-news-events.csv` (if that file is missing or unreadable, the news check is skipped).
+- Costs, funding and liquidation: same Binance-style XRPUSDT perp model as the other leverage lines (`leverage/ta.py`: taker 0.05% + 0.05% slippage, maker 0.02%, 8-hourly funding both ways, 0.5% maintenance margin; liquidation ~ -9.5% from entry at 10x).
+- **Offshore-rules paper only.** Kraken US's XRP perp has a 17% maintenance margin, so 10x is not possible there; this line cannot be run as-is on a US venue.
+- Runs inside the box team-committee loop, wrapped in its own try/except so an error cannot affect other lines. Backtest: `leverage/backtest_stars.py` -> `leverage/backtest_stars_output.txt` (events calendar blackout only; no news history exists).
