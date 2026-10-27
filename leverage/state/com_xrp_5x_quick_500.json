@@ -21,13 +21,13 @@
   "LONG": 0,
   "SHORT": 0,
   "TIE": 0,
-  "IDLE": 75
+  "IDLE": 76
  },
  "started": "2026-10-26T17:15:00+00:00",
  "start_price": 1.301,
  "max_dd_usd": 0.0,
  "min_equity": 500.0,
- "last_run": "2026-10-27T12:04:21+00:00",
+ "last_run": "2026-10-27T12:19:21+00:00",
  "scaled_from_100": true,
  "rules_fired": {
   "R3": 32,
