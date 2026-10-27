@@ -41,3 +41,11 @@ All of these are in fingerprints.md, which also counts the signal hours that won
   - Its worst drawdown was the same or smaller.
 - **starsg** (Stars plus Theo's guarded and Pip's pop-fade stand-ins) fired 2 times in 3 periods. It is paper only, for comparison with Stars.
 Live paper lines: `leverage/stars_extra.py` (see the main README).
+
+## Regime switch (2026-10-27): `switch.py` -> switch.md
+Rule: UP means the 4h close is above a rising 4h EMA200 (rising = higher than 24h ago; a variant uses 72h). In UP, take only F2 longs; otherwise take only F3 shorts.
+Gate: it had to beat both F2 alone and F3 alone in at least 2 of 3 periods, with drawdown no worse.
+Result: **FAIL** for both versions.
+- The 24h version was close to F2 in Oct–Dec 2024 and lost in Jan–Mar 2025.
+- The 72h version made money in all 3 periods, but never beat the better standalone line.
+No live line was added. Pop fade was retired on Oct 26 (no new entries; record kept).

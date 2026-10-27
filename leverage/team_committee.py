@@ -375,12 +375,12 @@ def main():
             px = st["coins"]["XRP"]["last_close"]
             L += ["", "## Extra 10x paper lines (PAPER-NOT-REAL): f2 / f3 / popfade / starsg", "",
                   "Same model as Stars (XRPUSDT 10x isolated, TP +3% / stop -1.5%, $50/$100/$500). Rules: `leverage/stars_extra.py`; backtests: `leverage/stars_fingerprint/fingerprints.md`. "
-                  "popfade is FLAGGED WEAK (lost money in all 3 backtest periods). Every signal: `/home/box/shared/strategy-lab/stars_extra_log.csv` (column `line`).", "",
+                  "popfade is RETIRED (Oct 26: lost in all 3 backtest periods; no new entries, record kept). Every signal: `/home/box/shared/strategy-lab/stars_extra_log.csv` (column `line`).", "",
                   "| Account | Rule | Value | P/L | Signals / opened / skipped in-trade | Trades (wins) | Longs/shorts | Fees+funding | Liq. | Max DD | Now |", "|---|---|---|---|---|---|---|---|---|---|---|"]
             for ln, L_ in X.items():
                 for b in stars.BUDGETS:
                     n = stars_extra.name(ln, b); a = L_["accounts"][n]; v = ta.equity(a, px, stars.cfg(CC["common"], b))
-                    L.append(f"| `{n}` | {stars_extra.LINES[ln]} | ${v:.2f} | {v - b:+.2f} | {L_['signals']} / {L_['opened']} / {L_['in_position_skips']} | {a['trades']} ({a['wins']}) | "
+                    L.append(f"| `{n}` | {stars_extra.LINES[ln]}{' (**' + stars_extra.RETIRED[ln] + '**)' if ln in getattr(stars_extra, 'RETIRED', {}) else ''} | ${v:.2f} | {v - b:+.2f} | {L_['signals']} / {L_['opened']} / {L_['in_position_skips']} | {a['trades']} ({a['wins']}) | "
                              f"{a['longs']}/{a['shorts']} | ${a['fees_usd'] + a['funding_usd']:.2f} | {a['liquidations']} | {a['max_dd_pct']:.1f}% | {a['pos']['side'] if a['pos'] else 'FLAT'} |")
     except Exception as e: print("stars_extra summary failed (other lines unaffected):", repr(e))
     open(os.path.join(OUT, "TEAM_SUMMARY.md"), "w").write("\n".join(L) + "\n")

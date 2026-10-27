@@ -4,7 +4,8 @@ Backtests: stars_fingerprint/ (fingerprints.md). Lines (each one position at a t
 - f2       LONG  'squeeze': crowded shorts, OR open interest +5% in 24h with the last 4h close above the 4h EMA200. Checked on hour closes.
 - f3       SHORT 'failed pullback': Casey's effective call is LONG (his uptrend-pullback trigger) but funding < +0.03%/8h. Hour closes.
 - popfade  SHORT Pip's 'pop fade': XRP +3% or more in 24h, 1h RSI >= 65, funding > 0, Fear & Greed >= 55; allowed above the 4h EMA200.
-           FLAGGED WEAK: lost money in all 3 backtest periods (27-35% wins vs 36% break-even). Kept as paper so it can be watched. Hour closes.
+           RETIRED Oct 26 2026 (lost in all 3 backtest periods, 27-35% wins vs 36% break-even): no new entries or signal logs; its record is kept.
+           Pop fade still feeds Pip's stand-in inside starsg.
 - starsg   Stars variant (4 of 4, every 15-min round like Stars): Stars stand-ins (stars.standins), plus
            Theo's guarded stand-in: LONG when OI +5% in 24h AND (funding -0.01..+0.03%/8h OR crowded shorts); his normal SHORT calls are kept;
            otherwise IDLE (his unguarded trend LONG becomes IDLE);
@@ -17,6 +18,7 @@ LINES = {"f2": "squeeze LONG (crowded shorts, or OI +5% above the 4h EMA200)",
          "popfade": "Pip pop-fade SHORT (FLAGGED WEAK in backtests)",
          "starsg": "Stars 4/4 with Theo guarded + Pip pop-fade stand-ins"}
 HOURLY = {"f2", "f3", "popfade"}
+RETIRED = {"popfade": "retired Oct 26: lost in all 3 periods"}   # no new entries, no signal logging; record kept
 
 def name(line, b): return f"com_xrp_10x_{line}_{b}"
 
@@ -52,7 +54,7 @@ def signals(t, calls, scalls, f):
         c = calls.get("casey")
         if c and c["call"] == "LONG" and f["funding_pct"] is not None and f["funding_pct"] < 0.03:
             out["f3"] = ("SHORT", None, f"Casey LONG ({'proxy' if c.get('proxy') else 'real'}), funding {f['funding_pct']}%")
-        if popfade(f):
+        if popfade(f) and "popfade" not in RETIRED:
             out["popfade"] = ("SHORT", None, f"24h {f['p24']:+.1f}%, RSI {f['rsi1h']:.0f}, funding {f['funding_pct']}%, F&G {f['fng']}")
     g = guarded_calls(scalls, f); side = stars.unanimous(g)
     if side: out["starsg"] = (side, g, "4/4 " + "/".join(g[v]["call"] for v in ("casey", "pip", "theo", "remy")))

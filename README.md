@@ -102,10 +102,11 @@ Binance.com futures are not available to US residents and Binance.US has no futu
 These are `com_xrp_10x_{f2,f3,popfade,starsg}_{50,100,500}`. They use the same model as Stars: XRPUSDT 10x isolated, TP +3% / stop −1.5%, the ta.py costs, funding and liquidation, and one position at a time. Rules are in `leverage/stars_extra.py`, and the lines run in `leverage/team_committee.py` inside their own try/except.
 - **f2** squeeze LONG: crowded shorts, OR open interest up 5% or more in 24h with the 4h close above the 4h EMA200. Checked on hour closes.
 - **f3** failed-pullback SHORT: Casey's effective call is LONG, but funding is below +0.03%/8h. Checked on hour closes.
-- **popfade** (Pip's) SHORT: XRP up 3% or more in 24h, 1h RSI of 65 or more, positive funding, Fear & Greed of 55 or more. It may fire above the 4h EMA200. **Flagged weak**: it lost money in all three backtest periods.
+- **popfade** (Pip's) SHORT: XRP up 3% or more in 24h, 1h RSI of 65 or more, positive funding, Fear & Greed of 55 or more. **Retired Oct 26: it lost in all 3 periods.** It takes no new entries and logs no signals; its record is kept. Pop fade still feeds Pip's stand-in in starsg.
 - **starsg**: a Stars 4/4 variant. It uses the Stars stand-ins plus two more:
   - Theo's guarded stand-in: LONG only when open interest is up 5%+ in 24h AND (funding is between −0.01% and +0.03% OR shorts are crowded). Theo's normal SHORT calls are kept; otherwise he is IDLE.
   - Pip's stand-in: SHORT on his existing rule OR on pop fade.
   The original Stars line is unchanged, for comparison.
 - Every signal, opened or blocked, goes to `/home/box/shared/strategy-lab/stars_extra_log.csv` (repo copy `leverage/team/stars_extra_log.csv`). Each row has a `line` tag, the features read at the time, the votes for starsg, and the exit and P/L.
-- Backtests and the sign study are in `leverage/stars_fingerprint/` (README.md, fingerprints.md).
+- Backtests and the sign study are in `leverage/stars_fingerprint/` (README.md, fingerprints.md, switch.md).
+- Pip's regime switch (F2 longs above a rising 4h EMA200, otherwise F3 shorts) was tested in `leverage/stars_fingerprint/switch.md`. It failed the gate (it did not beat both standalone lines in 2 of 3 periods), so no live paper line was added.

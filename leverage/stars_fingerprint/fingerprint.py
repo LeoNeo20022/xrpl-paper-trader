@@ -95,6 +95,8 @@ def features(ctx, t, vol1h, bars):
     f = dict(t=t, utc=iso(t), is4h=t % 14400 == 0, price=round(cl, 5),
              ema200_4h=trend.get("ema200_4h") or "unknown",
              dist_ema200_4h_pct=round((ctx.c4[i4] / ctx.e4_200[i4] - 1) * 100, 2) if i4 >= 200 else None,
+             ema200_4h_rising24=(ctx.e4_200[i4] > ctx.e4_200[i4 - 6]) if i4 >= 206 else None,
+             ema200_4h_rising72=(ctx.e4_200[i4] > ctx.e4_200[i4 - 18]) if i4 >= 218 else None,
              trend1h="up" if ctx.e50[k] > ctx.e200[k] else "down", trend4h=trend.get("t4h") or "unknown",
              rsi1h=round(ctx.rsi[k], 1) if ctx.rsi[k] is not None else None,
              ema20_slope6h_pct=round((ctx.e20[k] / ctx.e20[k - 6] - 1) * 100, 2),
