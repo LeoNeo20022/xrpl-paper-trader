@@ -7,22 +7,16 @@
   "XRP": {
    "started": "2026-10-26T17:15:00+00:00",
    "start_price": 1.301,
-<<<<<<< Updated upstream
-   "last_candle_ts": 1793124900,
-   "last_close": 1.3209,
-   "last_round_ts": 1793124900
-=======
-   "last_candle_ts": 1793127600,
-   "last_close": 1.3247,
-   "last_round_ts": 1793127600
->>>>>>> Stashed changes
+   "last_candle_ts": 1793131200,
+   "last_close": 1.3251,
+   "last_round_ts": 1793131200
   },
   "BTC": {
    "started": "2026-10-26T17:15:00+00:00",
    "start_price": 80498.0,
-   "last_candle_ts": 1793124900,
-   "last_close": 80618.2,
-   "last_round_ts": 1793124900
+   "last_candle_ts": 1793131200,
+   "last_close": 80824.64,
+   "last_round_ts": 1793131200
   }
  },
  "accounts": {
@@ -49,11 +43,7 @@
     "LONG": 0,
     "SHORT": 0,
     "TIE": 0,
-<<<<<<< Updated upstream
-    "IDLE": 101
-=======
-    "IDLE": 104
->>>>>>> Stashed changes
+    "IDLE": 108
    },
    "max_dd_usd": 0.0,
    "min_equity": 100.0
@@ -81,11 +71,7 @@
     "LONG": 0,
     "SHORT": 0,
     "TIE": 0,
-<<<<<<< Updated upstream
-    "IDLE": 101
-=======
-    "IDLE": 104
->>>>>>> Stashed changes
+    "IDLE": 108
    },
    "max_dd_usd": 0.0,
    "min_equity": 100.0
@@ -113,11 +99,7 @@
     "LONG": 0,
     "SHORT": 0,
     "TIE": 0,
-<<<<<<< Updated upstream
-    "IDLE": 101
-=======
-    "IDLE": 104
->>>>>>> Stashed changes
+    "IDLE": 108
    },
    "max_dd_usd": 0.0,
    "min_equity": 100.0
@@ -393,7 +375,7 @@
     "LONG": 0,
     "SHORT": 0,
     "TIE": 0,
-    "IDLE": 101
+    "IDLE": 108
    },
    "max_dd_usd": 0.0,
    "min_equity": 100.0
@@ -421,7 +403,7 @@
     "LONG": 0,
     "SHORT": 0,
     "TIE": 0,
-    "IDLE": 101
+    "IDLE": 108
    },
    "max_dd_usd": 0.0,
    "min_equity": 100.0
@@ -449,7 +431,7 @@
     "LONG": 0,
     "SHORT": 0,
     "TIE": 0,
-    "IDLE": 101
+    "IDLE": 108
    },
    "max_dd_usd": 0.0,
    "min_equity": 100.0
