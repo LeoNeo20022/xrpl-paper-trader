@@ -21,12 +21,12 @@
  "fees_usd": 0.4995004995004996,
  "funding_usd": 0.0,
  "peak_equity": 502.5528340621002,
- "max_dd_pct": 0.5386122608856181,
+ "max_dd_pct": 1.5350728295061233,
  "realised_usd": 0.0,
  "last_signal_ts": 1793095200,
  "last_funding_ts": 1793088000,
- "last_run": "2026-10-27T10:31:19+00:00",
- "max_dd_usd": 2.693061304428113,
- "min_equity": 497.3069386955719,
+ "last_run": "2026-10-27T10:46:19+00:00",
+ "max_dd_usd": 7.714552009600311,
+ "min_equity": 494.8382820524999,
  "scaled_from_100": true
 }
