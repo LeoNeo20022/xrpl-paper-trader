@@ -4,19 +4,22 @@ No keys, no orders, no wallets. Offshore-rules paper only (Binance-style XRPUSDT
 
 - Votes: the same effective calls as the team committee (a teammate's own row in votes.csv if valid, else its automated proxy,
   committee.proxy_votes). Opens only on 4/4 LONG or 4/4 SHORT, if flat. Every other line keeps the 3-of-4 rule.
-- Exits: take profit +2% price move (~ +20% on margin; raised from +1% on 2026-10-27 because 4/4 trades are rare, maker 0.02%, needs a 0.05% trade-through), stop -1% price
+- Exits: take profit +3% price move (~ +30% on margin), stop -1.5% price move (user-approved 2026-10-27, maker 0.02%, needs a 0.05% trade-through), stop -1% price
   move (stop-market, taker 0.05% + 0.05% slippage; a gap fills at the open). One position at a time.
 - Costs, 8-hourly funding (both directions) and liquidation (margin + P/L <= 0.5% maintenance of notional, whole margin lost)
   are the ta.py engine used by every leverage line.
-- News blackout: no new entry within 3h (before or after) of any event in events_calendar.csv or any 'high' item in Riley's news
-  log (/home/box/shared/strategy-lab/xrp-news-events.csv). A missing/unreadable news file is skipped, never fatal.
+- No news/event blackout (removed 2026-10-27 so the line is free to short a sell-the-news dump).
+- Stars-only stand-ins (used ONLY for this line's 4/4 check; the 3-of-4 committee and its proxies are unchanged; real votes override):
+  Casey's proxy votes SHORT instead of IDLE when the last closed 4h candle is below the 4h EMA200 AND crowding flags crowded longs.
+  Pip's proxy votes LONG instead of IDLE when the last closed 4h candle is above the 4h EMA200, crowding is clear (not crowded
+  either way) AND funding is calm (known and between -0.01% and +0.03% per 8h, i.e. inside both crowding funding thresholds).
 - Paper sizes $50, $100, $500: com_xrp_10x_stars_50 / _100 / _500."""
 import csv, os
 from datetime import datetime, timezone
 import ta, committee
 
 NEWS_DEFAULT = "/home/box/shared/strategy-lab/xrp-news-events.csv"
-LEV, TP_PCT, STOP_PCT, BLACKOUT_H = 10, 2.0, 1.0, 3   # TP +2% (rare trades -> bigger target), stop -1%
+LEV, TP_PCT, STOP_PCT, BLACKOUT_H = 10, 3.0, 1.5, 3   # TP +3% / stop -1.5% (user-approved 2026-10-27); BLACKOUT_H kept only for reference, blackout removed
 BUDGETS = (50, 100, 500)
 
 
@@ -67,3 +70,15 @@ def unanimous(calls):
 def signal(t, price, side, why, stop=None):
     """Signal dict for ta.step; atr chosen so stop_atr x atr = STOP_PCT of price (quick stop then gives -1% from the fill)."""
     return {t: {"signal": side, "atr": price * (stop or STOP_PCT) / 100 / 1.5, "trend": "", "why": why}}
+
+def standins(calls, cr, ema200_4h, common):
+    """Stars-only stand-ins on top of the normal effective calls. Only touches PROXY IDLE calls of Casey and Pip."""
+    out = dict(calls); f = (cr or {}).get("funding_pct"); crowded = (cr or {}).get("crowded")
+    c = out.get("casey")
+    if c and c.get("proxy") and c["call"] == "IDLE" and ema200_4h == "below" and crowded == "longs":
+        out["casey"] = dict(c, call="SHORT", confidence=None, note="stars stand-in: 4h below EMA200 + crowded longs", standin=True)
+    p = out.get("pip")
+    calm = f is not None and common["crowd_funding_short_pct"] < f < common["crowd_funding_long_pct"]
+    if p and p.get("proxy") and p["call"] == "IDLE" and ema200_4h == "above" and not crowded and calm:
+        out["pip"] = dict(p, call="LONG", confidence=None, note=f"stars stand-in: 4h above EMA200, crowding clear, funding calm {f}%", standin=True)
+    return out

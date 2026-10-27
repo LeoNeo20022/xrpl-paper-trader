@@ -107,7 +107,6 @@ def main():
         S = st.setdefault("stars", {"started": None, "accounts": {}, "unanimous": 0, "real_votes": 0, "proxy_votes": 0, "all_real": 0,
                                     "opened": 0, "blackout_skips": 0, "in_position_skips": 0})
         for b in stars.BUDGETS: S["accounts"].setdefault(stars.name(b), ta.new_state(stars.cfg(CC["common"], b)))
-        star_times = stars.blackout_times(os.path.join(SHARED, "xrp-news-events.csv"))
     except Exception as e:
         print("stars setup failed (other lines unaffected):", repr(e)); S = None
     for coin, sym in COINS.items():
@@ -140,9 +139,9 @@ def main():
                 if t % ROUND == 0:
                     cs["last_round_ts"] = t; atr = atr_at(t); price = path[0]
                     calls = {v: call_at(votes, coin, v, t) for v in VOTERS}
-                    ptrend = {}
+                    ptrend = {}; pcr = {}
                     if ctx.ready(t):
-                        _, PV, _, _, ptrend = committee.proxy_votes(ctx, t)
+                        _, PV, _, pcr, ptrend = committee.proxy_votes(ctx, t)
                         for v in VOTERS:
                             if calls[v] is None:
                                 calls[v] = {"t": t, "voter": v, "coin": coin, "call": PV[v][0], "confidence": PV[v][2] or None,
@@ -160,12 +159,13 @@ def main():
                                + [f"crowd_{k}" for k in ("funding_pct", "oi_24h_pct", "ls_ratio", "ls_pctile", "fng", "crowded")])
                     if coin == "XRP" and S is not None:
                         try:
-                            side = stars.unanimous(calls)
+                            scalls = stars.standins(calls, pcr, ptrend.get("ema200_4h"), CC["common"])   # Stars-only stand-ins
+                            side = stars.unanimous(scalls)
                             if side:
-                                nr = sum(1 for c in calls.values() if c and not c.get("proxy")); S["unanimous"] += 1
+                                nr = sum(1 for c in scalls.values() if c and not c.get("proxy")); S["unanimous"] += 1
                                 S["real_votes"] += nr; S["proxy_votes"] += 4 - nr; S["all_real"] += nr == 4
                                 busy = any(a["pos"] for a in S["accounts"].values())
-                                action = "IN_POSITION" if busy else "NEWS_BLACKOUT" if stars.in_blackout(t, star_times) else "OPEN"
+                                action = "IN_POSITION" if busy else "OPEN"   # no news blackout for Stars (removed 2026-10-27)
                                 if action == "OPEN":
                                     S["opened"] += 1
                                     for b in stars.BUDGETS: sig[stars.name(b)] = stars.signal(t, price, side, f"stars 4/4 {side} ({nr} real, {4 - nr} proxy)")
@@ -174,7 +174,7 @@ def main():
                                 row = {"ts_utc": tsx, "direction": side, "result": "OPENED" if action == "OPEN" else "BLOCKED", "block_reason": reason,
                                        "price_at_vote": price, "real_votes": nr, "proxy_votes": 4 - nr}
                                 for v in VOTERS:
-                                    c = calls[v]; row.update({f"{v}_call": c["call"], f"{v}_source": "proxy" if c.get("proxy") else "real",
+                                    c = scalls[v]; row.update({f"{v}_call": c["call"], f"{v}_source": ("stars stand-in" if c.get("standin") else "proxy") if c.get("proxy") else "real",
                                                               f"{v}_conf": "" if c.get("confidence") is None else c["confidence"], f"{v}_note": c.get("note", "")})
                                 S.setdefault("log", []).append(row)
                                 if action == "OPEN": S["open_row"] = len(S["log"]) - 1
@@ -301,7 +301,7 @@ def main():
             px = st["coins"]["XRP"]["last_close"]
             L += ["", "## Stars Aligned (curiosity line, PAPER-NOT-REAL): XRP 10x, only on a 4 of 4 vote", "",
                   f"Started {S['started']}. TP +{stars.TP_PCT:g}% / stop -{stars.STOP_PCT:g}% price move, isolated margin, Binance-style XRPUSDT rules (offshore-rules paper only; "
-                  "Kraken US's 17% maintenance margin cannot do 10x). No entry within 3h of events_calendar.csv events or 'high' items in Riley's news log. "
+                  "Kraken US's 17% maintenance margin cannot do 10x). No news blackout. Stars-only stand-ins: Casey's proxy may vote SHORT (4h below EMA200 + crowded longs), Pip's may vote LONG (4h above EMA200, crowding clear, funding calm). "
                   f"Unanimous rounds: {S['unanimous']} (votes real {S['real_votes']} / proxy {S['proxy_votes']}; all-real rounds {S['all_real']}); "
                   f"opened {S['opened']}, skipped for news {S['blackout_skips']}, already in a trade {S['in_position_skips']}. Every 4/4 moment: `/home/box/shared/strategy-lab/stars_aligned_log.csv` (copy: `leverage/team/stars_aligned_log.csv`).", "",
                   "| Account | Value | P/L | Trades (wins) | Longs/shorts | Fees+funding | Liquidations | Max DD | Now |", "|---|---|---|---|---|---|---|---|---|"]
