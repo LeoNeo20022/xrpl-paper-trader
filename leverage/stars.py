@@ -22,15 +22,15 @@ BUDGETS = (50, 100, 500)
 
 def name(b): return f"com_xrp_10x_stars_{b}"
 
-def cfg(common, budget, tp=None):
+def cfg(common, budget, tp=None, stop=None):
     return dict(common, leverage=LEV, mmr_pct=common["mmr_pct"]["XRPUSDT"] if isinstance(common["mmr_pct"], dict) else common["mmr_pct"],
-                budget_usd=budget, quick_tp_pct=tp or TP_PCT, quick_stop_pct=STOP_PCT, quick_tp_min_lev=0)
+                budget_usd=budget, quick_tp_pct=tp or TP_PCT, quick_stop_pct=stop or STOP_PCT, quick_tp_min_lev=0)
 
-def breakeven(common, tp=None):
+def breakeven(common, tp=None, stop=None):
     """Fees-only break-even win rate: one TP win vs one stop loss at 10x on $100 (no funding, no gaps). Returns (win, loss, rate)."""
-    c = cfg(common, 100, tp); r = []
-    for exit_px in (1.0 + (tp or TP_PCT) / 100 + 0.01, 0.98):
-        a = ta.new_state(c); ta.step(a, c, 0, [1.0, 1.0], signal(0, 1.0, "LONG", "be"), "x"); r += [e["trade_net_usd"] for e in ta.step(a, c, 300, [1.0, exit_px], {}, "y")]
+    c = cfg(common, 100, tp, stop); r = []
+    for exit_px in (1.0 + (tp or TP_PCT) / 100 + 0.01, 1.0 - (stop or STOP_PCT) / 100 - 0.01):
+        a = ta.new_state(c); ta.step(a, c, 0, [1.0, 1.0], signal(0, 1.0, "LONG", "be", stop), "x"); r += [e["trade_net_usd"] for e in ta.step(a, c, 300, [1.0, exit_px], {}, "y")]
     return r[0], r[1], -r[1] / (r[0] - r[1])
 
 def _ts(s):
@@ -64,6 +64,6 @@ def unanimous(calls):
     cv = [c["call"] if c else "IDLE" for c in calls.values()]
     return cv[0] if len(cv) == 4 and cv[0] in ("LONG", "SHORT") and all(x == cv[0] for x in cv) else None
 
-def signal(t, price, side, why):
+def signal(t, price, side, why, stop=None):
     """Signal dict for ta.step; atr chosen so stop_atr x atr = STOP_PCT of price (quick stop then gives -1% from the fill)."""
-    return {t: {"signal": side, "atr": price * STOP_PCT / 100 / 1.5, "trend": "", "why": why}}
+    return {t: {"signal": side, "atr": price * (stop or STOP_PCT) / 100 / 1.5, "trend": "", "why": why}}
