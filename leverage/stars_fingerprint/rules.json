@@ -1,0 +1,289 @@
+[
+ {
+  "fit": "rally",
+  "side": "LONG",
+  "rule": [
+   "4h close below EMA200",
+   "event in last 24h"
+  ],
+  "fit_stats": {
+   "trades": 14,
+   "wins": 8,
+   "wr": 0.5714285714285714,
+   "pl": 134.58999999999997,
+   "dd": 57.62000000000002,
+   "liq": 0
+  },
+  "test_stats": {
+   "trades": 8,
+   "wins": 3,
+   "wr": 0.375,
+   "pl": 5.369999999999994,
+   "dd": 58.66,
+   "liq": 0
+  }
+ },
+ {
+  "fit": "rally",
+  "side": "LONG",
+  "rule": [
+   "4h far below EMA200 (<-10%)",
+   "L/S ratio bottom 20% of week"
+  ],
+  "fit_stats": {
+   "trades": 18,
+   "wins": 9,
+   "wr": 0.5,
+   "pl": 114.77999999999997,
+   "dd": 53.62000000000001,
+   "liq": 0
+  },
+  "test_stats": {
+   "trades": 0,
+   "wins": 0,
+   "wr": 0,
+   "pl": 0.0,
+   "dd": 0.0,
+   "liq": 0
+  }
+ },
+ {
+  "fit": "rally",
+  "side": "LONG",
+  "rule": [
+   "crowded shorts",
+   "event in next 24h"
+  ],
+  "fit_stats": {
+   "trades": 15,
+   "wins": 8,
+   "wr": 0.5333333333333333,
+   "pl": 118.62999999999995,
+   "dd": 61.020000000000024,
+   "liq": 0
+  },
+  "test_stats": {
+   "trades": 0,
+   "wins": 0,
+   "wr": 0,
+   "pl": 0.0,
+   "dd": 0.0,
+   "liq": 0
+  }
+ },
+ {
+  "fit": "rally",
+  "side": "SHORT",
+  "rule": [
+   "funding negative",
+   "2+ voters say LONG"
+  ],
+  "fit_stats": {
+   "trades": 22,
+   "wins": 11,
+   "wr": 0.5,
+   "pl": 140.21,
+   "dd": 78.14,
+   "liq": 0
+  },
+  "test_stats": {
+   "trades": 7,
+   "wins": 3,
+   "wr": 0.42857142857142855,
+   "pl": 22.18,
+   "dd": 32.559999999999995,
+   "liq": 0
+  }
+ },
+ {
+  "fit": "rally",
+  "side": "SHORT",
+  "rule": [
+   "1h trend down",
+   "F&G extreme greed >75"
+  ],
+  "fit_stats": {
+   "trades": 11,
+   "wins": 4,
+   "wr": 0.36363636363636365,
+   "pl": 2.180000000000007,
+   "dd": 90.50999999999999,
+   "liq": 0
+  },
+  "test_stats": {
+   "trades": 0,
+   "wins": 0,
+   "wr": 0,
+   "pl": 0.0,
+   "dd": 0.0,
+   "liq": 0
+  }
+ },
+ {
+  "fit": "rally",
+  "side": "SHORT",
+  "rule": [
+   "hour 04-08 UTC (9pm-1am PT)",
+   "Casey votes LONG"
+  ],
+  "fit_stats": {
+   "trades": 28,
+   "wins": 12,
+   "wr": 0.42857142857142855,
+   "pl": 90.58000000000003,
+   "dd": 133.56,
+   "liq": 0
+  },
+  "test_stats": {
+   "trades": 2,
+   "wins": 0,
+   "wr": 0.0,
+   "pl": -32.82,
+   "dd": 32.82,
+   "liq": 0
+  }
+ },
+ {
+  "fit": "last60d",
+  "side": "LONG",
+  "rule": [
+   "funding calm (0 to 0.01%)",
+   "OI -5% in 24h"
+  ],
+  "fit_stats": {
+   "trades": 12,
+   "wins": 7,
+   "wr": 0.5833333333333334,
+   "pl": 121.65,
+   "dd": 41.779999999999994,
+   "liq": 0
+  },
+  "test_stats": {
+   "trades": 140,
+   "wins": 44,
+   "wr": 0.3142857142857143,
+   "pl": -295.2600000000002,
+   "dd": 467.0300000000002,
+   "liq": 0
+  }
+ },
+ {
+  "fit": "last60d",
+  "side": "LONG",
+  "rule": [
+   "OI +5% in 24h"
+  ],
+  "fit_stats": {
+   "trades": 13,
+   "wins": 6,
+   "wr": 0.46153846153846156,
+   "pl": 59.32999999999997,
+   "dd": 49.20000000000002,
+   "liq": 0
+  },
+  "test_stats": {
+   "trades": 230,
+   "wins": 95,
+   "wr": 0.41304347826086957,
+   "pl": 550.8500000000007,
+   "dd": 324.4299999999996,
+   "liq": 0
+  }
+ },
+ {
+  "fit": "last60d",
+  "side": "LONG",
+  "rule": [
+   "4h close below EMA200",
+   "L/S ratio bottom 20% of week"
+  ],
+  "fit_stats": {
+   "trades": 9,
+   "wins": 3,
+   "wr": 0.3333333333333333,
+   "pl": -11.370000000000001,
+   "dd": 65.66,
+   "liq": 0
+  },
+  "test_stats": {
+   "trades": 44,
+   "wins": 20,
+   "wr": 0.45454545454545453,
+   "pl": 189.4099999999999,
+   "dd": 86.86000000000003,
+   "liq": 0
+  }
+ },
+ {
+  "fit": "last60d",
+  "side": "SHORT",
+  "rule": [
+   "F&G greed 55-75",
+   "event in next 24h"
+  ],
+  "fit_stats": {
+   "trades": 9,
+   "wins": 7,
+   "wr": 0.7777777777777778,
+   "pl": 170.96999999999997,
+   "dd": 44.480000000000004,
+   "liq": 0
+  },
+  "test_stats": {
+   "trades": 25,
+   "wins": 5,
+   "wr": 0.2,
+   "pl": -182.14,
+   "dd": 228.63,
+   "liq": 0
+  }
+ },
+ {
+  "fit": "last60d",
+  "side": "SHORT",
+  "rule": [
+   "1h trend up (EMA50>EMA200)",
+   "4h trend down"
+  ],
+  "fit_stats": {
+   "trades": 9,
+   "wins": 4,
+   "wr": 0.4444444444444444,
+   "pl": 34.81,
+   "dd": 42.510000000000005,
+   "liq": 0
+  },
+  "test_stats": {
+   "trades": 15,
+   "wins": 3,
+   "wr": 0.2,
+   "pl": -108.74000000000001,
+   "dd": 138.0,
+   "liq": 0
+  }
+ },
+ {
+  "fit": "last60d",
+  "side": "SHORT",
+  "rule": [
+   "hour 20-24 UTC (1-5pm PT)",
+   "2+ voters say LONG"
+  ],
+  "fit_stats": {
+   "trades": 14,
+   "wins": 9,
+   "wr": 0.6428571428571429,
+   "pl": 181.91000000000003,
+   "dd": 51.42999999999998,
+   "liq": 0
+  },
+  "test_stats": {
+   "trades": 80,
+   "wins": 25,
+   "wr": 0.3125,
+   "pl": -168.89000000000013,
+   "dd": 368.24,
+   "liq": 0
+  }
+ }
+]
