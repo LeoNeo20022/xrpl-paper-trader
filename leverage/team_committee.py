@@ -97,7 +97,14 @@ def main():
     now = time.time(); args = sys.argv[1:]
     vpath = args[args.index("--votes") + 1] if "--votes" in args else VOTES_DEFAULT
     os.makedirs(OUT, exist_ok=True)
-    st = json.load(open(STATE)) if os.path.exists(STATE) else {"started": iso(now), "seen": {}, "coins": {}, "accounts": {}}
+    if os.path.exists(STATE):
+        raw = open(STATE).read()
+        if "<<<<<<< " in raw:  # git autostash conflict: keep our local (newer) side
+            import re as _re
+            raw = _re.sub(r"<<<<<<< [^\n]*\n.*?=======\n(.*?)>>>>>>> [^\n]*\n", r"\1", raw, flags=_re.S)
+        st = json.loads(raw)
+    else:
+        st = {"started": iso(now), "seen": {}, "coins": {}, "accounts": {}}
     votes, bad = read_votes(vpath, st, now)
     with open(os.path.join(OUT, "rejected_votes.csv"), "w", newline="") as f:
         w = csv.DictWriter(f, fieldnames=["line", "reason", "row"]); w.writeheader(); w.writerows(bad)

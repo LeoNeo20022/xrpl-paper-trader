@@ -22,26 +22,6 @@ Votes file on the box: `/home/box/shared/strategy-lab/votes.csv`. Ledger started
 | `com_xrp_proxy_5x` | proxy committee (Actions) (since 2026-10-26T16:40:00+00:00) | XRP | proxy_5 | **$100.00** | **+0.00** | -0.62 | 0 (0) | 0/0 | 0 | $0.00 | 0 | 0.0% | FLAT |
 | `com_xrp_proxy_mix` | proxy committee (Actions) (since 2026-10-26T16:40:00+00:00) | XRP | proxy_mix | **$100.00** | **+0.00** | -0.62 | 0 (0) | 0/0 | 0 | $0.00 | 0 | 0.0% | FLAT |
 | `idle_XRP` | stay idle | XRP | — | **$100.00** | **+0.00** | +0.28 | 0 (0) | 0/0 | 0 | $0.00 | 0 | 0.0% | FLAT |
-<<<<<<< Updated upstream
-| `team_BTC_2x` | team | BTC | 2 | **$100.00** | **+0.00** | +1.16 | 0 (0) | 0/0 | 0 | $0.00 | 0 | 0.0% | FLAT |
-| `team_BTC_5x` | team | BTC | 5 | **$100.00** | **+0.00** | +1.16 | 0 (0) | 0/0 | 0 | $0.00 | 0 | 0.0% | FLAT |
-| `team_BTC_mix` | team | BTC | mix | **$100.00** | **+0.00** | +1.16 | 0 (0) | 0/0 | 0 | $0.00 | 0 | 0.0% | FLAT |
-| `casey_BTC_2x` | casey | BTC | 2 | **$100.00** | **+0.00** | +1.16 | 0 (0) | 0/0 | 0 | $0.00 | 0 | 0.0% | FLAT |
-| `casey_BTC_5x` | casey | BTC | 5 | **$100.00** | **+0.00** | +1.16 | 0 (0) | 0/0 | 0 | $0.00 | 0 | 0.0% | FLAT |
-| `pip_BTC_2x` | pip | BTC | 2 | **$100.00** | **+0.00** | +1.16 | 0 (0) | 0/0 | 0 | $0.00 | 0 | 0.0% | FLAT |
-| `pip_BTC_5x` | pip | BTC | 5 | **$100.00** | **+0.00** | +1.16 | 0 (0) | 0/0 | 0 | $0.00 | 0 | 0.0% | FLAT |
-| `theo_BTC_2x` | theo | BTC | 2 | **$101.43** | **+1.43** | +2.59 | 0 (0) | 0/1 | 0 | $0.08 | 0 | 1.6% | SHORT |
-| `theo_BTC_5x` | theo | BTC | 5 | **$103.58** | **+3.58** | +4.73 | 0 (0) | 0/1 | 0 | $0.20 | 0 | 3.9% | SHORT |
-| `remy_BTC_2x` | remy | BTC | 2 | **$101.84** | **+1.84** | +2.99 | 0 (0) | 0/1 | 0 | $0.08 | 0 | 1.6% | SHORT |
-| `remy_BTC_5x` | remy | BTC | 5 | **$104.59** | **+4.59** | +5.74 | 0 (0) | 0/1 | 0 | $0.20 | 0 | 3.9% | SHORT |
-| `com_btc_2x` | rule-based committee (since 2026-10-26T16:40:00+00:00) | BTC | 2 | **$100.00** | **+0.00** | +0.47 | 0 (0) | 0/0 | 0 | $0.00 | 0 | 0.0% | FLAT |
-| `com_btc_5x` | rule-based committee (since 2026-10-26T16:40:00+00:00) | BTC | 5 | **$100.00** | **+0.00** | +0.47 | 0 (0) | 0/0 | 0 | $0.00 | 0 | 0.0% | FLAT |
-| `com_btc_mix` | rule-based committee (since 2026-10-26T16:40:00+00:00) | BTC | mix | **$100.00** | **+0.00** | +0.47 | 0 (0) | 0/0 | 0 | $0.00 | 0 | 0.0% | FLAT |
-| `com_btc_proxy_2x` | proxy committee (Actions) (since 2026-10-26T16:40:00+00:00) | BTC | proxy_2 | **$100.00** | **+0.00** | +0.47 | 0 (0) | 0/0 | 0 | $0.00 | 0 | 0.0% | FLAT |
-| `com_btc_proxy_5x` | proxy committee (Actions) (since 2026-10-26T16:40:00+00:00) | BTC | proxy_5 | **$100.00** | **+0.00** | +0.47 | 0 (0) | 0/0 | 0 | $0.00 | 0 | 0.0% | FLAT |
-| `com_btc_proxy_mix` | proxy committee (Actions) (since 2026-10-26T16:40:00+00:00) | BTC | proxy_mix | **$100.00** | **+0.00** | +0.47 | 0 (0) | 0/0 | 0 | $0.00 | 0 | 0.0% | FLAT |
-| `idle_BTC` | stay idle | BTC | — | **$100.00** | **+0.00** | +1.16 | 0 (0) | 0/0 | 0 | $0.00 | 0 | 0.0% | FLAT |
-=======
 | `team_BTC_2x` | team | BTC | 2 | **$100.00** | **+0.00** | +1.13 | 0 (0) | 0/0 | 0 | $0.00 | 0 | 0.0% | FLAT |
 | `team_BTC_5x` | team | BTC | 5 | **$100.00** | **+0.00** | +1.13 | 0 (0) | 0/0 | 0 | $0.00 | 0 | 0.0% | FLAT |
 | `team_BTC_mix` | team | BTC | mix | **$100.00** | **+0.00** | +1.13 | 0 (0) | 0/0 | 0 | $0.00 | 0 | 0.0% | FLAT |
@@ -60,7 +40,6 @@ Votes file on the box: `/home/box/shared/strategy-lab/votes.csv`. Ledger started
 | `com_btc_proxy_5x` | proxy committee (Actions) (since 2026-10-26T16:40:00+00:00) | BTC | proxy_5 | **$100.00** | **+0.00** | +0.44 | 0 (0) | 0/0 | 0 | $0.00 | 0 | 0.0% | FLAT |
 | `com_btc_proxy_mix` | proxy committee (Actions) (since 2026-10-26T16:40:00+00:00) | BTC | proxy_mix | **$100.00** | **+0.00** | +0.44 | 0 (0) | 0/0 | 0 | $0.00 | 0 | 0.0% | FLAT |
 | `idle_BTC` | stay idle | BTC | — | **$100.00** | **+0.00** | +1.13 | 0 (0) | 0/0 | 0 | $0.00 | 0 | 0.0% | FLAT |
->>>>>>> Stashed changes
 
 ## Stars Aligned (curiosity line, PAPER-NOT-REAL): XRP 10x, only on a 4 of 4 vote
 
