@@ -5,16 +5,16 @@
   "XRP": {
    "started": "2026-10-26T17:15:00+00:00",
    "start_price": 1.301,
-   "last_candle_ts": 1793080200,
-   "last_close": 1.3031,
-   "last_round_ts": 1793079900
+   "last_candle_ts": 1793081100,
+   "last_close": 1.302,
+   "last_round_ts": 1793080800
   },
   "BTC": {
    "started": "2026-10-26T17:15:00+00:00",
    "start_price": 80498.0,
-   "last_candle_ts": 1793080200,
-   "last_close": 79970.28,
-   "last_round_ts": 1793079900
+   "last_candle_ts": 1793081100,
+   "last_close": 79948.01,
+   "last_round_ts": 1793080800
   }
  },
  "accounts": {
@@ -41,7 +41,7 @@
     "LONG": 0,
     "SHORT": 0,
     "TIE": 0,
-    "IDLE": 51
+    "IDLE": 52
    },
    "max_dd_usd": 0.0,
    "min_equity": 100.0
@@ -69,7 +69,7 @@
     "LONG": 0,
     "SHORT": 0,
     "TIE": 0,
-    "IDLE": 51
+    "IDLE": 52
    },
    "max_dd_usd": 0.0,
    "min_equity": 100.0
@@ -97,7 +97,7 @@
     "LONG": 0,
     "SHORT": 0,
     "TIE": 0,
-    "IDLE": 51
+    "IDLE": 52
    },
    "max_dd_usd": 0.0,
    "min_equity": 100.0
@@ -371,7 +371,7 @@
     "LONG": 0,
     "SHORT": 0,
     "TIE": 0,
-    "IDLE": 51
+    "IDLE": 52
    },
    "max_dd_usd": 0.0,
    "min_equity": 100.0
@@ -399,7 +399,7 @@
     "LONG": 0,
     "SHORT": 0,
     "TIE": 0,
-    "IDLE": 51
+    "IDLE": 52
    },
    "max_dd_usd": 0.0,
    "min_equity": 100.0
@@ -427,7 +427,7 @@
     "LONG": 0,
     "SHORT": 0,
     "TIE": 0,
-    "IDLE": 51
+    "IDLE": 52
    },
    "max_dd_usd": 0.0,
    "min_equity": 100.0
@@ -770,5 +770,275 @@
   "blackout_skips": 0,
   "in_position_skips": 0,
   "start_price": 1.2988
+ },
+ "stars_extra": {
+  "f2": {
+   "started": "2026-10-27T05:55:00+00:00",
+   "signals": 0,
+   "opened": 0,
+   "in_position_skips": 0,
+   "log": [],
+   "open_row": null,
+   "accounts": {
+    "com_xrp_10x_f2_50": {
+     "cash": 50.0,
+     "pos": null,
+     "trades": 0,
+     "wins": 0,
+     "longs": 0,
+     "shorts": 0,
+     "liquidations": 0,
+     "liq_lost_usd": 0.0,
+     "fees_usd": 0.0,
+     "funding_usd": 0.0,
+     "peak_equity": 50.0,
+     "max_dd_pct": 0.0,
+     "realised_usd": 0.0,
+     "last_signal_ts": null,
+     "last_funding_ts": null,
+     "max_dd_usd": 0.0,
+     "min_equity": 50.0
+    },
+    "com_xrp_10x_f2_100": {
+     "cash": 100.0,
+     "pos": null,
+     "trades": 0,
+     "wins": 0,
+     "longs": 0,
+     "shorts": 0,
+     "liquidations": 0,
+     "liq_lost_usd": 0.0,
+     "fees_usd": 0.0,
+     "funding_usd": 0.0,
+     "peak_equity": 100.0,
+     "max_dd_pct": 0.0,
+     "realised_usd": 0.0,
+     "last_signal_ts": null,
+     "last_funding_ts": null,
+     "max_dd_usd": 0.0,
+     "min_equity": 100.0
+    },
+    "com_xrp_10x_f2_500": {
+     "cash": 500.0,
+     "pos": null,
+     "trades": 0,
+     "wins": 0,
+     "longs": 0,
+     "shorts": 0,
+     "liquidations": 0,
+     "liq_lost_usd": 0.0,
+     "fees_usd": 0.0,
+     "funding_usd": 0.0,
+     "peak_equity": 500.0,
+     "max_dd_pct": 0.0,
+     "realised_usd": 0.0,
+     "last_signal_ts": null,
+     "last_funding_ts": null,
+     "max_dd_usd": 0.0,
+     "min_equity": 500.0
+    }
+   }
+  },
+  "f3": {
+   "started": "2026-10-27T05:55:00+00:00",
+   "signals": 0,
+   "opened": 0,
+   "in_position_skips": 0,
+   "log": [],
+   "open_row": null,
+   "accounts": {
+    "com_xrp_10x_f3_50": {
+     "cash": 50.0,
+     "pos": null,
+     "trades": 0,
+     "wins": 0,
+     "longs": 0,
+     "shorts": 0,
+     "liquidations": 0,
+     "liq_lost_usd": 0.0,
+     "fees_usd": 0.0,
+     "funding_usd": 0.0,
+     "peak_equity": 50.0,
+     "max_dd_pct": 0.0,
+     "realised_usd": 0.0,
+     "last_signal_ts": null,
+     "last_funding_ts": null,
+     "max_dd_usd": 0.0,
+     "min_equity": 50.0
+    },
+    "com_xrp_10x_f3_100": {
+     "cash": 100.0,
+     "pos": null,
+     "trades": 0,
+     "wins": 0,
+     "longs": 0,
+     "shorts": 0,
+     "liquidations": 0,
+     "liq_lost_usd": 0.0,
+     "fees_usd": 0.0,
+     "funding_usd": 0.0,
+     "peak_equity": 100.0,
+     "max_dd_pct": 0.0,
+     "realised_usd": 0.0,
+     "last_signal_ts": null,
+     "last_funding_ts": null,
+     "max_dd_usd": 0.0,
+     "min_equity": 100.0
+    },
+    "com_xrp_10x_f3_500": {
+     "cash": 500.0,
+     "pos": null,
+     "trades": 0,
+     "wins": 0,
+     "longs": 0,
+     "shorts": 0,
+     "liquidations": 0,
+     "liq_lost_usd": 0.0,
+     "fees_usd": 0.0,
+     "funding_usd": 0.0,
+     "peak_equity": 500.0,
+     "max_dd_pct": 0.0,
+     "realised_usd": 0.0,
+     "last_signal_ts": null,
+     "last_funding_ts": null,
+     "max_dd_usd": 0.0,
+     "min_equity": 500.0
+    }
+   }
+  },
+  "popfade": {
+   "started": "2026-10-27T05:55:00+00:00",
+   "signals": 0,
+   "opened": 0,
+   "in_position_skips": 0,
+   "log": [],
+   "open_row": null,
+   "accounts": {
+    "com_xrp_10x_popfade_50": {
+     "cash": 50.0,
+     "pos": null,
+     "trades": 0,
+     "wins": 0,
+     "longs": 0,
+     "shorts": 0,
+     "liquidations": 0,
+     "liq_lost_usd": 0.0,
+     "fees_usd": 0.0,
+     "funding_usd": 0.0,
+     "peak_equity": 50.0,
+     "max_dd_pct": 0.0,
+     "realised_usd": 0.0,
+     "last_signal_ts": null,
+     "last_funding_ts": null,
+     "max_dd_usd": 0.0,
+     "min_equity": 50.0
+    },
+    "com_xrp_10x_popfade_100": {
+     "cash": 100.0,
+     "pos": null,
+     "trades": 0,
+     "wins": 0,
+     "longs": 0,
+     "shorts": 0,
+     "liquidations": 0,
+     "liq_lost_usd": 0.0,
+     "fees_usd": 0.0,
+     "funding_usd": 0.0,
+     "peak_equity": 100.0,
+     "max_dd_pct": 0.0,
+     "realised_usd": 0.0,
+     "last_signal_ts": null,
+     "last_funding_ts": null,
+     "max_dd_usd": 0.0,
+     "min_equity": 100.0
+    },
+    "com_xrp_10x_popfade_500": {
+     "cash": 500.0,
+     "pos": null,
+     "trades": 0,
+     "wins": 0,
+     "longs": 0,
+     "shorts": 0,
+     "liquidations": 0,
+     "liq_lost_usd": 0.0,
+     "fees_usd": 0.0,
+     "funding_usd": 0.0,
+     "peak_equity": 500.0,
+     "max_dd_pct": 0.0,
+     "realised_usd": 0.0,
+     "last_signal_ts": null,
+     "last_funding_ts": null,
+     "max_dd_usd": 0.0,
+     "min_equity": 500.0
+    }
+   }
+  },
+  "starsg": {
+   "started": "2026-10-27T05:55:00+00:00",
+   "signals": 0,
+   "opened": 0,
+   "in_position_skips": 0,
+   "log": [],
+   "open_row": null,
+   "accounts": {
+    "com_xrp_10x_starsg_50": {
+     "cash": 50.0,
+     "pos": null,
+     "trades": 0,
+     "wins": 0,
+     "longs": 0,
+     "shorts": 0,
+     "liquidations": 0,
+     "liq_lost_usd": 0.0,
+     "fees_usd": 0.0,
+     "funding_usd": 0.0,
+     "peak_equity": 50.0,
+     "max_dd_pct": 0.0,
+     "realised_usd": 0.0,
+     "last_signal_ts": null,
+     "last_funding_ts": null,
+     "max_dd_usd": 0.0,
+     "min_equity": 50.0
+    },
+    "com_xrp_10x_starsg_100": {
+     "cash": 100.0,
+     "pos": null,
+     "trades": 0,
+     "wins": 0,
+     "longs": 0,
+     "shorts": 0,
+     "liquidations": 0,
+     "liq_lost_usd": 0.0,
+     "fees_usd": 0.0,
+     "funding_usd": 0.0,
+     "peak_equity": 100.0,
+     "max_dd_pct": 0.0,
+     "realised_usd": 0.0,
+     "last_signal_ts": null,
+     "last_funding_ts": null,
+     "max_dd_usd": 0.0,
+     "min_equity": 100.0
+    },
+    "com_xrp_10x_starsg_500": {
+     "cash": 500.0,
+     "pos": null,
+     "trades": 0,
+     "wins": 0,
+     "longs": 0,
+     "shorts": 0,
+     "liquidations": 0,
+     "liq_lost_usd": 0.0,
+     "fees_usd": 0.0,
+     "funding_usd": 0.0,
+     "peak_equity": 500.0,
+     "max_dd_pct": 0.0,
+     "realised_usd": 0.0,
+     "last_signal_ts": null,
+     "last_funding_ts": null,
+     "max_dd_usd": 0.0,
+     "min_equity": 500.0
+    }
+   }
+  }
  }
 }
