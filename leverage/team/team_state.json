@@ -5,16 +5,16 @@
   "XRP": {
    "started": "2026-10-26T17:15:00+00:00",
    "start_price": 1.301,
-   "last_candle_ts": 1793082000,
-   "last_close": 1.2982,
-   "last_round_ts": 1793081700
+   "last_candle_ts": 1793082900,
+   "last_close": 1.3011,
+   "last_round_ts": 1793082600
   },
   "BTC": {
    "started": "2026-10-26T17:15:00+00:00",
    "start_price": 80498.0,
-   "last_candle_ts": 1793082000,
-   "last_close": 79744.71,
-   "last_round_ts": 1793081700
+   "last_candle_ts": 1793082900,
+   "last_close": 79759.88,
+   "last_round_ts": 1793082600
   }
  },
  "accounts": {
@@ -41,7 +41,7 @@
     "LONG": 0,
     "SHORT": 0,
     "TIE": 0,
-    "IDLE": 53
+    "IDLE": 54
    },
    "max_dd_usd": 0.0,
    "min_equity": 100.0
@@ -69,7 +69,7 @@
     "LONG": 0,
     "SHORT": 0,
     "TIE": 0,
-    "IDLE": 53
+    "IDLE": 54
    },
    "max_dd_usd": 0.0,
    "min_equity": 100.0
@@ -97,7 +97,7 @@
     "LONG": 0,
     "SHORT": 0,
     "TIE": 0,
-    "IDLE": 53
+    "IDLE": 54
    },
    "max_dd_usd": 0.0,
    "min_equity": 100.0
@@ -371,7 +371,7 @@
     "LONG": 0,
     "SHORT": 0,
     "TIE": 0,
-    "IDLE": 53
+    "IDLE": 54
    },
    "max_dd_usd": 0.0,
    "min_equity": 100.0
@@ -399,7 +399,7 @@
     "LONG": 0,
     "SHORT": 0,
     "TIE": 0,
-    "IDLE": 53
+    "IDLE": 54
    },
    "max_dd_usd": 0.0,
    "min_equity": 100.0
@@ -427,7 +427,7 @@
     "LONG": 0,
     "SHORT": 0,
     "TIE": 0,
-    "IDLE": 53
+    "IDLE": 54
    },
    "max_dd_usd": 0.0,
    "min_equity": 100.0
@@ -1020,6 +1020,73 @@
      "min_equity": 100.0
     },
     "com_xrp_10x_starsg_500": {
+     "cash": 500.0,
+     "pos": null,
+     "trades": 0,
+     "wins": 0,
+     "longs": 0,
+     "shorts": 0,
+     "liquidations": 0,
+     "liq_lost_usd": 0.0,
+     "fees_usd": 0.0,
+     "funding_usd": 0.0,
+     "peak_equity": 500.0,
+     "max_dd_pct": 0.0,
+     "realised_usd": 0.0,
+     "last_signal_ts": null,
+     "last_funding_ts": null,
+     "max_dd_usd": 0.0,
+     "min_equity": 500.0
+    }
+   }
+  },
+  "switch72": {
+   "started": "2026-10-27T06:25:00+00:00",
+   "signals": 0,
+   "opened": 0,
+   "in_position_skips": 0,
+   "log": [],
+   "open_row": null,
+   "accounts": {
+    "com_xrp_10x_switch72_50": {
+     "cash": 50.0,
+     "pos": null,
+     "trades": 0,
+     "wins": 0,
+     "longs": 0,
+     "shorts": 0,
+     "liquidations": 0,
+     "liq_lost_usd": 0.0,
+     "fees_usd": 0.0,
+     "funding_usd": 0.0,
+     "peak_equity": 50.0,
+     "max_dd_pct": 0.0,
+     "realised_usd": 0.0,
+     "last_signal_ts": null,
+     "last_funding_ts": null,
+     "max_dd_usd": 0.0,
+     "min_equity": 50.0
+    },
+    "com_xrp_10x_switch72_100": {
+     "cash": 100.0,
+     "pos": null,
+     "trades": 0,
+     "wins": 0,
+     "longs": 0,
+     "shorts": 0,
+     "liquidations": 0,
+     "liq_lost_usd": 0.0,
+     "fees_usd": 0.0,
+     "funding_usd": 0.0,
+     "peak_equity": 100.0,
+     "max_dd_pct": 0.0,
+     "realised_usd": 0.0,
+     "last_signal_ts": null,
+     "last_funding_ts": null,
+     "max_dd_usd": 0.0,
+     "min_equity": 100.0
+    },
+    "com_xrp_10x_switch72_500": {
      "cash": 500.0,
      "pos": null,
      "trades": 0,
