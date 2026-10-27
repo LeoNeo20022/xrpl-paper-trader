@@ -21,13 +21,13 @@
   "LONG": 0,
   "SHORT": 0,
   "TIE": 0,
-  "IDLE": 63
+  "IDLE": 64
  },
- "last_run": "2026-10-27T08:24:11+00:00",
- "crowded_votes": 30,
+ "last_run": "2026-10-27T08:39:13+00:00",
+ "crowded_votes": 31,
  "rules_fired": {
-  "R6": 30,
-  "R3": 26
+  "R6": 31,
+  "R3": 27
  },
  "max_dd_usd": 0.0,
  "min_equity": 100.0
