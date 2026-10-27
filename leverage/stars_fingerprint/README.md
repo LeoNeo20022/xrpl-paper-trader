@@ -49,3 +49,5 @@ Result: **FAIL** for both versions.
 - The 24h version was close to F2 in Oct–Dec 2024 and lost in Jan–Mar 2025.
 - The 72h version made money in all 3 periods, but never beat the better standalone line.
 No live line was added. Pop fade was retired on Oct 26 (no new entries; record kept).
+
+Update Oct 26: the 72h version runs as paper line `com_xrp_10x_switch72_*` at the user's request, even though it failed the gate. Pop fade was also removed from Pip's starsg stand-in.

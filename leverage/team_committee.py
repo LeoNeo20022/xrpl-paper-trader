@@ -365,7 +365,7 @@ def main():
         if X is not None:
             F = ["line", "ts_utc", "direction", "result", "block_reason", "price_at_vote", "why", "entry_price", "exit_ts_utc", "exit_price", "exit_reason"] + \
                 [f"pnl_{b}" for b in stars.BUDGETS] + [f"liq_price_{b}" for b in stars.BUDGETS] + \
-                [f"feat_{k}" for k in ("p24", "rsi1h", "funding_pct", "fng", "oi24", "crowded", "e4")] + [f"{v}_{k}" for v in VOTERS for k in ("call", "source", "note")]
+                [f"feat_{k}" for k in ("p24", "rsi1h", "funding_pct", "fng", "oi24", "crowded", "e4", "e4_rising72")] + [f"{v}_{k}" for v in VOTERS for k in ("call", "source", "note")]
             rows = sorted((r for L_ in X.values() for r in L_["log"]), key=lambda r: r["ts_utc"])
             for fp in (os.path.join(SHARED, "stars_extra_log.csv"), os.path.join(OUT, "stars_extra_log.csv")):
                 try:
@@ -373,7 +373,7 @@ def main():
                         w = csv.DictWriter(f, fieldnames=F, extrasaction="ignore"); w.writeheader(); w.writerows(rows)
                 except Exception as e: print("stars_extra log write failed:", fp, repr(e))
             px = st["coins"]["XRP"]["last_close"]
-            L += ["", "## Extra 10x paper lines (PAPER-NOT-REAL): f2 / f3 / popfade / starsg", "",
+            L += ["", "## Extra 10x paper lines (PAPER-NOT-REAL): switch72 / f2 / f3 / popfade / starsg", "",
                   "Same model as Stars (XRPUSDT 10x isolated, TP +3% / stop -1.5%, $50/$100/$500). Rules: `leverage/stars_extra.py`; backtests: `leverage/stars_fingerprint/fingerprints.md`. "
                   "popfade is RETIRED (Oct 26: lost in all 3 backtest periods; no new entries, record kept). Every signal: `/home/box/shared/strategy-lab/stars_extra_log.csv` (column `line`).", "",
                   "| Account | Rule | Value | P/L | Signals / opened / skipped in-trade | Trades (wins) | Longs/shorts | Fees+funding | Liq. | Max DD | Now |", "|---|---|---|---|---|---|---|---|---|---|---|"]

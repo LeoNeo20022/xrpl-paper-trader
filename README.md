@@ -99,14 +99,16 @@ Binance.com futures are not available to US residents and Binance.US has no futu
 - Runs inside the box team-committee loop, wrapped in its own try/except so an error cannot affect other lines. Backtest: `leverage/backtest_stars.py` -> `leverage/backtest_stars_output.txt` (proxies + stand-ins, no blackout; earlier TP/stop comparisons are in git history).
 
 ## Extra 10x paper lines from the Stars fingerprint study (added 2026-10-27, PAPER ONLY, user-approved as paper)
-These are `com_xrp_10x_{f2,f3,popfade,starsg}_{50,100,500}`. They use the same model as Stars: XRPUSDT 10x isolated, TP +3% / stop −1.5%, the ta.py costs, funding and liquidation, and one position at a time. Rules are in `leverage/stars_extra.py`, and the lines run in `leverage/team_committee.py` inside their own try/except.
+These are `com_xrp_10x_{switch72,f2,f3,popfade,starsg}_{50,100,500}`. They use the same model as Stars: XRPUSDT 10x isolated, TP +3% / stop −1.5%, the ta.py costs, funding and liquidation, and one position at a time. Rules are in `leverage/stars_extra.py`, and the lines run in `leverage/team_committee.py` inside their own try/except.
 - **f2** squeeze LONG: crowded shorts, OR open interest up 5% or more in 24h with the 4h close above the 4h EMA200. Checked on hour closes.
 - **f3** failed-pullback SHORT: Casey's effective call is LONG, but funding is below +0.03%/8h. Checked on hour closes.
-- **popfade** (Pip's) SHORT: XRP up 3% or more in 24h, 1h RSI of 65 or more, positive funding, Fear & Greed of 55 or more. **Retired Oct 26: it lost in all 3 periods.** It takes no new entries and logs no signals; its record is kept. Pop fade still feeds Pip's stand-in in starsg.
+- **popfade** (Pip's) SHORT: XRP up 3% or more in 24h, 1h RSI of 65 or more, positive funding, Fear & Greed of 55 or more. **Retired Oct 26: it lost in all 3 periods.** It takes no new entries and logs no signals; its record is kept. It was also removed from Pip's starsg stand-in on Oct 26.
 - **starsg**: a Stars 4/4 variant. It uses the Stars stand-ins plus two more:
   - Theo's guarded stand-in: LONG only when open interest is up 5%+ in 24h AND (funding is between −0.01% and +0.03% OR shorts are crowded). Theo's normal SHORT calls are kept; otherwise he is IDLE.
-  - Pip's stand-in: SHORT on his existing rule OR on pop fade.
+  - Pip: only his existing short rule (below the 4h EMA200 + crowded longs stalling). Pop fade was removed on Oct 26.
   The original Stars line is unchanged, for comparison.
 - Every signal, opened or blocked, goes to `/home/box/shared/strategy-lab/stars_extra_log.csv` (repo copy `leverage/team/stars_extra_log.csv`). Each row has a `line` tag, the features read at the time, the votes for starsg, and the exit and P/L.
 - Backtests and the sign study are in `leverage/stars_fingerprint/` (README.md, fingerprints.md, switch.md).
-- Pip's regime switch (F2 longs above a rising 4h EMA200, otherwise F3 shorts) was tested in `leverage/stars_fingerprint/switch.md`. It failed the gate (it did not beat both standalone lines in 2 of 3 periods), so no live paper line was added.
+- Pip's regime switch (F2 longs above a rising 4h EMA200, otherwise F3 shorts) was tested in `leverage/stars_fingerprint/switch.md`. It failed the gate (it did not beat both standalone lines in 2 of 3 periods), so the 24h version was not added.
+- **switch72** (added Oct 26 at the user's request): UP means the 4h close is above a 4h EMA200 that is higher than 72h ago. In UP, take only F2 longs; otherwise take only F3 shorts. Checked on hour closes.
+  - Backtest: it made money in all 3 periods (+$591 / +$190 / +$5) but never beat the better standalone line.
