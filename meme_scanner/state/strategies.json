@@ -2292,7 +2292,7 @@
     "excursion_src": "live from 2026-10-27T00:05",
     "issuer": "rMFL2KuFPMuiujdbVGbMzNNjj5QKyd6dZf",
     "key": "rMFL2KuFPMuiujdbVGbMzNNjj5QKyd6dZf-586D656E00000000000000000000000000000000",
-    "last_ratio_net": 0.9273,
+    "last_ratio_net": 0.928,
     "legs": [],
     "name": "Xmen",
     "peak_hours": 4.71,
@@ -2323,7 +2323,7 @@
     "last_ratio_net": 0.9934,
     "legs": [],
     "name": "XOX",
-    "peak_hours": 15.59,
+    "peak_hours": 15.67,
     "peak_x": 0.9934,
     "pool_xrp_entry": 11662.765696,
     "remaining": 1.0,
@@ -2379,7 +2379,7 @@
     "excursion_src": "live from 2026-10-27T00:05",
     "issuer": "r4GD2HMVKJWhfzvgHcUL6frneuUACAzqwo",
     "key": "r4GD2HMVKJWhfzvgHcUL6frneuUACAzqwo-416D657269636146697273740000000000000000",
-    "last_ratio_net": 0.9553,
+    "last_ratio_net": 0.9555,
     "legs": [],
     "name": "AmericaFirst",
     "peak_hours": 1.97,
@@ -2437,8 +2437,8 @@
   "trustset_fees_xrp": 0.15182999999999996
  },
  "hold": {
-  "buys_today": 8,
-  "cash_usd": 22.570927,
+  "buys_today": 9,
+  "cash_usd": 12.570901,
   "closed": [
    {
     "amm_fee": 0.00224,
@@ -2878,7 +2878,7 @@
    "rnNErmg9xVmcxxNZUwivbJSH6i9GUwYPFj-434F444544000000000000000000000000000000": 1793099784.64316,
    "rsENFmELvj92orrCKTkDTug53MzwsB7zBd-24464C4950505900000000000000000000000000": 1793099784.64316
   },
-  "net_fees_xrp": 0.16373999999999997,
+  "net_fees_xrp": 0.16377999999999995,
   "positions": [
    {
     "amm_fee": 0.00343,
@@ -2888,7 +2888,7 @@
     "excursion_src": "live from 2026-10-27T11:21",
     "issuer": "raHJ4Jz9PYk356wWaDMYw79B17iWtfsSMi",
     "key": "raHJ4Jz9PYk356wWaDMYw79B17iWtfsSMi-404",
-    "last_ratio_net": 0.9167,
+    "last_ratio_net": 0.9168,
     "legs": [],
     "name": "404",
     "peak_hours": 0.08,
@@ -3059,7 +3059,7 @@
     "excursion_src": "live from 2026-10-27T13:08",
     "issuer": "rfcasq9uRbvwcmLFvc4ti3j8Qt1CYCGgHz",
     "key": "rfcasq9uRbvwcmLFvc4ti3j8Qt1CYCGgHz-589",
-    "last_ratio_net": 0.9871,
+    "last_ratio_net": 0.9869,
     "legs": [],
     "name": "589",
     "peak_hours": 0.08,
@@ -3107,11 +3107,35 @@
     ],
     "xrp_cost": 7.601094557616296,
     "xrp_usd_entry": 1.3156
+   },
+   {
+    "amm_fee": 0.01,
+    "currency": "424348414D500000000000000000000000000000",
+    "entry_eff_px": 0.0052743548700713745,
+    "entry_spot": 0.005221322118545471,
+    "issuer": "rhYhn7s6z4HAfuJm7ehuSE7wxepRoUPwpi",
+    "key": "rhYhn7s6z4HAfuJm7ehuSE7wxepRoUPwpi-424348414D500000000000000000000000000000",
+    "legs": [],
+    "name": "BCHAMP",
+    "pool_xrp_entry": 142270.349099,
+    "remaining": 1.0,
+    "t": 1793115659.5419137,
+    "tf": 0.0,
+    "tokens_gross": 1451.861975905733,
+    "tokens_net": 1437.2637478162617,
+    "tp_done": false,
+    "ts": "2026-10-27T15:40:59+00:00",
+    "usd_cost": 10.0,
+    "warnings": [
+     "only 35% of LP burned (liquidity can be pulled)"
+    ],
+    "xrp_cost": 7.580639047871736,
+    "xrp_usd_entry": 1.31915
    }
   ],
   "start_usd": 100.0,
   "start_xrp_usd": 1.28151,
-  "trustset_fees_xrp": 0.08181
+  "trustset_fees_xrp": 0.08183
  },
  "plus5": {
   "buys_today": 9,
@@ -3608,7 +3632,7 @@
     "excursion_src": "live from 2026-10-25T22:29",
     "issuer": "rExSpmk2PAqxKRTT3mhjCrCpqVasBra5v8",
     "key": "rExSpmk2PAqxKRTT3mhjCrCpqVasBra5v8-54494D4500000000000000000000000000000000",
-    "last_ratio_net": 0.5238,
+    "last_ratio_net": 0.5247,
     "legs": [],
     "name": "TIME",
     "peak_hours": 0.08,
@@ -3666,7 +3690,7 @@
     "excursion_src": "live from 2026-10-27T11:21",
     "issuer": "raHJ4Jz9PYk356wWaDMYw79B17iWtfsSMi",
     "key": "raHJ4Jz9PYk356wWaDMYw79B17iWtfsSMi-404",
-    "last_ratio_net": 0.9167,
+    "last_ratio_net": 0.9168,
     "legs": [],
     "name": "404",
     "peak_hours": 0.08,
@@ -3752,7 +3776,7 @@
     "excursion_src": "live from 2026-10-27T11:21",
     "issuer": "rnHDzEH4xyW6u4LbXqDoX1uk36v5ovhbFi",
     "key": "rnHDzEH4xyW6u4LbXqDoX1uk36v5ovhbFi-4465657054696465000000000000000000000000",
-    "last_ratio_net": 0.8081,
+    "last_ratio_net": 0.8031,
     "legs": [],
     "name": "DeepTide",
     "peak_hours": 0.08,
@@ -3866,7 +3890,7 @@
     "excursion_src": "live from 2026-10-27T13:08",
     "issuer": "rfcasq9uRbvwcmLFvc4ti3j8Qt1CYCGgHz",
     "key": "rfcasq9uRbvwcmLFvc4ti3j8Qt1CYCGgHz-589",
-    "last_ratio_net": 0.9871,
+    "last_ratio_net": 0.9869,
     "legs": [],
     "name": "589",
     "peak_hours": 0.08,
