@@ -10,7 +10,7 @@
   "short_signals": 1,
   "symbol": "XRPUSDT",
   "sources": "crowd okx_rubik, F&G alternative.me, funding okx_proxy",
-  "ts": "2026-10-27T05:25:59+00:00",
+  "ts": "2026-10-27T05:42:50+00:00",
   "trend_1h": "down",
   "trend_4h": "down"
  },
@@ -25,7 +25,7 @@
   "short_signals": 0,
   "symbol": "BTCUSDT",
   "sources": "crowd okx_rubik, F&G alternative.me, funding okx_proxy",
-  "ts": "2026-10-27T05:25:59+00:00",
+  "ts": "2026-10-27T05:42:50+00:00",
   "trend_1h": "down",
   "trend_4h": "down"
  }
