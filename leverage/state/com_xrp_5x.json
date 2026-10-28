@@ -21,9 +21,9 @@
   "LONG": 0,
   "SHORT": 0,
   "TIE": 0,
-  "IDLE": 210
+  "IDLE": 211
  },
- "last_run": "2026-10-28T21:10:56+00:00",
+ "last_run": "2026-10-28T21:25:56+00:00",
  "max_dd_usd": 0.0,
  "min_equity": 100.0,
  "rules_fired": {
