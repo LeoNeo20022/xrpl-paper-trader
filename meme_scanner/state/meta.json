@@ -6,9 +6,9 @@
  "excursion_backfill_exit_rows": 46,
  "excursion_backfill_fails": 0,
  "excursion_backfill_open": 35,
- "last_discovery": "2026-10-28T09:04:17+00:00",
- "last_discovery_t": 1793178257.0617855,
- "last_run": "2026-10-28T09:04:17+00:00",
+ "last_discovery": "2026-10-28T09:18:01+00:00",
+ "last_discovery_t": 1793179081.9252372,
+ "last_run": "2026-10-28T09:18:01+00:00",
  "last_scanned_ledger": 107950939,
  "last_stats": {
   "bought": {
@@ -19,11 +19,11 @@
    "scalp": 0,
    "slow_scalp": 0
   },
-  "checked": 68,
+  "checked": 48,
   "discovery": true,
   "eligible": {
    "breakout": 0,
-   "dip_bounce": 7,
+   "dip_bounce": 5,
    "hold": 12,
    "plus5": 12,
    "scalp": 12,
@@ -31,13 +31,15 @@
   },
   "ohlc_calls": 0,
   "passed": 12,
-  "runtime_s": 45.7,
-  "seen": 132
+  "runtime_s": 142.3,
+  "seen": 88
  },
  "network_fee_xrp_used": 2e-05,
  "open_ledger_fee_xrp": 1e-05,
- "warnings": [],
- "xrp_usd": 1.32969,
+ "warnings": [
+  "xrpl.to volume list failed: TimeoutError('The read operation timed out')"
+ ],
+ "xrp_usd": 1.33169,
  "xrp_usd_src": "bitstamp",
  "xrplto_calls_last_discovery": 4,
  "xrplto_keyed": true,
