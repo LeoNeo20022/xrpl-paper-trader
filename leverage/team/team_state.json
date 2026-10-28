@@ -7,16 +7,16 @@
   "XRP": {
    "started": "2026-10-26T17:15:00+00:00",
    "start_price": 1.301,
-   "last_candle_ts": 1793143500,
-   "last_close": 1.3278,
-   "last_round_ts": 1793142900
+   "last_candle_ts": 1793148300,
+   "last_close": 1.3272,
+   "last_round_ts": 1793148300
   },
   "BTC": {
    "started": "2026-10-26T17:15:00+00:00",
    "start_price": 80498.0,
-   "last_candle_ts": 1793143500,
-   "last_close": 80942.08,
-   "last_round_ts": 1793142900
+   "last_candle_ts": 1793148300,
+   "last_close": 80737.24,
+   "last_round_ts": 1793148300
   }
  },
  "accounts": {
@@ -35,7 +35,7 @@
    "max_dd_pct": 0.0,
    "realised_usd": 0.0,
    "last_signal_ts": null,
-   "last_funding_ts": 1793116800,
+   "last_funding_ts": 1793145600,
    "last_stop_ts": null,
    "ties": [],
    "shadows": [],
@@ -43,7 +43,7 @@
     "LONG": 0,
     "SHORT": 0,
     "TIE": 0,
-    "IDLE": 121
+    "IDLE": 127
    },
    "max_dd_usd": 0.0,
    "min_equity": 100.0
@@ -63,7 +63,7 @@
    "max_dd_pct": 0.0,
    "realised_usd": 0.0,
    "last_signal_ts": null,
-   "last_funding_ts": 1793116800,
+   "last_funding_ts": 1793145600,
    "last_stop_ts": null,
    "ties": [],
    "shadows": [],
@@ -71,7 +71,7 @@
     "LONG": 0,
     "SHORT": 0,
     "TIE": 0,
-    "IDLE": 121
+    "IDLE": 127
    },
    "max_dd_usd": 0.0,
    "min_equity": 100.0
@@ -91,7 +91,7 @@
    "max_dd_pct": 0.0,
    "realised_usd": 0.0,
    "last_signal_ts": null,
-   "last_funding_ts": 1793116800,
+   "last_funding_ts": 1793145600,
    "last_stop_ts": null,
    "ties": [],
    "shadows": [],
@@ -99,7 +99,7 @@
     "LONG": 0,
     "SHORT": 0,
     "TIE": 0,
-    "IDLE": 121
+    "IDLE": 127
    },
    "max_dd_usd": 0.0,
    "min_equity": 100.0
@@ -119,7 +119,7 @@
    "max_dd_pct": 0.0,
    "realised_usd": 0.0,
    "last_signal_ts": null,
-   "last_funding_ts": 1793116800,
+   "last_funding_ts": 1793145600,
    "last_stop_ts": null,
    "ties": [],
    "shadows": [],
@@ -147,7 +147,7 @@
    "max_dd_pct": 0.0,
    "realised_usd": 0.0,
    "last_signal_ts": null,
-   "last_funding_ts": 1793116800,
+   "last_funding_ts": 1793145600,
    "last_stop_ts": null,
    "ties": [],
    "shadows": [],
@@ -175,7 +175,7 @@
    "max_dd_pct": 0.0,
    "realised_usd": 0.0,
    "last_signal_ts": null,
-   "last_funding_ts": 1793116800,
+   "last_funding_ts": 1793145600,
    "last_stop_ts": null,
    "ties": [],
    "shadows": [],
@@ -203,7 +203,7 @@
    "max_dd_pct": 0.0,
    "realised_usd": 0.0,
    "last_signal_ts": null,
-   "last_funding_ts": 1793116800,
+   "last_funding_ts": 1793145600,
    "last_stop_ts": null,
    "ties": [],
    "shadows": [],
@@ -222,12 +222,12 @@
     "side": "SHORT",
     "entry": 1.3237378000000002,
     "qty": 142.63290240620466,
-    "margin": 94.40428221940203,
+    "margin": 94.42327093769937,
     "stop": 1.3383025034893727,
     "target": 1.294608393021255,
     "opened": "2026-10-27T21:45:00+00:00",
     "fees": 0.09440428221940206,
-    "funding": 0.0,
+    "funding": -0.018988718297338027,
     "start_cash": 94.49868650162144
    },
    "trades": 2,
@@ -237,12 +237,12 @@
    "liquidations": 0,
    "liq_lost_usd": 0.0,
    "fees_usd": 0.49089339982466,
-   "funding_usd": -0.05668535215787286,
+   "funding_usd": -0.07567407045521089,
    "peak_equity": 102.01498509834076,
-   "max_dd_pct": 8.563872310286468,
+   "max_dd_pct": 9.165680761500983,
    "realised_usd": -5.501313498378565,
    "last_signal_ts": 1793137500,
-   "last_funding_ts": 1793116800,
+   "last_funding_ts": 1793145600,
    "last_stop_ts": 1793137200,
    "ties": [],
    "shadows": [],
@@ -252,8 +252,8 @@
     "TIE": 0,
     "IDLE": 0
    },
-   "max_dd_usd": 8.736433061179667,
-   "min_equity": 93.27855203716109,
+   "max_dd_usd": 9.35036786300671,
+   "min_equity": 92.66461723533405,
    "loss_usd": -5.501313498378565
   },
   "theo_XRP_5x": {
@@ -262,12 +262,12 @@
     "side": "SHORT",
     "entry": 1.3237378000000002,
     "qty": 326.12936702181446,
-    "margin": 86.34195416336986,
+    "margin": 86.38537176600148,
     "stop": 1.3383025034893727,
     "target": 1.294608393021255,
     "opened": "2026-10-27T21:45:00+00:00",
     "fees": 0.21585488540842465,
-    "funding": 0.0,
+    "funding": -0.04341760263161416,
     "start_cash": 86.55780904877828
    },
    "trades": 2,
@@ -277,12 +277,12 @@
    "liquidations": 0,
    "liq_lost_usd": 0.0,
    "fees_usd": 1.1841988747728565,
-   "funding_usd": -0.13936391565490927,
+   "funding_usd": -0.18278151828652345,
    "peak_equity": 105.02992539510997,
-   "max_dd_pct": 20.243704050036058,
+   "max_dd_pct": 21.580236118578643,
    "realised_usd": -13.442190951221718,
    "last_signal_ts": 1793137500,
-   "last_funding_ts": 1793116800,
+   "last_funding_ts": 1793145600,
    "last_stop_ts": 1793137200,
    "ties": [],
    "shadows": [],
@@ -292,8 +292,8 @@
     "TIE": 0,
     "IDLE": 0
    },
-   "max_dd_usd": 21.26194726095973,
-   "min_equity": 83.76797813415024,
+   "max_dd_usd": 22.665705895431728,
+   "min_equity": 82.36421949967824,
    "loss_usd": -13.442190951221718
   },
   "remy_XRP_2x": {
@@ -311,7 +311,7 @@
    "max_dd_pct": 0.0,
    "realised_usd": 0.0,
    "last_signal_ts": null,
-   "last_funding_ts": 1793116800,
+   "last_funding_ts": 1793145600,
    "last_stop_ts": null,
    "ties": [],
    "shadows": [],
@@ -339,7 +339,7 @@
    "max_dd_pct": 0.0,
    "realised_usd": 0.0,
    "last_signal_ts": null,
-   "last_funding_ts": 1793116800,
+   "last_funding_ts": 1793145600,
    "last_stop_ts": null,
    "ties": [],
    "shadows": [],
@@ -367,7 +367,7 @@
    "max_dd_pct": 0.0,
    "realised_usd": 0.0,
    "last_signal_ts": null,
-   "last_funding_ts": 1793116800,
+   "last_funding_ts": 1793145600,
    "last_stop_ts": null,
    "ties": [],
    "shadows": [],
@@ -375,7 +375,7 @@
     "LONG": 0,
     "SHORT": 0,
     "TIE": 0,
-    "IDLE": 121
+    "IDLE": 127
    },
    "max_dd_usd": 0.0,
    "min_equity": 100.0
@@ -395,7 +395,7 @@
    "max_dd_pct": 0.0,
    "realised_usd": 0.0,
    "last_signal_ts": null,
-   "last_funding_ts": 1793116800,
+   "last_funding_ts": 1793145600,
    "last_stop_ts": null,
    "ties": [],
    "shadows": [],
@@ -403,7 +403,7 @@
     "LONG": 0,
     "SHORT": 0,
     "TIE": 0,
-    "IDLE": 121
+    "IDLE": 127
    },
    "max_dd_usd": 0.0,
    "min_equity": 100.0
@@ -423,7 +423,7 @@
    "max_dd_pct": 0.0,
    "realised_usd": 0.0,
    "last_signal_ts": null,
-   "last_funding_ts": 1793116800,
+   "last_funding_ts": 1793145600,
    "last_stop_ts": null,
    "ties": [],
    "shadows": [],
@@ -431,7 +431,7 @@
     "LONG": 0,
     "SHORT": 0,
     "TIE": 0,
-    "IDLE": 121
+    "IDLE": 127
    },
    "max_dd_usd": 0.0,
    "min_equity": 100.0
@@ -451,7 +451,7 @@
    "max_dd_pct": 0.0,
    "realised_usd": 0.0,
    "last_signal_ts": null,
-   "last_funding_ts": 1793116800,
+   "last_funding_ts": 1793145600,
    "last_stop_ts": null,
    "ties": [],
    "shadows": [],
@@ -479,7 +479,7 @@
    "max_dd_pct": 0.0,
    "realised_usd": 0.0,
    "last_signal_ts": null,
-   "last_funding_ts": 1793116800,
+   "last_funding_ts": 1793145600,
    "last_stop_ts": null,
    "ties": [],
    "shadows": [],
@@ -507,7 +507,7 @@
    "max_dd_pct": 0.0,
    "realised_usd": 0.0,
    "last_signal_ts": null,
-   "last_funding_ts": 1793116800,
+   "last_funding_ts": 1793145600,
    "last_stop_ts": null,
    "ties": [],
    "shadows": [],
@@ -535,7 +535,7 @@
    "max_dd_pct": 0.0,
    "realised_usd": 0.0,
    "last_signal_ts": null,
-   "last_funding_ts": 1793116800,
+   "last_funding_ts": 1793145600,
    "last_stop_ts": null,
    "ties": [],
    "shadows": [],
@@ -554,12 +554,12 @@
     "side": "SHORT",
     "entry": 80916.671425,
     "qty": 0.0024217031019550268,
-    "margin": 97.97807709489908,
+    "margin": 97.99767103899782,
     "stop": 81454.8338675384,
     "target": 79840.3465399232,
     "opened": "2026-10-27T21:45:00+00:00",
     "fees": 0.09797807709489909,
-    "funding": 0.0,
+    "funding": -0.01959394409874678,
     "start_cash": 98.07605517199397
    },
    "trades": 1,
@@ -569,12 +569,12 @@
    "liquidations": 0,
    "liq_lost_usd": 0.0,
    "fees_usd": 0.2986698284291365,
-   "funding_usd": -0.05984999140326526,
+   "funding_usd": -0.07944393550201204,
    "peak_equity": 101.70247774366885,
    "max_dd_pct": 4.293180661219209,
    "realised_usd": -1.9239448280060287,
    "last_signal_ts": 1793137500,
-   "last_funding_ts": 1793116800,
+   "last_funding_ts": 1793145600,
    "last_stop_ts": 1793136900,
    "ties": [],
    "shadows": [],
@@ -594,12 +594,12 @@
     "side": "SHORT",
     "entry": 80916.671425,
     "qty": 0.005867760822432556,
-    "margin": 94.95993489385256,
+    "margin": 95.00741081170837,
     "stop": 81454.8338675384,
     "target": 79840.3465399232,
     "opened": "2026-10-27T21:45:00+00:00",
     "fees": 0.23739983723463143,
-    "funding": 0.0,
+    "funding": -0.0474759178558029,
     "start_cash": 95.1973347310872
    },
    "trades": 1,
@@ -609,12 +609,12 @@
    "liquidations": 0,
    "liq_lost_usd": 0.0,
    "fees_usd": 0.7383784982959072,
-   "funding_usd": -0.1494011007348342,
+   "funding_usd": -0.1968770185906371,
    "peak_equity": 104.24982598855989,
    "max_dd_pct": 10.40302587971298,
    "realised_usd": -4.802665268912804,
    "last_signal_ts": 1793137500,
-   "last_funding_ts": 1793116800,
+   "last_funding_ts": 1793145600,
    "last_stop_ts": 1793136900,
    "ties": [],
    "shadows": [],
@@ -643,7 +643,7 @@
    "max_dd_pct": 3.9542324670077122,
    "realised_usd": -1.9316173679920894,
    "last_signal_ts": 1793034900,
-   "last_funding_ts": 1793116800,
+   "last_funding_ts": 1793145600,
    "last_stop_ts": 1793136900,
    "ties": [],
    "shadows": [],
@@ -672,7 +672,7 @@
    "max_dd_pct": 9.575299311470943,
    "realised_usd": -4.821817918603685,
    "last_signal_ts": 1793034900,
-   "last_funding_ts": 1793116800,
+   "last_funding_ts": 1793145600,
    "last_stop_ts": 1793136900,
    "ties": [],
    "shadows": [],
@@ -705,7 +705,7 @@
     "max_dd_pct": 0.0,
     "realised_usd": 0.0,
     "last_signal_ts": null,
-    "last_funding_ts": 1793116800,
+    "last_funding_ts": 1793145600,
     "max_dd_usd": 0.0,
     "min_equity": 50.0
    },
@@ -724,7 +724,7 @@
     "max_dd_pct": 0.0,
     "realised_usd": 0.0,
     "last_signal_ts": null,
-    "last_funding_ts": 1793116800,
+    "last_funding_ts": 1793145600,
     "max_dd_usd": 0.0,
     "min_equity": 100.0
    },
@@ -743,7 +743,7 @@
     "max_dd_pct": 0.0,
     "realised_usd": 0.0,
     "last_signal_ts": null,
-    "last_funding_ts": 1793116800,
+    "last_funding_ts": 1793145600,
     "max_dd_usd": 0.0,
     "min_equity": 500.0
    }
@@ -781,7 +781,7 @@
      "max_dd_pct": 0.0,
      "realised_usd": 0.0,
      "last_signal_ts": null,
-     "last_funding_ts": 1793116800,
+     "last_funding_ts": 1793145600,
      "max_dd_usd": 0.0,
      "min_equity": 50.0
     },
@@ -800,7 +800,7 @@
      "max_dd_pct": 0.0,
      "realised_usd": 0.0,
      "last_signal_ts": null,
-     "last_funding_ts": 1793116800,
+     "last_funding_ts": 1793145600,
      "max_dd_usd": 0.0,
      "min_equity": 100.0
     },
@@ -819,7 +819,7 @@
      "max_dd_pct": 0.0,
      "realised_usd": 0.0,
      "last_signal_ts": null,
-     "last_funding_ts": 1793116800,
+     "last_funding_ts": 1793145600,
      "max_dd_usd": 0.0,
      "min_equity": 500.0
     }
@@ -848,7 +848,7 @@
      "max_dd_pct": 0.0,
      "realised_usd": 0.0,
      "last_signal_ts": null,
-     "last_funding_ts": 1793116800,
+     "last_funding_ts": 1793145600,
      "max_dd_usd": 0.0,
      "min_equity": 50.0
     },
@@ -867,7 +867,7 @@
      "max_dd_pct": 0.0,
      "realised_usd": 0.0,
      "last_signal_ts": null,
-     "last_funding_ts": 1793116800,
+     "last_funding_ts": 1793145600,
      "max_dd_usd": 0.0,
      "min_equity": 100.0
     },
@@ -886,7 +886,7 @@
      "max_dd_pct": 0.0,
      "realised_usd": 0.0,
      "last_signal_ts": null,
-     "last_funding_ts": 1793116800,
+     "last_funding_ts": 1793145600,
      "max_dd_usd": 0.0,
      "min_equity": 500.0
     }
@@ -915,7 +915,7 @@
      "max_dd_pct": 0.0,
      "realised_usd": 0.0,
      "last_signal_ts": null,
-     "last_funding_ts": 1793116800,
+     "last_funding_ts": 1793145600,
      "max_dd_usd": 0.0,
      "min_equity": 50.0
     },
@@ -934,7 +934,7 @@
      "max_dd_pct": 0.0,
      "realised_usd": 0.0,
      "last_signal_ts": null,
-     "last_funding_ts": 1793116800,
+     "last_funding_ts": 1793145600,
      "max_dd_usd": 0.0,
      "min_equity": 100.0
     },
@@ -953,7 +953,7 @@
      "max_dd_pct": 0.0,
      "realised_usd": 0.0,
      "last_signal_ts": null,
-     "last_funding_ts": 1793116800,
+     "last_funding_ts": 1793145600,
      "max_dd_usd": 0.0,
      "min_equity": 500.0
     }
@@ -982,7 +982,7 @@
      "max_dd_pct": 0.0,
      "realised_usd": 0.0,
      "last_signal_ts": null,
-     "last_funding_ts": 1793116800,
+     "last_funding_ts": 1793145600,
      "max_dd_usd": 0.0,
      "min_equity": 50.0
     },
@@ -1001,7 +1001,7 @@
      "max_dd_pct": 0.0,
      "realised_usd": 0.0,
      "last_signal_ts": null,
-     "last_funding_ts": 1793116800,
+     "last_funding_ts": 1793145600,
      "max_dd_usd": 0.0,
      "min_equity": 100.0
     },
@@ -1020,7 +1020,7 @@
      "max_dd_pct": 0.0,
      "realised_usd": 0.0,
      "last_signal_ts": null,
-     "last_funding_ts": 1793116800,
+     "last_funding_ts": 1793145600,
      "max_dd_usd": 0.0,
      "min_equity": 500.0
     }
@@ -1049,7 +1049,7 @@
      "max_dd_pct": 0.0,
      "realised_usd": 0.0,
      "last_signal_ts": null,
-     "last_funding_ts": 1793116800,
+     "last_funding_ts": 1793145600,
      "max_dd_usd": 0.0,
      "min_equity": 50.0
     },
@@ -1068,7 +1068,7 @@
      "max_dd_pct": 0.0,
      "realised_usd": 0.0,
      "last_signal_ts": null,
-     "last_funding_ts": 1793116800,
+     "last_funding_ts": 1793145600,
      "max_dd_usd": 0.0,
      "min_equity": 100.0
     },
@@ -1087,7 +1087,7 @@
      "max_dd_pct": 0.0,
      "realised_usd": 0.0,
      "last_signal_ts": null,
-     "last_funding_ts": 1793116800,
+     "last_funding_ts": 1793145600,
      "max_dd_usd": 0.0,
      "min_equity": 500.0
     }
