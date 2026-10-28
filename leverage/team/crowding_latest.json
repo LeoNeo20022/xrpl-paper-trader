@@ -1,23 +1,23 @@
 {
  "XRP": {
   "funding_pct": 0.01,
-  "oi_24h_pct": 5.18,
-  "ls_ratio": 3.3,
-  "ls_pctile": 25,
+  "oi_24h_pct": 4.26,
+  "ls_ratio": 3.23,
+  "ls_pctile": 10,
   "fng": 51,
   "crowded": null,
-  "long_signals": 1,
+  "long_signals": 0,
   "short_signals": 1,
   "symbol": "XRPUSDT",
   "sources": "crowd okx_rubik, F&G alternative.me, funding okx_proxy",
-  "ts": "2026-10-28T02:06:17+00:00",
+  "ts": "2026-10-28T03:10:45+00:00",
   "trend_1h": "down",
   "trend_4h": "down"
  },
  "BTC": {
   "funding_pct": 0.01,
-  "oi_24h_pct": -1.99,
-  "ls_ratio": 2.01,
+  "oi_24h_pct": -2.22,
+  "ls_ratio": 2.0,
   "ls_pctile": 21,
   "fng": 51,
   "crowded": null,
@@ -25,7 +25,7 @@
   "short_signals": 0,
   "symbol": "BTCUSDT",
   "sources": "crowd okx_rubik, F&G alternative.me, funding okx_proxy",
-  "ts": "2026-10-28T02:06:17+00:00",
+  "ts": "2026-10-28T03:10:45+00:00",
   "trend_1h": "down",
   "trend_4h": "down"
  }

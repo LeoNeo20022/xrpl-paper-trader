@@ -1,45 +1,45 @@
 # Team committee ledger (PAPER-NOT-REAL)
 
-Votes file on the box: `/home/box/shared/strategy-lab/votes.csv`. Ledger started 2026-10-26T17:16:20+00:00; last run 2026-10-28T02:06:17+00:00. Accepted votes: 1, rejected: 0 (see `rejected_votes.csv`). 3 of 4 must agree; 2-2 LONG/SHORT = tie (flat, shadows in `team_ties.csv`). $100 per account, isolated margin, same fees/funding/liquidation as leverage_ta. Value = if closed now.
+Votes file on the box: `/home/box/shared/strategy-lab/votes.csv`. Ledger started 2026-10-26T17:16:20+00:00; last run 2026-10-28T03:10:45+00:00. Accepted votes: 1, rejected: 0 (see `rejected_votes.csv`). 3 of 4 must agree; 2-2 LONG/SHORT = tie (flat, shadows in `team_ties.csv`). $100 per account, isolated margin, same fees/funding/liquidation as leverage_ta. Value = if closed now.
 
 | Account | Who | Coin | Lev | **Value** | **P/L** | vs holding the coin | Trades (wins) | Longs/shorts | Ties | Fees+funding | Liquidations | Max DD | Now |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| `team_XRP_2x` | team | XRP | 2 | **$100.00** | **+0.00** | -2.67 | 0 (0) | 0/0 | 0 | $0.00 | 0 | 0.0% | FLAT |
-| `team_XRP_5x` | team | XRP | 5 | **$100.00** | **+0.00** | -2.67 | 0 (0) | 0/0 | 0 | $0.00 | 0 | 0.0% | FLAT |
-| `team_XRP_mix` | team | XRP | mix | **$100.00** | **+0.00** | -2.67 | 0 (0) | 0/0 | 0 | $0.00 | 0 | 0.0% | FLAT |
-| `casey_XRP_2x` | casey | XRP | 2 | **$100.00** | **+0.00** | -2.67 | 0 (0) | 0/0 | 0 | $0.00 | 0 | 0.0% | FLAT |
-| `casey_XRP_5x` | casey | XRP | 5 | **$100.00** | **+0.00** | -2.67 | 0 (0) | 0/0 | 0 | $0.00 | 0 | 0.0% | FLAT |
-| `pip_XRP_2x` | pip | XRP | 2 | **$100.00** | **+0.00** | -2.67 | 0 (0) | 0/0 | 0 | $0.00 | 0 | 0.0% | FLAT |
-| `pip_XRP_5x` | pip | XRP | 5 | **$100.00** | **+0.00** | -2.67 | 0 (0) | 0/0 | 0 | $0.00 | 0 | 0.0% | FLAT |
-| `theo_XRP_2x` | theo | XRP | 2 | **$92.09** | **-7.91** | -10.58 | 3 (0) | 0/4 | 0 | $0.60 | 0 | 10.1% | SHORT |
-| `theo_XRP_5x` | theo | XRP | 5 | **$81.06** | **-18.94** | -21.61 | 3 (0) | 0/4 | 0 | $1.42 | 0 | 23.6% | SHORT |
-| `remy_XRP_2x` | remy | XRP | 2 | **$100.00** | **+0.00** | -2.67 | 0 (0) | 0/0 | 0 | $0.00 | 0 | 0.0% | FLAT |
-| `remy_XRP_5x` | remy | XRP | 5 | **$100.00** | **+0.00** | -2.67 | 0 (0) | 0/0 | 0 | $0.00 | 0 | 0.0% | FLAT |
-| `com_xrp_2x` | rule-based committee (since 2026-10-26T16:40:00+00:00) | XRP | 2 | **$100.00** | **+0.00** | -3.59 | 0 (0) | 0/0 | 0 | $0.00 | 0 | 0.0% | FLAT |
-| `com_xrp_5x` | rule-based committee (since 2026-10-26T16:40:00+00:00) | XRP | 5 | **$100.00** | **+0.00** | -3.59 | 0 (0) | 0/0 | 0 | $0.00 | 0 | 0.0% | FLAT |
-| `com_xrp_mix` | rule-based committee (since 2026-10-26T16:40:00+00:00) | XRP | mix | **$100.00** | **+0.00** | -3.59 | 0 (0) | 0/0 | 0 | $0.00 | 0 | 0.0% | FLAT |
-| `com_xrp_proxy_2x` | proxy committee (Actions) (since 2026-10-26T16:40:00+00:00) | XRP | proxy_2 | **$100.00** | **+0.00** | -3.59 | 0 (0) | 0/0 | 0 | $0.00 | 0 | 0.0% | FLAT |
-| `com_xrp_proxy_5x` | proxy committee (Actions) (since 2026-10-26T16:40:00+00:00) | XRP | proxy_5 | **$100.00** | **+0.00** | -3.59 | 0 (0) | 0/0 | 0 | $0.00 | 0 | 0.0% | FLAT |
-| `com_xrp_proxy_mix` | proxy committee (Actions) (since 2026-10-26T16:40:00+00:00) | XRP | proxy_mix | **$100.00** | **+0.00** | -3.59 | 0 (0) | 0/0 | 0 | $0.00 | 0 | 0.0% | FLAT |
-| `idle_XRP` | stay idle | XRP | — | **$100.00** | **+0.00** | -2.67 | 0 (0) | 0/0 | 0 | $0.00 | 0 | 0.0% | FLAT |
-| `team_BTC_2x` | team | BTC | 2 | **$100.00** | **+0.00** | -0.47 | 0 (0) | 0/0 | 0 | $0.00 | 0 | 0.0% | FLAT |
-| `team_BTC_5x` | team | BTC | 5 | **$100.00** | **+0.00** | -0.47 | 0 (0) | 0/0 | 0 | $0.00 | 0 | 0.0% | FLAT |
-| `team_BTC_mix` | team | BTC | mix | **$100.00** | **+0.00** | -0.47 | 0 (0) | 0/0 | 0 | $0.00 | 0 | 0.0% | FLAT |
-| `casey_BTC_2x` | casey | BTC | 2 | **$100.00** | **+0.00** | -0.47 | 0 (0) | 0/0 | 0 | $0.00 | 0 | 0.0% | FLAT |
-| `casey_BTC_5x` | casey | BTC | 5 | **$100.00** | **+0.00** | -0.47 | 0 (0) | 0/0 | 0 | $0.00 | 0 | 0.0% | FLAT |
-| `pip_BTC_2x` | pip | BTC | 2 | **$100.00** | **+0.00** | -0.47 | 0 (0) | 0/0 | 0 | $0.00 | 0 | 0.0% | FLAT |
-| `pip_BTC_5x` | pip | BTC | 5 | **$100.00** | **+0.00** | -0.47 | 0 (0) | 0/0 | 0 | $0.00 | 0 | 0.0% | FLAT |
-| `theo_BTC_2x` | theo | BTC | 2 | **$97.80** | **-2.20** | -2.67 | 1 (0) | 0/2 | 0 | $0.22 | 0 | 4.3% | SHORT |
-| `theo_BTC_5x` | theo | BTC | 5 | **$94.52** | **-5.48** | -5.95 | 1 (0) | 0/2 | 0 | $0.54 | 0 | 10.4% | SHORT |
-| `remy_BTC_2x` | remy | BTC | 2 | **$98.07** | **-1.93** | -2.40 | 1 (0) | 0/1 | 0 | $0.14 | 0 | 4.0% | FLAT |
-| `remy_BTC_5x` | remy | BTC | 5 | **$95.18** | **-4.82** | -5.29 | 1 (0) | 0/1 | 0 | $0.35 | 0 | 9.6% | FLAT |
-| `com_btc_2x` | rule-based committee (since 2026-10-26T16:40:00+00:00) | BTC | 2 | **$98.28** | **-1.72** | -2.89 | 1 (0) | 0/1 | 0 | $0.20 | 0 | 1.7% | FLAT |
-| `com_btc_5x` | rule-based committee (since 2026-10-26T16:40:00+00:00) | BTC | 5 | **$95.72** | **-4.28** | -5.46 | 1 (0) | 0/1 | 0 | $0.50 | 0 | 4.3% | FLAT |
-| `com_btc_mix` | rule-based committee (since 2026-10-26T16:40:00+00:00) | BTC | mix | **$98.28** | **-1.72** | -2.89 | 1 (0) | 0/1 | 0 | $0.20 | 0 | 1.7% | FLAT |
-| `com_btc_proxy_2x` | proxy committee (Actions) (since 2026-10-26T16:40:00+00:00) | BTC | proxy_2 | **$100.00** | **+0.00** | -1.17 | 0 (0) | 0/0 | 0 | $0.00 | 0 | 0.0% | FLAT |
-| `com_btc_proxy_5x` | proxy committee (Actions) (since 2026-10-26T16:40:00+00:00) | BTC | proxy_5 | **$100.00** | **+0.00** | -1.17 | 0 (0) | 0/0 | 0 | $0.00 | 0 | 0.0% | FLAT |
-| `com_btc_proxy_mix` | proxy committee (Actions) (since 2026-10-26T16:40:00+00:00) | BTC | proxy_mix | **$100.00** | **+0.00** | -1.17 | 0 (0) | 0/0 | 0 | $0.00 | 0 | 0.0% | FLAT |
-| `idle_BTC` | stay idle | BTC | — | **$100.00** | **+0.00** | -0.47 | 0 (0) | 0/0 | 0 | $0.00 | 0 | 0.0% | FLAT |
+| `team_XRP_2x` | team | XRP | 2 | **$100.00** | **+0.00** | -2.52 | 0 (0) | 0/0 | 0 | $0.00 | 0 | 0.0% | FLAT |
+| `team_XRP_5x` | team | XRP | 5 | **$100.00** | **+0.00** | -2.52 | 0 (0) | 0/0 | 0 | $0.00 | 0 | 0.0% | FLAT |
+| `team_XRP_mix` | team | XRP | mix | **$100.00** | **+0.00** | -2.52 | 0 (0) | 0/0 | 0 | $0.00 | 0 | 0.0% | FLAT |
+| `casey_XRP_2x` | casey | XRP | 2 | **$100.00** | **+0.00** | -2.52 | 0 (0) | 0/0 | 0 | $0.00 | 0 | 0.0% | FLAT |
+| `casey_XRP_5x` | casey | XRP | 5 | **$100.00** | **+0.00** | -2.52 | 0 (0) | 0/0 | 0 | $0.00 | 0 | 0.0% | FLAT |
+| `pip_XRP_2x` | pip | XRP | 2 | **$100.00** | **+0.00** | -2.52 | 0 (0) | 0/0 | 0 | $0.00 | 0 | 0.0% | FLAT |
+| `pip_XRP_5x` | pip | XRP | 5 | **$100.00** | **+0.00** | -2.52 | 0 (0) | 0/0 | 0 | $0.00 | 0 | 0.0% | FLAT |
+| `theo_XRP_2x` | theo | XRP | 2 | **$92.37** | **-7.63** | -10.15 | 3 (0) | 0/4 | 0 | $0.60 | 0 | 10.8% | SHORT |
+| `theo_XRP_5x` | theo | XRP | 5 | **$81.66** | **-18.34** | -20.85 | 3 (0) | 0/4 | 0 | $1.42 | 0 | 25.1% | SHORT |
+| `remy_XRP_2x` | remy | XRP | 2 | **$100.00** | **+0.00** | -2.52 | 0 (0) | 0/0 | 0 | $0.00 | 0 | 0.0% | FLAT |
+| `remy_XRP_5x` | remy | XRP | 5 | **$100.00** | **+0.00** | -2.52 | 0 (0) | 0/0 | 0 | $0.00 | 0 | 0.0% | FLAT |
+| `com_xrp_2x` | rule-based committee (since 2026-10-26T16:40:00+00:00) | XRP | 2 | **$100.00** | **+0.00** | -3.44 | 0 (0) | 0/0 | 0 | $0.00 | 0 | 0.0% | FLAT |
+| `com_xrp_5x` | rule-based committee (since 2026-10-26T16:40:00+00:00) | XRP | 5 | **$100.00** | **+0.00** | -3.44 | 0 (0) | 0/0 | 0 | $0.00 | 0 | 0.0% | FLAT |
+| `com_xrp_mix` | rule-based committee (since 2026-10-26T16:40:00+00:00) | XRP | mix | **$100.00** | **+0.00** | -3.44 | 0 (0) | 0/0 | 0 | $0.00 | 0 | 0.0% | FLAT |
+| `com_xrp_proxy_2x` | proxy committee (Actions) (since 2026-10-26T16:40:00+00:00) | XRP | proxy_2 | **$100.00** | **+0.00** | -3.44 | 0 (0) | 0/0 | 0 | $0.00 | 0 | 0.0% | FLAT |
+| `com_xrp_proxy_5x` | proxy committee (Actions) (since 2026-10-26T16:40:00+00:00) | XRP | proxy_5 | **$100.00** | **+0.00** | -3.44 | 0 (0) | 0/0 | 0 | $0.00 | 0 | 0.0% | FLAT |
+| `com_xrp_proxy_mix` | proxy committee (Actions) (since 2026-10-26T16:40:00+00:00) | XRP | proxy_mix | **$100.00** | **+0.00** | -3.44 | 0 (0) | 0/0 | 0 | $0.00 | 0 | 0.0% | FLAT |
+| `idle_XRP` | stay idle | XRP | — | **$100.00** | **+0.00** | -2.52 | 0 (0) | 0/0 | 0 | $0.00 | 0 | 0.0% | FLAT |
+| `team_BTC_2x` | team | BTC | 2 | **$100.00** | **+0.00** | -0.49 | 0 (0) | 0/0 | 0 | $0.00 | 0 | 0.0% | FLAT |
+| `team_BTC_5x` | team | BTC | 5 | **$100.00** | **+0.00** | -0.49 | 0 (0) | 0/0 | 0 | $0.00 | 0 | 0.0% | FLAT |
+| `team_BTC_mix` | team | BTC | mix | **$100.00** | **+0.00** | -0.49 | 0 (0) | 0/0 | 0 | $0.00 | 0 | 0.0% | FLAT |
+| `casey_BTC_2x` | casey | BTC | 2 | **$100.00** | **+0.00** | -0.49 | 0 (0) | 0/0 | 0 | $0.00 | 0 | 0.0% | FLAT |
+| `casey_BTC_5x` | casey | BTC | 5 | **$100.00** | **+0.00** | -0.49 | 0 (0) | 0/0 | 0 | $0.00 | 0 | 0.0% | FLAT |
+| `pip_BTC_2x` | pip | BTC | 2 | **$100.00** | **+0.00** | -0.49 | 0 (0) | 0/0 | 0 | $0.00 | 0 | 0.0% | FLAT |
+| `pip_BTC_5x` | pip | BTC | 5 | **$100.00** | **+0.00** | -0.49 | 0 (0) | 0/0 | 0 | $0.00 | 0 | 0.0% | FLAT |
+| `theo_BTC_2x` | theo | BTC | 2 | **$97.75** | **-2.25** | -2.74 | 1 (0) | 0/2 | 0 | $0.22 | 0 | 4.4% | SHORT |
+| `theo_BTC_5x` | theo | BTC | 5 | **$94.41** | **-5.59** | -6.08 | 1 (0) | 0/2 | 0 | $0.54 | 0 | 10.6% | SHORT |
+| `remy_BTC_2x` | remy | BTC | 2 | **$98.07** | **-1.93** | -2.43 | 1 (0) | 0/1 | 0 | $0.14 | 0 | 4.0% | FLAT |
+| `remy_BTC_5x` | remy | BTC | 5 | **$95.18** | **-4.82** | -5.32 | 1 (0) | 0/1 | 0 | $0.35 | 0 | 9.6% | FLAT |
+| `com_btc_2x` | rule-based committee (since 2026-10-26T16:40:00+00:00) | BTC | 2 | **$98.28** | **-1.72** | -2.91 | 1 (0) | 0/1 | 0 | $0.20 | 0 | 1.7% | FLAT |
+| `com_btc_5x` | rule-based committee (since 2026-10-26T16:40:00+00:00) | BTC | 5 | **$95.72** | **-4.28** | -5.48 | 1 (0) | 0/1 | 0 | $0.50 | 0 | 4.3% | FLAT |
+| `com_btc_mix` | rule-based committee (since 2026-10-26T16:40:00+00:00) | BTC | mix | **$98.28** | **-1.72** | -2.91 | 1 (0) | 0/1 | 0 | $0.20 | 0 | 1.7% | FLAT |
+| `com_btc_proxy_2x` | proxy committee (Actions) (since 2026-10-26T16:40:00+00:00) | BTC | proxy_2 | **$100.00** | **+0.00** | -1.20 | 0 (0) | 0/0 | 0 | $0.00 | 0 | 0.0% | FLAT |
+| `com_btc_proxy_5x` | proxy committee (Actions) (since 2026-10-26T16:40:00+00:00) | BTC | proxy_5 | **$100.00** | **+0.00** | -1.20 | 0 (0) | 0/0 | 0 | $0.00 | 0 | 0.0% | FLAT |
+| `com_btc_proxy_mix` | proxy committee (Actions) (since 2026-10-26T16:40:00+00:00) | BTC | proxy_mix | **$100.00** | **+0.00** | -1.20 | 0 (0) | 0/0 | 0 | $0.00 | 0 | 0.0% | FLAT |
+| `idle_BTC` | stay idle | BTC | — | **$100.00** | **+0.00** | -0.49 | 0 (0) | 0/0 | 0 | $0.00 | 0 | 0.0% | FLAT |
 
 ## Stars Aligned (curiosity line, PAPER-NOT-REAL): XRP 10x, only on a 4 of 4 vote
 
