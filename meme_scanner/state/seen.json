@@ -198,11 +198,11 @@
  },
  "r9QYoVFNFZV1rZtFZEypPPpka2iEVDgqY1-5452495050520000000000000000000000000000": {
   "first_seen": "2026-10-24T13:37:52+00:00",
-  "last_seen": "2026-10-28T04:17:46+00:00",
+  "last_seen": "2026-10-28T04:22:46+00:00",
   "name": "TRIPPR",
-  "pool_xrp": 602,
-  "reasons": "pool too small (xrpl.to TVL 1,203 XRP)",
-  "sig": "FAIL_SAFETY|pool too small (xrpl.to TVL 1,203 XRP)",
+  "pool_xrp": 606,
+  "reasons": "pool too small (xrpl.to TVL 1,213 XRP)",
+  "sig": "FAIL_SAFETY|pool too small (xrpl.to TVL 1,213 XRP)",
   "url": "https://xrpl.to/token/r9QYoVFNFZV1rZtFZEypPPpka2iEVDgqY1-5452495050520000000000000000000000000000",
   "verdict": "FAIL_SAFETY",
   "warnings": ""
@@ -1403,11 +1403,11 @@
  },
  "rPvKPe13jyCyVWyzGhA8obji4E57JUM3qK-4C45444700000000000000000000000000000000": {
   "first_seen": "2026-10-28T00:48:37+00:00",
-  "last_seen": "2026-10-28T04:17:46+00:00",
+  "last_seen": "2026-10-28T04:22:46+00:00",
   "name": "LEDG",
-  "pool_xrp": 1464,
-  "reasons": "pool too small (xrpl.to TVL 2,928 XRP)",
-  "sig": "FAIL_SAFETY|pool too small (xrpl.to TVL 2,928 XRP)",
+  "pool_xrp": 1349,
+  "reasons": "pool too small (xrpl.to TVL 2,698 XRP)",
+  "sig": "FAIL_SAFETY|pool too small (xrpl.to TVL 2,698 XRP)",
   "url": "https://xrpl.to/token/rPvKPe13jyCyVWyzGhA8obji4E57JUM3qK-4C45444700000000000000000000000000000000",
   "verdict": "FAIL_SAFETY",
   "warnings": ""
@@ -1737,11 +1737,11 @@
  },
  "razRVbPbtNtFt5TTa63XE122uRzoYooEpJ-4E4F525448000000000000000000000000000000": {
   "first_seen": "2026-10-24T11:16:14+00:00",
-  "last_seen": "2026-10-28T04:17:46+00:00",
+  "last_seen": "2026-10-28T04:22:46+00:00",
   "name": "NORTH",
   "pool_xrp": 22806,
-  "reasons": "",
-  "sig": "PASS|",
+  "reasons": "not new and not top trending",
+  "sig": "SKIP_ENTRY|not new and not top trending",
   "sig_breakout": "ELIGIBLE|",
   "sig_dip_bounce": "ELIGIBLE|",
   "sig_slow_scalp": "ELIGIBLE|",
@@ -1751,7 +1751,7 @@
    "v": 27.155379357318825
   },
   "url": "https://xrpl.to/token/razRVbPbtNtFt5TTa63XE122uRzoYooEpJ-4E4F525448000000000000000000000000000000",
-  "verdict": "PASS",
+  "verdict": "SKIP_ENTRY",
   "warnings": ""
  },
  "rctArjqVvTHihekzDeecKo6mkTYTUSBNc-SGB": {
@@ -2501,7 +2501,7 @@
  },
  "rszenFJoDdiGjyezQc8pME9KWDQH43Tswh-44524F5000000000000000000000000000000000": {
   "first_seen": "2026-10-24T11:16:14+00:00",
-  "last_seen": "2026-10-28T04:17:46+00:00",
+  "last_seen": "2026-10-28T04:22:46+00:00",
   "name": "DROP",
   "pool_xrp": 109458,
   "reasons": "not new and not top trending",
