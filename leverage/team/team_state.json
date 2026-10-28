@@ -7,16 +7,16 @@
   "XRP": {
    "started": "2026-10-26T17:15:00+00:00",
    "start_price": 1.301,
-   "last_candle_ts": 1793185800,
-   "last_close": 1.3261,
-   "last_round_ts": 1793185200
+   "last_candle_ts": 1793196900,
+   "last_close": 1.3152,
+   "last_round_ts": 1793196900
   },
   "BTC": {
    "started": "2026-10-26T17:15:00+00:00",
    "start_price": 80498.0,
-   "last_candle_ts": 1793185800,
-   "last_close": 81368.79,
-   "last_round_ts": 1793185200
+   "last_candle_ts": 1793196900,
+   "last_close": 80630.8,
+   "last_round_ts": 1793196900
   }
  },
  "accounts": {
@@ -43,7 +43,7 @@
     "LONG": 0,
     "SHORT": 0,
     "TIE": 0,
-    "IDLE": 168
+    "IDLE": 181
    },
    "max_dd_usd": 0.0,
    "min_equity": 100.0
@@ -71,7 +71,7 @@
     "LONG": 0,
     "SHORT": 0,
     "TIE": 0,
-    "IDLE": 168
+    "IDLE": 181
    },
    "max_dd_usd": 0.0,
    "min_equity": 100.0
@@ -99,7 +99,7 @@
     "LONG": 0,
     "SHORT": 0,
     "TIE": 0,
-    "IDLE": 168
+    "IDLE": 181
    },
    "max_dd_usd": 0.0,
    "min_equity": 100.0
@@ -375,7 +375,7 @@
     "LONG": 0,
     "SHORT": 0,
     "TIE": 0,
-    "IDLE": 168
+    "IDLE": 181
    },
    "max_dd_usd": 0.0,
    "min_equity": 100.0
@@ -403,7 +403,7 @@
     "LONG": 0,
     "SHORT": 0,
     "TIE": 0,
-    "IDLE": 168
+    "IDLE": 181
    },
    "max_dd_usd": 0.0,
    "min_equity": 100.0
@@ -431,7 +431,7 @@
     "LONG": 0,
     "SHORT": 0,
     "TIE": 0,
-    "IDLE": 168
+    "IDLE": 181
    },
    "max_dd_usd": 0.0,
    "min_equity": 100.0
@@ -552,28 +552,28 @@
    "cash": 0.0,
    "pos": {
     "side": "SHORT",
-    "entry": 81430.62432,
-    "qty": 0.0023681583874401273,
-    "margin": 96.420307988947,
-    "stop": 81881.88224098057,
-    "target": 80528.10847803885,
-    "opened": "2026-10-28T08:30:00+00:00",
-    "fees": 0.09642030798894702,
+    "entry": 80699.63,
+    "qty": 0.0024391944979188,
+    "margin": 98.42104674004146,
+    "stop": 81210.4014264558,
+    "target": 79678.0871470884,
+    "opened": "2026-10-28T14:00:00+00:00",
+    "fees": 0.09842104674004147,
     "funding": 0.0,
-    "start_cash": 96.51672829693595
+    "start_cash": 98.5194677867815
    },
-   "trades": 2,
-   "wins": 0,
+   "trades": 3,
+   "wins": 1,
    "longs": 0,
-   "shorts": 3,
+   "shorts": 4,
    "liquidations": 0,
    "liq_lost_usd": 0.0,
-   "fees_usd": 0.4937691631971696,
+   "fees_usd": 0.6303308730406023,
    "funding_usd": -0.09907958859328378,
    "peak_equity": 101.70247774366885,
    "max_dd_pct": 6.297926538447207,
-   "realised_usd": -3.483271703064048,
-   "last_signal_ts": 1793176200,
+   "realised_usd": -1.4805322132184955,
+   "last_signal_ts": 1793196000,
    "last_funding_ts": 1793174400,
    "last_stop_ts": 1793176200,
    "ties": [],
@@ -586,34 +586,35 @@
    },
    "max_dd_usd": 6.40514733607688,
    "min_equity": 95.29733040759197,
-   "loss_usd": -3.483271703064048
+   "loss_usd": -3.483271703064048,
+   "win_usd": 2.0027394898455526
   },
   "theo_BTC_5x": {
    "cash": 0.0,
    "pos": {
     "side": "SHORT",
-    "entry": 81430.62432,
-    "qty": 0.005599313849763078,
-    "margin": 91.19112450996603,
-    "stop": 81881.88224098057,
-    "target": 80528.10847803885,
-    "opened": "2026-10-28T08:30:00+00:00",
-    "fees": 0.22797781127491507,
+    "entry": 80699.63,
+    "qty": 0.005942693105622467,
+    "margin": 95.9146269654568,
+    "stop": 81210.4014264558,
+    "target": 79678.0871470884,
+    "opened": "2026-10-28T14:00:00+00:00",
+    "fees": 0.23978656741364204,
     "funding": 0.0,
-    "start_cash": 91.41910232124094
+    "start_cash": 96.15441353287045
    },
-   "trades": 2,
-   "wins": 0,
+   "trades": 3,
+   "wins": 1,
    "longs": 0,
-   "shorts": 3,
+   "shorts": 4,
    "liquidations": 0,
    "liq_lost_usd": 0.0,
-   "fees_usd": 1.2054545404244108,
+   "fees_usd": 1.5354215384573142,
    "funding_usd": -0.24445399689108477,
    "peak_equity": 104.24982598855989,
    "max_dd_pct": 15.073299706784749,
-   "realised_usd": -8.580897678759058,
-   "last_signal_ts": 1793176200,
+   "realised_usd": -3.84558646712955,
+   "last_signal_ts": 1793196000,
    "last_funding_ts": 1793174400,
    "last_stop_ts": 1793176200,
    "ties": [],
@@ -626,36 +627,26 @@
    },
    "max_dd_usd": 15.713888715057209,
    "min_equity": 88.53593727350268,
-   "loss_usd": -8.580897678759058
+   "loss_usd": -8.580897678759058,
+   "win_usd": 4.735311211629508
   },
   "remy_BTC_2x": {
-   "cash": 0.0,
-   "pos": {
-    "side": "LONG",
-    "entry": 80962.2609,
-    "qty": 0.0024201501077346552,
-    "margin": 97.95078915868459,
-    "stop": 80433.46333889163,
-    "target": 82019.85602221673,
-    "opened": "2026-10-28T03:15:00+00:00",
-    "fees": 0.09797041221978814,
-    "funding": 0.019623061103534133,
-    "start_cash": 98.06838263200791
-   },
-   "trades": 1,
+   "cash": 96.47640729449701,
+   "pos": null,
+   "trades": 2,
    "wins": 0,
    "longs": 1,
    "shorts": 1,
    "liquidations": 0,
    "liq_lost_usd": 0.0,
-   "fees_usd": 0.29866593696687893,
+   "fees_usd": 0.3959477991856827,
    "funding_usd": -0.040104989433242005,
    "peak_equity": 102.10588675687437,
-   "max_dd_pct": 4.488768267966458,
-   "realised_usd": -1.9316173679920894,
+   "max_dd_pct": 5.513374048434427,
+   "realised_usd": -3.523592705502992,
    "last_signal_ts": 1793157300,
    "last_funding_ts": 1793174400,
-   "last_stop_ts": 1793136900,
+   "last_stop_ts": 1793195400,
    "ties": [],
    "shadows": [],
    "decisions": {
@@ -664,38 +655,27 @@
     "TIE": 0,
     "IDLE": 0
    },
-   "max_dd_usd": 4.583296644468348,
-   "min_equity": 97.52259011240602,
-   "loss_usd": -1.9316173679920894
+   "max_dd_usd": 5.629479462377361,
+   "min_equity": 96.47640729449701,
+   "loss_usd": -3.523592705502992
   },
   "remy_BTC_5x": {
-   "cash": 0.0,
-   "pos": {
-    "side": "LONG",
-    "entry": 80962.2609,
-    "qty": 0.005863276849669867,
-    "margin": 94.89328938502787,
-    "stop": 80433.46333889163,
-    "target": 82019.85602221673,
-    "opened": "2026-10-28T03:15:00+00:00",
-    "fees": 0.2373520750159509,
-    "funding": 0.04754062135249322,
-    "start_cash": 95.17818208139632
-   },
-   "trades": 1,
+   "cash": 91.32131712420151,
+   "pos": null,
+   "trades": 2,
    "wins": 0,
    "longs": 1,
    "shorts": 1,
    "liquidations": 0,
    "liq_lost_usd": 0.0,
-   "fees_usd": 0.7383401554943493,
+   "fees_usd": 0.9740240863453125,
    "funding_usd": -0.10155608335402273,
    "peak_equity": 105.25683951030237,
-   "max_dd_pct": 10.831547217914107,
-   "realised_usd": -4.821817918603685,
+   "max_dd_pct": 13.239540965636609,
+   "realised_usd": -8.678682875798486,
    "last_signal_ts": 1793157300,
    "last_funding_ts": 1793174400,
-   "last_stop_ts": 1793136900,
+   "last_stop_ts": 1793195400,
    "ties": [],
    "shadows": [],
    "decisions": {
@@ -704,9 +684,9 @@
     "TIE": 0,
     "IDLE": 0
    },
-   "max_dd_usd": 11.400944271642473,
-   "min_equity": 93.8558952386599,
-   "loss_usd": -4.821817918603685
+   "max_dd_usd": 13.935522386100857,
+   "min_equity": 91.32131712420151,
+   "loss_usd": -8.678682875798486
   }
  },
  "stars": {
@@ -782,68 +762,126 @@
  "stars_extra": {
   "f2": {
    "started": "2026-10-27T05:55:00+00:00",
-   "signals": 0,
-   "opened": 0,
+   "signals": 1,
+   "opened": 1,
    "in_position_skips": 0,
-   "log": [],
-   "open_row": null,
+   "log": [
+    {
+     "line": "f2",
+     "ts_utc": "2026-10-28T12:00:00+00:00",
+     "direction": "LONG",
+     "result": "OPENED",
+     "block_reason": "",
+     "price_at_vote": 1.3249,
+     "why": "crowded shorts, OI 24h 6.62%, 4h vs EMA200 below",
+     "feat_e4_rising72": false,
+     "feat_p24": 1.69,
+     "feat_rsi1h": 52.24784416173945,
+     "feat_funding_pct": 0.01,
+     "feat_fng": 51,
+     "feat_oi24": 6.62,
+     "feat_crowded": "shorts",
+     "feat_e4": "below",
+     "entry_price": 1.32556,
+     "liq_price_50": 1.199,
+     "liq_price_100": 1.199,
+     "liq_price_500": 1.199
+    }
+   ],
+   "open_row": 0,
    "accounts": {
     "com_xrp_10x_f2_50": {
-     "cash": 50.0,
-     "pos": null,
+     "cash": 0.0,
+     "pos": {
+      "side": "LONG",
+      "entry": 1.3255624499999998,
+      "qty": 375.32176459203816,
+      "margin": 49.75124378109453,
+      "stop": 1.3056889499999997,
+      "target": 1.3653293235,
+      "opened": "2026-10-28T12:00:00+00:00",
+      "fees": 0.24875621890547264,
+      "funding": 0.0,
+      "start_cash": 50.0,
+      "quick_tp": true
+     },
      "trades": 0,
      "wins": 0,
-     "longs": 0,
+     "longs": 1,
      "shorts": 0,
      "liquidations": 0,
      "liq_lost_usd": 0.0,
-     "fees_usd": 0.0,
+     "fees_usd": 0.24875621890547264,
      "funding_usd": 0.0,
      "peak_equity": 50.0,
-     "max_dd_pct": 0.0,
+     "max_dd_pct": 11.512943503351892,
      "realised_usd": 0.0,
-     "last_signal_ts": null,
+     "last_signal_ts": 1793188800,
      "last_funding_ts": 1793174400,
-     "max_dd_usd": 0.0,
-     "min_equity": 50.0
+     "max_dd_usd": 5.756471751675946,
+     "min_equity": 44.243528248324054
     },
     "com_xrp_10x_f2_100": {
-     "cash": 100.0,
-     "pos": null,
+     "cash": 0.0,
+     "pos": {
+      "side": "LONG",
+      "entry": 1.3255624499999998,
+      "qty": 750.6435291840763,
+      "margin": 99.50248756218906,
+      "stop": 1.3056889499999997,
+      "target": 1.3653293235,
+      "opened": "2026-10-28T12:00:00+00:00",
+      "fees": 0.4975124378109453,
+      "funding": 0.0,
+      "start_cash": 100.0,
+      "quick_tp": true
+     },
      "trades": 0,
      "wins": 0,
-     "longs": 0,
+     "longs": 1,
      "shorts": 0,
      "liquidations": 0,
      "liq_lost_usd": 0.0,
-     "fees_usd": 0.0,
+     "fees_usd": 0.4975124378109453,
      "funding_usd": 0.0,
      "peak_equity": 100.0,
-     "max_dd_pct": 0.0,
+     "max_dd_pct": 11.512943503351892,
      "realised_usd": 0.0,
-     "last_signal_ts": null,
+     "last_signal_ts": 1793188800,
      "last_funding_ts": 1793174400,
-     "max_dd_usd": 0.0,
-     "min_equity": 100.0
+     "max_dd_usd": 11.512943503351892,
+     "min_equity": 88.48705649664811
     },
     "com_xrp_10x_f2_500": {
-     "cash": 500.0,
-     "pos": null,
+     "cash": 0.0,
+     "pos": {
+      "side": "LONG",
+      "entry": 1.3255624499999998,
+      "qty": 3753.217645920382,
+      "margin": 497.5124378109453,
+      "stop": 1.3056889499999997,
+      "target": 1.3653293235,
+      "opened": "2026-10-28T12:00:00+00:00",
+      "fees": 2.4875621890547266,
+      "funding": 0.0,
+      "start_cash": 500.0,
+      "quick_tp": true
+     },
      "trades": 0,
      "wins": 0,
-     "longs": 0,
+     "longs": 1,
      "shorts": 0,
      "liquidations": 0,
      "liq_lost_usd": 0.0,
-     "fees_usd": 0.0,
+     "fees_usd": 2.4875621890547266,
      "funding_usd": 0.0,
      "peak_equity": 500.0,
-     "max_dd_pct": 0.0,
+     "max_dd_pct": 11.512943503351892,
      "realised_usd": 0.0,
-     "last_signal_ts": null,
+     "last_signal_ts": 1793188800,
      "last_funding_ts": 1793174400,
-     "max_dd_usd": 0.0,
-     "min_equity": 500.0
+     "max_dd_usd": 57.56471751675946,
+     "min_equity": 442.43528248324054
     }
    }
   },
