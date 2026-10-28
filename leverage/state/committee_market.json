@@ -2,20 +2,20 @@
  "xrp": {
   "started": "2026-10-26T16:40:00+00:00",
   "start_price": 1.2894,
-  "last_candle_ts": 1793226300,
-  "last_close": 1.3271,
+  "last_candle_ts": 1793227200,
+  "last_close": 1.3282,
   "baseline_units": 77.51669380138533,
-  "last_run": "2026-10-28T22:34:14+00:00",
+  "last_run": "2026-10-28T22:49:15+00:00",
   "source": "binance_spot_data_api",
   "funding_source": "okx_proxy"
  },
  "btc": {
   "started": "2026-10-26T16:40:00+00:00",
   "start_price": 79940.0,
-  "last_candle_ts": 1793226300,
-  "last_close": 81274.66,
+  "last_candle_ts": 1793227200,
+  "last_close": 81327.35,
   "baseline_units": 0.001250313047129175,
-  "last_run": "2026-10-28T22:34:14+00:00",
+  "last_run": "2026-10-28T22:49:15+00:00",
   "source": "binance_spot_data_api",
   "funding_source": "okx_proxy"
  }
