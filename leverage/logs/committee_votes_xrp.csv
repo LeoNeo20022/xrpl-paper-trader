@@ -196,3 +196,4 @@ ts,coin,decision,in_position,long_scout,short_scout,idle_guard,chart_reader,long
 2026-10-28T17:15:00+00:00,XRPUSDT,IDLE,FLAT,IDLE,IDLE,IDLE,SHORT,0,0,0,0.7,no uptrend,no downtrend,R1/R2: won't side with crowded longs,lower highs + lower lows below EMA50,0.01,1.1,3.37,35,51,,0,0,up,down,below,-0.59,,,
 2026-10-28T17:30:00+00:00,XRPUSDT,IDLE,FLAT,IDLE,IDLE,IDLE,SHORT,0,0,0,0.7,no uptrend,no downtrend,R1/R2: won't side with crowded longs,lower highs + lower lows below EMA50,0.01,1.1,3.37,35,51,,0,0,up,down,below,-0.59,,,
 2026-10-28T17:45:00+00:00,XRPUSDT,IDLE,FLAT,IDLE,IDLE,IDLE,SHORT,0,0,0,0.7,no uptrend,no downtrend,R1/R2: won't side with crowded longs,lower highs + lower lows below EMA50,0.01,1.1,3.37,35,51,,0,0,up,down,below,-0.59,,,
+2026-10-28T18:00:00+00:00,XRPUSDT,IDLE,FLAT,LONG,IDLE,IDLE,IDLE,0.6,0,0,0,uptrend + MACD turning up,no downtrend,R1/R2: won't side with crowded longs,no clear structure,0.01,0.15,3.31,30,51,,0,0,up,down,below,-0.19,,,
