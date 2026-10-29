@@ -227,3 +227,4 @@ ts,coin,decision,in_position,long_scout,short_scout,idle_guard,chart_reader,long
 2026-10-29T01:00:00+00:00,BTCUSDT,IDLE,FLAT,IDLE,IDLE,SHORT,IDLE,0,0,0.6,0,"uptrend, no pullback/reversal",no downtrend,"no red flags, big trend down",no clear structure,0.01,-1.55,1.89,7,51,,0,1,down,down,below,0.44,,,
 2026-10-29T01:15:00+00:00,BTCUSDT,IDLE,FLAT,LONG,IDLE,SHORT,IDLE,0.6,0,0.6,0,uptrend + 5m RSI pullback 24->28,no downtrend,"no red flags, big trend down",no clear structure,0.01,-1.55,1.89,7,51,,0,1,down,down,below,0.44,,,
 2026-10-29T01:30:00+00:00,BTCUSDT,IDLE,FLAT,IDLE,IDLE,SHORT,IDLE,0,0,0.6,0,"uptrend, no pullback/reversal",no downtrend,"no red flags, big trend down",no clear structure,0.01,-1.55,1.89,7,51,,0,1,down,down,below,0.44,,,
+2026-10-29T01:45:00+00:00,BTCUSDT,IDLE,FLAT,IDLE,IDLE,SHORT,IDLE,0,0,0.6,0,"uptrend, no pullback/reversal",no downtrend,"no red flags, big trend down",no clear structure,0.01,-1.55,1.89,7,51,,0,1,down,down,below,0.44,,,
