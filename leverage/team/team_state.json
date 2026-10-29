@@ -7,16 +7,16 @@
   "XRP": {
    "started": "2026-10-26T17:15:00+00:00",
    "start_price": 1.301,
-   "last_candle_ts": 1793285400,
-   "last_close": 1.305,
-   "last_round_ts": 1793285100
+   "last_candle_ts": 1793286300,
+   "last_close": 1.3113,
+   "last_round_ts": 1793286000
   },
   "BTC": {
    "started": "2026-10-26T17:15:00+00:00",
    "start_price": 80498.0,
-   "last_candle_ts": 1793285400,
-   "last_close": 81111.1,
-   "last_round_ts": 1793285100
+   "last_candle_ts": 1793286300,
+   "last_close": 81439.52,
+   "last_round_ts": 1793286000
   }
  },
  "accounts": {
@@ -43,7 +43,7 @@
     "LONG": 0,
     "SHORT": 0,
     "TIE": 0,
-    "IDLE": 279
+    "IDLE": 280
    },
    "max_dd_usd": 0.0,
    "min_equity": 100.0
@@ -71,7 +71,7 @@
     "LONG": 0,
     "SHORT": 0,
     "TIE": 0,
-    "IDLE": 279
+    "IDLE": 280
    },
    "max_dd_usd": 0.0,
    "min_equity": 100.0
@@ -99,7 +99,7 @@
     "LONG": 0,
     "SHORT": 0,
     "TIE": 0,
-    "IDLE": 279
+    "IDLE": 280
    },
    "max_dd_usd": 0.0,
    "min_equity": 100.0
@@ -321,7 +321,7 @@
    "fees_usd": 0.49237928968757216,
    "funding_usd": -0.019965662905908732,
    "peak_equity": 100.47339051722466,
-   "max_dd_pct": 6.032802765917145,
+   "max_dd_pct": 6.671821101696485,
    "realised_usd": -4.842782298623803,
    "last_signal_ts": 1793285100,
    "last_funding_ts": 1793260800,
@@ -334,8 +334,8 @@
     "TIE": 0,
     "IDLE": 0
    },
-   "max_dd_usd": 6.0613614821338615,
-   "min_equity": 94.4120290350908,
+   "max_dd_usd": 6.703404870118106,
+   "min_equity": 93.76998564710655,
    "loss_usd": -4.842782298623803
   },
   "remy_XRP_5x": {
@@ -361,7 +361,7 @@
    "fees_usd": 1.1946222355055642,
    "funding_usd": -0.04983947274018613,
    "peak_equity": 101.18170550559074,
-   "max_dd_pct": 14.597874125845877,
+   "max_dd_pct": 16.064957951301796,
    "realised_usd": -11.865777593125358,
    "last_signal_ts": 1793285100,
    "last_funding_ts": 1793260800,
@@ -374,8 +374,8 @@
     "TIE": 0,
     "IDLE": 0
    },
-   "max_dd_usd": 14.770378008090205,
-   "min_equity": 86.41132749750054,
+   "max_dd_usd": 16.25479844388316,
+   "min_equity": 84.92690706170758,
    "loss_usd": -11.865777593125358
   },
   "team_BTC_2x": {
@@ -401,7 +401,7 @@
     "LONG": 0,
     "SHORT": 0,
     "TIE": 0,
-    "IDLE": 279
+    "IDLE": 280
    },
    "max_dd_usd": 0.0,
    "min_equity": 100.0
@@ -429,7 +429,7 @@
     "LONG": 0,
     "SHORT": 0,
     "TIE": 0,
-    "IDLE": 279
+    "IDLE": 280
    },
    "max_dd_usd": 0.0,
    "min_equity": 100.0
@@ -457,7 +457,7 @@
     "LONG": 0,
     "SHORT": 0,
     "TIE": 0,
-    "IDLE": 279
+    "IDLE": 280
    },
    "max_dd_usd": 0.0,
    "min_equity": 100.0
