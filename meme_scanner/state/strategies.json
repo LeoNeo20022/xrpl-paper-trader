@@ -4145,7 +4145,7 @@
     "excursion_src": "live from 2026-10-27T17:56",
     "issuer": "rNFcv6vYT7mUmpjknwK9wd5edqkhJkg8KN",
     "key": "rNFcv6vYT7mUmpjknwK9wd5edqkhJkg8KN-43686F73656E0000000000000000000000000000",
-    "last_ratio_net": 2.1097,
+    "last_ratio_net": 2.1795,
     "legs": [
      {
       "fraction_of_buy": 0.5,
@@ -5180,7 +5180,7 @@
     "excursion_src": "live from 2026-10-29T02:41",
     "issuer": "rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62",
     "key": "rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62-46555A5A59000000000000000000000000000000",
-    "last_ratio_net": 1.0266,
+    "last_ratio_net": 1.031,
     "legs": [],
     "name": "FUZZY",
     "peak_hours": 15.26,
@@ -10299,7 +10299,7 @@
     "excursion_src": "live from 2026-10-29T00:11",
     "issuer": "rwfGtVZKpPX6vb51xE5RGTgXkQ4W9wSUrz",
     "key": "rwfGtVZKpPX6vb51xE5RGTgXkQ4W9wSUrz-53504C4153480000000000000000000000000000",
-    "last_ratio_net": 1.0312,
+    "last_ratio_net": 1.0311,
     "legs": [],
     "name": "SPLASH",
     "peak_hours": 21.53,
