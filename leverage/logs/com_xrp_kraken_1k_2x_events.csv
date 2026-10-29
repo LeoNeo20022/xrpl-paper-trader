@@ -1,0 +1,2 @@
+ts,event,price,qty_xrp,notional_usd,margin_usd,fee_usd,stop,target,liq_price,why,trade_net_usd,funding_usd,rate,mkt,margin_lost_usd,label
+2026-10-29T14:45:00+00:00,OPEN_SHORT,1.30425,1500.0,1956.3713,999.9661,0.0339,1.31729,1.28468,1.68452,"committee short_scout+idle_guard+chart_reader, stop dist 0.013715; 3 contract(s), 1.96x",,,,,,PAPER-NOT-REAL
