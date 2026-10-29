@@ -4,3 +4,4 @@ ts,event,price,qty_xrp,notional_usd,margin_usd,fee_usd,stop,target,liq_price,why
 2026-10-28T21:00:00+00:00,OPEN_LONG,1.33207,146.176,194.7155,97.3578,0.09736,1.31678,1.36263,0.66938,"RSI in uptrend, ATR 0.0102",,,,,,binance_spot_data_api,PAPER-NOT-REAL
 2026-10-29T00:00:00+00:00,FUNDING,1.326,,,,,,,,okx_proxy,,0.019383,0.0001,,,binance_spot_data_api,PAPER-NOT-REAL
 2026-10-29T01:10:00+00:00,STOP_LOSS_LONG,1.31612,146.176,,,0.09619,,,,,-2.5432,0.01938,,,,binance_spot_data_api,PAPER-NOT-REAL
+2026-10-29T20:00:00+00:00,OPEN_SHORT,1.28176,147.948,189.6341,94.8171,0.09482,1.29809,1.24909,1.91307,"MACD in downtrend, ATR 0.0109",,,,,,binance_spot_data_api,PAPER-NOT-REAL

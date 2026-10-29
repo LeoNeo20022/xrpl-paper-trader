@@ -1,0 +1,2 @@
+ts,side,price,qty_xrp,notional_usd,margin_usd,fee_usd,realised_pnl_usd,rate,funding_usd,assumed_rate,mkt,mkt_low,entry,margin_lost_usd,levels_lost,data_source,label
+2026-10-29T20:05:00+00:00,OPEN_LONG,1.2764,39.1727,50.0,10.0,0.01,,,,,1.2714,,,,,binance_spot_data_api,PAPER-NOT-REAL
