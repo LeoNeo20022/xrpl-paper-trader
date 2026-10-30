@@ -3611,7 +3611,7 @@
     "excursion_src": "live from 2026-10-30T02:04",
     "issuer": "rfxwXDzenkYoXSEbNA4cZjaT9FY3eeL47e",
     "key": "rfxwXDzenkYoXSEbNA4cZjaT9FY3eeL47e-42524954544F0000000000000000000000000000",
-    "last_ratio_net": 1.0291,
+    "last_ratio_net": 1.029,
     "legs": [],
     "name": "BRITTO",
     "peak_hours": 13.51,
@@ -3669,11 +3669,11 @@
     "excursion_src": "live from 2026-10-30T15:20",
     "issuer": "rMFL2KuFPMuiujdbVGbMzNNjj5QKyd6dZf",
     "key": "rMFL2KuFPMuiujdbVGbMzNNjj5QKyd6dZf-586D656E00000000000000000000000000000000",
-    "last_ratio_net": 0.9918,
+    "last_ratio_net": 0.992,
     "legs": [],
     "name": "Xmen",
-    "peak_hours": 0.42,
-    "peak_x": 0.9918,
+    "peak_hours": 0.5,
+    "peak_x": 0.992,
     "pool_xrp_entry": 8506.533328,
     "remaining": 1.0,
     "t": 1793373331.6148486,
@@ -3696,8 +3696,8 @@
   "trustset_fees_xrp": 0.23932699999999957
  },
  "hold": {
-  "buys_today": 8,
-  "cash_usd": 4.756531,
+  "buys_today": 9,
+  "cash_usd": 2.624233,
   "closed": [
    {
     "amm_fee": 0.00224,
@@ -4496,6 +4496,48 @@
     ],
     "xrp_cost": 7.601094557616296,
     "xrp_usd_entry": 1.3156
+   },
+   {
+    "amm_fee": 0.01,
+    "closed_ts": "2026-10-30T15:45:29+00:00",
+    "currency": "424348414D500000000000000000000000000000",
+    "entry_eff_px": 0.0052743548700713745,
+    "entry_spot": 0.005221322118545471,
+    "excursion_src": "live from 2026-10-27T15:46",
+    "issuer": "rhYhn7s6z4HAfuJm7ehuSE7wxepRoUPwpi",
+    "key": "rhYhn7s6z4HAfuJm7ehuSE7wxepRoUPwpi-424348414D500000000000000000000000000000",
+    "last_ratio_net": 0.8337,
+    "legs": [
+     {
+      "fraction_of_buy": 1.0,
+      "pnl_usd_gross": -1.9717,
+      "pnl_usd_net": -2.1322,
+      "pnl_xrp_gross": -1.131395,
+      "pnl_xrp_net": -1.260398,
+      "reason": "time limit 72h (x0.83 net)",
+      "ts": "2026-10-30T15:45:29+00:00"
+     }
+    ],
+    "name": "BCHAMP",
+    "peak_hours": 0.08,
+    "peak_x": 0.98,
+    "pnl_usd_net": -2.1322,
+    "pnl_xrp_net": -1.260398,
+    "pool_xrp_entry": 142270.349099,
+    "remaining": 0.0,
+    "t": 1793115659.5419137,
+    "tf": 0.0,
+    "tokens_gross": 1451.861975905733,
+    "tokens_net": 1437.2637478162617,
+    "tp_done": false,
+    "trough_x": 0.826,
+    "ts": "2026-10-27T15:40:59+00:00",
+    "usd_cost": 10.0,
+    "warnings": [
+     "only 35% of LP burned (liquidity can be pulled)"
+    ],
+    "xrp_cost": 7.580639047871736,
+    "xrp_usd_entry": 1.31915
    }
   ],
   "day": "2026-10-30",
@@ -4516,41 +4558,13 @@
    "raHJ4Jz9PYk356wWaDMYw79B17iWtfsSMi-404": 1793359191.6685994,
    "razRVbPbtNtFt5TTa63XE122uRzoYooEpJ-4E4F525448000000000000000000000000000000": 1793359191.6685994,
    "rfcasq9uRbvwcmLFvc4ti3j8Qt1CYCGgHz-589": 1793366929.9822707,
+   "rhYhn7s6z4HAfuJm7ehuSE7wxepRoUPwpi-424348414D500000000000000000000000000000": 1793375129.7041123,
    "rnHDzEH4xyW6u4LbXqDoX1uk36v5ovhbFi-4465657054696465000000000000000000000000": 1793099784.64316,
    "rnNErmg9xVmcxxNZUwivbJSH6i9GUwYPFj-434F444544000000000000000000000000000000": 1793099784.64316,
    "rsENFmELvj92orrCKTkDTug53MzwsB7zBd-24464C4950505900000000000000000000000000": 1793099784.64316
   },
-  "net_fees_xrp": 0.18464399999999964,
+  "net_fees_xrp": 0.1847239999999996,
   "positions": [
-   {
-    "amm_fee": 0.01,
-    "currency": "424348414D500000000000000000000000000000",
-    "entry_eff_px": 0.0052743548700713745,
-    "entry_spot": 0.005221322118545471,
-    "excursion_src": "live from 2026-10-27T15:46",
-    "issuer": "rhYhn7s6z4HAfuJm7ehuSE7wxepRoUPwpi",
-    "key": "rhYhn7s6z4HAfuJm7ehuSE7wxepRoUPwpi-424348414D500000000000000000000000000000",
-    "last_ratio_net": 0.8406,
-    "legs": [],
-    "name": "BCHAMP",
-    "peak_hours": 0.08,
-    "peak_x": 0.98,
-    "pool_xrp_entry": 142270.349099,
-    "remaining": 1.0,
-    "t": 1793115659.5419137,
-    "tf": 0.0,
-    "tokens_gross": 1451.861975905733,
-    "tokens_net": 1437.2637478162617,
-    "tp_done": false,
-    "trough_x": 0.826,
-    "ts": "2026-10-27T15:40:59+00:00",
-    "usd_cost": 10.0,
-    "warnings": [
-     "only 35% of LP burned (liquidity can be pulled)"
-    ],
-    "xrp_cost": 7.580639047871736,
-    "xrp_usd_entry": 1.31915
-   },
    {
     "amm_fee": 0.00509,
     "currency": "43686F73656E0000000000000000000000000000",
@@ -4630,7 +4644,7 @@
     "last_ratio_net": 1.0003,
     "legs": [],
     "name": "PHNIX",
-    "peak_hours": 4.34,
+    "peak_hours": 4.43,
     "peak_x": 1.0003,
     "pool_xrp_entry": 191111.184134,
     "remaining": 1.0,
@@ -4814,11 +4828,35 @@
     ],
     "xrp_cost": 8.089764021583491,
     "xrp_usd_entry": 1.23613
+   },
+   {
+    "amm_fee": 0.0034,
+    "currency": "5941474100000000000000000000000000000000",
+    "entry_eff_px": 7.672679379423585e-06,
+    "entry_spot": 7.625303587796103e-06,
+    "issuer": "rpYYe5GQWX7hEPkyMGuDnaCvYM74BxtBLL",
+    "key": "rpYYe5GQWX7hEPkyMGuDnaCvYM74BxtBLL-5941474100000000000000000000000000000000",
+    "legs": [],
+    "name": "YAGA",
+    "pool_xrp_entry": 2870.117625,
+    "remaining": 1.0,
+    "t": 1793375129.7041123,
+    "tf": 0.0,
+    "tokens_gross": 1053478.8896598623,
+    "tokens_net": 1046974.069910151,
+    "tp_done": false,
+    "ts": "2026-10-30T15:45:29+00:00",
+    "usd_cost": 10.0,
+    "warnings": [
+     "top-10 holders own 34%"
+    ],
+    "xrp_cost": 8.033096356990802,
+    "xrp_usd_entry": 1.24485
    }
   ],
   "start_usd": 100.0,
   "start_xrp_usd": 1.28151,
-  "trustset_fees_xrp": 0.09225200000000011
+  "trustset_fees_xrp": 0.09229200000000012
  },
  "plus5": {
   "buys_today": 8,
@@ -5929,7 +5967,7 @@
     "excursion_src": "live from 2026-10-29T02:41",
     "issuer": "rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62",
     "key": "rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62-46555A5A59000000000000000000000000000000",
-    "last_ratio_net": 1.0479,
+    "last_ratio_net": 1.0482,
     "legs": [],
     "name": "FUZZY",
     "peak_hours": 15.26,
@@ -6017,7 +6055,7 @@
     "last_ratio_net": 1.0003,
     "legs": [],
     "name": "PHNIX",
-    "peak_hours": 4.34,
+    "peak_hours": 4.43,
     "peak_x": 1.0003,
     "pool_xrp_entry": 191111.184134,
     "remaining": 1.0,
