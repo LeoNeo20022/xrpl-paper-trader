@@ -13,7 +13,7 @@
   "fng_source": "alternative.me",
   "funding_source": "binance_futures",
   "trend_1h": null,
-  "ts": "2026-10-30T19:11:30+00:00"
+  "ts": "2026-10-30T19:26:30+00:00"
  },
  "btc": {
   "funding_pct": 0.01,
@@ -29,6 +29,6 @@
   "fng_source": "alternative.me",
   "funding_source": "binance_futures",
   "trend_1h": null,
-  "ts": "2026-10-30T19:11:30+00:00"
+  "ts": "2026-10-30T19:26:30+00:00"
  }
 }
