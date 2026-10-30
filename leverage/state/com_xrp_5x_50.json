@@ -13,7 +13,7 @@
  "max_dd_pct": 6.730945979652459,
  "realised_usd": -2.9739725672170607,
  "last_signal_ts": 1793285100,
- "last_funding_ts": 1793289600,
+ "last_funding_ts": 1793318400,
  "last_stop_ts": 1793290200,
  "ties": [],
  "shadows": [],
@@ -21,9 +21,9 @@
   "LONG": 0,
   "SHORT": 1,
   "TIE": 0,
-  "IDLE": 316
+  "IDLE": 317
  },
- "last_run": "2026-10-30T00:01:32+00:00",
+ "last_run": "2026-10-30T00:16:31+00:00",
  "max_dd_usd": 3.3937263930934947,
  "min_equity": 47.02602743278294,
  "scaled_from_100": true,
