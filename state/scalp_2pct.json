@@ -14,7 +14,7 @@
  "sells": 2,
  "round_trips": 2,
  "reanchors": 0,
- "bar": 3575,
+ "bar": 3579,
  "levels": [
   {
    "buy": 1.268932,
@@ -69,7 +69,7 @@
  ],
  "type": "scalp",
  "created": "2026-10-20T08:43:56+00:00",
- "last_run": "2026-10-30T04:28:02+00:00",
+ "last_run": "2026-10-30T04:43:01+00:00",
  "replayed": "2026-10-24",
  "netfee_extra_xrp": 0.00022,
  "net_fees_xrp": 0.005461,
