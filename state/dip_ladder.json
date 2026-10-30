@@ -3,14 +3,9 @@
  "start_price": 1.2948290358744394,
  "reserve_xrp": 2.2,
  "reserve_cost_usd": 2.850048190863229,
- "xrp": 39.998080735288525,
+ "xrp": 52.73366192778668,
  "cash_usd": 0.0,
  "orders": [
-  {
-   "price": 1.220515,
-   "usd": 15.543992289461883,
-   "step_pct": 6
-  },
   {
    "price": 1.194546,
    "usd": 15.543992289461883,
@@ -25,15 +20,15 @@
  "ref": 1.29842,
  "next_refresh_unix": 1793695500,
  "refreshes": 2,
- "buys": 3,
+ "buys": 4,
  "sells": 0,
- "fees_xrp": 6.000000000000001e-05,
+ "fees_xrp": 8e-05,
  "type": "dip_ladder",
  "created": "2026-10-20T08:43:56+00:00",
- "last_run": "2026-10-30T00:16:25+00:00",
+ "last_run": "2026-10-30T00:31:26+00:00",
  "replayed": "2026-10-24",
  "netfee_extra_xrp": 0.00030000000000000003,
- "net_fees_xrp": 0.00036,
+ "net_fees_xrp": 0.00038,
  "fees_trading_usd": 0.0014243119394618837,
  "fees_v2": true
 }
