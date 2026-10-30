@@ -3655,8 +3655,8 @@
   "trustset_fees_xrp": 0.22914499999999957
  },
  "hold": {
-  "buys_today": 7,
-  "cash_usd": 5.543318,
+  "buys_today": 8,
+  "cash_usd": 4.756531,
   "closed": [
    {
     "amm_fee": 0.00224,
@@ -4412,12 +4412,56 @@
     "warnings": [],
     "xrp_cost": 7.624159436422135,
     "xrp_usd_entry": 1.31162
+   },
+   {
+    "amm_fee": 0.01,
+    "closed_ts": "2026-10-30T13:43:49+00:00",
+    "currency": "43554C5400000000000000000000000000000000",
+    "entry_eff_px": 149.29041198321755,
+    "entry_spot": 147.77938610606856,
+    "excursion_src": "live from 2026-10-27T13:47",
+    "issuer": "rCULtAKrKbQjk1Tpmg5hkw4dpcf9S9KCs",
+    "key": "rCULtAKrKbQjk1Tpmg5hkw4dpcf9S9KCs-43554C5400000000000000000000000000000000",
+    "last_ratio_net": 0.9806,
+    "legs": [
+     {
+      "fraction_of_buy": 1.0,
+      "pnl_usd_gross": -0.5974,
+      "pnl_usd_net": -0.7867,
+      "pnl_xrp_gross": 0.00541,
+      "pnl_xrp_net": -0.147782,
+      "reason": "time limit 72h (x0.98 net)",
+      "ts": "2026-10-30T13:43:49+00:00"
+     }
+    ],
+    "name": "CULT",
+    "peak_hours": 50.27,
+    "peak_x": 0.9878,
+    "pnl_usd_net": -0.7867,
+    "pnl_xrp_net": -0.147782,
+    "pool_xrp_entry": 62711.177203,
+    "remaining": 0.0,
+    "t": 1793108578.1600792,
+    "tf": 0.0,
+    "tokens_gross": 0.05143541841593939,
+    "tokens_net": 0.05091482069505422,
+    "tp_done": false,
+    "trough_x": 0.9686,
+    "ts": "2026-10-27T13:42:58+00:00",
+    "usd_cost": 10.0,
+    "warnings": [
+     "only 0% of LP burned (liquidity can be pulled)",
+     "top-10 holders own 42%"
+    ],
+    "xrp_cost": 7.601094557616296,
+    "xrp_usd_entry": 1.3156
    }
   ],
   "day": "2026-10-30",
   "last_exit": {
    "r4pXXQzJ8soYSX4QKeeW4BzRQS1PCtVYLJ-5345414C00000000000000000000000000000000": 1793360720.7105148,
    "r9Qk4VGodriw2xKLG9sRbTXWgknkz9TkDd-5465646479000000000000000000000000000000": 1793099784.64316,
+   "rCULtAKrKbQjk1Tpmg5hkw4dpcf9S9KCs-43554C5400000000000000000000000000000000": 1793367829.598554,
    "rDFXbW2ZZCG5WgPtqwNiA2xZokLMm9ivmN-50484E4958000000000000000000000000000000": 1793099784.64316,
    "rDKJWtrPqKiMBzK9FTVvebMVec7FJtJLx6-486F72697A6F6E00000000000000000000000000": 1793359191.6685994,
    "rDoNUnQhJXtwqKRKVDZZ115RAMDSgDqKvi-5542455200000000000000000000000000000000": 1793307366.7345116,
@@ -4435,38 +4479,8 @@
    "rnNErmg9xVmcxxNZUwivbJSH6i9GUwYPFj-434F444544000000000000000000000000000000": 1793099784.64316,
    "rsENFmELvj92orrCKTkDTug53MzwsB7zBd-24464C4950505900000000000000000000000000": 1793099784.64316
   },
-  "net_fees_xrp": 0.18456399999999967,
+  "net_fees_xrp": 0.18464399999999964,
   "positions": [
-   {
-    "amm_fee": 0.01,
-    "currency": "43554C5400000000000000000000000000000000",
-    "entry_eff_px": 149.29041198321755,
-    "entry_spot": 147.77938610606856,
-    "excursion_src": "live from 2026-10-27T13:47",
-    "issuer": "rCULtAKrKbQjk1Tpmg5hkw4dpcf9S9KCs",
-    "key": "rCULtAKrKbQjk1Tpmg5hkw4dpcf9S9KCs-43554C5400000000000000000000000000000000",
-    "last_ratio_net": 0.9806,
-    "legs": [],
-    "name": "CULT",
-    "peak_hours": 50.27,
-    "peak_x": 0.9878,
-    "pool_xrp_entry": 62711.177203,
-    "remaining": 1.0,
-    "t": 1793108578.1600792,
-    "tf": 0.0,
-    "tokens_gross": 0.05143541841593939,
-    "tokens_net": 0.05091482069505422,
-    "tp_done": false,
-    "trough_x": 0.9686,
-    "ts": "2026-10-27T13:42:58+00:00",
-    "usd_cost": 10.0,
-    "warnings": [
-     "only 0% of LP burned (liquidity can be pulled)",
-     "top-10 holders own 42%"
-    ],
-    "xrp_cost": 7.601094557616296,
-    "xrp_usd_entry": 1.3156
-   },
    {
     "amm_fee": 0.01,
     "currency": "424348414D500000000000000000000000000000",
@@ -4475,7 +4489,7 @@
     "excursion_src": "live from 2026-10-27T15:46",
     "issuer": "rhYhn7s6z4HAfuJm7ehuSE7wxepRoUPwpi",
     "key": "rhYhn7s6z4HAfuJm7ehuSE7wxepRoUPwpi-424348414D500000000000000000000000000000",
-    "last_ratio_net": 0.8302,
+    "last_ratio_net": 0.8303,
     "legs": [],
     "name": "BCHAMP",
     "peak_hours": 0.08,
@@ -4546,7 +4560,7 @@
     "last_ratio_net": 1.0042,
     "legs": [],
     "name": "TIME",
-    "peak_hours": 2.32,
+    "peak_hours": 2.4,
     "peak_x": 1.0042,
     "pool_xrp_entry": 8156.656075,
     "remaining": 1.0,
@@ -4572,7 +4586,7 @@
     "excursion_src": "live from 2026-10-30T11:24",
     "issuer": "rDFXbW2ZZCG5WgPtqwNiA2xZokLMm9ivmN",
     "key": "rDFXbW2ZZCG5WgPtqwNiA2xZokLMm9ivmN-50484E4958000000000000000000000000000000",
-    "last_ratio_net": 0.9977,
+    "last_ratio_net": 0.9989,
     "legs": [],
     "name": "PHNIX",
     "peak_hours": 1.54,
@@ -4715,7 +4729,7 @@
     "last_ratio_net": 0.9997,
     "legs": [],
     "name": "ATM",
-    "peak_hours": 0.17,
+    "peak_hours": 0.25,
     "peak_x": 0.9997,
     "pool_xrp_entry": 79096.055148,
     "remaining": 1.0,
@@ -4730,15 +4744,39 @@
     "warnings": [],
     "xrp_cost": 8.030580450354952,
     "xrp_usd_entry": 1.24524
+   },
+   {
+    "amm_fee": 0.00393,
+    "currency": "44524F5000000000000000000000000000000000",
+    "entry_eff_px": 2.298596292443146,
+    "entry_spot": 2.289390447029489,
+    "issuer": "rszenFJoDdiGjyezQc8pME9KWDQH43Tswh",
+    "key": "rszenFJoDdiGjyezQc8pME9KWDQH43Tswh-44524F5000000000000000000000000000000000",
+    "legs": [],
+    "name": "DROP",
+    "pool_xrp_entry": 110663.592432,
+    "remaining": 1.0,
+    "t": 1793367829.598554,
+    "tf": 0.0,
+    "tokens_gross": 3.5335886161663925,
+    "tokens_net": 3.5194366440855056,
+    "tp_done": false,
+    "ts": "2026-10-30T13:43:49+00:00",
+    "usd_cost": 10.0,
+    "warnings": [
+     "only 28% of LP burned (liquidity can be pulled)"
+    ],
+    "xrp_cost": 8.089764021583491,
+    "xrp_usd_entry": 1.23613
    }
   ],
   "start_usd": 100.0,
   "start_xrp_usd": 1.28151,
-  "trustset_fees_xrp": 0.0922120000000001
+  "trustset_fees_xrp": 0.09225200000000011
  },
  "plus5": {
-  "buys_today": 7,
-  "cash_usd": 1.577955,
+  "buys_today": 8,
+  "cash_usd": 0.791168,
   "closed": [
    {
     "amm_fee": 0.00224,
@@ -5705,12 +5743,56 @@
     "warnings": [],
     "xrp_cost": 7.624159436422135,
     "xrp_usd_entry": 1.31162
+   },
+   {
+    "amm_fee": 0.01,
+    "closed_ts": "2026-10-30T13:43:49+00:00",
+    "currency": "43554C5400000000000000000000000000000000",
+    "entry_eff_px": 149.29041198321755,
+    "entry_spot": 147.77938610606856,
+    "excursion_src": "live from 2026-10-27T13:47",
+    "issuer": "rCULtAKrKbQjk1Tpmg5hkw4dpcf9S9KCs",
+    "key": "rCULtAKrKbQjk1Tpmg5hkw4dpcf9S9KCs-43554C5400000000000000000000000000000000",
+    "last_ratio_net": 0.9806,
+    "legs": [
+     {
+      "fraction_of_buy": 1.0,
+      "pnl_usd_gross": -0.5974,
+      "pnl_usd_net": -0.7867,
+      "pnl_xrp_gross": 0.00541,
+      "pnl_xrp_net": -0.147782,
+      "reason": "time limit 72h (x0.98 net)",
+      "ts": "2026-10-30T13:43:49+00:00"
+     }
+    ],
+    "name": "CULT",
+    "peak_hours": 50.27,
+    "peak_x": 0.9878,
+    "pnl_usd_net": -0.7867,
+    "pnl_xrp_net": -0.147782,
+    "pool_xrp_entry": 62711.177203,
+    "remaining": 0.0,
+    "t": 1793108578.1600792,
+    "tf": 0.0,
+    "tokens_gross": 0.05143541841593939,
+    "tokens_net": 0.05091482069505422,
+    "tp_done": false,
+    "trough_x": 0.9686,
+    "ts": "2026-10-27T13:42:58+00:00",
+    "usd_cost": 10.0,
+    "warnings": [
+     "only 0% of LP burned (liquidity can be pulled)",
+     "top-10 holders own 42%"
+    ],
+    "xrp_cost": 7.601094557616296,
+    "xrp_usd_entry": 1.3156
    }
   ],
   "day": "2026-10-30",
   "last_exit": {
    "r4pXXQzJ8soYSX4QKeeW4BzRQS1PCtVYLJ-5345414C00000000000000000000000000000000": 1793360720.7105148,
    "r9Qk4VGodriw2xKLG9sRbTXWgknkz9TkDd-5465646479000000000000000000000000000000": 1793099784.64316,
+   "rCULtAKrKbQjk1Tpmg5hkw4dpcf9S9KCs-43554C5400000000000000000000000000000000": 1793367829.598554,
    "rDFXbW2ZZCG5WgPtqwNiA2xZokLMm9ivmN-50484E4958000000000000000000000000000000": 1793099784.64316,
    "rDKJWtrPqKiMBzK9FTVvebMVec7FJtJLx6-486F72697A6F6E00000000000000000000000000": 1793359191.6685994,
    "rDoNUnQhJXtwqKRKVDZZ115RAMDSgDqKvi-5542455200000000000000000000000000000000": 1793241366.120329,
@@ -5731,38 +5813,8 @@
    "rsENFmELvj92orrCKTkDTug53MzwsB7zBd-24464C4950505900000000000000000000000000": 1793099784.64316,
    "rszenFJoDdiGjyezQc8pME9KWDQH43Tswh-44524F5000000000000000000000000000000000": 1793226449.003826
   },
-  "net_fees_xrp": 0.2250239999999996,
+  "net_fees_xrp": 0.22510399999999958,
   "positions": [
-   {
-    "amm_fee": 0.01,
-    "currency": "43554C5400000000000000000000000000000000",
-    "entry_eff_px": 149.29041198321755,
-    "entry_spot": 147.77938610606856,
-    "excursion_src": "live from 2026-10-27T13:47",
-    "issuer": "rCULtAKrKbQjk1Tpmg5hkw4dpcf9S9KCs",
-    "key": "rCULtAKrKbQjk1Tpmg5hkw4dpcf9S9KCs-43554C5400000000000000000000000000000000",
-    "last_ratio_net": 0.9806,
-    "legs": [],
-    "name": "CULT",
-    "peak_hours": 50.27,
-    "peak_x": 0.9878,
-    "pool_xrp_entry": 62711.177203,
-    "remaining": 1.0,
-    "t": 1793108578.1600792,
-    "tf": 0.0,
-    "tokens_gross": 0.05143541841593939,
-    "tokens_net": 0.05091482069505422,
-    "tp_done": false,
-    "trough_x": 0.9686,
-    "ts": "2026-10-27T13:42:58+00:00",
-    "usd_cost": 10.0,
-    "warnings": [
-     "only 0% of LP burned (liquidity can be pulled)",
-     "top-10 holders own 42%"
-    ],
-    "xrp_cost": 7.601094557616296,
-    "xrp_usd_entry": 1.3156
-   },
    {
     "amm_fee": 0.00831,
     "currency": "50524F4649540000000000000000000000000000",
@@ -5890,7 +5942,7 @@
     "last_ratio_net": 1.0042,
     "legs": [],
     "name": "TIME",
-    "peak_hours": 2.32,
+    "peak_hours": 2.4,
     "peak_x": 1.0042,
     "pool_xrp_entry": 8156.656075,
     "remaining": 1.0,
@@ -5916,7 +5968,7 @@
     "excursion_src": "live from 2026-10-30T11:24",
     "issuer": "rDFXbW2ZZCG5WgPtqwNiA2xZokLMm9ivmN",
     "key": "rDFXbW2ZZCG5WgPtqwNiA2xZokLMm9ivmN-50484E4958000000000000000000000000000000",
-    "last_ratio_net": 0.9977,
+    "last_ratio_net": 0.9989,
     "legs": [],
     "name": "PHNIX",
     "peak_hours": 1.54,
@@ -6056,7 +6108,7 @@
     "last_ratio_net": 0.9997,
     "legs": [],
     "name": "ATM",
-    "peak_hours": 0.17,
+    "peak_hours": 0.25,
     "peak_x": 0.9997,
     "pool_xrp_entry": 79096.055148,
     "remaining": 1.0,
@@ -6071,11 +6123,35 @@
     "warnings": [],
     "xrp_cost": 8.030580450354952,
     "xrp_usd_entry": 1.24524
+   },
+   {
+    "amm_fee": 0.00393,
+    "currency": "44524F5000000000000000000000000000000000",
+    "entry_eff_px": 2.298596292443146,
+    "entry_spot": 2.289390447029489,
+    "issuer": "rszenFJoDdiGjyezQc8pME9KWDQH43Tswh",
+    "key": "rszenFJoDdiGjyezQc8pME9KWDQH43Tswh-44524F5000000000000000000000000000000000",
+    "legs": [],
+    "name": "DROP",
+    "pool_xrp_entry": 110663.592432,
+    "remaining": 1.0,
+    "t": 1793367829.598554,
+    "tf": 0.0,
+    "tokens_gross": 3.5335886161663925,
+    "tokens_net": 3.5194366440855056,
+    "tp_done": false,
+    "ts": "2026-10-30T13:43:49+00:00",
+    "usd_cost": 10.0,
+    "warnings": [
+     "only 28% of LP burned (liquidity can be pulled)"
+    ],
+    "xrp_cost": 8.089764021583491,
+    "xrp_usd_entry": 1.23613
    }
   ],
   "start_usd": 100.0,
   "start_xrp_usd": 1.28151,
-  "trustset_fees_xrp": 0.1124520000000001
+  "trustset_fees_xrp": 0.1124920000000001
  },
  "scalp": {
   "buys_today": 10,
@@ -11711,7 +11787,7 @@
     "excursion_src": "live from 2026-10-30T00:07",
     "issuer": "rDFXbW2ZZCG5WgPtqwNiA2xZokLMm9ivmN",
     "key": "rDFXbW2ZZCG5WgPtqwNiA2xZokLMm9ivmN-50484E4958000000000000000000000000000000",
-    "last_ratio_net": 0.9682,
+    "last_ratio_net": 0.9694,
     "legs": [],
     "name": "PHNIX",
     "peak_hours": 0.25,
@@ -11889,7 +11965,7 @@
     "last_ratio_net": 0.9944,
     "legs": [],
     "name": "Xmen",
-    "peak_hours": 12.76,
+    "peak_hours": 12.85,
     "peak_x": 0.9944,
     "pool_xrp_entry": 9474.027954,
     "remaining": 1.0,
