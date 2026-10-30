@@ -14,9 +14,9 @@
  "liquidations": 0,
  "buys": 5,
  "sells": 3,
- "bar": 1022,
+ "bar": 1026,
  "last_funding_ts": 1793318400,
- "peak_equity": 102.30570078898096,
+ "peak_equity": 102.6773201183889,
  "max_dd_pct": 6.263429221022731,
  "levels": [
   {
@@ -66,5 +66,5 @@
    "state": "buy"
   }
  ],
- "last_run": "2026-10-30T04:58:03+00:00"
+ "last_run": "2026-10-30T05:16:45+00:00"
 }
