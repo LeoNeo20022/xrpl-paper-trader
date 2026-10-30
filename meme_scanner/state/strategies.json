@@ -948,8 +948,8 @@
   "trustset_fees_xrp": 0.03166299999999997
  },
  "dip_bounce": {
-  "buys_today": 8,
-  "cash_usd": 70.036957,
+  "buys_today": 9,
+  "cash_usd": 60.036932,
   "closed": [
    {
     "amm_fee": 0.00255,
@@ -3540,7 +3540,7 @@
    "rszenFJoDdiGjyezQc8pME9KWDQH43Tswh-44524F5000000000000000000000000000000000": 1793237291.5620797,
    "rwfGtVZKpPX6vb51xE5RGTgXkQ4W9wSUrz-53504C4153480000000000000000000000000000": 1793053970.4369965
   },
-  "net_fees_xrp": 0.47877400000000203,
+  "net_fees_xrp": 0.47881400000000207,
   "positions": [
    {
     "amm_fee": 0.00559,
@@ -3614,7 +3614,7 @@
     "last_ratio_net": 1.0292,
     "legs": [],
     "name": "BRITTO",
-    "peak_hours": 15.12,
+    "peak_hours": 15.21,
     "peak_x": 1.0292,
     "pool_xrp_entry": 4801.235091,
     "remaining": 1.0,
@@ -3672,7 +3672,7 @@
     "last_ratio_net": 0.992,
     "legs": [],
     "name": "Xmen",
-    "peak_hours": 1.86,
+    "peak_hours": 1.95,
     "peak_x": 0.992,
     "pool_xrp_entry": 8506.533328,
     "remaining": 1.0,
@@ -3688,12 +3688,37 @@
     "warnings": [],
     "xrp_cost": 7.989836927428311,
     "xrp_usd_entry": 1.25159
+   },
+   {
+    "amm_fee": 0.00214,
+    "currency": "UGA",
+    "entry_eff_px": 0.007960121626956904,
+    "entry_spot": 0.007934064009150489,
+    "issuer": "rBFJGmWj6YaabVCxfsjiCM8pfYXs8xFdeC",
+    "key": "rBFJGmWj6YaabVCxfsjiCM8pfYXs8xFdeC-UGA",
+    "legs": [],
+    "name": "UGA",
+    "pool_xrp_entry": 7067.973973,
+    "remaining": 1.0,
+    "t": 1793380341.1895866,
+    "tf": 0.0,
+    "tokens_gross": 1013.0515753101695,
+    "tokens_net": 1009.7353306590546,
+    "tp_done": false,
+    "trigger": "dip_bounce: 21.6% below 24h high 0.0101194 XRP, age 731.7d",
+    "ts": "2026-10-30T17:12:21+00:00",
+    "usd_cost": 10.0,
+    "warnings": [
+     "only 48% of LP burned (liquidity can be pulled)"
+    ],
+    "xrp_cost": 8.037616043081622,
+    "xrp_usd_entry": 1.24415
    }
   ],
   "start_ts": "2026-10-24T13:37:52+00:00",
   "start_usd": 100.0,
   "start_xrp_usd": 1.28033,
-  "trustset_fees_xrp": 0.23932699999999957
+  "trustset_fees_xrp": 0.23934699999999956
  },
  "hold": {
   "buys_today": 9,
@@ -4573,7 +4598,7 @@
     "excursion_src": "live from 2026-10-27T17:56",
     "issuer": "rNFcv6vYT7mUmpjknwK9wd5edqkhJkg8KN",
     "key": "rNFcv6vYT7mUmpjknwK9wd5edqkhJkg8KN-43686F73656E0000000000000000000000000000",
-    "last_ratio_net": 1.6812,
+    "last_ratio_net": 1.7013,
     "legs": [
      {
       "fraction_of_buy": 0.5,
@@ -4612,7 +4637,7 @@
     "excursion_src": "live from 2026-10-30T11:24",
     "issuer": "rExSpmk2PAqxKRTT3mhjCrCpqVasBra5v8",
     "key": "rExSpmk2PAqxKRTT3mhjCrCpqVasBra5v8-54494D4500000000000000000000000000000000",
-    "last_ratio_net": 1.0644,
+    "last_ratio_net": 1.0643,
     "legs": [],
     "name": "TIME",
     "peak_hours": 5.27,
@@ -4668,7 +4693,7 @@
     "excursion_src": "live from 2026-10-30T11:24",
     "issuer": "rGHtYnnigyuaHehWGfAdoEhkoirkGNdZzo",
     "key": "rGHtYnnigyuaHehWGfAdoEhkoirkGNdZzo-7363726170000000000000000000000000000000",
-    "last_ratio_net": 1.0766,
+    "last_ratio_net": 1.0765,
     "legs": [],
     "name": "scrap",
     "peak_hours": 4.93,
@@ -4695,7 +4720,7 @@
     "excursion_src": "live from 2026-10-30T11:24",
     "issuer": "rGLEgQdktoN4Be5thhk6seg1HifGPBxY5Q",
     "key": "rGLEgQdktoN4Be5thhk6seg1HifGPBxY5Q-PLX",
-    "last_ratio_net": 0.9952,
+    "last_ratio_net": 0.9951,
     "legs": [],
     "name": "PLX",
     "peak_hours": 3.14,
@@ -5942,7 +5967,7 @@
     "excursion_src": "live from 2026-10-28T22:54",
     "issuer": "rGLEgQdktoN4Be5thhk6seg1HifGPBxY5Q",
     "key": "rGLEgQdktoN4Be5thhk6seg1HifGPBxY5Q-PLX",
-    "last_ratio_net": 0.9456,
+    "last_ratio_net": 0.9454,
     "legs": [],
     "name": "PLX",
     "peak_hours": 9.88,
@@ -6028,7 +6053,7 @@
     "excursion_src": "live from 2026-10-30T11:24",
     "issuer": "rExSpmk2PAqxKRTT3mhjCrCpqVasBra5v8",
     "key": "rExSpmk2PAqxKRTT3mhjCrCpqVasBra5v8-54494D4500000000000000000000000000000000",
-    "last_ratio_net": 1.0644,
+    "last_ratio_net": 1.0643,
     "legs": [],
     "name": "TIME",
     "peak_hours": 5.27,
@@ -6084,7 +6109,7 @@
     "excursion_src": "live from 2026-10-30T11:24",
     "issuer": "rGHtYnnigyuaHehWGfAdoEhkoirkGNdZzo",
     "key": "rGHtYnnigyuaHehWGfAdoEhkoirkGNdZzo-7363726170000000000000000000000000000000",
-    "last_ratio_net": 1.0766,
+    "last_ratio_net": 1.0765,
     "legs": [],
     "name": "scrap",
     "peak_hours": 4.93,
@@ -6111,11 +6136,11 @@
     "excursion_src": "live from 2026-10-30T11:24",
     "issuer": "razRVbPbtNtFt5TTa63XE122uRzoYooEpJ",
     "key": "razRVbPbtNtFt5TTa63XE122uRzoYooEpJ-4E4F525448000000000000000000000000000000",
-    "last_ratio_net": 0.9817,
+    "last_ratio_net": 0.9851,
     "legs": [],
     "name": "NORTH",
-    "peak_hours": 5.79,
-    "peak_x": 0.9817,
+    "peak_hours": 5.87,
+    "peak_x": 0.9851,
     "pool_xrp_entry": 21133.82195,
     "remaining": 1.0,
     "t": 1793359191.6685994,
@@ -12066,7 +12091,7 @@
     "excursion_src": "live from 2026-10-30T00:17",
     "issuer": "rGLEgQdktoN4Be5thhk6seg1HifGPBxY5Q",
     "key": "rGLEgQdktoN4Be5thhk6seg1HifGPBxY5Q-PLX",
-    "last_ratio_net": 0.9927,
+    "last_ratio_net": 0.9925,
     "legs": [],
     "name": "PLX",
     "peak_hours": 14.27,
