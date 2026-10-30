@@ -13,7 +13,7 @@
   "fng_source": "alternative.me",
   "funding_source": "okx_proxy",
   "trend_1h": null,
-  "ts": "2026-10-30T11:30:23+00:00"
+  "ts": "2026-10-30T11:45:24+00:00"
  },
  "btc": {
   "funding_pct": 0.0055,
@@ -29,6 +29,6 @@
   "fng_source": "alternative.me",
   "funding_source": "okx_proxy",
   "trend_1h": null,
-  "ts": "2026-10-30T11:30:23+00:00"
+  "ts": "2026-10-30T11:45:24+00:00"
  }
 }
