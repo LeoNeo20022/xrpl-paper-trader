@@ -21,10 +21,10 @@
   "LONG": 0,
   "SHORT": 2,
   "TIE": 0,
-  "IDLE": 336
+  "IDLE": 337
  },
- "last_run": "2026-10-30T05:16:48+00:00",
- "crowded_votes": 73,
+ "last_run": "2026-10-30T05:31:50+00:00",
+ "crowded_votes": 74,
  "rules_fired": {
   "R6": 48,
   "R3": 120,
