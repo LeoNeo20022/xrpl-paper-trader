@@ -3983,7 +3983,7 @@
     "last_ratio_net": 0.9917,
     "legs": [],
     "name": "$max",
-    "peak_hours": 0.25,
+    "peak_hours": 0.33,
     "peak_x": 0.9917,
     "pool_xrp_entry": 2212.024539,
     "remaining": 1.0,
@@ -4936,7 +4936,7 @@
     "excursion_src": "live from 2026-10-30T11:24",
     "issuer": "rExSpmk2PAqxKRTT3mhjCrCpqVasBra5v8",
     "key": "rExSpmk2PAqxKRTT3mhjCrCpqVasBra5v8-54494D4500000000000000000000000000000000",
-    "last_ratio_net": 1.1,
+    "last_ratio_net": 1.0999,
     "legs": [],
     "name": "TIME",
     "peak_hours": 31.37,
@@ -5022,7 +5022,7 @@
     "last_ratio_net": 1.0021,
     "legs": [],
     "name": "PLX",
-    "peak_hours": 31.62,
+    "peak_hours": 31.7,
     "peak_x": 1.0021,
     "pool_xrp_entry": 28410.208152,
     "remaining": 1.0,
@@ -5161,7 +5161,7 @@
     "excursion_src": "live from 2026-10-30T15:50",
     "issuer": "rpYYe5GQWX7hEPkyMGuDnaCvYM74BxtBLL",
     "key": "rpYYe5GQWX7hEPkyMGuDnaCvYM74BxtBLL-5941474100000000000000000000000000000000",
-    "last_ratio_net": 0.734,
+    "last_ratio_net": 0.6903,
     "legs": [],
     "name": "YAGA",
     "peak_hours": 0.42,
@@ -5173,7 +5173,7 @@
     "tokens_gross": 1053478.8896598623,
     "tokens_net": 1046974.069910151,
     "tp_done": false,
-    "trough_x": 0.7327,
+    "trough_x": 0.6903,
     "ts": "2026-10-30T15:45:29+00:00",
     "usd_cost": 10.0,
     "warnings": [
@@ -6381,7 +6381,7 @@
     "excursion_src": "live from 2026-10-30T11:24",
     "issuer": "rExSpmk2PAqxKRTT3mhjCrCpqVasBra5v8",
     "key": "rExSpmk2PAqxKRTT3mhjCrCpqVasBra5v8-54494D4500000000000000000000000000000000",
-    "last_ratio_net": 1.1,
+    "last_ratio_net": 1.0999,
     "legs": [],
     "name": "TIME",
     "peak_hours": 31.37,
@@ -9969,7 +9969,7 @@
  },
  "slow_scalp": {
   "buys_today": 10,
-  "cash_usd": 35.704227,
+  "cash_usd": 44.890358,
   "closed": [
    {
     "amm_fee": 0.00311,
@@ -13105,6 +13105,49 @@
     "warnings": [],
     "xrp_cost": 7.96362217390958,
     "xrp_usd_entry": 1.25571
+   },
+   {
+    "amm_fee": 0.0034,
+    "closed_ts": "2026-10-31T19:01:58+00:00",
+    "currency": "5941474100000000000000000000000000000000",
+    "entry_eff_px": 5.74733547470089e-06,
+    "entry_spot": 5.709555404791682e-06,
+    "excursion_src": "live from 2026-10-31T01:21",
+    "issuer": "rpYYe5GQWX7hEPkyMGuDnaCvYM74BxtBLL",
+    "key": "rpYYe5GQWX7hEPkyMGuDnaCvYM74BxtBLL-5941474100000000000000000000000000000000",
+    "last_ratio_net": 0.9209,
+    "legs": [
+     {
+      "fraction_of_buy": 1.0,
+      "pnl_usd_gross": -0.6931,
+      "pnl_usd_net": -0.8138,
+      "pnl_xrp_gross": -0.533306,
+      "pnl_xrp_net": -0.629635,
+      "reason": "stop (x0.92 net)",
+      "ts": "2026-10-31T19:01:58+00:00"
+     }
+    ],
+    "name": "YAGA",
+    "peak_hours": 9.01,
+    "peak_x": 0.9898,
+    "pnl_usd_net": -0.8138,
+    "pnl_xrp_net": -0.629635,
+    "pool_xrp_entry": 2484.167932,
+    "remaining": 0.0,
+    "t": 1793409372.8591113,
+    "tf": 0.0,
+    "tokens_gross": 1393534.4653898694,
+    "tokens_net": 1384374.0762399633,
+    "tp_done": false,
+    "trigger": "slow_scalp: new/top-15 trending, round trip 0.68% <= 2.0%",
+    "trough_x": 0.9209,
+    "ts": "2026-10-31T01:16:12+00:00",
+    "usd_cost": 10.0,
+    "warnings": [
+     "top-10 holders own 34%"
+    ],
+    "xrp_cost": 7.956462238630215,
+    "xrp_usd_entry": 1.25684
    }
   ],
   "day": "2026-10-31",
@@ -13139,13 +13182,13 @@
    "rnHDzEH4xyW6u4LbXqDoX1uk36v5ovhbFi-4465657054696465000000000000000000000000": 1793409672.700945,
    "rnNErmg9xVmcxxNZUwivbJSH6i9GUwYPFj-434F444544000000000000000000000000000000": 1793322353.8166566,
    "rnhtvpHsAgigmVemgtzt7pujj4gv6LVL2a-4C49485541000000000000000000000000000000": 1793410681.5261798,
-   "rpYYe5GQWX7hEPkyMGuDnaCvYM74BxtBLL-5941474100000000000000000000000000000000": 1793235438.5577629,
+   "rpYYe5GQWX7hEPkyMGuDnaCvYM74BxtBLL-5941474100000000000000000000000000000000": 1793473318.8472502,
    "rpwAnF1mMZRszxdinETFHwzGQiPgsv3jHR-4245525400000000000000000000000000000000": 1792912444.3082073,
    "rsENFmELvj92orrCKTkDTug53MzwsB7zBd-24464C4950505900000000000000000000000000": 1793158695.4188275,
    "rszenFJoDdiGjyezQc8pME9KWDQH43Tswh-44524F5000000000000000000000000000000000": 1793405063.8824906,
    "rwfGtVZKpPX6vb51xE5RGTgXkQ4W9wSUrz-53504C4153480000000000000000000000000000": 1793318830.8425634
   },
-  "net_fees_xrp": 0.3332440000000014,
+  "net_fees_xrp": 0.3332840000000014,
   "positions": [
    {
     "amm_fee": 0.01,
@@ -13264,36 +13307,6 @@
     "xrp_usd_entry": 1.25657
    },
    {
-    "amm_fee": 0.0034,
-    "currency": "5941474100000000000000000000000000000000",
-    "entry_eff_px": 5.74733547470089e-06,
-    "entry_spot": 5.709555404791682e-06,
-    "excursion_src": "live from 2026-10-31T01:21",
-    "issuer": "rpYYe5GQWX7hEPkyMGuDnaCvYM74BxtBLL",
-    "key": "rpYYe5GQWX7hEPkyMGuDnaCvYM74BxtBLL-5941474100000000000000000000000000000000",
-    "last_ratio_net": 0.9792,
-    "legs": [],
-    "name": "YAGA",
-    "peak_hours": 9.01,
-    "peak_x": 0.9898,
-    "pool_xrp_entry": 2484.167932,
-    "remaining": 1.0,
-    "t": 1793409372.8591113,
-    "tf": 0.0,
-    "tokens_gross": 1393534.4653898694,
-    "tokens_net": 1384374.0762399633,
-    "tp_done": false,
-    "trigger": "slow_scalp: new/top-15 trending, round trip 0.68% <= 2.0%",
-    "trough_x": 0.9776,
-    "ts": "2026-10-31T01:16:12+00:00",
-    "usd_cost": 10.0,
-    "warnings": [
-     "top-10 holders own 34%"
-    ],
-    "xrp_cost": 7.956462238630215,
-    "xrp_usd_entry": 1.25684
-   },
-   {
     "amm_fee": 0.00214,
     "currency": "UGA",
     "entry_eff_px": 0.009794763123913421,
@@ -13327,6 +13340,6 @@
   "start_ts": "2026-10-24T13:37:52+00:00",
   "start_usd": 100.0,
   "start_xrp_usd": 1.28033,
-  "trustset_fees_xrp": 0.1665559999999999
+  "trustset_fees_xrp": 0.1665759999999999
  }
 }
