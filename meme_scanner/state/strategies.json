@@ -948,8 +948,8 @@
   "trustset_fees_xrp": 0.03166299999999997
  },
  "dip_bounce": {
-  "buys_today": 5,
-  "cash_usd": 78.120008,
+  "buys_today": 6,
+  "cash_usd": 68.119983,
   "closed": [
    {
     "amm_fee": 0.00255,
@@ -3882,7 +3882,7 @@
    "rszenFJoDdiGjyezQc8pME9KWDQH43Tswh-44524F5000000000000000000000000000000000": 1793237291.5620797,
    "rwfGtVZKpPX6vb51xE5RGTgXkQ4W9wSUrz-53504C4153480000000000000000000000000000": 1793053970.4369965
   },
-  "net_fees_xrp": 0.5302380000000027,
+  "net_fees_xrp": 0.5302780000000027,
   "positions": [
    {
     "amm_fee": 0.01,
@@ -3983,7 +3983,7 @@
     "last_ratio_net": 1.0084,
     "legs": [],
     "name": "$max",
-    "peak_hours": 0.82,
+    "peak_hours": 0.9,
     "peak_x": 1.0084,
     "pool_xrp_entry": 2212.024539,
     "remaining": 1.0,
@@ -3999,12 +3999,37 @@
     "warnings": [],
     "xrp_cost": 7.981228151387936,
     "xrp_usd_entry": 1.25294
+   },
+   {
+    "amm_fee": 0.0034,
+    "currency": "5941474100000000000000000000000000000000",
+    "entry_eff_px": 5.406026477588807e-06,
+    "entry_spot": 5.36989921197876e-06,
+    "issuer": "rpYYe5GQWX7hEPkyMGuDnaCvYM74BxtBLL",
+    "key": "rpYYe5GQWX7hEPkyMGuDnaCvYM74BxtBLL-5941474100000000000000000000000000000000",
+    "legs": [],
+    "name": "YAGA",
+    "pool_xrp_entry": 2409.514418,
+    "remaining": 1.0,
+    "t": 1793475363.1378171,
+    "tf": 0.0,
+    "tokens_gross": 1486847.8643315306,
+    "tokens_net": 1476911.5926652486,
+    "tp_done": false,
+    "trigger": "dip_bounce: 28.1% below 24h high 7.46935e-06 XRP, age 727.8d",
+    "ts": "2026-10-31T19:36:03+00:00",
+    "usd_cost": 10.0,
+    "warnings": [
+     "top-10 holders own 34%"
+    ],
+    "xrp_cost": 7.984223175006188,
+    "xrp_usd_entry": 1.25247
    }
   ],
   "start_ts": "2026-10-24T13:37:52+00:00",
   "start_usd": 100.0,
   "start_xrp_usd": 1.28033,
-  "trustset_fees_xrp": 0.26505899999999977
+  "trustset_fees_xrp": 0.2650789999999998
  },
  "hold": {
   "buys_today": 0,
@@ -5078,7 +5103,7 @@
     "excursion_src": "live from 2026-10-30T11:50",
     "issuer": "rGG3wQ4kUzd7Jnmk1n5NWPZjjut62kCBfC",
     "key": "rGG3wQ4kUzd7Jnmk1n5NWPZjjut62kCBfC-41524D5900000000000000000000000000000000",
-    "last_ratio_net": 1.0007,
+    "last_ratio_net": 1.0006,
     "legs": [],
     "name": "ARMY",
     "peak_hours": 27.7,
@@ -5161,7 +5186,7 @@
     "excursion_src": "live from 2026-10-30T15:50",
     "issuer": "rpYYe5GQWX7hEPkyMGuDnaCvYM74BxtBLL",
     "key": "rpYYe5GQWX7hEPkyMGuDnaCvYM74BxtBLL-5941474100000000000000000000000000000000",
-    "last_ratio_net": 0.6903,
+    "last_ratio_net": 0.6959,
     "legs": [],
     "name": "YAGA",
     "peak_hours": 0.42,
@@ -6325,7 +6350,7 @@
     "excursion_src": "live from 2026-10-29T02:41",
     "issuer": "rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62",
     "key": "rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62-46555A5A59000000000000000000000000000000",
-    "last_ratio_net": 1.0102,
+    "last_ratio_net": 1.0104,
     "legs": [],
     "name": "FUZZY",
     "peak_hours": 15.26,
@@ -6520,7 +6545,7 @@
     "excursion_src": "live from 2026-10-30T11:50",
     "issuer": "rGG3wQ4kUzd7Jnmk1n5NWPZjjut62kCBfC",
     "key": "rGG3wQ4kUzd7Jnmk1n5NWPZjjut62kCBfC-41524D5900000000000000000000000000000000",
-    "last_ratio_net": 1.0007,
+    "last_ratio_net": 1.0006,
     "legs": [],
     "name": "ARMY",
     "peak_hours": 27.7,
@@ -13256,7 +13281,7 @@
     "excursion_src": "live from 2026-10-31T00:09",
     "issuer": "rGG3wQ4kUzd7Jnmk1n5NWPZjjut62kCBfC",
     "key": "rGG3wQ4kUzd7Jnmk1n5NWPZjjut62kCBfC-41524D5900000000000000000000000000000000",
-    "last_ratio_net": 1.0117,
+    "last_ratio_net": 1.0116,
     "legs": [],
     "name": "ARMY",
     "peak_hours": 15.21,
@@ -13284,11 +13309,11 @@
     "excursion_src": "live from 2026-10-31T00:10",
     "issuer": "rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62",
     "key": "rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62-46555A5A59000000000000000000000000000000",
-    "last_ratio_net": 1.0292,
+    "last_ratio_net": 1.0293,
     "legs": [],
     "name": "FUZZY",
-    "peak_hours": 18.36,
-    "peak_x": 1.0292,
+    "peak_hours": 19.44,
+    "peak_x": 1.0293,
     "pool_xrp_entry": 640694.988042,
     "remaining": 1.0,
     "t": 1793405363.929563,
