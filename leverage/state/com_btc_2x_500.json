@@ -21,7 +21,7 @@
  "fees_usd": 2.4742297699924958,
  "funding_usd": 0.0,
  "peak_equity": 500.0,
- "max_dd_pct": 2.8086698648535746,
+ "max_dd_pct": 2.97620405650465,
  "realised_usd": -10.30164987544373,
  "last_signal_ts": 1793422800,
  "last_funding_ts": 1793404800,
@@ -30,19 +30,19 @@
  "shadows": [],
  "decisions": {
   "LONG": 0,
-  "SHORT": 6,
+  "SHORT": 7,
   "TIE": 0,
   "IDLE": 431
  },
- "last_run": "2026-10-31T05:52:37+00:00",
+ "last_run": "2026-10-31T06:07:38+00:00",
  "crowded_votes": 128,
  "rules_fired": {
   "R6": 56,
   "R3": 120,
   "R1": 48
  },
- "max_dd_usd": 14.043349324267865,
- "min_equity": 485.95665067573213,
+ "max_dd_usd": 14.881020282523252,
+ "min_equity": 485.11897971747675,
  "scaled_from_100": true,
  "loss_usd": -10.30164987544373,
  "news_flats": 1
