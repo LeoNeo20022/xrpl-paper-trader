@@ -39,7 +39,7 @@
  "start_price": 1.301,
  "max_dd_usd": 4.3905316434521495,
  "min_equity": 46.029222182424284,
- "last_run": "2026-10-31T11:35:46+00:00",
+ "last_run": "2026-10-31T11:45:40+00:00",
  "scaled_from_100": true,
  "rules_fired": {
   "R3": 172,
