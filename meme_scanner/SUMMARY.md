@@ -3,14 +3,14 @@
 Log-only experiment: no wallet, no keys, no orders. Every number below is simulated from public data.
 Data by <a href="https://xrpl.to">xrpl.to</a> (token discovery); safety checks and prices from the public XRP Ledger.
 
-Last run: **2026-10-31T20:21:59+00:00** (UTC) · XRP/USD 1.2497 (bitstamp) · last discovery 2026-10-31T20:21:59+00:00 (UTC, every run, API key) · xrpl.to credits used by last discovery: 4
+Last run: **2026-10-31T20:22:43+00:00** (UTC) · XRP/USD 1.2497 (bitstamp) · last discovery 2026-10-31T20:22:43+00:00 (UTC, every run, API key) · xrpl.to credits used by last discovery: 4
 
 ## Bankrolls — scoreboard is USD/RLUSD (each strategy has its own $100, $10 per trade)
 
 | Strategy | Rule | Started (UTC) | **Equity USD** | **vs $100** | Cash | Open (n / value) | Realized USD | Unrealized USD | Wins / losses (win rate) | Trades (closed) | Realized XRP | Unrealized XRP | Equity XRP | vs start XRP | Fees paid USD (network XRP) | Reserve locked XRP |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| hold | ½ at +100%, stop −50%, 72h | 2026-10-24 11:16 | **$99.96** | **-0.04** | $0.71 | 10 / $99.25 | $+0.82 | $-0.75 | 11 / 10 (52%) | 31 (21) | +3.21 | -0.91 | 79.98 | +1.95 | $3.07 (0.18480) | 2.0 |
-| plus5 | all at +50%, stop −50%, 72h | 2026-10-24 11:16 | **$117.39** | **+17.39** | $0.79 | 12 / $116.60 | $+20.94 | $-3.40 | 13 / 11 (54%) | 36 (24) | +17.47 | -1.57 | 93.93 | +15.90 | $4.00 (0.22510) | 2.4 |
+| hold | ½ at +100%, stop −50%, 72h | 2026-10-24 11:16 | **$99.96** | **-0.04** | $0.71 | 10 / $99.25 | $+0.82 | $-0.75 | 11 / 10 (52%) | 31 (21) | +3.21 | -0.92 | 79.98 | +1.95 | $3.07 (0.18480) | 2.0 |
+| plus5 | all at +50%, stop −50%, 72h | 2026-10-24 11:16 | **$117.39** | **+17.39** | $0.79 | 12 / $116.60 | $+20.94 | $-3.40 | 13 / 11 (54%) | 36 (24) | +17.47 | -1.58 | 93.93 | +15.90 | $4.00 (0.22510) | 2.4 |
 | scalp | +20% / −10% / 60 min | 2026-10-24 11:16 | **$95.25** | **-4.75** | $95.25 | 0 / $0.00 | $-4.55 | $+0.00 | 20 / 60 (25%) | 80 (80) | -2.24 | +0.00 | 76.21 | -1.82 | $8.55 (0.31584) | 0.0 |
 | slow_scalp | new/top-15 trending, round trip ≤2%; +8% / −6% / 24h (was 6h until Oct 25) | 2026-10-24 13:37 | **$95.62** | **-4.38** | $44.89 | 5 / $50.73 | $-4.89 | $+0.73 | 28 / 47 (37%) | 80 (75) | -3.29 | +0.72 | 76.51 | -1.59 | $8.72 (0.33328) | 1.0 |
 | breakout — **paused Oct 26 (low win rate)** | up ≥10% in 1h + rising volume; trailing stop 8% below high / 24h | 2026-10-24 13:37 | **$88.11** | **-11.89** | $88.11 | 0 / $0.00 | $-11.85 | $+0.00 | 5 / 16 (24%) | 21 (21) | -9.81 | +0.00 | 70.50 | -7.60 | $2.26 (0.06334) | 0.0 |
