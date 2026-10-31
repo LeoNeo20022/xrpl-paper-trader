@@ -481,3 +481,4 @@ ts,coin,decision,in_position,long_scout,short_scout,idle_guard,chart_reader,long
 2026-10-31T16:30:00+00:00,XRPUSDT,IDLE,SHORT,IDLE,IDLE,IDLE,IDLE,0,0,0,0,no uptrend,"downtrend, no bounce/breakdown",choppy ADX 14,no clear structure,0.002,4.15,3.79,81,30,,1,0,down,down,below,-0.16,,,
 2026-10-31T16:45:00+00:00,XRPUSDT,IDLE,SHORT,IDLE,SHORT,IDLE,IDLE,0,0.6,0,0,no uptrend,downtrend + 5m RSI bounce 69->68,choppy ADX 14,no clear structure,0.002,4.15,3.79,81,30,,1,0,down,down,below,-0.16,,,
 2026-10-31T17:00:00+00:00,XRPUSDT,IDLE,SHORT,IDLE,SHORT,IDLE,IDLE,0,0.6,0,0,no uptrend,downtrend + 5m RSI bounce 70->56,choppy ADX 13,no clear structure,0.002,4.43,3.78,80,30,,1,0,down,down,below,0.63,,,
+2026-10-31T17:15:00+00:00,XRPUSDT,IDLE,SHORT,IDLE,IDLE,IDLE,IDLE,0,0,0,0,no uptrend,"downtrend, no bounce/breakdown",choppy ADX 13,no clear structure,0.002,4.43,3.78,80,30,,1,0,down,down,below,0.63,,,
