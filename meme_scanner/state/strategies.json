@@ -4369,7 +4369,7 @@
     "excursion_src": "live from 2026-11-01T20:54",
     "issuer": "razRVbPbtNtFt5TTa63XE122uRzoYooEpJ",
     "key": "razRVbPbtNtFt5TTa63XE122uRzoYooEpJ-4E4F525448000000000000000000000000000000",
-    "last_ratio_net": 0.9723,
+    "last_ratio_net": 0.9703,
     "legs": [],
     "name": "NORTH",
     "peak_hours": 1.19,
@@ -5550,7 +5550,7 @@
     "excursion_src": "live from 2026-10-30T15:50",
     "issuer": "rpYYe5GQWX7hEPkyMGuDnaCvYM74BxtBLL",
     "key": "rpYYe5GQWX7hEPkyMGuDnaCvYM74BxtBLL-5941474100000000000000000000000000000000",
-    "last_ratio_net": 2.5741,
+    "last_ratio_net": 2.5806,
     "legs": [
      {
       "fraction_of_buy": 0.5,
