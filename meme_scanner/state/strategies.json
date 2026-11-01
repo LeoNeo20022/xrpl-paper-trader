@@ -5408,7 +5408,7 @@
     "excursion_src": "live from 2026-10-30T11:24",
     "issuer": "rGLEgQdktoN4Be5thhk6seg1HifGPBxY5Q",
     "key": "rGLEgQdktoN4Be5thhk6seg1HifGPBxY5Q-PLX",
-    "last_ratio_net": 0.9994,
+    "last_ratio_net": 0.9992,
     "legs": [],
     "name": "PLX",
     "peak_hours": 35.94,
@@ -5550,7 +5550,7 @@
     "excursion_src": "live from 2026-10-30T15:50",
     "issuer": "rpYYe5GQWX7hEPkyMGuDnaCvYM74BxtBLL",
     "key": "rpYYe5GQWX7hEPkyMGuDnaCvYM74BxtBLL-5941474100000000000000000000000000000000",
-    "last_ratio_net": 2.3951,
+    "last_ratio_net": 2.5491,
     "legs": [
      {
       "fraction_of_buy": 0.5,
@@ -14714,7 +14714,7 @@
     "excursion_src": "live from 2026-11-01T00:22",
     "issuer": "rGLEgQdktoN4Be5thhk6seg1HifGPBxY5Q",
     "key": "rGLEgQdktoN4Be5thhk6seg1HifGPBxY5Q-PLX",
-    "last_ratio_net": 0.9854,
+    "last_ratio_net": 0.9852,
     "legs": [],
     "name": "PLX",
     "peak_hours": 0.43,
