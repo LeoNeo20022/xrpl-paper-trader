@@ -949,7 +949,7 @@
  },
  "dip_bounce": {
   "buys_today": 7,
-  "cash_usd": 74.878278,
+  "cash_usd": 85.906208,
   "closed": [
    {
     "amm_fee": 0.00255,
@@ -4220,6 +4220,49 @@
     ],
     "xrp_cost": 8.027163922714465,
     "xrp_usd_entry": 1.24577
+   },
+   {
+    "amm_fee": 0.00023,
+    "closed_ts": "2026-11-01T23:32:53+00:00",
+    "currency": "4752494D00000000000000000000000000000000",
+    "entry_eff_px": 0.0031425059404499326,
+    "entry_spot": 0.0031401340509862445,
+    "excursion_src": "live from 2026-11-01T07:53",
+    "issuer": "rHLRdLwXiBZSD53ZQz8ogGJz25LzNCCjSz",
+    "key": "rHLRdLwXiBZSD53ZQz8ogGJz25LzNCCjSz-4752494D00000000000000000000000000000000",
+    "last_ratio_net": 1.1051,
+    "legs": [
+     {
+      "fraction_of_buy": 1.0,
+      "pnl_usd_gross": 1.0448,
+      "pnl_usd_net": 1.028,
+      "pnl_xrp_gross": 0.85303,
+      "pnl_xrp_net": 0.839502,
+      "reason": "take profit (x1.11 net)",
+      "ts": "2026-11-01T23:32:53+00:00"
+     }
+    ],
+    "name": "GRIM",
+    "peak_hours": 15.74,
+    "peak_x": 1.1051,
+    "pnl_usd_net": 1.028,
+    "pnl_xrp_net": 0.839502,
+    "pool_xrp_entry": 15285.262458,
+    "remaining": 0.0,
+    "t": 1793519310.1154284,
+    "tf": 0.0,
+    "tokens_gross": 2544.791412676525,
+    "tokens_net": 2542.870664059532,
+    "tp_done": true,
+    "trigger": "dip_bounce: 28.2% below 24h high 0.0043742 XRP, age 727.3d",
+    "trough_x": 0.9978,
+    "ts": "2026-11-01T07:48:30+00:00",
+    "usd_cost": 10.0,
+    "warnings": [
+     "top-10 holders own 34%"
+    ],
+    "xrp_cost": 7.990986167602944,
+    "xrp_usd_entry": 1.25141
    }
   ],
   "day": "2026-11-01",
@@ -4240,6 +4283,7 @@
    "rExSpmk2PAqxKRTT3mhjCrCpqVasBra5v8-54494D4500000000000000000000000000000000": 1793560947.9881852,
    "rG7jT6D4fHsipvVmPSbcnvDtFzXwwSR4qx-524942424C450000000000000000000000000000": 1793237291.5620797,
    "rGJbFqiLdh23e9WigQ5sxTfFqTENveLX21-XOX": 1793405063.8824906,
+   "rHLRdLwXiBZSD53ZQz8ogGJz25LzNCCjSz-4752494D00000000000000000000000000000000": 1793575973.0161536,
    "rJfQFeHTZcnRsY4Ba5sJVKUhLs48E9apBn-5055505045540000000000000000000000000000": 1793040584.748974,
    "rKtZqPGaiW8ejjaUccf13WuZLEXdzSz2CE-434952434C450000000000000000000000000000": 1793491668.143295,
    "rLrrDKPRjnvQMJFjk7YxEew2AvpAAfejGM-244A5357525A0000000000000000000000000000": 1793567078.774973,
@@ -4269,38 +4313,8 @@
    "rszenFJoDdiGjyezQc8pME9KWDQH43Tswh-44524F5000000000000000000000000000000000": 1793237291.5620797,
    "rwfGtVZKpPX6vb51xE5RGTgXkQ4W9wSUrz-53504C4153480000000000000000000000000000": 1793053970.4369965
   },
-  "net_fees_xrp": 0.5710820000000032,
+  "net_fees_xrp": 0.5711220000000032,
   "positions": [
-   {
-    "amm_fee": 0.00023,
-    "currency": "4752494D00000000000000000000000000000000",
-    "entry_eff_px": 0.0031425059404499326,
-    "entry_spot": 0.0031401340509862445,
-    "excursion_src": "live from 2026-11-01T07:53",
-    "issuer": "rHLRdLwXiBZSD53ZQz8ogGJz25LzNCCjSz",
-    "key": "rHLRdLwXiBZSD53ZQz8ogGJz25LzNCCjSz-4752494D00000000000000000000000000000000",
-    "last_ratio_net": 1.0982,
-    "legs": [],
-    "name": "GRIM",
-    "peak_hours": 15.66,
-    "peak_x": 1.0982,
-    "pool_xrp_entry": 15285.262458,
-    "remaining": 1.0,
-    "t": 1793519310.1154284,
-    "tf": 0.0,
-    "tokens_gross": 2544.791412676525,
-    "tokens_net": 2542.870664059532,
-    "tp_done": false,
-    "trigger": "dip_bounce: 28.2% below 24h high 0.0043742 XRP, age 727.3d",
-    "trough_x": 0.9978,
-    "ts": "2026-11-01T07:48:30+00:00",
-    "usd_cost": 10.0,
-    "warnings": [
-     "top-10 holders own 34%"
-    ],
-    "xrp_cost": 7.990986167602944,
-    "xrp_usd_entry": 1.25141
-   },
    {
     "amm_fee": 0.00505,
     "currency": "XYZ",
@@ -4393,7 +4407,7 @@
   "start_ts": "2026-10-24T13:37:52+00:00",
   "start_usd": 100.0,
   "start_xrp_usd": 1.28033,
-  "trustset_fees_xrp": 0.2854810000000001
+  "trustset_fees_xrp": 0.2855010000000001
  },
  "hold": {
   "buys_today": 1,
@@ -5408,7 +5422,7 @@
     "excursion_src": "live from 2026-10-30T11:24",
     "issuer": "rGLEgQdktoN4Be5thhk6seg1HifGPBxY5Q",
     "key": "rGLEgQdktoN4Be5thhk6seg1HifGPBxY5Q-PLX",
-    "last_ratio_net": 1.0004,
+    "last_ratio_net": 1.0002,
     "legs": [],
     "name": "PLX",
     "peak_hours": 35.94,
@@ -5438,7 +5452,7 @@
     "excursion_src": "live from 2026-10-30T11:24",
     "issuer": "r9Qk4VGodriw2xKLG9sRbTXWgknkz9TkDd",
     "key": "r9Qk4VGodriw2xKLG9sRbTXWgknkz9TkDd-5465646479000000000000000000000000000000",
-    "last_ratio_net": 1.0137,
+    "last_ratio_net": 1.0141,
     "legs": [],
     "name": "Teddy",
     "peak_hours": 17.31,
@@ -5550,7 +5564,7 @@
     "excursion_src": "live from 2026-10-30T15:50",
     "issuer": "rpYYe5GQWX7hEPkyMGuDnaCvYM74BxtBLL",
     "key": "rpYYe5GQWX7hEPkyMGuDnaCvYM74BxtBLL-5941474100000000000000000000000000000000",
-    "last_ratio_net": 2.5337,
+    "last_ratio_net": 2.5338,
     "legs": [
      {
       "fraction_of_buy": 0.5,
@@ -6987,7 +7001,7 @@
     "excursion_src": "live from 2026-10-30T11:24",
     "issuer": "r9Qk4VGodriw2xKLG9sRbTXWgknkz9TkDd",
     "key": "r9Qk4VGodriw2xKLG9sRbTXWgknkz9TkDd-5465646479000000000000000000000000000000",
-    "last_ratio_net": 1.0137,
+    "last_ratio_net": 1.0141,
     "legs": [],
     "name": "Teddy",
     "peak_hours": 17.31,
@@ -14714,7 +14728,7 @@
     "excursion_src": "live from 2026-11-01T00:22",
     "issuer": "rGLEgQdktoN4Be5thhk6seg1HifGPBxY5Q",
     "key": "rGLEgQdktoN4Be5thhk6seg1HifGPBxY5Q-PLX",
-    "last_ratio_net": 0.9863,
+    "last_ratio_net": 0.9862,
     "legs": [],
     "name": "PLX",
     "peak_hours": 0.43,
