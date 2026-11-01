@@ -6826,7 +6826,7 @@
     "excursion_src": "live from 2026-11-01T02:51",
     "issuer": "rU5nUwkBUPx3MFPQSHmMnr9S9yg4g8cKLc",
     "key": "rU5nUwkBUPx3MFPQSHmMnr9S9yg4g8cKLc-XYZ",
-    "last_ratio_net": 1.2188,
+    "last_ratio_net": 1.2127,
     "legs": [],
     "name": "XYZ",
     "peak_hours": 0.54,
@@ -10633,8 +10633,8 @@
   "trustset_fees_xrp": 0.1982369999999996
  },
  "slow_scalp": {
-  "buys_today": 8,
-  "cash_usd": 5.281373,
+  "buys_today": 9,
+  "cash_usd": 5.457305,
   "closed": [
    {
     "amm_fee": 0.00311,
@@ -13981,6 +13981,49 @@
     ],
     "xrp_cost": 7.958171848762903,
     "xrp_usd_entry": 1.25657
+   },
+   {
+    "amm_fee": 0.00214,
+    "closed_ts": "2026-11-01T04:10:27+00:00",
+    "currency": "UGA",
+    "entry_eff_px": 0.009794763123913421,
+    "entry_spot": 0.009763810944065516,
+    "excursion_src": "live from 2026-10-31T04:12",
+    "issuer": "rBFJGmWj6YaabVCxfsjiCM8pfYXs8xFdeC",
+    "key": "rBFJGmWj6YaabVCxfsjiCM8pfYXs8xFdeC-UGA",
+    "last_ratio_net": 1.0174,
+    "legs": [
+     {
+      "fraction_of_buy": 1.0,
+      "pnl_usd_gross": 0.2407,
+      "pnl_usd_net": 0.176,
+      "pnl_xrp_gross": 0.191536,
+      "pnl_xrp_net": 0.139627,
+      "reason": "time limit 24h (x1.02 net)",
+      "ts": "2026-11-01T04:10:27+00:00"
+     }
+    ],
+    "name": "UGA",
+    "peak_hours": 24.05,
+    "peak_x": 1.0174,
+    "pnl_usd_net": 0.176,
+    "pnl_xrp_net": 0.139627,
+    "pool_xrp_entry": 7843.065901,
+    "remaining": 0.0,
+    "t": 1793419650.7714279,
+    "tf": 0.0,
+    "tokens_gross": 821.758310647821,
+    "tokens_net": 819.1614932770585,
+    "tp_done": false,
+    "trigger": "slow_scalp: new/top-15 trending, round trip 0.43% <= 2.0%",
+    "trough_x": 0.9899,
+    "ts": "2026-10-31T04:07:30+00:00",
+    "usd_cost": 10.0,
+    "warnings": [
+     "only 48% of LP burned (liquidity can be pulled)"
+    ],
+    "xrp_cost": 8.023492786879984,
+    "xrp_usd_entry": 1.24634
    }
   ],
   "day": "2026-11-01",
@@ -13988,6 +14031,7 @@
    "r32nbPw6cyt3KdxinB4ua6WSLRrrF4SXAC-4C61756768000000000000000000000000000000": 1792908360.995136,
    "r4pXXQzJ8soYSX4QKeeW4BzRQS1PCtVYLJ-5345414C00000000000000000000000000000000": 1793451493.1390157,
    "r9Qk4VGodriw2xKLG9sRbTXWgknkz9TkDd-5465646479000000000000000000000000000000": 1793405363.929563,
+   "rBFJGmWj6YaabVCxfsjiCM8pfYXs8xFdeC-UGA": 1793506227.7643437,
    "rCULtAKrKbQjk1Tpmg5hkw4dpcf9S9KCs-43554C5400000000000000000000000000000000": 1793232992.20405,
    "rDFXbW2ZZCG5WgPtqwNiA2xZokLMm9ivmN-50484E4958000000000000000000000000000000": 1793405063.8824906,
    "rDoNUnQhJXtwqKRKVDZZ115RAMDSgDqKvi-5542455200000000000000000000000000000000": 1793237291.5620797,
@@ -14021,38 +14065,8 @@
    "rszenFJoDdiGjyezQc8pME9KWDQH43Tswh-44524F5000000000000000000000000000000000": 1793405063.8824906,
    "rwfGtVZKpPX6vb51xE5RGTgXkQ4W9wSUrz-53504C4153480000000000000000000000000000": 1793318830.8425634
   },
-  "net_fees_xrp": 0.38384600000000185,
+  "net_fees_xrp": 0.38392600000000193,
   "positions": [
-   {
-    "amm_fee": 0.00214,
-    "currency": "UGA",
-    "entry_eff_px": 0.009794763123913421,
-    "entry_spot": 0.009763810944065516,
-    "excursion_src": "live from 2026-10-31T04:12",
-    "issuer": "rBFJGmWj6YaabVCxfsjiCM8pfYXs8xFdeC",
-    "key": "rBFJGmWj6YaabVCxfsjiCM8pfYXs8xFdeC-UGA",
-    "last_ratio_net": 1.0174,
-    "legs": [],
-    "name": "UGA",
-    "peak_hours": 23.97,
-    "peak_x": 1.0174,
-    "pool_xrp_entry": 7843.065901,
-    "remaining": 1.0,
-    "t": 1793419650.7714279,
-    "tf": 0.0,
-    "tokens_gross": 821.758310647821,
-    "tokens_net": 819.1614932770585,
-    "tp_done": false,
-    "trigger": "slow_scalp: new/top-15 trending, round trip 0.43% <= 2.0%",
-    "trough_x": 0.9899,
-    "ts": "2026-10-31T04:07:30+00:00",
-    "usd_cost": 10.0,
-    "warnings": [
-     "only 48% of LP burned (liquidity can be pulled)"
-    ],
-    "xrp_cost": 8.023492786879984,
-    "xrp_usd_entry": 1.24634
-   },
    {
     "amm_fee": 0.00311,
     "currency": "586D656E00000000000000000000000000000000",
@@ -14285,11 +14299,36 @@
     ],
     "xrp_cost": 8.002048524422253,
     "xrp_usd_entry": 1.24968
+   },
+   {
+    "amm_fee": 0.01,
+    "currency": "424348414D500000000000000000000000000000",
+    "entry_eff_px": 0.0051356428671114375,
+    "entry_spot": 0.005083997570694301,
+    "issuer": "rhYhn7s6z4HAfuJm7ehuSE7wxepRoUPwpi",
+    "key": "rhYhn7s6z4HAfuJm7ehuSE7wxepRoUPwpi-424348414D500000000000000000000000000000",
+    "legs": [],
+    "name": "BCHAMP",
+    "pool_xrp_entry": 146186.914848,
+    "remaining": 1.0,
+    "t": 1793506227.7643437,
+    "tf": 0.0,
+    "tokens_gross": 1577.8819596817598,
+    "tokens_net": 1562.014387962379,
+    "tp_done": false,
+    "trigger": "slow_scalp: new/top-15 trending, round trip 1.99% <= 2.0%",
+    "ts": "2026-11-01T04:10:27+00:00",
+    "usd_cost": 10.0,
+    "warnings": [
+     "only 34% of LP burned (liquidity can be pulled)"
+    ],
+    "xrp_cost": 8.021948049864429,
+    "xrp_usd_entry": 1.24658
    }
   ],
   "start_ts": "2026-10-24T13:37:52+00:00",
   "start_usd": 100.0,
   "start_xrp_usd": 1.28033,
-  "trustset_fees_xrp": 0.19185699999999983
+  "trustset_fees_xrp": 0.19189699999999982
  }
 }
