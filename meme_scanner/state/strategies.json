@@ -948,8 +948,8 @@
   "trustset_fees_xrp": 0.03166299999999997
  },
  "dip_bounce": {
-  "buys_today": 3,
-  "cash_usd": 67.585596,
+  "buys_today": 4,
+  "cash_usd": 57.585571,
   "closed": [
    {
     "amm_fee": 0.00255,
@@ -4356,7 +4356,7 @@
    "rszenFJoDdiGjyezQc8pME9KWDQH43Tswh-44524F5000000000000000000000000000000000": 1793237291.5620797,
    "rwfGtVZKpPX6vb51xE5RGTgXkQ4W9wSUrz-53504C4153480000000000000000000000000000": 1793053970.4369965
   },
-  "net_fees_xrp": 0.5712820000000034,
+  "net_fees_xrp": 0.5713220000000034,
   "positions": [
    {
     "amm_fee": 0.01,
@@ -4399,7 +4399,7 @@
     "last_ratio_net": 1.0068,
     "legs": [],
     "name": "NORTH",
-    "peak_hours": 8.94,
+    "peak_hours": 9.02,
     "peak_x": 1.0068,
     "pool_xrp_entry": 17555.285293,
     "remaining": 1.0,
@@ -4457,7 +4457,7 @@
     "last_ratio_net": 0.987,
     "legs": [],
     "name": "CODED",
-    "peak_hours": 5.11,
+    "peak_hours": 5.19,
     "peak_x": 0.987,
     "pool_xrp_entry": 4460.796291,
     "remaining": 1.0,
@@ -4505,12 +4505,35 @@
     ],
     "xrp_cost": 7.99379681367259,
     "xrp_usd_entry": 1.25097
+   },
+   {
+    "amm_fee": 0.00062,
+    "currency": "42524954544F0000000000000000000000000000",
+    "entry_eff_px": 7.721249976936562e-06,
+    "entry_spot": 7.704046464051132e-06,
+    "issuer": "rfxwXDzenkYoXSEbNA4cZjaT9FY3eeL47e",
+    "key": "rfxwXDzenkYoXSEbNA4cZjaT9FY3eeL47e-42524954544F0000000000000000000000000000",
+    "legs": [],
+    "name": "BRITTO",
+    "pool_xrp_entry": 4952.184432,
+    "remaining": 1.0,
+    "t": 1793598659.1438246,
+    "tf": 0.0,
+    "tokens_gross": 1035012.2161542501,
+    "tokens_net": 1032706.1328062983,
+    "tp_done": false,
+    "trigger": "dip_bounce: 15.7% below 24h high 9.14194e-06 XRP, age 744.2d",
+    "ts": "2026-11-02T05:50:59+00:00",
+    "usd_cost": 10.0,
+    "warnings": [],
+    "xrp_cost": 7.973782204112877,
+    "xrp_usd_entry": 1.25411
    }
   ],
   "start_ts": "2026-10-24T13:37:52+00:00",
   "start_usd": 100.0,
   "start_xrp_usd": 1.28033,
-  "trustset_fees_xrp": 0.2855810000000002
+  "trustset_fees_xrp": 0.2856010000000002
  },
  "hold": {
   "buys_today": 0,
@@ -7270,7 +7293,7 @@
     "excursion_src": "live from 2026-11-01T02:51",
     "issuer": "rU5nUwkBUPx3MFPQSHmMnr9S9yg4g8cKLc",
     "key": "rU5nUwkBUPx3MFPQSHmMnr9S9yg4g8cKLc-XYZ",
-    "last_ratio_net": 1.0462,
+    "last_ratio_net": 1.0465,
     "legs": [],
     "name": "XYZ",
     "peak_hours": 22.97,
@@ -15556,7 +15579,7 @@
     "last_ratio_net": 1.0044,
     "legs": [],
     "name": "NORTH",
-    "peak_hours": 5.7,
+    "peak_hours": 5.79,
     "peak_x": 1.0044,
     "pool_xrp_entry": 17584.027772,
     "remaining": 1.0,
@@ -15584,7 +15607,7 @@
     "last_ratio_net": 1.0342,
     "legs": [],
     "name": "AmericaFirst",
-    "peak_hours": 5.7,
+    "peak_hours": 5.79,
     "peak_x": 1.0342,
     "pool_xrp_entry": 6758.960972,
     "remaining": 1.0,
