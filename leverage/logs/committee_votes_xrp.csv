@@ -661,3 +661,4 @@ ts,coin,decision,in_position,long_scout,short_scout,idle_guard,chart_reader,long
 2026-11-02T13:30:00+00:00,XRPUSDT,IDLE,SHORT,IDLE,IDLE,IDLE,SHORT,0,0,0,0.7,no uptrend,"downtrend, no bounce/breakdown",choppy ADX 11,lower highs + lower lows below EMA50,0.0032,1.39,3.78,75,37,,0,0,down,down,below,0.1,,,
 2026-11-02T13:45:00+00:00,XRPUSDT,IDLE,SHORT,IDLE,IDLE,IDLE,SHORT,0,0,0,0.7,no uptrend,"downtrend, no bounce/breakdown",choppy ADX 11,lower highs + lower lows below EMA50,0.0032,1.39,3.78,75,37,,0,0,down,down,below,0.1,,,
 2026-11-02T14:00:00+00:00,XRPUSDT,IDLE,SHORT,IDLE,IDLE,IDLE,SHORT,0,0,0,0.6,no uptrend,no downtrend,choppy ADX 12,at resistance 1.2567,0.0032,2.22,3.7,52,37,,0,0,down,down,below,0.08,,,
+2026-11-02T14:15:00+00:00,XRPUSDT,IDLE,SHORT,IDLE,IDLE,IDLE,SHORT,0,0,0,0.6,no uptrend,no downtrend,choppy ADX 12,at resistance 1.2567,0.0032,2.22,3.7,52,37,,0,0,down,down,below,0.08,,,
