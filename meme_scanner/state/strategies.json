@@ -948,8 +948,8 @@
   "trustset_fees_xrp": 0.03166299999999997
  },
  "dip_bounce": {
-  "buys_today": 2,
-  "cash_usd": 77.585621,
+  "buys_today": 3,
+  "cash_usd": 67.585596,
   "closed": [
    {
     "amm_fee": 0.00255,
@@ -4356,7 +4356,7 @@
    "rszenFJoDdiGjyezQc8pME9KWDQH43Tswh-44524F5000000000000000000000000000000000": 1793237291.5620797,
    "rwfGtVZKpPX6vb51xE5RGTgXkQ4W9wSUrz-53504C4153480000000000000000000000000000": 1793053970.4369965
   },
-  "net_fees_xrp": 0.5712420000000034,
+  "net_fees_xrp": 0.5712820000000034,
   "positions": [
    {
     "amm_fee": 0.01,
@@ -4399,7 +4399,7 @@
     "last_ratio_net": 1.0068,
     "legs": [],
     "name": "NORTH",
-    "peak_hours": 8.61,
+    "peak_hours": 8.69,
     "peak_x": 1.0068,
     "pool_xrp_entry": 17555.285293,
     "remaining": 1.0,
@@ -4454,11 +4454,11 @@
     "excursion_src": "live from 2026-11-02T00:44",
     "issuer": "rnNErmg9xVmcxxNZUwivbJSH6i9GUwYPFj",
     "key": "rnNErmg9xVmcxxNZUwivbJSH6i9GUwYPFj-434F444544000000000000000000000000000000",
-    "last_ratio_net": 0.9858,
+    "last_ratio_net": 0.9863,
     "legs": [],
     "name": "CODED",
-    "peak_hours": 4.77,
-    "peak_x": 0.9858,
+    "peak_hours": 4.86,
+    "peak_x": 0.9863,
     "pool_xrp_entry": 4460.796291,
     "remaining": 1.0,
     "t": 1793579978.6961,
@@ -4475,12 +4475,37 @@
     ],
     "xrp_cost": 8.04608799201828,
     "xrp_usd_entry": 1.24284
+   },
+   {
+    "amm_fee": 0.0034,
+    "currency": "5941474100000000000000000000000000000000",
+    "entry_eff_px": 1.3908435129256279e-05,
+    "entry_spot": 1.3833271169242867e-05,
+    "issuer": "rpYYe5GQWX7hEPkyMGuDnaCvYM74BxtBLL",
+    "key": "rpYYe5GQWX7hEPkyMGuDnaCvYM74BxtBLL-5941474100000000000000000000000000000000",
+    "legs": [],
+    "name": "YAGA",
+    "pool_xrp_entry": 3958.395538,
+    "remaining": 1.0,
+    "t": 1793597459.0491607,
+    "tf": 0.0,
+    "tokens_gross": 577867.4267187167,
+    "tokens_net": 574744.5157836416,
+    "tp_done": false,
+    "trigger": "dip_bounce: 48.3% below 24h high 2.67774e-05 XRP, age 729.2d",
+    "ts": "2026-11-02T05:30:59+00:00",
+    "usd_cost": 10.0,
+    "warnings": [
+     "top-10 holders own 35%"
+    ],
+    "xrp_cost": 7.99379681367259,
+    "xrp_usd_entry": 1.25097
    }
   ],
   "start_ts": "2026-10-24T13:37:52+00:00",
   "start_usd": 100.0,
   "start_xrp_usd": 1.28033,
-  "trustset_fees_xrp": 0.2855610000000002
+  "trustset_fees_xrp": 0.2855810000000002
  },
  "hold": {
   "buys_today": 0,
@@ -15526,7 +15551,7 @@
     "last_ratio_net": 1.0044,
     "legs": [],
     "name": "NORTH",
-    "peak_hours": 5.37,
+    "peak_hours": 5.45,
     "peak_x": 1.0044,
     "pool_xrp_entry": 17584.027772,
     "remaining": 1.0,
@@ -15612,7 +15637,7 @@
     "excursion_src": "live from 2026-11-02T00:50",
     "issuer": "rPrAEfVATUNDTJm9CUa8tYeD7oJrVdEGhU",
     "key": "rPrAEfVATUNDTJm9CUa8tYeD7oJrVdEGhU-4641524D00000000000000000000000000000000",
-    "last_ratio_net": 0.9558,
+    "last_ratio_net": 0.9559,
     "legs": [],
     "name": "FARM",
     "peak_hours": 0.01,
