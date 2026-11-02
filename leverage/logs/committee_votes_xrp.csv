@@ -616,3 +616,5 @@ ts,coin,decision,in_position,long_scout,short_scout,idle_guard,chart_reader,long
 2026-11-02T02:15:00+00:00,XRPUSDT,IDLE,SHORT,IDLE,IDLE,IDLE,IDLE,0,0,0,0,no uptrend,no downtrend,choppy ADX 15,no clear structure,0.0032,1.25,3.64,46,37,,0,0,down,down,below,0.23,,,
 2026-11-02T02:30:00+00:00,XRPUSDT,IDLE,SHORT,IDLE,IDLE,IDLE,IDLE,0,0,0,0,no uptrend,no downtrend,choppy ADX 15,no clear structure,0.0032,1.25,3.64,46,37,,0,0,down,down,below,0.23,,,
 2026-11-02T02:45:00+00:00,XRPUSDT,IDLE,SHORT,IDLE,IDLE,IDLE,IDLE,0,0,0,0,no uptrend,no downtrend,choppy ADX 15,no clear structure,0.0032,1.25,3.64,46,37,,0,0,down,down,below,0.23,,,
+2026-11-02T03:00:00+00:00,XRPUSDT,IDLE,SHORT,IDLE,IDLE,IDLE,IDLE,0,0,0,0,no uptrend,"downtrend, no bounce/breakdown",choppy ADX 14,"R3: last 4h close below the 4h EMA200, no new longs",0.0032,0.56,3.71,61,37,,0,0,down,down,below,0.36,,R3 no longs below 4h EMA200,
+2026-11-02T03:15:00+00:00,XRPUSDT,IDLE,SHORT,IDLE,IDLE,IDLE,IDLE,0,0,0,0,no uptrend,"downtrend, no bounce/breakdown",choppy ADX 14,"R3: last 4h close below the 4h EMA200, no new longs",0.0032,0.56,3.71,61,37,,0,0,down,down,below,0.36,,R3 no longs below 4h EMA200,
