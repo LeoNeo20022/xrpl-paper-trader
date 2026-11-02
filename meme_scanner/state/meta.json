@@ -6,10 +6,10 @@
  "excursion_backfill_exit_rows": 46,
  "excursion_backfill_fails": 0,
  "excursion_backfill_open": 35,
- "last_discovery": "2026-11-02T12:37:06+00:00",
- "last_discovery_t": 1793623026.9643357,
- "last_run": "2026-11-02T12:37:06+00:00",
- "last_scanned_ledger": 108067051,
+ "last_discovery": "2026-11-02T12:42:07+00:00",
+ "last_discovery_t": 1793623327.1955109,
+ "last_run": "2026-11-02T12:42:07+00:00",
+ "last_scanned_ledger": 108067127,
  "last_stats": {
   "bought": {
    "breakout": 0,
@@ -31,7 +31,7 @@
   },
   "ohlc_calls": 0,
   "passed": 0,
-  "runtime_s": 57.1,
+  "runtime_s": 76.7,
   "seen": 0
  },
  "network_fee_xrp_used": 2e-05,
@@ -42,7 +42,7 @@
   "xrpl.to volume list failed: <HTTPError 530: '<none>'>",
   "xrpl.to momentum list failed: <HTTPError 530: '<none>'>"
  ],
- "xrp_usd": 1.2503,
+ "xrp_usd": 1.2481,
  "xrp_usd_src": "bitstamp",
  "xrplto_calls_last_discovery": 4,
  "xrplto_keyed": true,
