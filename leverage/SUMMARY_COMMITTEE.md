@@ -7,13 +7,13 @@ Rule-based: long scout, short scout, idle guard, chart reader, with crowding, Fe
 
 | Line | Started | Position | Trades (wins) | **$50: profit** | $50: worst drawdown, low | $50: liq. | **$100: profit** | $100: worst drawdown, low | $100: liq. | **$500: profit** | $500: worst drawdown, low | $500: liq. |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| `com_xrp_2x` | 2026-10-26T16:40:00+00:00 | SHORT | 1 (0) | **-1.10** | -2.01 (4.0%), low -1.84 | 0 | **-2.20** | -4.01 (4.0%), low -3.68 | 0 | **-11.01** | -20.06 (4.0%), low -18.38 | 0 |
-| `com_xrp_5x` | 2026-10-26T16:40:00+00:00 | SHORT | 1 (0) | **-2.76** | -4.95 (9.8%), low -4.53 | 0 | **-5.51** | -9.90 (9.8%), low -9.06 | 0 | **-27.56** | -49.49 (9.8%), low -45.29 | 0 |
-| `com_xrp_mix` | 2026-10-26T17:00:00+00:00 | SHORT | 1 (0) | **-1.10** | -2.01 (4.0%), low -1.84 | 0 | **-2.20** | -4.01 (4.0%), low -3.68 | 0 | **-11.01** | -20.06 (4.0%), low -18.38 | 0 |
+| `com_xrp_2x` | 2026-10-26T16:40:00+00:00 | SHORT | 1 (0) | **-1.02** | -2.01 (4.0%), low -1.84 | 0 | **-2.05** | -4.01 (4.0%), low -3.68 | 0 | **-10.23** | -20.06 (4.0%), low -18.38 | 0 |
+| `com_xrp_5x` | 2026-10-26T16:40:00+00:00 | SHORT | 1 (0) | **-2.57** | -4.95 (9.8%), low -4.53 | 0 | **-5.14** | -9.90 (9.8%), low -9.06 | 0 | **-25.70** | -49.49 (9.8%), low -45.29 | 0 |
+| `com_xrp_mix` | 2026-10-26T17:00:00+00:00 | SHORT | 1 (0) | **-1.02** | -2.01 (4.0%), low -1.84 | 0 | **-2.05** | -4.01 (4.0%), low -3.68 | 0 | **-10.23** | -20.06 (4.0%), low -18.38 | 0 |
 | `com_xrp_proxy_2x` | 2026-10-26T17:00:00+00:00 | FLAT | 0 (0) | **+0.00** | -0.00 (0.0%), low +0.00 | 0 | **+0.00** | -0.00 (0.0%), low +0.00 | 0 | **+0.00** | -0.00 (0.0%), low +0.00 | 0 |
 | `com_xrp_proxy_5x` | 2026-10-26T17:00:00+00:00 | FLAT | 0 (0) | **+0.00** | -0.00 (0.0%), low +0.00 | 0 | **+0.00** | -0.00 (0.0%), low +0.00 | 0 | **+0.00** | -0.00 (0.0%), low +0.00 | 0 |
 | `com_xrp_proxy_mix` | 2026-10-26T17:00:00+00:00 | FLAT | 0 (0) | **+0.00** | -0.00 (0.0%), low +0.00 | 0 | **+0.00** | -0.00 (0.0%), low +0.00 | 0 | **+0.00** | -0.00 (0.0%), low +0.00 | 0 |
-| `com_xrp_5x_quick` | 2026-10-26T17:15:00+00:00 | SHORT | 1 (0) | **-2.63** | -4.82 (9.6%), low -4.40 | 0 | **-5.25** | -9.65 (9.6%), low -8.81 | 0 | **-26.27** | -48.24 (9.6%), low -44.05 | 0 |
+| `com_xrp_5x_quick` | 2026-10-26T17:15:00+00:00 | SHORT | 1 (0) | **-2.44** | -4.82 (9.6%), low -4.40 | 0 | **-4.88** | -9.65 (9.6%), low -8.81 | 0 | **-24.40** | -48.24 (9.6%), low -44.05 | 0 |
 | `com_btc_2x` | 2026-10-26T16:40:00+00:00 | FLAT | 3 (0) | **-2.07** | -2.07 (4.2%), low -2.07 | 0 | **-4.15** | -4.15 (4.2%), low -4.15 | 0 | **-20.74** | -20.74 (4.2%), low -20.74 | 0 |
 | `com_btc_5x` | 2026-10-26T16:40:00+00:00 | FLAT | 3 (0) | **-5.08** | -5.08 (10.2%), low -5.08 | 0 | **-10.17** | -10.17 (10.2%), low -10.17 | 0 | **-50.84** | -50.84 (10.2%), low -50.84 | 0 |
 | `com_btc_mix` | 2026-10-26T17:00:00+00:00 | FLAT | 3 (0) | **-2.07** | -2.07 (4.2%), low -2.07 | 0 | **-4.15** | -4.15 (4.2%), low -4.15 | 0 | **-20.74** | -20.74 (4.2%), low -20.74 | 0 |
@@ -26,22 +26,22 @@ Rule-based: long scout, short scout, idle guard, chart reader, with crowding, Fe
 
 | Line | Started | **Value (USD, if closed now)** | Change vs $100 | **vs holding the coin** | Position (entry / stop / target / liq) | Trades (wins) | Longs / shorts | Ties | Fees + funding | **Liquidations** | Max drawdown | Last votes |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| `com_xrp_2x` | 2026-10-26T16:40:00+00:00 | **$97.80** | -2.20 | **+0.51** | SHORT (1.258171 / 1.27706 / 1.220392 / 1.877848) | 1 (0) | 0 / 2 | 0 | $0.28 | **0** | 4.0% | {"long_scout": "IDLE", "short_scout": "IDLE", "idle_guard": "IDLE", "chart_reader": "IDLE"} |
-| `com_xrp_5x` | 2026-10-26T16:40:00+00:00 | **$94.49** | -5.51 | **-2.80** | SHORT (1.258171 / 1.27706 / 1.220392 / 1.502275) | 1 (0) | 0 / 2 | 0 | $0.69 | **0** | 9.8% | {"long_scout": "IDLE", "short_scout": "IDLE", "idle_guard": "IDLE", "chart_reader": "IDLE"} |
-| `com_xrp_mix` (5x trades: 0) | 2026-10-26T17:00:00+00:00 | **$97.80** | -2.20 | **+1.00** | SHORT (1.258171 / 1.27706 / 1.220392 / 1.877848) | 1 (0) | 0 / 2 | 0 | $0.28 | **0** | 4.0% | {"long_scout": "IDLE", "short_scout": "IDLE", "idle_guard": "IDLE", "chart_reader": "IDLE"} |
-| `com_xrp_proxy_2x` | 2026-10-26T17:00:00+00:00 | **$100.00** | +0.00 | **+3.20** | FLAT | 0 (0) | 0 / 0 | 0 | $0.00 | **0** | 0.0% | {"casey": "IDLE", "pip": "IDLE", "theo": "SHORT", "remy": "IDLE"} |
-| `com_xrp_proxy_5x` | 2026-10-26T17:00:00+00:00 | **$100.00** | +0.00 | **+3.20** | FLAT | 0 (0) | 0 / 0 | 0 | $0.00 | **0** | 0.0% | {"casey": "IDLE", "pip": "IDLE", "theo": "SHORT", "remy": "IDLE"} |
-| `com_xrp_proxy_mix` (5x trades: 0) | 2026-10-26T17:00:00+00:00 | **$100.00** | +0.00 | **+3.20** | FLAT | 0 (0) | 0 / 0 | 0 | $0.00 | **0** | 0.0% | {"casey": "IDLE", "pip": "IDLE", "theo": "SHORT", "remy": "IDLE"} |
-| `com_xrp_5x_quick` | 2026-10-26T17:15:00+00:00 | **$94.75** | -5.25 | **-1.68** | SHORT (1.258171 / 1.270752 / 1.239298 / 1.502275) | 1 (0) | 0 / 2 | 0 | $0.69 | **0** | 9.6% | {"long_scout": "IDLE", "short_scout": "IDLE", "idle_guard": "IDLE", "chart_reader": "IDLE"} |
-| `com_btc_2x` | 2026-10-26T16:40:00+00:00 | **$95.85** | -4.15 | **-2.17** | FLAT | 3 (0) | 0 / 3 | 0 | $0.53 | **0** | 4.2% | {"long_scout": "IDLE", "short_scout": "IDLE", "idle_guard": "SHORT", "chart_reader": "IDLE"} |
-| `com_btc_5x` | 2026-10-26T16:40:00+00:00 | **$89.83** | -10.17 | **-8.19** | FLAT | 3 (0) | 0 / 3 | 0 | $1.31 | **0** | 10.2% | {"long_scout": "IDLE", "short_scout": "IDLE", "idle_guard": "SHORT", "chart_reader": "IDLE"} |
-| `com_btc_mix` (5x trades: 0) | 2026-10-26T17:00:00+00:00 | **$95.85** | -4.15 | **-1.80** | FLAT | 3 (0) | 0 / 3 | 0 | $0.53 | **0** | 4.2% | {"long_scout": "IDLE", "short_scout": "IDLE", "idle_guard": "SHORT", "chart_reader": "IDLE"} |
-| `com_btc_proxy_2x` | 2026-10-26T17:00:00+00:00 | **$100.00** | +0.00 | **+2.34** | FLAT | 0 (0) | 0 / 0 | 0 | $0.00 | **0** | 0.0% | {"casey": "IDLE", "pip": "IDLE", "theo": "SHORT", "remy": "IDLE"} |
-| `com_btc_proxy_5x` | 2026-10-26T17:00:00+00:00 | **$100.00** | +0.00 | **+2.34** | FLAT | 0 (0) | 0 / 0 | 0 | $0.00 | **0** | 0.0% | {"casey": "IDLE", "pip": "IDLE", "theo": "SHORT", "remy": "IDLE"} |
-| `com_btc_proxy_mix` (5x trades: 0) | 2026-10-26T17:00:00+00:00 | **$100.00** | +0.00 | **+2.34** | FLAT | 0 (0) | 0 / 0 | 0 | $0.00 | **0** | 0.0% | {"casey": "IDLE", "pip": "IDLE", "theo": "SHORT", "remy": "IDLE"} |
-| `com_btc_5x_quick` | 2026-10-26T17:15:00+00:00 | **$89.83** | -10.17 | **-7.51** | FLAT | 3 (0) | 0 / 3 | 0 | $1.31 | **0** | 10.2% | {"long_scout": "IDLE", "short_scout": "IDLE", "idle_guard": "SHORT", "chart_reader": "IDLE"} |
-- Crowding XRPUSDT now: funding 0.0032%/8h, OI 24h 0.5%, long/short accounts 3.78 (79th pct of 7d), Fear & Greed 37 -> **not crowded** (sources: okx_rubik, alternative.me)
-- Crowding BTCUSDT now: funding 0.01%/8h, OI 24h -1.76%, long/short accounts 2.22 (42th pct of 7d), Fear & Greed 37 -> **not crowded** (sources: okx_rubik, alternative.me)
+| `com_xrp_2x` | 2026-10-26T16:40:00+00:00 | **$97.95** | -2.05 | **+0.74** | SHORT (1.258171 / 1.27706 / 1.220392 / 1.877848) | 1 (0) | 0 / 2 | 0 | $0.28 | **0** | 4.0% | {"long_scout": "IDLE", "short_scout": "IDLE", "idle_guard": "IDLE", "chart_reader": "IDLE"} |
+| `com_xrp_5x` | 2026-10-26T16:40:00+00:00 | **$94.86** | -5.14 | **-2.35** | SHORT (1.258171 / 1.27706 / 1.220392 / 1.502275) | 1 (0) | 0 / 2 | 0 | $0.69 | **0** | 9.8% | {"long_scout": "IDLE", "short_scout": "IDLE", "idle_guard": "IDLE", "chart_reader": "IDLE"} |
+| `com_xrp_mix` (5x trades: 0) | 2026-10-26T17:00:00+00:00 | **$97.95** | -2.05 | **+1.23** | SHORT (1.258171 / 1.27706 / 1.220392 / 1.877848) | 1 (0) | 0 / 2 | 0 | $0.28 | **0** | 4.0% | {"long_scout": "IDLE", "short_scout": "IDLE", "idle_guard": "IDLE", "chart_reader": "IDLE"} |
+| `com_xrp_proxy_2x` | 2026-10-26T17:00:00+00:00 | **$100.00** | +0.00 | **+3.28** | FLAT | 0 (0) | 0 / 0 | 0 | $0.00 | **0** | 0.0% | {"casey": "IDLE", "pip": "IDLE", "theo": "SHORT", "remy": "IDLE"} |
+| `com_xrp_proxy_5x` | 2026-10-26T17:00:00+00:00 | **$100.00** | +0.00 | **+3.28** | FLAT | 0 (0) | 0 / 0 | 0 | $0.00 | **0** | 0.0% | {"casey": "IDLE", "pip": "IDLE", "theo": "SHORT", "remy": "IDLE"} |
+| `com_xrp_proxy_mix` (5x trades: 0) | 2026-10-26T17:00:00+00:00 | **$100.00** | +0.00 | **+3.28** | FLAT | 0 (0) | 0 / 0 | 0 | $0.00 | **0** | 0.0% | {"casey": "IDLE", "pip": "IDLE", "theo": "SHORT", "remy": "IDLE"} |
+| `com_xrp_5x_quick` | 2026-10-26T17:15:00+00:00 | **$95.12** | -4.88 | **-1.23** | SHORT (1.258171 / 1.270752 / 1.239298 / 1.502275) | 1 (0) | 0 / 2 | 0 | $0.69 | **0** | 9.6% | {"long_scout": "IDLE", "short_scout": "IDLE", "idle_guard": "IDLE", "chart_reader": "IDLE"} |
+| `com_btc_2x` | 2026-10-26T16:40:00+00:00 | **$95.85** | -4.15 | **-2.10** | FLAT | 3 (0) | 0 / 3 | 0 | $0.53 | **0** | 4.2% | {"long_scout": "IDLE", "short_scout": "IDLE", "idle_guard": "SHORT", "chart_reader": "IDLE"} |
+| `com_btc_5x` | 2026-10-26T16:40:00+00:00 | **$89.83** | -10.17 | **-8.12** | FLAT | 3 (0) | 0 / 3 | 0 | $1.31 | **0** | 10.2% | {"long_scout": "IDLE", "short_scout": "IDLE", "idle_guard": "SHORT", "chart_reader": "IDLE"} |
+| `com_btc_mix` (5x trades: 0) | 2026-10-26T17:00:00+00:00 | **$95.85** | -4.15 | **-1.74** | FLAT | 3 (0) | 0 / 3 | 0 | $0.53 | **0** | 4.2% | {"long_scout": "IDLE", "short_scout": "IDLE", "idle_guard": "SHORT", "chart_reader": "IDLE"} |
+| `com_btc_proxy_2x` | 2026-10-26T17:00:00+00:00 | **$100.00** | +0.00 | **+2.40** | FLAT | 0 (0) | 0 / 0 | 0 | $0.00 | **0** | 0.0% | {"casey": "IDLE", "pip": "IDLE", "theo": "SHORT", "remy": "IDLE"} |
+| `com_btc_proxy_5x` | 2026-10-26T17:00:00+00:00 | **$100.00** | +0.00 | **+2.40** | FLAT | 0 (0) | 0 / 0 | 0 | $0.00 | **0** | 0.0% | {"casey": "IDLE", "pip": "IDLE", "theo": "SHORT", "remy": "IDLE"} |
+| `com_btc_proxy_mix` (5x trades: 0) | 2026-10-26T17:00:00+00:00 | **$100.00** | +0.00 | **+2.40** | FLAT | 0 (0) | 0 / 0 | 0 | $0.00 | **0** | 0.0% | {"casey": "IDLE", "pip": "IDLE", "theo": "SHORT", "remy": "IDLE"} |
+| `com_btc_5x_quick` | 2026-10-26T17:15:00+00:00 | **$89.83** | -10.17 | **-7.45** | FLAT | 3 (0) | 0 / 3 | 0 | $1.31 | **0** | 10.2% | {"long_scout": "IDLE", "short_scout": "IDLE", "idle_guard": "SHORT", "chart_reader": "IDLE"} |
+- Crowding XRPUSDT now: funding 0.0032%/8h, OI 24h 0.78%, long/short accounts 3.84 (90th pct of 7d), Fear & Greed 37 -> **not crowded** (sources: okx_rubik, alternative.me)
+- Crowding BTCUSDT now: funding 0.01%/8h, OI 24h -2.38%, long/short accounts 2.23 (44th pct of 7d), Fear & Greed 37 -> **not crowded** (sources: okx_rubik, alternative.me)
 
 Mix = 2x, stepping to 5x only on strong reads (4/4 agree, or avg confidence >= 0.75 with 1h and 4h trends aligned). Crowding = >= 2 of funding extreme, OI +5%/24h, long/short ratio extreme vs 7 days, Fear & Greed extreme.
 
