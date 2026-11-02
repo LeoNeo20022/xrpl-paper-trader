@@ -2747,6 +2747,17 @@
   "verdict": "FAIL_SAFETY",
   "warnings": ""
  },
+ "reSJGGoVH3jKaweFg89BWiWwGTj8YxohS-YBS": {
+  "first_seen": "2026-11-02T13:07:07+00:00",
+  "last_seen": "2026-11-02T13:07:07+00:00",
+  "name": "YBS",
+  "pool_xrp": 3000,
+  "reasons": "issuer requires authorization; issuer not blackholed (can still mint/freeze)",
+  "sig": "FAIL_SAFETY|issuer requires authorization; issuer not blackholed (can still mint/freeze)",
+  "url": "https://xrpl.to/token/reSJGGoVH3jKaweFg89BWiWwGTj8YxohS-YBS",
+  "verdict": "FAIL_SAFETY",
+  "warnings": "issuer can freeze trust lines"
+ },
  "rf5Jzzy6oAFBJjLhokha1v8pXVgYYjee3b-ARK": {
   "first_seen": "2026-11-01T08:23:29+00:00",
   "last_seen": "2026-11-02T07:00:09+00:00",
