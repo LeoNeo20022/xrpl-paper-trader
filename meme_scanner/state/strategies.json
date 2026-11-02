@@ -948,8 +948,8 @@
   "trustset_fees_xrp": 0.03166299999999997
  },
  "dip_bounce": {
-  "buys_today": 7,
-  "cash_usd": 55.027368,
+  "buys_today": 8,
+  "cash_usd": 45.027343,
   "closed": [
    {
     "amm_fee": 0.00255,
@@ -4484,7 +4484,7 @@
    "rszenFJoDdiGjyezQc8pME9KWDQH43Tswh-44524F5000000000000000000000000000000000": 1793237291.5620797,
    "rwfGtVZKpPX6vb51xE5RGTgXkQ4W9wSUrz-53504C4153480000000000000000000000000000": 1793053970.4369965
   },
-  "net_fees_xrp": 0.5982680000000036,
+  "net_fees_xrp": 0.5983080000000036,
   "positions": [
    {
     "amm_fee": 0.00386,
@@ -4524,7 +4524,7 @@
     "excursion_src": "live from 2026-11-02T00:44",
     "issuer": "rnNErmg9xVmcxxNZUwivbJSH6i9GUwYPFj",
     "key": "rnNErmg9xVmcxxNZUwivbJSH6i9GUwYPFj-434F444544000000000000000000000000000000",
-    "last_ratio_net": 1.0645,
+    "last_ratio_net": 1.0519,
     "legs": [],
     "name": "CODED",
     "peak_hours": 19.38,
@@ -4582,11 +4582,11 @@
     "excursion_src": "live from 2026-11-02T10:05",
     "issuer": "rs5wxrBTSErywDDfPs5NY4Zorrca5QMGVd",
     "key": "rs5wxrBTSErywDDfPs5NY4Zorrca5QMGVd-4F70756C656E6365000000000000000000000000",
-    "last_ratio_net": 1.062,
+    "last_ratio_net": 1.0643,
     "legs": [],
     "name": "Opulence",
-    "peak_hours": 9.08,
-    "peak_x": 1.0642,
+    "peak_hours": 10.96,
+    "peak_x": 1.0643,
     "pool_xrp_entry": 20389.207555,
     "remaining": 1.0,
     "t": 1793613644.583908,
@@ -4646,7 +4646,7 @@
     "last_ratio_net": 0.9789,
     "legs": [],
     "name": "PIGEONS",
-    "peak_hours": 2.22,
+    "peak_hours": 2.31,
     "peak_x": 0.9789,
     "pool_xrp_entry": 10899.59404,
     "remaining": 1.0,
@@ -4664,12 +4664,37 @@
     ],
     "xrp_cost": 8.073370793773817,
     "xrp_usd_entry": 1.23864
+   },
+   {
+    "amm_fee": 0.01,
+    "currency": "42464F4F54000000000000000000000000000000",
+    "entry_eff_px": 6.185389475013809e-06,
+    "entry_spot": 6.114683467081438e-06,
+    "issuer": "rEjQsRE5gJDng9bnkV2WUYPtgtkD28fWMd",
+    "key": "rEjQsRE5gJDng9bnkV2WUYPtgtkD28fWMd-42464F4F54000000000000000000000000000000",
+    "legs": [],
+    "name": "BFOOT",
+    "pool_xrp_entry": 5499.165636,
+    "remaining": 1.0,
+    "t": 1793653111.7783308,
+    "tf": 0.0,
+    "tokens_gross": 1312842.281828927,
+    "tokens_net": 1297835.0074821906,
+    "tp_done": false,
+    "trigger": "dip_bounce: 19.4% below 24h high 7.58568e-06 XRP, age 60.9d",
+    "ts": "2026-11-02T20:58:31+00:00",
+    "usd_cost": 10.0,
+    "warnings": [
+     "top-10 holders own 47%"
+    ],
+    "xrp_cost": 8.02761499558481,
+    "xrp_usd_entry": 1.2457
    }
   ],
   "start_ts": "2026-10-24T13:37:52+00:00",
   "start_usd": 100.0,
   "start_xrp_usd": 1.28033,
-  "trustset_fees_xrp": 0.29907400000000034
+  "trustset_fees_xrp": 0.29909400000000036
  },
  "hold": {
   "buys_today": 9,
