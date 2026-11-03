@@ -13,7 +13,7 @@
  "max_dd_pct": 5.77842161456309,
  "realised_usd": -28.89210807281546,
  "last_signal_ts": 1793666700,
- "last_funding_ts": 1793692800,
+ "last_funding_ts": 1793721600,
  "last_stop_ts": 1793712600,
  "ties": [],
  "shadows": [],
@@ -21,9 +21,9 @@
   "LONG": 0,
   "SHORT": 21,
   "TIE": 0,
-  "IDLE": 744
+  "IDLE": 745
  },
- "last_run": "2026-11-03T15:56:38+00:00",
+ "last_run": "2026-11-03T16:11:38+00:00",
  "crowded_votes": 128,
  "rules_fired": {
   "R6": 56,
