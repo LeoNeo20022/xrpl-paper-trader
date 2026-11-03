@@ -948,8 +948,8 @@
   "trustset_fees_xrp": 0.03166299999999997
  },
  "dip_bounce": {
-  "buys_today": 5,
-  "cash_usd": 64.150941,
+  "buys_today": 6,
+  "cash_usd": 54.150916,
   "closed": [
    {
     "amm_fee": 0.00255,
@@ -4872,7 +4872,7 @@
    "rszenFJoDdiGjyezQc8pME9KWDQH43Tswh-44524F5000000000000000000000000000000000": 1793237291.5620797,
    "rwfGtVZKpPX6vb51xE5RGTgXkQ4W9wSUrz-53504C4153480000000000000000000000000000": 1793053970.4369965
   },
-  "net_fees_xrp": 0.6396820000000043,
+  "net_fees_xrp": 0.6397220000000043,
   "positions": [
    {
     "amm_fee": 0.00214,
@@ -4915,7 +4915,7 @@
     "last_ratio_net": 0.9789,
     "legs": [],
     "name": "PIGEONS",
-    "peak_hours": 12.98,
+    "peak_hours": 13.06,
     "peak_x": 0.9789,
     "pool_xrp_entry": 10899.59404,
     "remaining": 1.0,
@@ -5000,11 +5000,11 @@
     "excursion_src": "live from 2026-11-03T06:52",
     "issuer": "rpYYe5GQWX7hEPkyMGuDnaCvYM74BxtBLL",
     "key": "rpYYe5GQWX7hEPkyMGuDnaCvYM74BxtBLL-5941474100000000000000000000000000000000",
-    "last_ratio_net": 0.9888,
+    "last_ratio_net": 0.9889,
     "legs": [],
     "name": "YAGA",
-    "peak_hours": 0.86,
-    "peak_x": 0.9888,
+    "peak_hours": 0.95,
+    "peak_x": 0.9889,
     "pool_xrp_entry": 3452.879495,
     "remaining": 1.0,
     "t": 1793688438.273781,
@@ -5021,12 +5021,37 @@
     ],
     "xrp_cost": 8.01988932552731,
     "xrp_usd_entry": 1.2469
+   },
+   {
+    "amm_fee": 0.01,
+    "currency": "RDL",
+    "entry_eff_px": 1.1600543114287577e-05,
+    "entry_spot": 1.1452907163153144e-05,
+    "issuer": "r9xvnzUWZJpDu3NA6MKHmKhKJQTRqCRgu9",
+    "key": "r9xvnzUWZJpDu3NA6MKHmKhKJQTRqCRgu9-RDL",
+    "legs": [],
+    "name": "RDL",
+    "pool_xrp_entry": 2868.561502,
+    "remaining": 1.0,
+    "t": 1793691844.9321427,
+    "tf": 0.0,
+    "tokens_gross": 698088.1658796119,
+    "tokens_net": 689203.8481946585,
+    "tp_done": false,
+    "trigger": "dip_bounce: 24.0% below 24h high 1.50642e-05 XRP, age 539.3d",
+    "ts": "2026-11-03T07:44:04+00:00",
+    "usd_cost": 10.0,
+    "warnings": [
+     "top-10 holders own 38%"
+    ],
+    "xrp_cost": 7.9951389555150465,
+    "xrp_usd_entry": 1.25076
    }
   ],
   "start_ts": "2026-10-24T13:37:52+00:00",
   "start_usd": 100.0,
   "start_xrp_usd": 1.28033,
-  "trustset_fees_xrp": 0.31978100000000054
+  "trustset_fees_xrp": 0.31980100000000056
  },
  "hold": {
   "buys_today": 0,
@@ -6585,7 +6610,7 @@
     "excursion_src": "live from 2026-11-02T13:53",
     "issuer": "rU5nUwkBUPx3MFPQSHmMnr9S9yg4g8cKLc",
     "key": "rU5nUwkBUPx3MFPQSHmMnr9S9yg4g8cKLc-XYZ",
-    "last_ratio_net": 0.69,
+    "last_ratio_net": 0.8329,
     "legs": [],
     "name": "XYZ",
     "peak_hours": 7.69,
@@ -6614,7 +6639,7 @@
     "excursion_src": "live from 2026-11-02T13:53",
     "issuer": "r32nbPw6cyt3KdxinB4ua6WSLRrrF4SXAC",
     "key": "r32nbPw6cyt3KdxinB4ua6WSLRrrF4SXAC-4C61756768000000000000000000000000000000",
-    "last_ratio_net": 1.021,
+    "last_ratio_net": 1.0221,
     "legs": [],
     "name": "Laugh",
     "peak_hours": 6.92,
@@ -8266,7 +8291,7 @@
     "excursion_src": "live from 2026-11-01T02:51",
     "issuer": "rU5nUwkBUPx3MFPQSHmMnr9S9yg4g8cKLc",
     "key": "rU5nUwkBUPx3MFPQSHmMnr9S9yg4g8cKLc-XYZ",
-    "last_ratio_net": 0.9002,
+    "last_ratio_net": 1.0865,
     "legs": [],
     "name": "XYZ",
     "peak_hours": 42.59,
@@ -8468,7 +8493,7 @@
     "excursion_src": "live from 2026-11-02T13:53",
     "issuer": "r32nbPw6cyt3KdxinB4ua6WSLRrrF4SXAC",
     "key": "r32nbPw6cyt3KdxinB4ua6WSLRrrF4SXAC-4C61756768000000000000000000000000000000",
-    "last_ratio_net": 1.021,
+    "last_ratio_net": 1.0221,
     "legs": [],
     "name": "Laugh",
     "peak_hours": 6.92,
@@ -17697,7 +17722,7 @@
     "excursion_src": "live from 2026-11-03T00:16",
     "issuer": "rDFXbW2ZZCG5WgPtqwNiA2xZokLMm9ivmN",
     "key": "rDFXbW2ZZCG5WgPtqwNiA2xZokLMm9ivmN-50484E4958000000000000000000000000000000",
-    "last_ratio_net": 0.9824,
+    "last_ratio_net": 0.9825,
     "legs": [],
     "name": "PHNIX",
     "peak_hours": 1.54,
@@ -17725,7 +17750,7 @@
     "excursion_src": "live from 2026-11-03T00:27",
     "issuer": "rGLEgQdktoN4Be5thhk6seg1HifGPBxY5Q",
     "key": "rGLEgQdktoN4Be5thhk6seg1HifGPBxY5Q-PLX",
-    "last_ratio_net": 0.9837,
+    "last_ratio_net": 0.9835,
     "legs": [],
     "name": "PLX",
     "peak_hours": 1.11,
@@ -17738,7 +17763,7 @@
     "tokens_net": 44120.79446559061,
     "tp_done": false,
     "trigger": "slow_scalp: new/top-15 trending, round trip 0.99% <= 2.0%",
-    "trough_x": 0.9837,
+    "trough_x": 0.9835,
     "ts": "2026-11-03T00:22:33+00:00",
     "usd_cost": 10.0,
     "warnings": [
