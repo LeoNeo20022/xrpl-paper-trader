@@ -7,28 +7,43 @@
  "cash_usd": 0.0,
  "orders": [
   {
-   "price": 1.194546,
-   "usd": 15.543992289461883,
+   "price": 1.225323,
+   "usd": 6.217596915784753,
+   "step_pct": 2
+  },
+  {
+   "price": 1.200317,
+   "usd": 6.217596915784753,
+   "step_pct": 4
+  },
+  {
+   "price": 1.17531,
+   "usd": 6.217596915784753,
+   "step_pct": 6
+  },
+  {
+   "price": 1.150304,
+   "usd": 6.217596915784753,
    "step_pct": 8
   },
   {
-   "price": 1.168578,
-   "usd": 15.543992289461883,
+   "price": 1.125297,
+   "usd": 6.217596915784753,
    "step_pct": 10
   }
  ],
- "ref": 1.29842,
- "next_refresh_unix": 1793695500,
- "refreshes": 2,
+ "ref": 1.25033,
+ "next_refresh_unix": 1794300300,
+ "refreshes": 3,
  "buys": 4,
  "sells": 0,
  "fees_xrp": 8e-05,
  "type": "dip_ladder",
  "created": "2026-10-20T08:43:56+00:00",
- "last_run": "2026-11-03T08:39:53+00:00",
+ "last_run": "2026-11-03T08:54:53+00:00",
  "replayed": "2026-10-24",
- "netfee_extra_xrp": 0.00030000000000000003,
- "net_fees_xrp": 0.00038,
+ "netfee_extra_xrp": 0.036147,
+ "net_fees_xrp": 0.036226999999999995,
  "fees_trading_usd": 0.0014243119394618837,
  "fees_v2": true
 }
