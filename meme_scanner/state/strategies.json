@@ -948,8 +948,8 @@
   "trustset_fees_xrp": 0.03166299999999997
  },
  "dip_bounce": {
-  "buys_today": 7,
-  "cash_usd": 44.150891,
+  "buys_today": 8,
+  "cash_usd": 34.150866,
   "closed": [
    {
     "amm_fee": 0.00255,
@@ -4872,7 +4872,7 @@
    "rszenFJoDdiGjyezQc8pME9KWDQH43Tswh-44524F5000000000000000000000000000000000": 1793237291.5620797,
    "rwfGtVZKpPX6vb51xE5RGTgXkQ4W9wSUrz-53504C4153480000000000000000000000000000": 1793053970.4369965
   },
-  "net_fees_xrp": 0.6397620000000044,
+  "net_fees_xrp": 0.6398020000000044,
   "positions": [
    {
     "amm_fee": 0.00214,
@@ -4915,7 +4915,7 @@
     "last_ratio_net": 0.9789,
     "legs": [],
     "name": "PIGEONS",
-    "peak_hours": 16.69,
+    "peak_hours": 16.78,
     "peak_x": 0.9789,
     "pool_xrp_entry": 10899.59404,
     "remaining": 1.0,
@@ -5081,12 +5081,37 @@
     ],
     "xrp_cost": 7.9919441203267105,
     "xrp_usd_entry": 1.25126
+   },
+   {
+    "amm_fee": 0.00868,
+    "currency": "586F676500000000000000000000000000000000",
+    "entry_eff_px": 8.062586072529329e-10,
+    "entry_spot": 7.979522929691531e-10,
+    "issuer": "rJMtvf5B3GbuFMrqybh5wYVXEH4QE8VyU1",
+    "key": "rJMtvf5B3GbuFMrqybh5wYVXEH4QE8VyU1-586F676500000000000000000000000000000000",
+    "legs": [],
+    "name": "Xoge",
+    "pool_xrp_entry": 4823.35525,
+    "remaining": 1.0,
+    "t": 1793705210.6879973,
+    "tf": 0.0,
+    "tokens_gross": 9979755149.57936,
+    "tokens_net": 9876940764.713425,
+    "tp_done": false,
+    "trigger": "dip_bounce: 22.1% below 24h high 1.02472e-09 XRP, age 1829.5d",
+    "ts": "2026-11-03T11:26:50+00:00",
+    "usd_cost": 10.0,
+    "warnings": [
+     "only 0% of LP burned (liquidity can be pulled)"
+    ],
+    "xrp_cost": 7.963368504877564,
+    "xrp_usd_entry": 1.25575
    }
   ],
   "start_ts": "2026-10-24T13:37:52+00:00",
   "start_usd": 100.0,
   "start_xrp_usd": 1.28033,
-  "trustset_fees_xrp": 0.3198210000000006
+  "trustset_fees_xrp": 0.3198410000000006
  },
  "hold": {
   "buys_today": 0,
@@ -6588,7 +6613,7 @@
     "excursion_src": "live from 2026-11-02T11:37",
     "issuer": "razRVbPbtNtFt5TTa63XE122uRzoYooEpJ",
     "key": "razRVbPbtNtFt5TTa63XE122uRzoYooEpJ-4E4F525448000000000000000000000000000000",
-    "last_ratio_net": 0.7071,
+    "last_ratio_net": 0.7043,
     "legs": [],
     "name": "NORTH",
     "peak_hours": 15.98,
@@ -6674,7 +6699,7 @@
     "excursion_src": "live from 2026-11-02T13:53",
     "issuer": "r32nbPw6cyt3KdxinB4ua6WSLRrrF4SXAC",
     "key": "r32nbPw6cyt3KdxinB4ua6WSLRrrF4SXAC-4C61756768000000000000000000000000000000",
-    "last_ratio_net": 1.0196,
+    "last_ratio_net": 1.0197,
     "legs": [],
     "name": "Laugh",
     "peak_hours": 6.92,
@@ -8528,7 +8553,7 @@
     "excursion_src": "live from 2026-11-02T13:53",
     "issuer": "r32nbPw6cyt3KdxinB4ua6WSLRrrF4SXAC",
     "key": "r32nbPw6cyt3KdxinB4ua6WSLRrrF4SXAC-4C61756768000000000000000000000000000000",
-    "last_ratio_net": 1.0196,
+    "last_ratio_net": 1.0197,
     "legs": [],
     "name": "Laugh",
     "peak_hours": 6.92,
@@ -17740,7 +17765,7 @@
     "excursion_src": "live from 2026-11-03T00:11",
     "issuer": "rszenFJoDdiGjyezQc8pME9KWDQH43Tswh",
     "key": "rszenFJoDdiGjyezQc8pME9KWDQH43Tswh-44524F5000000000000000000000000000000000",
-    "last_ratio_net": 0.9746,
+    "last_ratio_net": 0.9747,
     "legs": [],
     "name": "DROP",
     "peak_hours": 2.3,
@@ -17798,7 +17823,7 @@
     "excursion_src": "live from 2026-11-03T00:27",
     "issuer": "rGLEgQdktoN4Be5thhk6seg1HifGPBxY5Q",
     "key": "rGLEgQdktoN4Be5thhk6seg1HifGPBxY5Q-PLX",
-    "last_ratio_net": 0.984,
+    "last_ratio_net": 0.983,
     "legs": [],
     "name": "PLX",
     "peak_hours": 1.11,
