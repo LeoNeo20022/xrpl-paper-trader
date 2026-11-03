@@ -6,9 +6,9 @@
  "excursion_backfill_exit_rows": 46,
  "excursion_backfill_fails": 0,
  "excursion_backfill_open": 35,
- "last_discovery": "2026-11-03T02:14:23+00:00",
- "last_discovery_t": 1793672063.0507958,
- "last_run": "2026-11-03T02:14:23+00:00",
+ "last_discovery": "2026-11-03T02:19:23+00:00",
+ "last_discovery_t": 1793672363.8153079,
+ "last_run": "2026-11-03T02:19:23+00:00",
  "last_scanned_ledger": 108067509,
  "last_stats": {
   "bought": {
@@ -19,7 +19,7 @@
    "scalp": 0,
    "slow_scalp": 0
   },
-  "checked": 79,
+  "checked": 80,
   "discovery": true,
   "eligible": {
    "breakout": 0,
@@ -27,17 +27,17 @@
    "hold": 11,
    "plus5": 11,
    "scalp": 11,
-   "slow_scalp": 11
+   "slow_scalp": 9
   },
   "ohlc_calls": 0,
   "passed": 11,
-  "runtime_s": 29.2,
-  "seen": 146
+  "runtime_s": 27.0,
+  "seen": 142
  },
- "network_fee_xrp_used": 2e-05,
- "open_ledger_fee_xrp": 1e-05,
+ "network_fee_xrp_used": 0.00502,
+ "open_ledger_fee_xrp": 0.00502,
  "warnings": [],
- "xrp_usd": 1.24756,
+ "xrp_usd": 1.24638,
  "xrp_usd_src": "bitstamp",
  "xrplto_calls_last_discovery": 4,
  "xrplto_keyed": true,
