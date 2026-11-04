@@ -1,24 +1,24 @@
 <!-- LEVERAGE-TA-BEGIN -->
 ## Separate line: TA long/short on leverage, paper perpetual futures (`lev_ta_2x`, `lev_ta_5x`, PAPER-NOT-REAL)
 
-Started **2026-10-26T16:15:00+00:00** at **$1.2938**, $100 paper each, not in the $300 total. Last update 2026-11-04T04:40:06+00:00 at $1.2636. 1h trend now: **down**, RSI(14) 46.02 (prices `binance_spot_data_api`, funding `okx_proxy`).
+Started **2026-10-26T16:15:00+00:00** at **$1.2938**, $100 paper each, not in the $300 total. Last update 2026-11-04T04:55:07+00:00 at $1.2727. 1h trend now: **down**, RSI(14) 46.02 (prices `binance_spot_data_api`, funding `okx_proxy`).
 
 ### $50 / $100 / $500 side by side (`_50` / `_500` lines are the same strategy with $50 / $500; profit after fees + funding; worst drawdown = biggest drop from a high; max loss = lowest value vs start)
 
 | Line | Position | Trades (wins) | **$50: profit** | $50: worst drawdown, low | $50: liq. | **$100: profit** | $100: worst drawdown, low | $100: liq. | **$500: profit** | $500: worst drawdown, low | $500: liq. |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| `lev_ta_2x` (2x) | SHORT | 6 (1) | **-3.18** | -3.99 (8.0%), low -3.74 | 0 | **-6.36** | -7.99 (8.0%), low -7.48 | 0 | **-31.78** | -39.94 (8.0%), low -37.39 | 0 |
-| `lev_ta_5x` (5x) | SHORT | 6 (1) | **-7.93** | -9.84 (19.4%), low -9.20 | 0 | **-15.86** | -19.68 (19.4%), low -18.40 | 0 | **-79.29** | -98.39 (19.4%), low -92.02 | 0 |
+| `lev_ta_2x` (2x) | SHORT | 6 (1) | **-3.86** | -4.12 (8.2%), low -3.87 | 0 | **-7.72** | -8.24 (8.2%), low -7.73 | 0 | **-38.59** | -41.22 (8.2%), low -38.66 | 0 |
+| `lev_ta_5x` (5x) | SHORT | 6 (1) | **-9.47** | -10.13 (20.0%), low -9.49 | 0 | **-18.95** | -20.26 (20.0%), low -18.98 | 0 | **-94.74** | -101.28 (20.0%), low -94.91 | 0 |
 
-Keep $50 / $100 / $500 in XRP: -1.19 / -2.38 / -11.92.
+Keep $50 / $100 / $500 in XRP: -0.84 / -1.68 / -8.40.
 
 ### Details ($100 lines)
 
 | Line | **Value (USD, if closed now)** | Change vs $100 | **vs keep $100 in XRP** | Position (entry / stop / target / liq) | Trades (wins) | Longs / shorts | Fees paid (trading + funding) | **Liquidations** | Max drawdown |
 |---|---|---|---|---|---|---|---|---|---|
-| `lev_ta_2x` (2x) | **$93.64** | -6.36 | **-3.97** | SHORT (1.26077 / 1.27523 / 1.23186 / 1.88175) | 6 (1) | 1 / 6 | $1.20 ($1.21 + $-0.01) | **0** ($0.00) | 8.0% |
-| `lev_ta_5x` (5x) | **$84.14** | -15.86 | **-13.47** | SHORT (1.26077 / 1.27523 / 1.23186 / 1.5054) | 6 (1) | 1 / 6 | $2.88 ($2.90 + $-0.02) | **0** ($0.00) | 19.4% |
-| Baseline: keep $100 in XRP | $97.62 | -2.38 | — | | | | $0.05 | 0 | |
+| `lev_ta_2x` (2x) | **$92.28** | -7.72 | **-6.04** | SHORT (1.26077 / 1.27523 / 1.23186 / 1.88175) | 6 (1) | 1 / 6 | $1.20 ($1.21 + $-0.01) | **0** ($0.00) | 8.2% |
+| `lev_ta_5x` (5x) | **$81.05** | -18.95 | **-17.27** | SHORT (1.26077 / 1.27523 / 1.23186 / 1.5054) | 6 (1) | 1 / 6 | $2.88 ($2.90 + $-0.02) | **0** ($0.00) | 20.0% |
+| Baseline: keep $100 in XRP | $98.32 | -1.68 | — | | | | $0.05 | 0 | |
 
 - Rules: 1h trend = EMA50 vs EMA200 + price vs EMA200. Uptrend: long when RSI(14) turns up from under 40 or MACD crosses up. Downtrend: short when RSI turns down from over 60 or MACD crosses down. Unclear trend: flat. Stop 1.5x ATR(14), target 3x ATR, one position at a time, whole balance as isolated margin. Costs: market entry/stop 0.05% taker + 0.05% slippage, target 0.02% maker, 8-hourly funding (longs pay / shorts receive when positive), liquidation at 0.5% maintenance. Backtest: `leverage/backtest_ta_output.txt`.
 <!-- LEVERAGE-TA-END -->
