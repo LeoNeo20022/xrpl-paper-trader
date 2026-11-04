@@ -949,7 +949,7 @@
  },
  "dip_bounce": {
   "buys_today": 10,
-  "cash_usd": 37.645775,
+  "cash_usd": 48.994414,
   "closed": [
    {
     "amm_fee": 0.00255,
@@ -5330,6 +5330,49 @@
     ],
     "xrp_cost": 7.846275765208045,
     "xrp_usd_entry": 1.27449
+   },
+   {
+    "amm_fee": 0.01,
+    "closed_ts": "2026-11-04T16:27:00+00:00",
+    "currency": "424F524F53000000000000000000000000000000",
+    "entry_eff_px": 0.01901402712571515,
+    "entry_spot": 0.018739475065656156,
+    "excursion_src": "live from 2026-11-04T14:38",
+    "issuer": "r9cXzxVoKRTPFXASnkdVWkvRDwSuT1zCuF",
+    "key": "r9cXzxVoKRTPFXASnkdVWkvRDwSuT1zCuF-424F524F53000000000000000000000000000000",
+    "last_ratio_net": 1.1086,
+    "legs": [
+     {
+      "fraction_of_buy": 1.0,
+      "pnl_usd_gross": 1.6783,
+      "pnl_usd_net": 1.3487,
+      "pnl_xrp_gross": 1.101862,
+      "pnl_xrp_net": 0.849935,
+      "reason": "take profit (x1.11 net)",
+      "ts": "2026-11-04T16:27:00+00:00"
+     }
+    ],
+    "name": "BOROS",
+    "peak_hours": 2.25,
+    "peak_x": 1.1086,
+    "pnl_usd_net": 1.3487,
+    "pnl_xrp_net": 0.849935,
+    "pool_xrp_entry": 2005.30054,
+    "remaining": 0.0,
+    "t": 1793801523.0772972,
+    "tf": 0.0,
+    "tokens_gross": 417.49104388750595,
+    "tokens_net": 411.4627035786571,
+    "tp_done": true,
+    "trigger": "dip_bounce: 20.2% below 24h high 0.0234712 XRP, age 6.0d",
+    "trough_x": 0.9891,
+    "ts": "2026-11-04T14:12:03+00:00",
+    "usd_cost": 10.0,
+    "warnings": [
+     "top-10 holders own 34%"
+    ],
+    "xrp_cost": 7.823563007064678,
+    "xrp_usd_entry": 1.27819
    }
   ],
   "day": "2026-11-04",
@@ -5339,6 +5382,7 @@
    "r4MczP3UQ4i7qbXx5r4cq9N36w4pyaPpqL-5354494D50590000000000000000000000000000": 1793664697.0709512,
    "r4Peot5JGx6KPRX147oZ2TbRSocLdzBHvy-4641444500000000000000000000000000000000": 1793116560.9762795,
    "r4pXXQzJ8soYSX4QKeeW4BzRQS1PCtVYLJ-5345414C00000000000000000000000000000000": 1793729726.3741312,
+   "r9cXzxVoKRTPFXASnkdVWkvRDwSuT1zCuF-424F524F53000000000000000000000000000000": 1793809620.7013245,
    "r9xvnzUWZJpDu3NA6MKHmKhKJQTRqCRgu9-RDL": 1793778842.1218634,
    "rBFJGmWj6YaabVCxfsjiCM8pfYXs8xFdeC-UGA": 1793715491.838367,
    "rBbu9c7zyuiDH4bq7uJhdLhzsRdEkSrYFX-NOX": 1792935736.109439,
@@ -5384,7 +5428,7 @@
    "rszenFJoDdiGjyezQc8pME9KWDQH43Tswh-44524F5000000000000000000000000000000000": 1793237291.5620797,
    "rwfGtVZKpPX6vb51xE5RGTgXkQ4W9wSUrz-53504C4153480000000000000000000000000000": 1793053970.4369965
   },
-  "net_fees_xrp": 0.722312000000005,
+  "net_fees_xrp": 0.722352000000005,
   "positions": [
    {
     "amm_fee": 0.00559,
@@ -5577,7 +5621,7 @@
     "last_ratio_net": 0.9892,
     "legs": [],
     "name": "OPM",
-    "peak_hours": 9.32,
+    "peak_hours": 9.41,
     "peak_x": 0.9892,
     "pool_xrp_entry": 2012.288606,
     "remaining": 1.0,
@@ -5595,42 +5639,12 @@
     ],
     "xrp_cost": 7.860028610504142,
     "xrp_usd_entry": 1.27226
-   },
-   {
-    "amm_fee": 0.01,
-    "currency": "424F524F53000000000000000000000000000000",
-    "entry_eff_px": 0.01901402712571515,
-    "entry_spot": 0.018739475065656156,
-    "excursion_src": "live from 2026-11-04T14:38",
-    "issuer": "r9cXzxVoKRTPFXASnkdVWkvRDwSuT1zCuF",
-    "key": "r9cXzxVoKRTPFXASnkdVWkvRDwSuT1zCuF-424F524F53000000000000000000000000000000",
-    "last_ratio_net": 1.0346,
-    "legs": [],
-    "name": "BOROS",
-    "peak_hours": 2.17,
-    "peak_x": 1.0346,
-    "pool_xrp_entry": 2005.30054,
-    "remaining": 1.0,
-    "t": 1793801523.0772972,
-    "tf": 0.0,
-    "tokens_gross": 417.49104388750595,
-    "tokens_net": 411.4627035786571,
-    "tp_done": false,
-    "trigger": "dip_bounce: 20.2% below 24h high 0.0234712 XRP, age 6.0d",
-    "trough_x": 0.9891,
-    "ts": "2026-11-04T14:12:03+00:00",
-    "usd_cost": 10.0,
-    "warnings": [
-     "top-10 holders own 34%"
-    ],
-    "xrp_cost": 7.823563007064678,
-    "xrp_usd_entry": 1.27819
    }
   ],
   "start_ts": "2026-10-24T13:37:52+00:00",
   "start_usd": 100.0,
   "start_xrp_usd": 1.28033,
-  "trustset_fees_xrp": 0.36109600000000097
+  "trustset_fees_xrp": 0.361116000000001
  },
  "hold": {
   "buys_today": 1,
@@ -7174,7 +7188,7 @@
     "excursion_src": "live from 2026-11-02T11:37",
     "issuer": "razRVbPbtNtFt5TTa63XE122uRzoYooEpJ",
     "key": "razRVbPbtNtFt5TTa63XE122uRzoYooEpJ-4E4F525448000000000000000000000000000000",
-    "last_ratio_net": 0.6705,
+    "last_ratio_net": 0.6704,
     "legs": [],
     "name": "NORTH",
     "peak_hours": 15.98,
@@ -7285,7 +7299,7 @@
     "excursion_src": "live from 2026-11-04T05:50",
     "issuer": "rszenFJoDdiGjyezQc8pME9KWDQH43Tswh",
     "key": "rszenFJoDdiGjyezQc8pME9KWDQH43Tswh-44524F5000000000000000000000000000000000",
-    "last_ratio_net": 1.0047,
+    "last_ratio_net": 0.998,
     "legs": [],
     "name": "DROP",
     "peak_hours": 9.99,
@@ -9263,7 +9277,7 @@
     "excursion_src": "live from 2026-11-04T00:13",
     "issuer": "rszenFJoDdiGjyezQc8pME9KWDQH43Tswh",
     "key": "rszenFJoDdiGjyezQc8pME9KWDQH43Tswh-44524F5000000000000000000000000000000000",
-    "last_ratio_net": 1.0006,
+    "last_ratio_net": 0.9939,
     "legs": [],
     "name": "DROP",
     "peak_hours": 15.61,
@@ -9292,7 +9306,7 @@
     "excursion_src": "live from 2026-11-04T02:59",
     "issuer": "rGG3wQ4kUzd7Jnmk1n5NWPZjjut62kCBfC",
     "key": "rGG3wQ4kUzd7Jnmk1n5NWPZjjut62kCBfC-41524D5900000000000000000000000000000000",
-    "last_ratio_net": 0.9727,
+    "last_ratio_net": 0.9726,
     "legs": [],
     "name": "ARMY",
     "peak_hours": 0.25,
@@ -9349,7 +9363,7 @@
     "excursion_src": "live from 2026-11-04T14:58",
     "issuer": "rDFXbW2ZZCG5WgPtqwNiA2xZokLMm9ivmN",
     "key": "rDFXbW2ZZCG5WgPtqwNiA2xZokLMm9ivmN-50484E4958000000000000000000000000000000",
-    "last_ratio_net": 1.031,
+    "last_ratio_net": 1.0317,
     "legs": [],
     "name": "PHNIX",
     "peak_hours": 1.11,
@@ -19403,7 +19417,7 @@
     "last_ratio_net": 0.992,
     "legs": [],
     "name": "404",
-    "peak_hours": 0.71,
+    "peak_hours": 0.79,
     "peak_x": 0.992,
     "pool_xrp_entry": 11533.326047,
     "remaining": 1.0,
