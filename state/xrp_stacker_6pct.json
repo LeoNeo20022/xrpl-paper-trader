@@ -2,8 +2,8 @@
  "budget_usd": 100,
  "start_price": 1.2948290358744394,
  "start_xrp": 77.19167721629505,
- "xrp": 66.43712092006619,
- "parked_usd": 14.537858247423214,
+ "xrp": 78.4204662194175,
+ "parked_usd": 0.0,
  "reserve_xrp": 2.0,
  "ref": 1.20913,
  "levels": [
@@ -11,12 +11,8 @@
    "i": 1,
    "sell": 1.281678,
    "buy": 1.20913,
-   "qty": 11.371260162364619,
-   "state": "buy",
-   "usd": 14.537858247423214,
-   "sold_qty": 11.371260162364619,
-   "bar": 4992,
-   "parked_since": 1793708400
+   "qty": 11.993345299351315,
+   "state": "sell"
   },
   {
    "i": 2,
@@ -40,19 +36,19 @@
    "state": "sell"
   }
  ],
- "buys": 1,
+ "buys": 2,
  "sells": 2,
- "round_trips": 1,
+ "round_trips": 2,
  "forced_rebuys": 0,
- "xrp_gained_trips": 0.6169838661357565,
+ "xrp_gained_trips": 1.2190690031224525,
  "xrp_lost_forced": 0.0,
- "fees_xrp": 0.00032,
+ "fees_xrp": 0.010320000000000001,
  "reanchors": 1,
- "bar": 5873,
- "fees_usd": 0.1637153969750971,
- "net_fees_xrp": 0.00032,
+ "bar": 5877,
+ "fees_usd": 0.20006004259365515,
+ "net_fees_xrp": 0.010320000000000001,
  "type": "stacker",
  "created": "2026-10-20T08:43:56+00:00",
  "backfilled_from": "2026-10-20T08:43:56+00:00",
- "last_run": "2026-11-05T22:56:38+00:00"
+ "last_run": "2026-11-05T23:11:39+00:00"
 }
