@@ -21,7 +21,7 @@
  "liq_lost_usd": 0.0,
  "fees_usd": 0.5406220501594401,
  "funding_usd": -0.037118241073480295,
- "peak_equity": 50.531196803668706,
+ "peak_equity": 50.61533751646901,
  "max_dd_pct": 9.568492911117099,
  "realised_usd": 0.5305873981652169,
  "last_signal_ts": 1793957400,
@@ -33,13 +33,13 @@
   "LONG": 0,
   "SHORT": 5,
   "TIE": 0,
-  "IDLE": 1023
+  "IDLE": 1024
  },
  "started": "2026-10-26T17:15:00+00:00",
  "start_price": 1.301,
  "max_dd_usd": 4.824410570631677,
  "min_equity": 45.59534325524476,
- "last_run": "2026-11-06T10:10:07+00:00",
+ "last_run": "2026-11-06T10:25:06+00:00",
  "scaled_from_100": true,
  "rules_fired": {
   "R3": 312,
