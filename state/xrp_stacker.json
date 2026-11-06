@@ -44,11 +44,11 @@
  "xrp_lost_forced": 0.0,
  "fees_xrp": 0.005588,
  "reanchors": 2,
- "bar": 6114,
+ "bar": 6123,
  "fees_usd": 0.2736213071243707,
  "net_fees_xrp": 0.005588,
  "type": "stacker",
  "created": "2026-10-20T08:43:56+00:00",
  "backfilled_from": "2026-10-20T08:43:56+00:00",
- "last_run": "2026-11-06T13:21:39+00:00"
+ "last_run": "2026-11-06T14:04:23+00:00"
 }
