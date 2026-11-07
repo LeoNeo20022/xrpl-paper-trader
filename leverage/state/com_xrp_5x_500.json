@@ -1,40 +1,29 @@
 {
- "cash": 0.0,
- "pos": {
-  "side": "SHORT",
-  "entry": 1.1598198000000002,
-  "qty": 2147.8524747427473,
-  "margin": 498.22436553712765,
-  "stop": 1.176916119496902,
-  "target": 1.1256271610061963,
-  "opened": "2026-11-07T03:30:00+00:00",
-  "fees": 1.2455609138428192,
-  "funding": 0.0,
-  "start_cash": 499.4699264509705
- },
- "trades": 3,
+ "cash": 459.1582357519239,
+ "pos": null,
+ "trades": 4,
  "wins": 1,
  "longs": 0,
  "shorts": 4,
  "liquidations": 0,
  "liq_lost_usd": 0.0,
- "fees_usd": 7.610401665925606,
- "funding_usd": -0.6638974002281127,
+ "fees_usd": 8.874954726388587,
+ "funding_usd": -0.8466139158134824,
  "peak_equity": 512.7608163009397,
  "max_dd_pct": 17.101468403213193,
- "realised_usd": -0.5300735490295096,
+ "realised_usd": -40.84176424807612,
  "last_signal_ts": 1794022200,
- "last_funding_ts": 1794009600,
- "last_stop_ts": 1793708400,
+ "last_funding_ts": 1794038400,
+ "last_stop_ts": 1794038700,
  "ties": [],
  "shadows": [],
  "decisions": {
   "LONG": 0,
   "SHORT": 20,
   "TIE": 0,
-  "IDLE": 1097
+  "IDLE": 1098
  },
- "last_run": "2026-11-07T07:52:16+00:00",
+ "last_run": "2026-11-07T08:07:16+00:00",
  "max_dd_usd": 87.07493805814909,
  "min_equity": 422.09150312177087,
  "scaled_from_100": true,
@@ -44,6 +33,6 @@
   "R6": 56
  },
  "crowded_votes": 69,
- "loss_usd": -68.2072422720401,
+ "loss_usd": -108.51893297108671,
  "win_usd": 67.6771687230106
 }
