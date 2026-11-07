@@ -6450,7 +6450,7 @@
     "last_ratio_net": 1.0014,
     "legs": [],
     "name": "PEPE",
-    "peak_hours": 19.61,
+    "peak_hours": 19.7,
     "peak_x": 1.0014,
     "pool_xrp_entry": 7032.494714,
     "remaining": 1.0,
@@ -6534,7 +6534,7 @@
     "last_ratio_net": 0.9913,
     "legs": [],
     "name": "PBM",
-    "peak_hours": 0.08,
+    "peak_hours": 0.17,
     "peak_x": 0.9913,
     "pool_xrp_entry": 2153.61199,
     "remaining": 1.0,
@@ -6559,11 +6559,11 @@
     "excursion_src": "live from 2026-11-07T00:07",
     "issuer": "r4pXXQzJ8soYSX4QKeeW4BzRQS1PCtVYLJ",
     "key": "r4pXXQzJ8soYSX4QKeeW4BzRQS1PCtVYLJ-5345414C00000000000000000000000000000000",
-    "last_ratio_net": 0.9841,
+    "last_ratio_net": 0.9896,
     "legs": [],
     "name": "SEAL",
-    "peak_hours": 0.08,
-    "peak_x": 0.9841,
+    "peak_hours": 0.17,
+    "peak_x": 0.9896,
     "pool_xrp_entry": 28869.403827,
     "remaining": 1.0,
     "t": 1794009763.7181196,
@@ -8642,8 +8642,8 @@
   "trustset_fees_xrp": 0.11866000000000033
  },
  "plus5": {
-  "buys_today": 0,
-  "cash_usd": 0.277317,
+  "buys_today": 1,
+  "cash_usd": 9.35318,
   "closed": [
    {
     "amm_fee": 0.00224,
@@ -10600,6 +10600,88 @@
     "warnings": [],
     "xrp_cost": 7.8151864703491825,
     "xrp_usd_entry": 1.27956
+   },
+   {
+    "amm_fee": 0.00311,
+    "closed_ts": "2026-11-07T00:12:42+00:00",
+    "currency": "586D656E00000000000000000000000000000000",
+    "entry_eff_px": 0.00017108328069739622,
+    "entry_spot": 0.0001703886662530842,
+    "excursion_src": "live from 2026-11-04T00:13",
+    "issuer": "rMFL2KuFPMuiujdbVGbMzNNjj5QKyd6dZf",
+    "key": "rMFL2KuFPMuiujdbVGbMzNNjj5QKyd6dZf-586D656E00000000000000000000000000000000",
+    "last_ratio_net": 1.0719,
+    "legs": [
+     {
+      "fraction_of_buy": 1.0,
+      "pnl_usd_gross": -0.0015,
+      "pnl_usd_net": -0.0829,
+      "pnl_xrp_gross": 0.63295,
+      "pnl_xrp_net": 0.564001,
+      "reason": "time limit 72h (x1.07 net)",
+      "ts": "2026-11-07T00:12:42+00:00"
+     }
+    ],
+    "name": "Xmen",
+    "peak_hours": 38.94,
+    "peak_x": 1.077,
+    "pnl_usd_net": -0.0829,
+    "pnl_xrp_net": 0.564001,
+    "pool_xrp_entry": 8215.736984,
+    "remaining": 0.0,
+    "t": 1793750900.5536873,
+    "tf": 0.0,
+    "tokens_gross": 46018.22996869916,
+    "tokens_net": 45831.391563989884,
+    "tp_done": false,
+    "trough_x": 0.9816,
+    "ts": "2026-11-04T00:08:20+00:00",
+    "usd_cost": 10.0,
+    "warnings": [],
+    "xrp_cost": 7.840984827694358,
+    "xrp_usd_entry": 1.27535
+   },
+   {
+    "amm_fee": 0.00393,
+    "closed_ts": "2026-11-07T00:12:42+00:00",
+    "currency": "44524F5000000000000000000000000000000000",
+    "entry_eff_px": 2.305985737651327,
+    "entry_spot": 2.296755672380828,
+    "excursion_src": "live from 2026-11-04T00:13",
+    "issuer": "rszenFJoDdiGjyezQc8pME9KWDQH43Tswh",
+    "key": "rszenFJoDdiGjyezQc8pME9KWDQH43Tswh-44524F5000000000000000000000000000000000",
+    "last_ratio_net": 0.99,
+    "legs": [
+     {
+      "fraction_of_buy": 1.0,
+      "pnl_usd_gross": -0.7675,
+      "pnl_usd_net": -0.8412,
+      "pnl_xrp_gross": -0.016249,
+      "pnl_xrp_net": -0.078691,
+      "reason": "time limit 72h (x0.99 net)",
+      "ts": "2026-11-07T00:12:42+00:00"
+     }
+    ],
+    "name": "DROP",
+    "peak_hours": 18.42,
+    "peak_x": 1.0168,
+    "pnl_usd_net": -0.8412,
+    "pnl_xrp_net": -0.078691,
+    "pool_xrp_entry": 110945.831106,
+    "remaining": 0.0,
+    "t": 1793750900.5536873,
+    "tf": 0.0,
+    "tokens_gross": 3.4139394633850433,
+    "tokens_net": 3.4002746416291765,
+    "tp_done": false,
+    "trough_x": 0.9476,
+    "ts": "2026-11-04T00:08:20+00:00",
+    "usd_cost": 10.0,
+    "warnings": [
+     "only 28% of LP burned (liquidity can be pulled)"
+    ],
+    "xrp_cost": 7.840984827694358,
+    "xrp_usd_entry": 1.27535
    }
   ],
   "day": "2026-11-07",
@@ -10622,6 +10704,7 @@
    "rHcU3JWTp7fnea3xgvbV8pCbEp9S3HjSUz-4342495244000000000000000000000000000000": 1793878581.393573,
    "rJEApMjV7KVVopB8NB1WXQpQYVu84vRGTa-5045504500000000000000000000000000000000": 1793099784.64316,
    "rJwLNwaBUh9a7ajk9FeeLAuA791wVe3oyg-50524F4649540000000000000000000000000000": 1793485832.8876417,
+   "rMFL2KuFPMuiujdbVGbMzNNjj5QKyd6dZf-586D656E00000000000000000000000000000000": 1794010362.7950976,
    "rNFcv6vYT7mUmpjknwK9wd5edqkhJkg8KN-43686F73656E0000000000000000000000000000": 1793227762.9033656,
    "rPrAEfVATUNDTJm9CUa8tYeD7oJrVdEGhU-4641524D00000000000000000000000000000000": 1793886802.1524053,
    "rU5nUwkBUPx3MFPQSHmMnr9S9yg4g8cKLc-XYZ": 1793760842.5539265,
@@ -10636,66 +10719,10 @@
    "rpYYe5GQWX7hEPkyMGuDnaCvYM74BxtBLL-5941474100000000000000000000000000000000": 1793750900.5536873,
    "rsENFmELvj92orrCKTkDTug53MzwsB7zBd-24464C4950505900000000000000000000000000": 1793099784.64316,
    "rsU4M9r6MZ6nhZZvFSiK8uWfq4hfz8188t-5461626279000000000000000000000000000000": 1793760842.5539265,
-   "rszenFJoDdiGjyezQc8pME9KWDQH43Tswh-44524F5000000000000000000000000000000000": 1793627288.911237
+   "rszenFJoDdiGjyezQc8pME9KWDQH43Tswh-44524F5000000000000000000000000000000000": 1794010362.7950976
   },
-  "net_fees_xrp": 0.3372219999999997,
+  "net_fees_xrp": 0.3373419999999998,
   "positions": [
-   {
-    "amm_fee": 0.00311,
-    "currency": "586D656E00000000000000000000000000000000",
-    "entry_eff_px": 0.00017108328069739622,
-    "entry_spot": 0.0001703886662530842,
-    "excursion_src": "live from 2026-11-04T00:13",
-    "issuer": "rMFL2KuFPMuiujdbVGbMzNNjj5QKyd6dZf",
-    "key": "rMFL2KuFPMuiujdbVGbMzNNjj5QKyd6dZf-586D656E00000000000000000000000000000000",
-    "last_ratio_net": 1.0719,
-    "legs": [],
-    "name": "Xmen",
-    "peak_hours": 38.94,
-    "peak_x": 1.077,
-    "pool_xrp_entry": 8215.736984,
-    "remaining": 1.0,
-    "t": 1793750900.5536873,
-    "tf": 0.0,
-    "tokens_gross": 46018.22996869916,
-    "tokens_net": 45831.391563989884,
-    "tp_done": false,
-    "trough_x": 0.9816,
-    "ts": "2026-11-04T00:08:20+00:00",
-    "usd_cost": 10.0,
-    "warnings": [],
-    "xrp_cost": 7.840984827694358,
-    "xrp_usd_entry": 1.27535
-   },
-   {
-    "amm_fee": 0.00393,
-    "currency": "44524F5000000000000000000000000000000000",
-    "entry_eff_px": 2.305985737651327,
-    "entry_spot": 2.296755672380828,
-    "excursion_src": "live from 2026-11-04T00:13",
-    "issuer": "rszenFJoDdiGjyezQc8pME9KWDQH43Tswh",
-    "key": "rszenFJoDdiGjyezQc8pME9KWDQH43Tswh-44524F5000000000000000000000000000000000",
-    "last_ratio_net": 0.99,
-    "legs": [],
-    "name": "DROP",
-    "peak_hours": 18.42,
-    "peak_x": 1.0168,
-    "pool_xrp_entry": 110945.831106,
-    "remaining": 1.0,
-    "t": 1793750900.5536873,
-    "tf": 0.0,
-    "tokens_gross": 3.4139394633850433,
-    "tokens_net": 3.4002746416291765,
-    "tp_done": false,
-    "trough_x": 0.9476,
-    "ts": "2026-11-04T00:08:20+00:00",
-    "usd_cost": 10.0,
-    "warnings": [
-     "only 28% of LP burned (liquidity can be pulled)"
-    ],
-    "xrp_cost": 7.840984827694358,
-    "xrp_usd_entry": 1.27535
-   },
    {
     "amm_fee": 0.0,
     "currency": "41524D5900000000000000000000000000000000",
@@ -10951,15 +10978,40 @@
     ],
     "xrp_cost": 8.493506714117057,
     "xrp_usd_entry": 1.17737
+   },
+   {
+    "amm_fee": 0.00831,
+    "currency": "50524F4649540000000000000000000000000000",
+    "entry_eff_px": 4.439972980424727e-07,
+    "entry_spot": 4.4021938158415467e-07,
+    "issuer": "rJwLNwaBUh9a7ajk9FeeLAuA791wVe3oyg",
+    "key": "rJwLNwaBUh9a7ajk9FeeLAuA791wVe3oyg-50524F4649540000000000000000000000000000",
+    "legs": [],
+    "name": "PROFIT",
+    "pool_xrp_entry": 42401.444417,
+    "remaining": 1.0,
+    "t": 1794010362.7950976,
+    "tf": 0.0,
+    "tokens_gross": 19252270.665542968,
+    "tokens_net": 19088455.546559088,
+    "tp_done": false,
+    "ts": "2026-11-07T00:12:42+00:00",
+    "usd_cost": 10.0,
+    "warnings": [
+     "only 49% of LP burned (liquidity can be pulled)",
+     "top-10 holders own 32%"
+    ],
+    "xrp_cost": 8.475222686476087,
+    "xrp_usd_entry": 1.17991
    }
   ],
   "start_usd": 100.0,
   "start_xrp_usd": 1.28151,
-  "trustset_fees_xrp": 0.1685510000000002
+  "trustset_fees_xrp": 0.16861100000000018
  },
  "scalp": {
-  "buys_today": 5,
-  "cash_usd": 39.334653,
+  "buys_today": 6,
+  "cash_usd": 29.334629,
   "closed": [
    {
     "amm_fee": 0.00224,
@@ -16813,7 +16865,7 @@
    "rszenFJoDdiGjyezQc8pME9KWDQH43Tswh-44524F5000000000000000000000000000000000": 1793931000.547789,
    "rwfGtVZKpPX6vb51xE5RGTgXkQ4W9wSUrz-53504C4153480000000000000000000000000000": 1793844592.888387
   },
-  "net_fees_xrp": 0.8418380000000054,
+  "net_fees_xrp": 0.8418780000000055,
   "positions": [
    {
     "amm_fee": 0.00831,
@@ -16826,7 +16878,7 @@
     "last_ratio_net": 0.9824,
     "legs": [],
     "name": "PROFIT",
-    "peak_hours": 0.08,
+    "peak_hours": 0.17,
     "peak_x": 0.9824,
     "pool_xrp_entry": 42402.090742,
     "remaining": 1.0,
@@ -16856,7 +16908,7 @@
     "last_ratio_net": 0.9772,
     "legs": [],
     "name": "BFOOT",
-    "peak_hours": 0.08,
+    "peak_hours": 0.17,
     "peak_x": 0.9772,
     "pool_xrp_entry": 7212.529539,
     "remaining": 1.0,
@@ -16885,7 +16937,7 @@
     "last_ratio_net": 0.9959,
     "legs": [],
     "name": "Laugh",
-    "peak_hours": 0.08,
+    "peak_hours": 0.17,
     "peak_x": 0.9959,
     "pool_xrp_entry": 10046.064783,
     "remaining": 1.0,
@@ -16957,15 +17009,39 @@
     ],
     "xrp_cost": 8.483994943539013,
     "xrp_usd_entry": 1.17869
+   },
+   {
+    "amm_fee": 5e-05,
+    "currency": "434F444544000000000000000000000000000000",
+    "entry_eff_px": 0.00018883848826416574,
+    "entry_spot": 0.0001885631092311635,
+    "issuer": "rnNErmg9xVmcxxNZUwivbJSH6i9GUwYPFj",
+    "key": "rnNErmg9xVmcxxNZUwivbJSH6i9GUwYPFj-434F444544000000000000000000000000000000",
+    "legs": [],
+    "name": "CODED",
+    "pool_xrp_entry": 6019.140455,
+    "remaining": 1.0,
+    "t": 1794010362.7950976,
+    "tf": 0.0,
+    "tokens_gross": 44946.34566131455,
+    "tokens_net": 44880.801389492786,
+    "tp_done": false,
+    "ts": "2026-11-07T00:12:42+00:00",
+    "usd_cost": 10.0,
+    "warnings": [
+     "top-10 holders own 38%"
+    ],
+    "xrp_cost": 8.475222686476087,
+    "xrp_usd_entry": 1.17991
    }
   ],
   "start_usd": 100.0,
   "start_xrp_usd": 1.28151,
-  "trustset_fees_xrp": 0.42079300000000075
+  "trustset_fees_xrp": 0.42081300000000077
  },
  "slow_scalp": {
-  "buys_today": 3,
-  "cash_usd": 18.316479,
+  "buys_today": 4,
+  "cash_usd": 8.316455,
   "closed": [
    {
     "amm_fee": 0.00311,
@@ -22784,7 +22860,7 @@
    "rszenFJoDdiGjyezQc8pME9KWDQH43Tswh-44524F5000000000000000000000000000000000": 1793923981.1783767,
    "rwfGtVZKpPX6vb51xE5RGTgXkQ4W9wSUrz-53504C4153480000000000000000000000000000": 1793806780.9252148
   },
-  "net_fees_xrp": 0.6810140000000054,
+  "net_fees_xrp": 0.6810540000000055,
   "positions": [
    {
     "amm_fee": 0.01,
@@ -22880,7 +22956,7 @@
     "excursion_src": "live from 2026-11-06T02:46",
     "issuer": "rJwLNwaBUh9a7ajk9FeeLAuA791wVe3oyg",
     "key": "rJwLNwaBUh9a7ajk9FeeLAuA791wVe3oyg-50524F4649540000000000000000000000000000",
-    "last_ratio_net": 1.0393,
+    "last_ratio_net": 1.0394,
     "legs": [],
     "name": "PROFIT",
     "peak_hours": 21.27,
@@ -22914,7 +22990,7 @@
     "last_ratio_net": 0.9959,
     "legs": [],
     "name": "Laugh",
-    "peak_hours": 0.08,
+    "peak_hours": 0.17,
     "peak_x": 0.9959,
     "pool_xrp_entry": 10046.064783,
     "remaining": 1.0,
@@ -22936,10 +23012,14 @@
     "currency": "46555A5A59000000000000000000000000000000",
     "entry_eff_px": 4.9937474230587545e-05,
     "entry_spot": 4.9666951840319984e-05,
+    "excursion_src": "live from 2026-11-07T00:12",
     "issuer": "rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62",
     "key": "rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62-46555A5A59000000000000000000000000000000",
+    "last_ratio_net": 0.9892,
     "legs": [],
     "name": "FUZZY",
+    "peak_hours": 0.08,
+    "peak_x": 0.9892,
     "pool_xrp_entry": 563448.250168,
     "remaining": 1.0,
     "t": 1794010062.6841846,
@@ -22948,6 +23028,7 @@
     "tokens_net": 169657.7336883177,
     "tp_done": false,
     "trigger": "slow_scalp: new/top-15 trending, round trip 1.08% <= 2.0%",
+    "trough_x": 0.9892,
     "ts": "2026-11-07T00:07:42+00:00",
     "usd_cost": 10.0,
     "warnings": [
@@ -22961,10 +23042,14 @@
     "currency": "43554C5400000000000000000000000000000000",
     "entry_eff_px": 148.95169334375205,
     "entry_spot": 147.44199919009571,
+    "excursion_src": "live from 2026-11-07T00:12",
     "issuer": "rCULtAKrKbQjk1Tpmg5hkw4dpcf9S9KCs",
     "key": "rCULtAKrKbQjk1Tpmg5hkw4dpcf9S9KCs-43554C5400000000000000000000000000000000",
+    "last_ratio_net": 0.9798,
     "legs": [],
     "name": "CULT",
+    "peak_hours": 0.08,
+    "peak_x": 0.9798,
     "pool_xrp_entry": 62366.630418,
     "remaining": 1.0,
     "t": 1794010062.6841846,
@@ -22973,6 +23058,7 @@
     "tokens_net": 0.05687937151897863,
     "tp_done": false,
     "trigger": "slow_scalp: new/top-15 trending, round trip 1.99% <= 2.0%",
+    "trough_x": 0.9798,
     "ts": "2026-11-07T00:07:42+00:00",
     "usd_cost": 10.0,
     "warnings": [
@@ -22981,11 +23067,36 @@
     ],
     "xrp_cost": 8.47227870408025,
     "xrp_usd_entry": 1.18032
+   },
+   {
+    "amm_fee": 5e-05,
+    "currency": "434F444544000000000000000000000000000000",
+    "entry_eff_px": 0.00018883848826416574,
+    "entry_spot": 0.0001885631092311635,
+    "issuer": "rnNErmg9xVmcxxNZUwivbJSH6i9GUwYPFj",
+    "key": "rnNErmg9xVmcxxNZUwivbJSH6i9GUwYPFj-434F444544000000000000000000000000000000",
+    "legs": [],
+    "name": "CODED",
+    "pool_xrp_entry": 6019.140455,
+    "remaining": 1.0,
+    "t": 1794010362.7950976,
+    "tf": 0.0,
+    "tokens_gross": 44946.34566131455,
+    "tokens_net": 44880.801389492786,
+    "tp_done": false,
+    "trigger": "slow_scalp: new/top-15 trending, round trip 0.01% <= 2.0%",
+    "ts": "2026-11-07T00:12:42+00:00",
+    "usd_cost": 10.0,
+    "warnings": [
+     "top-10 holders own 38%"
+    ],
+    "xrp_cost": 8.475222686476087,
+    "xrp_usd_entry": 1.17991
    }
   ],
   "start_ts": "2026-10-24T13:37:52+00:00",
   "start_usd": 100.0,
   "start_xrp_usd": 1.28033,
-  "trustset_fees_xrp": 0.34044100000000066
+  "trustset_fees_xrp": 0.3404610000000007
  }
 }
