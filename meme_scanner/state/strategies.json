@@ -6687,7 +6687,7 @@
     "last_ratio_net": 0.9915,
     "legs": [],
     "name": "PBM",
-    "peak_hours": 14.96,
+    "peak_hours": 15.05,
     "peak_x": 0.9915,
     "pool_xrp_entry": 2153.61199,
     "remaining": 1.0,
@@ -8616,7 +8616,7 @@
     "excursion_src": "live from 2026-11-04T17:22",
     "issuer": "rDFXbW2ZZCG5WgPtqwNiA2xZokLMm9ivmN",
     "key": "rDFXbW2ZZCG5WgPtqwNiA2xZokLMm9ivmN-50484E4958000000000000000000000000000000",
-    "last_ratio_net": 0.9433,
+    "last_ratio_net": 0.9431,
     "legs": [],
     "name": "PHNIX",
     "peak_hours": 2.03,
@@ -8643,7 +8643,7 @@
     "excursion_src": "live from 2026-11-05T11:41",
     "issuer": "rnHDzEH4xyW6u4LbXqDoX1uk36v5ovhbFi",
     "key": "rnHDzEH4xyW6u4LbXqDoX1uk36v5ovhbFi-4465657054696465000000000000000000000000",
-    "last_ratio_net": 0.9662,
+    "last_ratio_net": 0.9829,
     "legs": [],
     "name": "DeepTide",
     "peak_hours": 10.12,
@@ -11081,7 +11081,7 @@
     "excursion_src": "live from 2026-11-05T11:41",
     "issuer": "rnHDzEH4xyW6u4LbXqDoX1uk36v5ovhbFi",
     "key": "rnHDzEH4xyW6u4LbXqDoX1uk36v5ovhbFi-4465657054696465000000000000000000000000",
-    "last_ratio_net": 0.9662,
+    "last_ratio_net": 0.9829,
     "legs": [],
     "name": "DeepTide",
     "peak_hours": 10.12,
@@ -17646,7 +17646,7 @@
  },
  "slow_scalp": {
   "buys_today": 9,
-  "cash_usd": 6.472842,
+  "cash_usd": 17.344962,
   "closed": [
    {
     "amm_fee": 0.00311,
@@ -23625,6 +23625,49 @@
     ],
     "xrp_cost": 8.477234387053567,
     "xrp_usd_entry": 1.17963
+   },
+   {
+    "amm_fee": 0.00222,
+    "closed_ts": "2026-11-07T15:05:29+00:00",
+    "currency": "4465657054696465000000000000000000000000",
+    "entry_eff_px": 5.482083923707629e-07,
+    "entry_spot": 5.46523574292548e-07,
+    "excursion_src": "live from 2026-11-07T02:50",
+    "issuer": "rnHDzEH4xyW6u4LbXqDoX1uk36v5ovhbFi",
+    "key": "rnHDzEH4xyW6u4LbXqDoX1uk36v5ovhbFi-4465657054696465000000000000000000000000",
+    "last_ratio_net": 1.0895,
+    "legs": [
+     {
+      "fraction_of_buy": 1.0,
+      "pnl_usd_gross": 0.9397,
+      "pnl_usd_net": 0.8721,
+      "pnl_xrp_gross": 0.825407,
+      "pnl_xrp_net": 0.767382,
+      "reason": "take profit (x1.09 net)",
+      "ts": "2026-11-07T15:05:29+00:00"
+     }
+    ],
+    "name": "DeepTide",
+    "peak_hours": 12.33,
+    "peak_x": 1.0895,
+    "pnl_usd_net": 0.8721,
+    "pnl_xrp_net": 0.767382,
+    "pool_xrp_entry": 10020.817653,
+    "remaining": 0.0,
+    "t": 1794019535.0872314,
+    "tf": 0.0,
+    "tokens_gross": 15686326.466133537,
+    "tokens_net": 15638117.415015895,
+    "tp_done": true,
+    "trigger": "slow_scalp: new/top-15 trending, round trip 0.44% <= 2.0%",
+    "trough_x": 0.9674,
+    "ts": "2026-11-07T02:45:35+00:00",
+    "usd_cost": 10.0,
+    "warnings": [
+     "top-10 holders own 31%"
+    ],
+    "xrp_cost": 8.572947207791094,
+    "xrp_usd_entry": 1.16646
    }
   ],
   "day": "2026-11-07",
@@ -23666,7 +23709,7 @@
    "rfxwXDzenkYoXSEbNA4cZjaT9FY3eeL47e-42524954544F0000000000000000000000000000": 1793405363.929563,
    "rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62-46555A5A59000000000000000000000000000000": 1793923380.3853269,
    "rhYhn7s6z4HAfuJm7ehuSE7wxepRoUPwpi-424348414D500000000000000000000000000000": 1793837429.788956,
-   "rnHDzEH4xyW6u4LbXqDoX1uk36v5ovhbFi-4465657054696465000000000000000000000000": 1793813865.173833,
+   "rnHDzEH4xyW6u4LbXqDoX1uk36v5ovhbFi-4465657054696465000000000000000000000000": 1794063929.136551,
    "rnNErmg9xVmcxxNZUwivbJSH6i9GUwYPFj-434F444544000000000000000000000000000000": 1793548712.5345154,
    "rnhtvpHsAgigmVemgtzt7pujj4gv6LVL2a-4C49485541000000000000000000000000000000": 1793410681.5261798,
    "rp5CUgVjAhuthJs8LdjTXFdNWJzfQqc3p2-464C414D45000000000000000000000000000000": 1794010062.6841846,
@@ -23677,7 +23720,7 @@
    "rszenFJoDdiGjyezQc8pME9KWDQH43Tswh-44524F5000000000000000000000000000000000": 1794056559.8205795,
    "rwfGtVZKpPX6vb51xE5RGTgXkQ4W9wSUrz-53504C4153480000000000000000000000000000": 1793806780.9252148
   },
-  "net_fees_xrp": 0.6970400000000058,
+  "net_fees_xrp": 0.6970800000000058,
   "positions": [
    {
     "amm_fee": 0.00089,
@@ -23837,7 +23880,7 @@
     "excursion_src": "live from 2026-11-07T02:50",
     "issuer": "rDFXbW2ZZCG5WgPtqwNiA2xZokLMm9ivmN",
     "key": "rDFXbW2ZZCG5WgPtqwNiA2xZokLMm9ivmN-50484E4958000000000000000000000000000000",
-    "last_ratio_net": 1.001,
+    "last_ratio_net": 1.0008,
     "legs": [],
     "name": "PHNIX",
     "peak_hours": 10.12,
@@ -23854,36 +23897,6 @@
     "ts": "2026-11-07T02:45:35+00:00",
     "usd_cost": 10.0,
     "warnings": [],
-    "xrp_cost": 8.572947207791094,
-    "xrp_usd_entry": 1.16646
-   },
-   {
-    "amm_fee": 0.00222,
-    "currency": "4465657054696465000000000000000000000000",
-    "entry_eff_px": 5.482083923707629e-07,
-    "entry_spot": 5.46523574292548e-07,
-    "excursion_src": "live from 2026-11-07T02:50",
-    "issuer": "rnHDzEH4xyW6u4LbXqDoX1uk36v5ovhbFi",
-    "key": "rnHDzEH4xyW6u4LbXqDoX1uk36v5ovhbFi-4465657054696465000000000000000000000000",
-    "last_ratio_net": 1.071,
-    "legs": [],
-    "name": "DeepTide",
-    "peak_hours": 12.21,
-    "peak_x": 1.0718,
-    "pool_xrp_entry": 10020.817653,
-    "remaining": 1.0,
-    "t": 1794019535.0872314,
-    "tf": 0.0,
-    "tokens_gross": 15686326.466133537,
-    "tokens_net": 15638117.415015895,
-    "tp_done": false,
-    "trigger": "slow_scalp: new/top-15 trending, round trip 0.44% <= 2.0%",
-    "trough_x": 0.9674,
-    "ts": "2026-11-07T02:45:35+00:00",
-    "usd_cost": 10.0,
-    "warnings": [
-     "top-10 holders own 31%"
-    ],
     "xrp_cost": 8.572947207791094,
     "xrp_usd_entry": 1.16646
    },
@@ -23921,6 +23934,6 @@
   "start_ts": "2026-10-24T13:37:52+00:00",
   "start_usd": 100.0,
   "start_xrp_usd": 1.28033,
-  "trustset_fees_xrp": 0.3484540000000009
+  "trustset_fees_xrp": 0.3484740000000009
  }
 }
