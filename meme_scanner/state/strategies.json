@@ -948,8 +948,8 @@
   "trustset_fees_xrp": 0.03166299999999997
  },
  "dip_bounce": {
-  "buys_today": 5,
-  "cash_usd": 71.038503,
+  "buys_today": 6,
+  "cash_usd": 61.03848,
   "closed": [
    {
     "amm_fee": 0.00255,
@@ -6631,7 +6631,7 @@
    "rszenFJoDdiGjyezQc8pME9KWDQH43Tswh-44524F5000000000000000000000000000000000": 1793237291.5620797,
    "rwfGtVZKpPX6vb51xE5RGTgXkQ4W9wSUrz-53504C4153480000000000000000000000000000": 1793923380.3853269
   },
-  "net_fees_xrp": 0.9856660000000066,
+  "net_fees_xrp": 0.9857060000000066,
   "positions": [
    {
     "amm_fee": 0.00013,
@@ -6644,7 +6644,7 @@
     "last_ratio_net": 0.9915,
     "legs": [],
     "name": "PBM",
-    "peak_hours": 14.59,
+    "peak_hours": 14.67,
     "peak_x": 0.9915,
     "pool_xrp_entry": 2153.61199,
     "remaining": 1.0,
@@ -6749,12 +6749,37 @@
     ],
     "xrp_cost": 8.680555555555555,
     "xrp_usd_entry": 1.152
+   },
+   {
+    "amm_fee": 0.00222,
+    "currency": "4465657054696465000000000000000000000000",
+    "entry_eff_px": 5.336323891488107e-07,
+    "entry_spot": 5.319865832355248e-07,
+    "issuer": "rnHDzEH4xyW6u4LbXqDoX1uk36v5ovhbFi",
+    "key": "rnHDzEH4xyW6u4LbXqDoX1uk36v5ovhbFi-4465657054696465000000000000000000000000",
+    "legs": [],
+    "name": "DeepTide",
+    "pool_xrp_entry": 9886.893757,
+    "remaining": 1.0,
+    "t": 1794062581.437954,
+    "tf": 0.0,
+    "tokens_gross": 16102268.793001385,
+    "tokens_net": 16052606.872668715,
+    "tp_done": false,
+    "trigger": "dip_bounce: 15.1% below 24h high 6.26964e-07 XRP, age 106.9d",
+    "ts": "2026-11-07T14:43:01+00:00",
+    "usd_cost": 10.0,
+    "warnings": [
+     "top-10 holders own 31%"
+    ],
+    "xrp_cost": 8.566190957528825,
+    "xrp_usd_entry": 1.16738
    }
   ],
   "start_ts": "2026-10-24T13:37:52+00:00",
   "start_usd": 100.0,
   "start_xrp_usd": 1.28033,
-  "trustset_fees_xrp": 0.4927730000000018
+  "trustset_fees_xrp": 0.4927930000000018
  },
  "hold": {
   "buys_today": 1,
@@ -8600,7 +8625,7 @@
     "excursion_src": "live from 2026-11-05T11:41",
     "issuer": "rnHDzEH4xyW6u4LbXqDoX1uk36v5ovhbFi",
     "key": "rnHDzEH4xyW6u4LbXqDoX1uk36v5ovhbFi-4465657054696465000000000000000000000000",
-    "last_ratio_net": 0.8816,
+    "last_ratio_net": 0.8727,
     "legs": [],
     "name": "DeepTide",
     "peak_hours": 10.12,
@@ -8658,7 +8683,7 @@
     "excursion_src": "live from 2026-11-05T11:41",
     "issuer": "rGG3wQ4kUzd7Jnmk1n5NWPZjjut62kCBfC",
     "key": "rGG3wQ4kUzd7Jnmk1n5NWPZjjut62kCBfC-41524D5900000000000000000000000000000000",
-    "last_ratio_net": 0.9276,
+    "last_ratio_net": 0.9275,
     "legs": [],
     "name": "ARMY",
     "peak_hours": 29.53,
@@ -11025,7 +11050,7 @@
     "excursion_src": "live from 2026-11-05T11:41",
     "issuer": "rnHDzEH4xyW6u4LbXqDoX1uk36v5ovhbFi",
     "key": "rnHDzEH4xyW6u4LbXqDoX1uk36v5ovhbFi-4465657054696465000000000000000000000000",
-    "last_ratio_net": 0.8816,
+    "last_ratio_net": 0.8727,
     "legs": [],
     "name": "DeepTide",
     "peak_hours": 10.12,
@@ -11256,7 +11281,7 @@
     "excursion_src": "live from 2026-11-07T03:00",
     "issuer": "rU5nUwkBUPx3MFPQSHmMnr9S9yg4g8cKLc",
     "key": "rU5nUwkBUPx3MFPQSHmMnr9S9yg4g8cKLc-XYZ",
-    "last_ratio_net": 0.896,
+    "last_ratio_net": 0.8958,
     "legs": [],
     "name": "XYZ",
     "peak_hours": 0.08,
@@ -23780,7 +23805,7 @@
     "excursion_src": "live from 2026-11-07T02:50",
     "issuer": "rnHDzEH4xyW6u4LbXqDoX1uk36v5ovhbFi",
     "key": "rnHDzEH4xyW6u4LbXqDoX1uk36v5ovhbFi-4465657054696465000000000000000000000000",
-    "last_ratio_net": 0.9772,
+    "last_ratio_net": 0.9674,
     "legs": [],
     "name": "DeepTide",
     "peak_hours": 4.81,
@@ -23793,7 +23818,7 @@
     "tokens_net": 15638117.415015895,
     "tp_done": false,
     "trigger": "slow_scalp: new/top-15 trending, round trip 0.44% <= 2.0%",
-    "trough_x": 0.9764,
+    "trough_x": 0.9674,
     "ts": "2026-11-07T02:45:35+00:00",
     "usd_cost": 10.0,
     "warnings": [
