@@ -6740,7 +6740,7 @@
     "excursion_src": "live from 2026-11-07T00:07",
     "issuer": "rKtZqPGaiW8ejjaUccf13WuZLEXdzSz2CE",
     "key": "rKtZqPGaiW8ejjaUccf13WuZLEXdzSz2CE-434952434C450000000000000000000000000000",
-    "last_ratio_net": 1.0508,
+    "last_ratio_net": 1.0507,
     "legs": [],
     "name": "CIRCLE",
     "peak_hours": 15.21,
@@ -8643,7 +8643,7 @@
     "excursion_src": "live from 2026-11-05T11:41",
     "issuer": "rnHDzEH4xyW6u4LbXqDoX1uk36v5ovhbFi",
     "key": "rnHDzEH4xyW6u4LbXqDoX1uk36v5ovhbFi-4465657054696465000000000000000000000000",
-    "last_ratio_net": 0.9825,
+    "last_ratio_net": 0.9823,
     "legs": [],
     "name": "DeepTide",
     "peak_hours": 10.12,
@@ -8728,7 +8728,7 @@
     "excursion_src": "live from 2026-11-05T11:41",
     "issuer": "rGLEgQdktoN4Be5thhk6seg1HifGPBxY5Q",
     "key": "rGLEgQdktoN4Be5thhk6seg1HifGPBxY5Q-PLX",
-    "last_ratio_net": 1.0112,
+    "last_ratio_net": 1.0114,
     "legs": [],
     "name": "PLX",
     "peak_hours": 35.23,
@@ -11081,7 +11081,7 @@
     "excursion_src": "live from 2026-11-05T11:41",
     "issuer": "rnHDzEH4xyW6u4LbXqDoX1uk36v5ovhbFi",
     "key": "rnHDzEH4xyW6u4LbXqDoX1uk36v5ovhbFi-4465657054696465000000000000000000000000",
-    "last_ratio_net": 0.9825,
+    "last_ratio_net": 0.9823,
     "legs": [],
     "name": "DeepTide",
     "peak_hours": 10.12,
@@ -17645,8 +17645,8 @@
   "trustset_fees_xrp": 0.426194000000001
  },
  "slow_scalp": {
-  "buys_today": 9,
-  "cash_usd": 17.344962,
+  "buys_today": 10,
+  "cash_usd": 7.344939,
   "closed": [
    {
     "amm_fee": 0.00311,
@@ -23720,7 +23720,7 @@
    "rszenFJoDdiGjyezQc8pME9KWDQH43Tswh-44524F5000000000000000000000000000000000": 1794056559.8205795,
    "rwfGtVZKpPX6vb51xE5RGTgXkQ4W9wSUrz-53504C4153480000000000000000000000000000": 1793806780.9252148
   },
-  "net_fees_xrp": 0.6970800000000058,
+  "net_fees_xrp": 0.6971200000000058,
   "positions": [
    {
     "amm_fee": 0.00089,
@@ -23849,7 +23849,7 @@
     "excursion_src": "live from 2026-11-07T00:44",
     "issuer": "rGLEgQdktoN4Be5thhk6seg1HifGPBxY5Q",
     "key": "rGLEgQdktoN4Be5thhk6seg1HifGPBxY5Q-PLX",
-    "last_ratio_net": 0.984,
+    "last_ratio_net": 0.9842,
     "legs": [],
     "name": "PLX",
     "peak_hours": 0.25,
@@ -23929,11 +23929,34 @@
     ],
     "xrp_cost": 8.624332692257937,
     "xrp_usd_entry": 1.15951
+   },
+   {
+    "amm_fee": 0.01,
+    "currency": "XRG",
+    "entry_eff_px": 0.0004887305406221415,
+    "entry_spot": 0.0004837172269318145,
+    "issuer": "rUo5UNKiRGhLq4LVgbCzvx53DH65cgk5Dp",
+    "key": "rUo5UNKiRGhLq4LVgbCzvx53DH65cgk5Dp-XRG",
+    "legs": [],
+    "name": "XRG",
+    "pool_xrp_entry": 33111.505082,
+    "remaining": 1.0,
+    "t": 1794064828.8988912,
+    "tf": 0.0,
+    "tokens_gross": 17851.763908738852,
+    "tokens_net": 17668.643589950836,
+    "tp_done": false,
+    "trigger": "slow_scalp: new/top-15 trending, round trip 1.99% <= 2.0%",
+    "ts": "2026-11-07T15:20:28+00:00",
+    "usd_cost": 10.0,
+    "warnings": [],
+    "xrp_cost": 8.635205733776607,
+    "xrp_usd_entry": 1.15805
    }
   ],
   "start_ts": "2026-10-24T13:37:52+00:00",
   "start_usd": 100.0,
   "start_xrp_usd": 1.28033,
-  "trustset_fees_xrp": 0.3484740000000009
+  "trustset_fees_xrp": 0.3484940000000009
  }
 }
