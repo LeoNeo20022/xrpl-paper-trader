@@ -21,13 +21,13 @@
   "LONG": 0,
   "SHORT": 20,
   "TIE": 0,
-  "IDLE": 1108
+  "IDLE": 1110
  },
  "started": "2026-10-26T18:15:00+00:00",
  "start_price": 1.2998,
- "last_candle_ts": 1794053400,
+ "last_candle_ts": 1794054600,
  "venue": "Kraken Derivatives US PXRPUH (paper)",
- "last_run": "2026-11-07T12:19:59+00:00",
+ "last_run": "2026-11-07T12:35:00+00:00",
  "rules_fired": {
   "R3": 331,
   "R1": 61,
