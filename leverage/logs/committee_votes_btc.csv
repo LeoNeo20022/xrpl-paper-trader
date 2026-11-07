@@ -1106,3 +1106,4 @@ ts,coin,decision,in_position,long_scout,short_scout,idle_guard,chart_reader,long
 2026-11-07T04:45:00+00:00,BTCUSDT,IDLE,SHORT,IDLE,IDLE,SHORT,IDLE,0,0,0.8,0,no uptrend,"downtrend, no bounce/breakdown","no red flags, big trend down",no clear structure,0.0064,-1.47,3.03,95,25,,1,0,down,down,below,-0.03,,,
 2026-11-07T05:00:00+00:00,BTCUSDT,IDLE,SHORT,IDLE,SHORT,SHORT,IDLE,0,0.6,0.8,0,no uptrend,downtrend + MACD turning down,"no red flags, big trend down",no clear structure,0.0064,-1.95,3.03,94,25,,1,0,down,down,below,0.19,,,
 2026-11-07T05:15:00+00:00,BTCUSDT,IDLE,SHORT,IDLE,SHORT,SHORT,IDLE,0,0.6,0.8,0,no uptrend,downtrend + MACD turning down,"no red flags, big trend down",no clear structure,0.0064,-1.95,3.03,94,25,,1,0,down,down,below,0.19,,,
+2026-11-07T05:30:00+00:00,BTCUSDT,IDLE,SHORT,IDLE,SHORT,SHORT,IDLE,0,0.6,0.8,0,no uptrend,downtrend + MACD turning down,"no red flags, big trend down",no clear structure,0.0064,-1.95,3.03,94,25,,1,0,down,down,below,0.19,,,
