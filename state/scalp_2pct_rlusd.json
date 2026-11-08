@@ -4,17 +4,17 @@
  "anchor": 1.2948290358744394,
  "reserve_xrp": 3.2,
  "core_xrp": 0.0,
- "scalp_xrp": 39.337675372476966,
+ "scalp_xrp": 47.69452593889938,
  "kept_xrp": 0.0,
- "trading_usd": 47.92723767937221,
+ "trading_usd": 38.341790143497775,
  "savings_usd": 1.1502599674435388,
  "chunk_usd": 9.58544753587444,
- "fees_usd": 0.006799444,
- "buys": 11,
+ "fees_usd": 0.006822334,
+ "buys": 12,
  "sells": 6,
  "round_trips": 6,
  "reanchors": 0,
- "bar": 7153,
+ "bar": 7157,
  "levels": [
   {
    "buy": 1.268932,
@@ -63,7 +63,12 @@
   },
   {
    "buy": 1.147014,
-   "state": "buy"
+   "state": "sell",
+   "cost": 9.58544753587444,
+   "qty": 8.356870566422415,
+   "target": 1.169954,
+   "sell_qty": 8.356870566422415,
+   "bar": 7155
   },
   {
    "buy": 1.124074,
@@ -84,10 +89,10 @@
  ],
  "type": "scalp",
  "created": "2026-10-20T08:43:56+00:00",
- "last_run": "2026-11-08T20:31:33+00:00",
+ "last_run": "2026-11-08T20:46:32+00:00",
  "replayed": "2026-10-24",
  "netfee_extra_xrp": 0.00022,
- "net_fees_xrp": 0.005681,
+ "net_fees_xrp": 0.005701,
  "fees_trading_usd": 0.0020717264573991033,
  "fees_v2": true
 }
