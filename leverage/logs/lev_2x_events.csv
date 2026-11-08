@@ -48,3 +48,4 @@ ts,side,price,qty_xrp,notional_usd,margin_usd,fee_usd,realised_pnl_usd,rate,fund
 2026-11-08T16:00:00+00:00,FUNDING,1.1564,98.9469,,,,,5.48663192986e-05,0.006278,False,,,,,,binance_spot_data_api,PAPER-NOT-REAL
 2026-11-08T21:55:00+00:00,OPEN_LONG,1.1306,17.6897,20.0,10.0,0.004,,,,,1.1231,,,,,binance_spot_data_api,PAPER-NOT-REAL
 2026-11-08T22:00:00+00:00,OPEN_LONG,1.108,18.0505,20.0,10.0,0.004,,,,,1.093,,,,,binance_spot_data_api,PAPER-NOT-REAL
+2026-11-08T23:20:00+00:00,CLOSE_LONG,1.1302,18.0505,20.4007,,0.00408,-0.90496,,,,1.1384,,,,,binance_spot_data_api,PAPER-NOT-REAL
