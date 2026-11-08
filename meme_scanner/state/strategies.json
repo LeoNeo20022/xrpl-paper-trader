@@ -8824,7 +8824,7 @@
     "excursion_src": "live from 2026-11-05T11:41",
     "issuer": "rGLEgQdktoN4Be5thhk6seg1HifGPBxY5Q",
     "key": "rGLEgQdktoN4Be5thhk6seg1HifGPBxY5Q-PLX",
-    "last_ratio_net": 1.0088,
+    "last_ratio_net": 1.0092,
     "legs": [],
     "name": "PLX",
     "peak_hours": 35.23,
@@ -11264,7 +11264,7 @@
     "excursion_src": "live from 2026-11-05T11:41",
     "issuer": "raDZ4t8WPXkmDfJWMLBcNZmmSHmBC523NZ",
     "key": "raDZ4t8WPXkmDfJWMLBcNZmmSHmBC523NZ-ATM",
-    "last_ratio_net": 0.9919,
+    "last_ratio_net": 0.9918,
     "legs": [],
     "name": "ATM",
     "peak_hours": 16.23,
@@ -11493,8 +11493,8 @@
   "trustset_fees_xrp": 0.16873100000000013
  },
  "scalp": {
-  "buys_today": 4,
-  "cash_usd": 51.675817,
+  "buys_today": 5,
+  "cash_usd": 41.675794,
   "closed": [
    {
     "amm_fee": 0.00224,
@@ -17763,7 +17763,7 @@
    "rszenFJoDdiGjyezQc8pME9KWDQH43Tswh-44524F5000000000000000000000000000000000": 1793931000.547789,
    "rwfGtVZKpPX6vb51xE5RGTgXkQ4W9wSUrz-53504C4153480000000000000000000000000000": 1793844592.888387
   },
-  "net_fees_xrp": 0.8528000000000062,
+  "net_fees_xrp": 0.8528400000000063,
   "positions": [
    {
     "amm_fee": 0.00222,
@@ -17805,7 +17805,7 @@
     "last_ratio_net": 0.9916,
     "legs": [],
     "name": "$max",
-    "peak_hours": 0.35,
+    "peak_hours": 0.43,
     "peak_x": 0.9916,
     "pool_xrp_entry": 2474.780381,
     "remaining": 1.0,
@@ -17861,7 +17861,7 @@
     "last_ratio_net": 0.9902,
     "legs": [],
     "name": "FUZZY",
-    "peak_hours": 0.35,
+    "peak_hours": 0.43,
     "peak_x": 0.9902,
     "pool_xrp_entry": 547091.406902,
     "remaining": 1.0,
@@ -17878,11 +17878,35 @@
     ],
     "xrp_cost": 8.60303859323113,
     "xrp_usd_entry": 1.16238
+   },
+   {
+    "amm_fee": 0.00505,
+    "currency": "XYZ",
+    "entry_eff_px": 8.485880781533984e-05,
+    "entry_spot": 8.43208831706727e-05,
+    "issuer": "rU5nUwkBUPx3MFPQSHmMnr9S9yg4g8cKLc",
+    "key": "rU5nUwkBUPx3MFPQSHmMnr9S9yg4g8cKLc-XYZ",
+    "legs": [],
+    "name": "XYZ",
+    "pool_xrp_entry": 6620.251131,
+    "remaining": 1.0,
+    "t": 1794097718.1675453,
+    "tf": 0.0,
+    "tokens_gross": 102186.49737893508,
+    "tokens_net": 101538.73155818539,
+    "tp_done": false,
+    "ts": "2026-11-08T00:28:38+00:00",
+    "usd_cost": 10.0,
+    "warnings": [
+     "top-10 holders own 47%"
+    ],
+    "xrp_cost": 8.616455707109436,
+    "xrp_usd_entry": 1.16057
    }
   ],
   "start_usd": 100.0,
   "start_xrp_usd": 1.28151,
-  "trustset_fees_xrp": 0.4262740000000011
+  "trustset_fees_xrp": 0.4262940000000011
  },
  "slow_scalp": {
   "buys_today": 3,
@@ -24141,7 +24165,7 @@
     "excursion_src": "live from 2026-11-07T00:44",
     "issuer": "rGLEgQdktoN4Be5thhk6seg1HifGPBxY5Q",
     "key": "rGLEgQdktoN4Be5thhk6seg1HifGPBxY5Q-PLX",
-    "last_ratio_net": 0.9817,
+    "last_ratio_net": 0.982,
     "legs": [],
     "name": "PLX",
     "peak_hours": 0.25,
@@ -24233,7 +24257,7 @@
     "last_ratio_net": 0.9923,
     "legs": [],
     "name": "XRG",
-    "peak_hours": 9.05,
+    "peak_hours": 9.14,
     "peak_x": 0.9923,
     "pool_xrp_entry": 33111.505082,
     "remaining": 1.0,
@@ -24258,7 +24282,7 @@
     "excursion_src": "live from 2026-11-08T00:07",
     "issuer": "r4pXXQzJ8soYSX4QKeeW4BzRQS1PCtVYLJ",
     "key": "r4pXXQzJ8soYSX4QKeeW4BzRQS1PCtVYLJ-5345414C00000000000000000000000000000000",
-    "last_ratio_net": 0.9678,
+    "last_ratio_net": 0.9679,
     "legs": [],
     "name": "SEAL",
     "peak_hours": 0.08,
@@ -24289,7 +24313,7 @@
     "last_ratio_net": 0.9916,
     "legs": [],
     "name": "$max",
-    "peak_hours": 0.35,
+    "peak_hours": 0.43,
     "peak_x": 0.9916,
     "pool_xrp_entry": 2474.780381,
     "remaining": 1.0,
