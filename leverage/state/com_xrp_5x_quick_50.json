@@ -31,7 +31,7 @@
  "shadows": [],
  "decisions": {
   "LONG": 0,
-  "SHORT": 28,
+  "SHORT": 29,
   "TIE": 0,
   "IDLE": 1218
  },
@@ -39,7 +39,7 @@
  "start_price": 1.301,
  "max_dd_usd": 7.635897034608497,
  "min_equity": 45.59534325524476,
- "last_run": "2026-11-08T16:48:53+00:00",
+ "last_run": "2026-11-08T17:03:54+00:00",
  "scaled_from_100": true,
  "rules_fired": {
   "R3": 380,
