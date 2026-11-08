@@ -1,28 +1,17 @@
 {
- "cash": 0.0,
- "pos": {
-  "side": "SHORT",
-  "entry": 75642.169995,
-  "qty": 0.0024887559661687206,
-  "margin": 94.18489990014754,
-  "stop": 76463.10156330893,
-  "target": 74000.30685838216,
-  "opened": "2026-11-06T09:00:00+00:00",
-  "fees": 0.09412745093450242,
-  "funding": -0.05744896564512865,
-  "start_cash": 94.22157838543691
- },
- "trades": 4,
- "wins": 0,
+ "cash": 98.23426283599927,
+ "pos": null,
+ "trades": 5,
+ "wins": 1,
  "longs": 0,
  "shorts": 5,
  "liquidations": 0,
  "liq_lost_usd": 0.0,
- "fees_usd": 0.8800326098230864,
+ "fees_usd": 0.9168663508615094,
  "funding_usd": -0.13553753184428255,
  "peak_equity": 100.0,
  "max_dd_pct": 7.893936583711336,
- "realised_usd": -5.7784216145630865,
+ "realised_usd": -1.7657371640007256,
  "last_signal_ts": 1793955600,
  "last_funding_ts": 1794153600,
  "last_stop_ts": 1793712600,
@@ -32,9 +21,9 @@
   "LONG": 0,
   "SHORT": 33,
   "TIE": 0,
-  "IDLE": 1235
+  "IDLE": 1236
  },
- "last_run": "2026-11-08T21:46:26+00:00",
+ "last_run": "2026-11-08T22:01:28+00:00",
  "crowded_votes": 168,
  "rules_fired": {
   "R6": 60,
@@ -44,5 +33,6 @@
  "max_dd_usd": 7.893936583711337,
  "min_equity": 92.10606341628866,
  "loss_usd": -5.7784216145630865,
- "news_flats": 1
+ "news_flats": 1,
+ "win_usd": 4.012684450562361
 }
