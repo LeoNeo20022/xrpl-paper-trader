@@ -1342,3 +1342,5 @@ ts,coin,decision,in_position,long_scout,short_scout,idle_guard,chart_reader,long
 2026-11-09T15:45:00+00:00,BTCUSDT,IDLE,FLAT,IDLE,IDLE,IDLE,SHORT,0,0,0,0.6,no uptrend,"downtrend, no bounce/breakdown",cooldown after stop-out,at resistance 75104,0.0096,2.41,2.91,54,29,,0,0,down,down,below,-1.5,down,,
 2026-11-09T16:00:00+00:00,BTCUSDT,IDLE,FLAT,IDLE,IDLE,IDLE,IDLE,0,0,0,0,no uptrend,no downtrend,cooldown after stop-out,no clear structure,0.0056,1.9,2.83,48,29,,0,0,down,down,below,-0.71,,,
 2026-11-09T16:15:00+00:00,BTCUSDT,IDLE,FLAT,IDLE,IDLE,IDLE,IDLE,0,0,0,0,no uptrend,no downtrend,cooldown after stop-out,no clear structure,0.0056,1.9,2.83,48,29,,0,0,down,down,below,-0.71,,,
+2026-11-09T16:30:00+00:00,BTCUSDT,IDLE,FLAT,IDLE,IDLE,IDLE,IDLE,0,0,0,0,no uptrend,no downtrend,cooldown after stop-out,no clear structure,0.0056,1.9,2.83,48,29,,0,0,down,down,below,-0.71,,,
+2026-11-09T16:45:00+00:00,BTCUSDT,IDLE,FLAT,IDLE,IDLE,IDLE,IDLE,0,0,0,0,no uptrend,no downtrend,cooldown after stop-out,no clear structure,0.0056,1.9,2.83,48,29,,0,0,down,down,below,-0.71,,,
