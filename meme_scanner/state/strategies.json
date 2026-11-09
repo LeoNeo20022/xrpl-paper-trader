@@ -12017,7 +12017,7 @@
     "excursion_src": "live from 2026-11-06T22:59",
     "issuer": "rEjQsRE5gJDng9bnkV2WUYPtgtkD28fWMd",
     "key": "rEjQsRE5gJDng9bnkV2WUYPtgtkD28fWMd-42464F4F54000000000000000000000000000000",
-    "last_ratio_net": 0.8418,
+    "last_ratio_net": 0.8253,
     "legs": [],
     "name": "BFOOT",
     "peak_hours": 0.42,
@@ -12029,7 +12029,7 @@
     "tokens_gross": 888689.1974994981,
     "tokens_net": 878252.9889123407,
     "tp_done": false,
-    "trough_x": 0.8418,
+    "trough_x": 0.8253,
     "ts": "2026-11-06T22:54:55+00:00",
     "usd_cost": 10.0,
     "warnings": [
