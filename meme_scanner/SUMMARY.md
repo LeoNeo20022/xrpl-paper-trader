@@ -3,19 +3,19 @@
 Log-only experiment: no wallet, no keys, no orders. Every number below is simulated from public data.
 Data by <a href="https://xrpl.to">xrpl.to</a> (token discovery); safety checks and prices from the public XRP Ledger.
 
-Last run: **2026-11-10T03:02:24+00:00** (UTC) · XRP/USD 1.0941 (bitstamp) · last discovery 2026-11-10T03:02:24+00:00 (UTC, every run, API key) · xrpl.to credits used by last discovery: 4
+Last run: **2026-11-10T03:07:23+00:00** (UTC) · XRP/USD 1.0942 (bitstamp) · last discovery 2026-11-10T03:07:23+00:00 (UTC, every run, API key) · xrpl.to credits used by last discovery: 4
 
 ## Bankrolls — scoreboard is USD/RLUSD (each strategy has its own $100, $10 per trade)
 
 | Strategy | Rule | Started (UTC) | **Equity USD** | **vs $100** | Cash | Open (n / value) | Realized USD | Unrealized USD | Wins / losses (win rate) | Trades (closed) | Realized XRP | Unrealized XRP | Equity XRP | vs start XRP | Fees paid USD (network XRP) | Reserve locked XRP |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| hold | ½ at +100%, stop −50%, 72h | 2026-10-24 11:16 | **$71.99** | **-28.01** | $2.79 | 8 / $69.20 | $-17.03 | $-10.80 | 19 / 31 (38%) | 58 (50) | -6.90 | -5.67 | 65.80 | -12.24 | $5.94 (0.27808) | 1.6 |
-| plus5 | all at +50%, stop −50%, 72h | 2026-10-24 11:16 | **$83.60** | **-16.40** | $0.33 | 9 / $83.27 | $-9.45 | $-6.73 | 21 / 40 (34%) | 70 (61) | +1.00 | -3.34 | 76.40 | -1.63 | $7.22 (0.33826) | 1.8 |
-| scalp | +20% / −10% / 60 min | 2026-10-24 11:16 | **$87.35** | **-12.65** | $67.53 | 2 / $19.82 | $-11.85 | $-0.18 | 38 / 139 (21%) | 179 (177) | -7.43 | -0.13 | 79.83 | +1.80 | $19.98 (0.99979) | 0.4 |
-| slow_scalp | new/top-15 trending, round trip ≤2%; +8% / −6% / 24h (was 6h until Oct 25) | 2026-10-24 13:37 | **$80.68** | **-19.32** | $1.64 | 8 / $79.03 | $-17.81 | $-0.97 | 58 / 108 (35%) | 174 (166) | -5.49 | -0.61 | 73.74 | -4.37 | $18.92 (0.87520) | 1.6 |
-| breakout — **paused Oct 26 (low win rate)** | up ≥10% in 1h + rising volume; trailing stop 8% below high / 24h | 2026-10-24 13:37 | **$88.11** | **-11.89** | $88.11 | 0 / $0.00 | $-11.85 | $+0.00 | 5 / 16 (24%) | 21 (21) | -9.81 | +0.00 | 80.53 | +2.42 | $2.26 (0.06334) | 0.0 |
-| dip_bounce | >3 days old, ≥15% below 24h high; +10% / −10% / 24h | 2026-10-24 13:37 | **$105.59** | **+5.59** | $57.24 | 5 / $48.35 | $+7.92 | $-1.65 | 70 / 75 (48%) | 150 (145) | +9.02 | -1.37 | 96.51 | +18.40 | $20.08 (1.07227) | 1.0 |
-| *baseline: keep $100 in XRP* | buy XRP at $1.2815, hold | 2026-10-24 11:16 | **$85.38** | **-14.62** | – | – | – | – | – | – | – | – | 78.03 | +0.00 | – | – |
+| hold | ½ at +100%, stop −50%, 72h | 2026-10-24 11:16 | **$72.00** | **-28.00** | $2.79 | 8 / $69.21 | $-17.03 | $-10.79 | 19 / 31 (38%) | 58 (50) | -6.90 | -5.67 | 65.80 | -12.23 | $5.94 (0.27808) | 1.6 |
+| plus5 | all at +50%, stop −50%, 72h | 2026-10-24 11:16 | **$83.61** | **-16.39** | $0.33 | 9 / $83.28 | $-9.45 | $-6.72 | 21 / 40 (34%) | 70 (61) | +1.00 | -3.33 | 76.41 | -1.62 | $7.22 (0.33826) | 1.8 |
+| scalp | +20% / −10% / 60 min | 2026-10-24 11:16 | **$87.27** | **-12.73** | $57.53 | 3 / $29.75 | $-11.85 | $-0.25 | 38 / 139 (21%) | 180 (177) | -7.43 | -0.20 | 79.76 | +1.72 | $20.02 (0.99983) | 0.6 |
+| slow_scalp | new/top-15 trending, round trip ≤2%; +8% / −6% / 24h (was 6h until Oct 25) | 2026-10-24 13:37 | **$80.69** | **-19.31** | $1.64 | 8 / $79.04 | $-17.81 | $-0.96 | 58 / 108 (35%) | 174 (166) | -5.49 | -0.61 | 73.74 | -4.37 | $18.92 (0.87520) | 1.6 |
+| breakout — **paused Oct 26 (low win rate)** | up ≥10% in 1h + rising volume; trailing stop 8% below high / 24h | 2026-10-24 13:37 | **$88.11** | **-11.89** | $88.11 | 0 / $0.00 | $-11.85 | $+0.00 | 5 / 16 (24%) | 21 (21) | -9.81 | +0.00 | 80.52 | +2.42 | $2.26 (0.06334) | 0.0 |
+| dip_bounce | >3 days old, ≥15% below 24h high; +10% / −10% / 24h | 2026-10-24 13:37 | **$105.60** | **+5.60** | $57.24 | 5 / $48.35 | $+7.92 | $-1.65 | 70 / 75 (48%) | 150 (145) | +9.02 | -1.37 | 96.50 | +18.40 | $20.08 (1.07227) | 1.0 |
+| *baseline: keep $100 in XRP* | buy XRP at $1.2815, hold | 2026-10-24 11:16 | **$85.39** | **-14.61** | – | – | – | – | – | – | – | – | 78.03 | +0.00 | – | – |
 
 **All P/L above is after fees.** Fees paid = AMM pool fee + price impact (slippage) + issuer transfer fee + XRPL network fee, as if each tx were a plain transaction signed in Xaman (network fee now 0.000020 XRP/tx = max(0.00002, live open-ledger fee 1e-05), cap 0.01). Each buy = TrustSet + swap; each exit = swap; a full exit also removes the trust line (TrustSet). TrustSet fees are charged from Oct 24 ~14:30 UTC on; earlier network fees were 0.000012 XRP per swap. Reserve locked = 0.2 XRP per open trust line: held by the ledger and returned when the line is removed, so it is not a cost. Not included: Xaman's own 0.8% service fee on swaps/DEX trades (see README).
 
@@ -48,11 +48,12 @@ Cash is kept in USD at each fill. Values are net of AMM pool fee, price impact, 
 | [$max](https://xrpl.to/token/rDAgpQSwp41PCrG7LyqxtAxbvssFM7rH6d-246D617800000000000000000000000000000000) | 2026-11-08T11:39 | $10.00 | 0.76 | 1.07 @ 7.6h | 0.76 | top-10 holders own 31% |
 | [CODED](https://xrpl.to/token/rnNErmg9xVmcxxNZUwivbJSH6i9GUwYPFj-434F444544000000000000000000000000000000) | 2026-11-07T14:58 | $10.00 | 0.92 | 1.02 @ 25.6h | 0.91 | top-10 holders own 38% |
 
-### scalp — open positions (2)
+### scalp — open positions (3)
 
 | Token | Bought (UTC) | Cost | Now (net, x) | Peak (x, h after buy) | Low (x) | Warnings |
 |---|---|---|---|---|---|---|
-| [DeepTide](https://xrpl.to/token/rnHDzEH4xyW6u4LbXqDoX1uk36v5ovhbFi-4465657054696465000000000000000000000000) | 2026-11-10T03:02 | $10.00 | 1.00 | – | – | top-10 holders own 31% |
+| [DROP](https://xrpl.to/token/rszenFJoDdiGjyezQc8pME9KWDQH43Tswh-44524F5000000000000000000000000000000000) | 2026-11-10T03:07 | $10.00 | 1.00 | – | – | only 28% of LP burned (liquidity can be pulled) |
+| [DeepTide](https://xrpl.to/token/rnHDzEH4xyW6u4LbXqDoX1uk36v5ovhbFi-4465657054696465000000000000000000000000) | 2026-11-10T03:02 | $10.00 | 0.99 | 0.99 @ 0.1h | 0.99 | top-10 holders own 31% |
 | [FUZZY](https://xrpl.to/token/rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62-46555A5A59000000000000000000000000000000) | 2026-11-10T02:14 | $10.00 | 0.99 | 0.99 @ 0.7h | 0.99 | only 22% of LP burned (liquidity can be pulled) |
 
 ### slow_scalp — open positions (8)
@@ -84,7 +85,7 @@ None.
 
 ## How high do they run? (tracking only — no rule uses this)
 
-532 unique buys (same token + buy time counted once across strategies, using whichever strategy watched it longest/highest). Multiples are **net** (what selling the whole $10 buy would return, after pool fee, slippage, transfer and network fee), seen at the ~5-min polls; buys made before Oct 25 were backfilled from xrpl.to 5-min candles (approximate).
+533 unique buys (same token + buy time counted once across strategies, using whichever strategy watched it longest/highest). Multiples are **net** (what selling the whole $10 buy would return, after pool fee, slippage, transfer and network fee), seen at the ~5-min polls; buys made before Oct 25 were backfilled from xrpl.to 5-min candles (approximate).
 
 | Reached at any point | Buys | Share |
 |---|---|---|
@@ -94,7 +95,7 @@ None.
 | ≥ +50% | 10 | 2% |
 | ≥ +100% | 2 | 0% |
 
-Median peak **x1.00** · median hours to peak **2.6h** · best x3.18 · median low x0.97 · ≤ −10% at some point: 103 of 532
+Median peak **x1.00** · median hours to peak **2.6h** · best x3.18 · median low x0.97 · ≤ −10% at some point: 103 of 533
 
 ## Recently rejected (latest verdict per token)
 
@@ -110,15 +111,15 @@ Median peak **x1.00** · median hours to peak **2.6h** · best x3.18 · median l
 | [GHOST](https://xrpl.to/token/rB8FVTvTjLie6tC2kFabczgt6QedWY45k5-47484F5354000000000000000000000000000000) | FAIL_SAFETY | pool too small (xrpl.to TVL 67 XRP) | 34 |
 | [UGA](https://xrpl.to/token/rBFJGmWj6YaabVCxfsjiCM8pfYXs8xFdeC-UGA) | SKIP_ENTRY | not new and not top trending; 24h volume 483 XRP too low | 9011 |
 | [XRPHA](https://xrpl.to/token/rBe9Fsd2DcysT1hJoyugRAdhygAVjUJwdw-5852504841000000000000000000000000000000) | FAIL_SAFETY | pool 1,830 XRP < 2,000 | 1830 |
+| [CULT](https://xrpl.to/token/rCULtAKrKbQjk1Tpmg5hkw4dpcf9S9KCs-43554C5400000000000000000000000000000000) | SKIP_ENTRY | not new and not top trending; 24h volume 215 XRP too low | 62484 |
 | [$max](https://xrpl.to/token/rDAgpQSwp41PCrG7LyqxtAxbvssFM7rH6d-246D617800000000000000000000000000000000) | SKIP_ENTRY | not new and not top trending | 2440 |
-| [Horizon](https://xrpl.to/token/rDKJWtrPqKiMBzK9FTVvebMVec7FJtJLx6-486F72697A6F6E00000000000000000000000000) | SKIP_ENTRY | not new and not top trending; 24h volume 71 XRP too low | 19243 |
 | [IOV](https://xrpl.to/token/rEQRwzSJQru4tVSywEWN4cKRK9sPfFo6t3-IOV) | FAIL_SAFETY | pool too small (xrpl.to TVL 1,834 XRP) | 917 |
 | [BFOOT](https://xrpl.to/token/rEjQsRE5gJDng9bnkV2WUYPtgtkD28fWMd-42464F4F54000000000000000000000000000000) | SKIP_ENTRY | not new and not top trending | 5975 |
-| [RIZL](https://xrpl.to/token/rGGTx2B14imh3fCu1HAWQbiZTA6Uit2GbH-52495A4C00000000000000000000000000000000) | FAIL_SAFETY | pool too small (xrpl.to TVL 2,973 XRP) | 1486 |
+| [RIZL](https://xrpl.to/token/rGGTx2B14imh3fCu1HAWQbiZTA6Uit2GbH-52495A4C00000000000000000000000000000000) | FAIL_SAFETY | pool too small (xrpl.to TVL 2,957 XRP) | 1479 |
 | [scrap](https://xrpl.to/token/rGHtYnnigyuaHehWGfAdoEhkoirkGNdZzo-7363726170000000000000000000000000000000) | SKIP_ENTRY | not new and not top trending | 12497 |
 | [CAST](https://xrpl.to/token/rGLndPDgEPyaGfgZhyxkQy6Qo22zz3pfDH-4341535400000000000000000000000000000000) | FAIL_SAFETY | pool too small (xrpl.to TVL 208 XRP) | 104 |
 | [GoCa](https://xrpl.to/token/rGzizAp3BepbEzxth8Jr8GSXB8R7P2mnkJ-476F436100000000000000000000000000000000) | FAIL_SAFETY | pool too small (xrpl.to TVL 1,545 XRP) | 772 |
-| [CHROOPS](https://xrpl.to/token/rH4Gxnxpik3Qv5PC5ppB1NZg1jrc2YhqeW-4348524F4F505300000000000000000000000000) | FAIL_SAFETY | pool too small (xrpl.to TVL 416 XRP) | 208 |
+| [CHROOPS](https://xrpl.to/token/rH4Gxnxpik3Qv5PC5ppB1NZg1jrc2YhqeW-4348524F4F505300000000000000000000000000) | FAIL_SAFETY | pool too small (xrpl.to TVL 418 XRP) | 209 |
 | [PROFIT](https://xrpl.to/token/rJwLNwaBUh9a7ajk9FeeLAuA791wVe3oyg-50524F4649540000000000000000000000000000) | SKIP_ENTRY | not new and not top trending; 24h volume 326 XRP too low | 42627 |
 | [ZERPS](https://xrpl.to/token/rJztCAZEQvKcMSQTpKUZRJJjA11aUTk9Aw-5A45525053000000000000000000000000000000) | FAIL_SAFETY | pool too small (xrpl.to TVL 942 XRP) | 471 |
 | [HAZZY](https://xrpl.to/token/rKLt8jGHt7oM4cv94FvxQpGywYbf1FMoon-48415A5A59000000000000000000000000000000) | FAIL_SAFETY | pool too small (xrpl.to TVL 186 XRP) | 93 |
@@ -127,7 +128,7 @@ Median peak **x1.00** · median hours to peak **2.6h** · best x3.18 · median l
 | [$JSWRZ](https://xrpl.to/token/rLrrDKPRjnvQMJFjk7YxEew2AvpAAfejGM-244A5357525A0000000000000000000000000000) | FAIL_SAFETY | pool too small (xrpl.to TVL 2,632 XRP) | 1316 |
 | [Xmen](https://xrpl.to/token/rMFL2KuFPMuiujdbVGbMzNNjj5QKyd6dZf-586D656E00000000000000000000000000000000) | SKIP_ENTRY | not new and not top trending | 8922 |
 | [RIPPLE](https://xrpl.to/token/rMgrYs2XYgbGaLZ19HbUXfi9rpsaFQYwgc-524950504C450000000000000000000000000000) | SKIP_ENTRY | not new and not top trending | 4083 |
-| [EUROP](https://xrpl.to/token/rMkEuRii9w9uBMQDnWV5AA43gvYZR9JxVK-4555524F50000000000000000000000000000000) | FAIL_SAFETY | excluded tag: Stablecoin; not a meme (stablecoin/major/KYC issuer); pool too small (xrpl.to TVL 588 XRP) | 294 |
+| [EUROP](https://xrpl.to/token/rMkEuRii9w9uBMQDnWV5AA43gvYZR9JxVK-4555524F50000000000000000000000000000000) | FAIL_SAFETY | excluded tag: Stablecoin; not a meme (stablecoin/major/KYC issuer); pool too small (xrpl.to TVL 584 XRP) | 292 |
 | [HOOTS](https://xrpl.to/token/rNPWp2RX2GHVbFbG77k76Ak8nhKwrHu17b-484F4F5453000000000000000000000000000000) | FAIL_SAFETY | top-10 holders own 53% (excl. AMM) | 4287 |
 | [HOHO](https://xrpl.to/token/rP8kFHLYYC6716moBnbJEi2mGEFW93LduD-484F484F00000000000000000000000000000000) | FAIL_SAFETY | pool too small (xrpl.to TVL 251 XRP) | 126 |
 | [XRPLIL](https://xrpl.to/token/rPLMPHiThKUsx5sXKMFfq2Nw4moba2VTew-5852504C494C0000000000000000000000000000) | FAIL_SAFETY | pool too small (xrpl.to TVL 211 XRP) | 106 |
