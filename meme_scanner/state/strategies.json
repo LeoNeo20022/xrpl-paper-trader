@@ -12472,7 +12472,7 @@
     "excursion_src": "live from 2026-11-10T00:18",
     "issuer": "rnHDzEH4xyW6u4LbXqDoX1uk36v5ovhbFi",
     "key": "rnHDzEH4xyW6u4LbXqDoX1uk36v5ovhbFi-4465657054696465000000000000000000000000",
-    "last_ratio_net": 0.9719,
+    "last_ratio_net": 0.9724,
     "legs": [],
     "name": "DeepTide",
     "peak_hours": 2.48,
@@ -12498,10 +12498,14 @@
     "currency": "ATM",
     "entry_eff_px": 6.901366576987602e-06,
     "entry_spot": 6.900272527963416e-06,
+    "excursion_src": "live from 2026-11-10T03:02",
     "issuer": "raDZ4t8WPXkmDfJWMLBcNZmmSHmBC523NZ",
     "key": "raDZ4t8WPXkmDfJWMLBcNZmmSHmBC523NZ-ATM",
+    "last_ratio_net": 0.9997,
     "legs": [],
     "name": "ATM",
+    "peak_hours": 0.08,
+    "peak_x": 0.9997,
     "pool_xrp_entry": 78617.418398,
     "remaining": 1.0,
     "t": 1794279443.449404,
@@ -12509,6 +12513,7 @@
     "tokens_gross": 1325775.1944739027,
     "tokens_net": 1325565.0240617644,
     "tp_done": false,
+    "trough_x": 0.9997,
     "ts": "2026-11-10T02:57:23+00:00",
     "usd_cost": 10.0,
     "warnings": [],
@@ -12520,10 +12525,14 @@
     "currency": "5345414C00000000000000000000000000000000",
     "entry_eff_px": 5.690567136696262e-07,
     "entry_spot": 5.631900540523066e-07,
+    "excursion_src": "live from 2026-11-10T03:02",
     "issuer": "r4pXXQzJ8soYSX4QKeeW4BzRQS1PCtVYLJ",
     "key": "r4pXXQzJ8soYSX4QKeeW4BzRQS1PCtVYLJ-5345414C00000000000000000000000000000000",
+    "last_ratio_net": 0.9795,
     "legs": [],
     "name": "SEAL",
+    "peak_hours": 0.08,
+    "peak_x": 0.9795,
     "pool_xrp_entry": 29169.75613,
     "remaining": 1.0,
     "t": 1794279443.449404,
@@ -12531,6 +12540,7 @@
     "tokens_gross": 16243557.72418165,
     "tokens_net": 16076095.63850036,
     "tp_done": false,
+    "trough_x": 0.9795,
     "ts": "2026-11-10T02:57:23+00:00",
     "usd_cost": 10.0,
     "warnings": [],
@@ -12543,8 +12553,8 @@
   "trustset_fees_xrp": 0.169071
  },
  "scalp": {
-  "buys_today": 8,
-  "cash_usd": 77.527003,
+  "buys_today": 9,
+  "cash_usd": 67.526981,
   "closed": [
    {
     "amm_fee": 0.00224,
@@ -19930,7 +19940,7 @@
    "rszenFJoDdiGjyezQc8pME9KWDQH43Tswh-44524F5000000000000000000000000000000000": 1794106102.730023,
    "rwfGtVZKpPX6vb51xE5RGTgXkQ4W9wSUrz-53504C4153480000000000000000000000000000": 1793844592.888387
   },
-  "net_fees_xrp": 0.9997480000000076,
+  "net_fees_xrp": 0.9997880000000077,
   "positions": [
    {
     "amm_fee": 0.0054,
@@ -19960,11 +19970,35 @@
     ],
     "xrp_cost": 9.10680460440041,
     "xrp_usd_entry": 1.09808
+   },
+   {
+    "amm_fee": 0.00222,
+    "currency": "4465657054696465000000000000000000000000",
+    "entry_eff_px": 4.5833307677055163e-07,
+    "entry_spot": 4.568217570070219e-07,
+    "issuer": "rnHDzEH4xyW6u4LbXqDoX1uk36v5ovhbFi",
+    "key": "rnHDzEH4xyW6u4LbXqDoX1uk36v5ovhbFi-4465657054696465000000000000000000000000",
+    "legs": [],
+    "name": "DeepTide",
+    "pool_xrp_entry": 8453.250116,
+    "remaining": 1.0,
+    "t": 1794279744.7113214,
+    "tf": 0.0,
+    "tokens_gross": 20007106.96478661,
+    "tokens_net": 19941134.99440213,
+    "tp_done": false,
+    "ts": "2026-11-10T03:02:24+00:00",
+    "usd_cost": 10.0,
+    "warnings": [
+     "top-10 holders own 31%"
+    ],
+    "xrp_cost": 9.139681756281245,
+    "xrp_usd_entry": 1.09413
    }
   ],
   "start_usd": 100.0,
   "start_xrp_usd": 1.28151,
-  "trustset_fees_xrp": 0.49974800000000186
+  "trustset_fees_xrp": 0.4997680000000019
  },
  "slow_scalp": {
   "buys_today": 4,
@@ -27107,7 +27141,7 @@
     "last_ratio_net": 0.9818,
     "legs": [],
     "name": "PIGEONS",
-    "peak_hours": 17.09,
+    "peak_hours": 17.17,
     "peak_x": 0.9818,
     "pool_xrp_entry": 10891.270426,
     "remaining": 1.0,
