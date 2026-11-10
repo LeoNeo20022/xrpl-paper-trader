@@ -948,8 +948,8 @@
   "trustset_fees_xrp": 0.03166299999999997
  },
  "dip_bounce": {
-  "buys_today": 2,
-  "cash_usd": 67.244843,
+  "buys_today": 3,
+  "cash_usd": 57.244821,
   "closed": [
    {
     "amm_fee": 0.00255,
@@ -7185,7 +7185,7 @@
    "rszenFJoDdiGjyezQc8pME9KWDQH43Tswh-44524F5000000000000000000000000000000000": 1793237291.5620797,
    "rwfGtVZKpPX6vb51xE5RGTgXkQ4W9wSUrz-53504C4153480000000000000000000000000000": 1793923380.3853269
   },
-  "net_fees_xrp": 1.072228000000003,
+  "net_fees_xrp": 1.0722680000000029,
   "positions": [
    {
     "amm_fee": 0.00505,
@@ -7282,10 +7282,14 @@
     "currency": "5461626279000000000000000000000000000000",
     "entry_eff_px": 9.42040179807602e-05,
     "entry_spot": 9.411449718900092e-05,
+    "excursion_src": "live from 2026-11-10T02:14",
     "issuer": "rsU4M9r6MZ6nhZZvFSiK8uWfq4hfz8188t",
     "key": "rsU4M9r6MZ6nhZZvFSiK8uWfq4hfz8188t-5461626279000000000000000000000000000000",
+    "last_ratio_net": 0.9981,
     "legs": [],
     "name": "Tabby",
+    "peak_hours": 0.08,
+    "peak_x": 0.9981,
     "pool_xrp_entry": 9823.845208,
     "remaining": 1.0,
     "t": 1794276564.9477737,
@@ -7294,17 +7298,43 @@
     "tokens_net": 96878.41413809455,
     "tp_done": false,
     "trigger": "dip_bounce: 15.6% below 24h high 0.000111455 XRP, age 754.1d",
+    "trough_x": 0.9981,
     "ts": "2026-11-10T02:09:24+00:00",
     "usd_cost": 10.0,
     "warnings": [],
     "xrp_cost": 9.126335867412593,
     "xrp_usd_entry": 1.09573
+   },
+   {
+    "amm_fee": 7e-05,
+    "currency": "BOX",
+    "entry_eff_px": 0.001475236611903806,
+    "entry_spot": 0.001473262526692234,
+    "issuer": "rhLJ2ma5pScsxVhL5EQr71w3FgASVLwP84",
+    "key": "rhLJ2ma5pScsxVhL5EQr71w3FgASVLwP84-BOX",
+    "legs": [],
+    "name": "BOX",
+    "pool_xrp_entry": 7183.495416,
+    "remaining": 1.0,
+    "t": 1794276865.4092867,
+    "tf": 0.0,
+    "tokens_gross": 6181.386168049077,
+    "tokens_net": 6173.114557296674,
+    "tp_done": false,
+    "trigger": "dip_bounce: 23.2% below 24h high 0.00191853 XRP, age 686.1d",
+    "ts": "2026-11-10T02:14:25+00:00",
+    "usd_cost": 10.0,
+    "warnings": [
+     "top-10 holders own 37%"
+    ],
+    "xrp_cost": 9.10680460440041,
+    "xrp_usd_entry": 1.09808
    }
   ],
   "start_ts": "2026-10-24T13:37:52+00:00",
   "start_usd": 100.0,
   "start_xrp_usd": 1.28033,
-  "trustset_fees_xrp": 0.5360540000000021
+  "trustset_fees_xrp": 0.5360740000000022
  },
  "hold": {
   "buys_today": 0,
@@ -12411,7 +12441,7 @@
     "excursion_src": "live from 2026-11-10T00:18",
     "issuer": "rnHDzEH4xyW6u4LbXqDoX1uk36v5ovhbFi",
     "key": "rnHDzEH4xyW6u4LbXqDoX1uk36v5ovhbFi-4465657054696465000000000000000000000000",
-    "last_ratio_net": 0.9898,
+    "last_ratio_net": 0.9897,
     "legs": [],
     "name": "DeepTide",
     "peak_hours": 0.08,
@@ -12438,8 +12468,8 @@
   "trustset_fees_xrp": 0.16899100000000003
  },
  "scalp": {
-  "buys_today": 7,
-  "cash_usd": 87.527025,
+  "buys_today": 8,
+  "cash_usd": 77.527003,
   "closed": [
    {
     "amm_fee": 0.00224,
@@ -19825,11 +19855,36 @@
    "rszenFJoDdiGjyezQc8pME9KWDQH43Tswh-44524F5000000000000000000000000000000000": 1794106102.730023,
    "rwfGtVZKpPX6vb51xE5RGTgXkQ4W9wSUrz-53504C4153480000000000000000000000000000": 1793844592.888387
   },
-  "net_fees_xrp": 0.9997080000000076,
-  "positions": [],
+  "net_fees_xrp": 0.9997480000000076,
+  "positions": [
+   {
+    "amm_fee": 0.0054,
+    "currency": "46555A5A59000000000000000000000000000000",
+    "entry_eff_px": 4.861490434577393e-05,
+    "entry_spot": 4.835147329901459e-05,
+    "issuer": "rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62",
+    "key": "rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62-46555A5A59000000000000000000000000000000",
+    "legs": [],
+    "name": "FUZZY",
+    "pool_xrp_entry": 544459.22145,
+    "remaining": 1.0,
+    "t": 1794276865.4092867,
+    "tf": 0.0,
+    "tokens_gross": 188345.9589345338,
+    "tokens_net": 187325.36301271277,
+    "tp_done": false,
+    "ts": "2026-11-10T02:14:25+00:00",
+    "usd_cost": 10.0,
+    "warnings": [
+     "only 22% of LP burned (liquidity can be pulled)"
+    ],
+    "xrp_cost": 9.10680460440041,
+    "xrp_usd_entry": 1.09808
+   }
+  ],
   "start_usd": 100.0,
   "start_xrp_usd": 1.28151,
-  "trustset_fees_xrp": 0.49972800000000184
+  "trustset_fees_xrp": 0.49974800000000186
  },
  "slow_scalp": {
   "buys_today": 4,
@@ -26972,7 +27027,7 @@
     "last_ratio_net": 0.9818,
     "legs": [],
     "name": "PIGEONS",
-    "peak_hours": 16.29,
+    "peak_hours": 16.37,
     "peak_x": 0.9818,
     "pool_xrp_entry": 10891.270426,
     "remaining": 1.0,
