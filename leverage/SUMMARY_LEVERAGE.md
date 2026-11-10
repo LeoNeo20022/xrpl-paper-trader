@@ -1,13 +1,13 @@
 <!-- LEVERAGE-PAPER-BEGIN -->
 ## Separate line: LEVERAGED XRP grid, paper perpetual futures (`lev_2x`, `lev_5x`, PAPER-NOT-REAL)
 
-Modelled on Binance USDⓈ-M XRPUSDT perps, isolated margin. Started **2026-10-26T15:45:00+00:00** at **$1.3024**, $100 paper each, not in the $300 total. Scoreboard: USD vs keep $100 in XRP bought at the same start. Last update 2026-11-10T20:55:47+00:00 at $1.0606 (prices: `binance_spot_data_api`, funding: `okx_proxy`).
+Modelled on Binance USDⓈ-M XRPUSDT perps, isolated margin. Started **2026-10-26T15:45:00+00:00** at **$1.3024**, $100 paper each, not in the $300 total. Scoreboard: USD vs keep $100 in XRP bought at the same start. Last update 2026-11-10T21:10:47+00:00 at $1.0638 (prices: `binance_spot_data_api`, funding: `okx_proxy`).
 
 | Line | **Value (USD, if closed now)** | Change vs $100 | **vs keep $100 in XRP** | Position XRP (avg entry) | Liquidation price | Open levels | Round trips | Fees paid (trading + funding) | **Liquidations (margin lost)** | Max drawdown |
 |---|---|---|---|---|---|---|---|---|---|---|
-| `lev_2x` (2x) | **$85.53** | -14.47 | **+4.14** | 171.90 (1.14194) | 0.57427 | 10/10 | 9 | $0.20 ($0.11 + $0.09) | **0** ($0.00) | 21.4% |
-| `lev_5x` (5x) | **$63.83** | -36.17 | **-17.56** | 429.75 (1.14194) | 0.91857 | 10/10 | 9 | $0.50 ($0.28 + $0.22) | **0** ($0.00) | 51.7% |
-| Baseline: keep $100 in XRP | $81.39 | -18.61 | — | 76.74 | — | | | $0.05 | 0 | |
+| `lev_2x` (2x) | **$86.08** | -13.92 | **+4.44** | 171.90 (1.14194) | 0.57427 | 10/10 | 9 | $0.20 ($0.11 + $0.09) | **0** ($0.00) | 21.4% |
+| `lev_5x` (5x) | **$65.20** | -34.80 | **-16.43** | 429.75 (1.14194) | 0.91857 | 10/10 | 9 | $0.50 ($0.28 + $0.22) | **0** ($0.00) | 51.7% |
+| Baseline: keep $100 in XRP | $81.64 | -18.36 | — | 76.74 | — | | | $0.05 | 0 | |
 
 - Rules: 10 buy levels 2% apart below the start, $10 margin each (2x = $20 of XRP, 5x = $50), take profit +2% per level, profit kept in USDT, static ladder. Costs: 0.02% maker per fill, 8-hourly funding, and the value assumes a market close (0.05% taker + 0.05% slippage). Liquidation when margin + unrealised P/L falls to 0.5% of the position; the whole margin is lost. Backtest: `leverage/backtest_leverage_output.txt`.
 - Not available to US residents on Binance.com; Binance.US has no futures or margin. This line is for learning only.
@@ -16,12 +16,12 @@ Modelled on Binance USDⓈ-M XRPUSDT perps, isolated margin. Started **2026-10-2
 <!-- KRAKEN-1K-BEGIN -->
 ## Candidate live setup (PAPER-NOT-REAL): $1,000 on Kraken US XRP perpetual PXRPUH, committee 'get on base' line, 2x and 3x caps
 
-Same committee signals/rules as `com_xrp_5x_quick` (take profit +1.5% underlying, stop the tighter of 1% or 1.5x ATR), whole 500-XRP contracts only, Kraken fees $0.0113/contract/side + 0.05% slippage on market fills, funding stand-in (`okx_proxy`), liquidation at 17% maintenance margin + $10 fee. Last update 2026-11-10T20:55:57+00:00 at $1.0606. Target: $4/day after fees.
+Same committee signals/rules as `com_xrp_5x_quick` (take profit +1.5% underlying, stop the tighter of 1% or 1.5x ATR), whole 500-XRP contracts only, Kraken fees $0.0113/contract/side + 0.05% slippage on market fills, funding stand-in (`okx_proxy`), liquidation at 17% maintenance margin + $10 fee. Last update 2026-11-10T21:10:58+00:00 at $1.0638. Target: $4/day after fees.
 
 | Line | Started | **P/L after fees + funding** | **$/day vs $4 target** | Worst drawdown | Trades (win rate) | Longs: closed (wins) P/L | Shorts: closed (wins) P/L | Contracts held now | Fees / funding | Liquidations | vs hold $1,000 XRP |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| `com_xrp_kraken_1k_2x` (2x cap) | 2026-10-26T18:15:00+00:00 | **+66.90** | **+4.43** (+0.43 vs $4) | -48.31 (4.6%) | 7 (57%) | 0 | 7 (57% wins) +51.61 | 3 SHORT @ 1.071364 (stop 1.082078, TP 1.055294, liq 1.514886) | $0.51 / $-0.71 | 0 | +251.33 |
-| `com_xrp_kraken_1k_3x` (3x cap) | 2026-10-26T18:15:00+00:00 | **+108.27** | **+7.16** (+3.16 vs $4) | -80.51 (7.4%) | 7 (57%) | 0 | 7 (57% wins) +77.70 | 6 SHORT @ 1.071364 (stop 1.082078, TP 1.055294, liq 1.222713) | $0.84 / $-1.09 | 0 | +292.70 |
+| `com_xrp_kraken_1k_2x` (2x cap) | 2026-10-26T18:15:00+00:00 | **+62.09** | **+4.11** (+0.11 vs $4) | -48.31 (4.6%) | 7 (57%) | 0 | 7 (57% wins) +51.61 | 3 SHORT @ 1.071364 (stop 1.082078, TP 1.055294, liq 1.514886) | $0.51 / $-0.71 | 0 | +244.07 |
+| `com_xrp_kraken_1k_3x` (3x cap) | 2026-10-26T18:15:00+00:00 | **+98.66** | **+6.52** (+2.52 vs $4) | -80.51 (7.4%) | 7 (57%) | 0 | 7 (57% wins) +77.70 | 6 SHORT @ 1.071364 (stop 1.082078, TP 1.055294, liq 1.222713) | $0.84 / $-1.09 | 0 | +280.64 |
 
 - $/day is P/L since start divided by days running; tiny in the first days. Backtest: `leverage/backtest_contracts_1k_output.txt`. Kraken's PXRPUH initial margin is unverified (3x assumed safer than 5x).
 <!-- KRAKEN-1K-END -->
