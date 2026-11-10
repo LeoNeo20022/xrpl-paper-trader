@@ -3,19 +3,19 @@
  "start_price": 1.3024,
  "anchor": 1.3024,
  "cash": 11.285895452205045,
- "margin": 88.05817013738634,
+ "margin": 88.03221185860673,
  "qty": 382.762651006453,
  "entry": 1.1514791143630492,
  "chunk": 10.0,
  "realised_usd": -0.35126146500237526,
  "fees_trade_usd": 0.2717994679221514,
- "funding_usd": 0.12467294540619615,
+ "funding_usd": 0.150631224185814,
  "liq_lost_usd": 0.0,
  "liquidations": 0,
  "buys": 18,
  "sells": 9,
- "bar": 4129,
- "last_funding_ts": 1794240000,
+ "bar": 4132,
+ "last_funding_ts": 1794268800,
  "peak_equity": 106.05678474344201,
  "max_dd_pct": 34.73747743388097,
  "levels": [
@@ -87,5 +87,5 @@
    "state": "buy"
   }
  ],
- "last_run": "2026-11-09T23:54:49+00:00"
+ "last_run": "2026-11-10T00:09:49+00:00"
 }
