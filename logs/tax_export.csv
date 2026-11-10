@@ -77,3 +77,4 @@ Date (UTC),Type,Sent Asset,Sent Amount,Received Asset,Received Amount,Fee Asset,
 2026-11-10T09:05:00+00:00,Trade,RLUSD,9.5854,XRP,8.879024,XRP,0.000020,scalp_2pct_rlusd,1.079561,PAPER buy XRP/RLUSD limit order (simulated),PAPER-NOT-ON-LEDGER
 2026-11-10T13:35:00+00:00,Trade,RLUSD,9.5854,XRP,9.060226,XRP,0.000020,scalp_2pct,1.05797,PAPER buy XRP/RLUSD limit order (simulated),PAPER-NOT-ON-LEDGER
 2026-11-10T13:35:00+00:00,Trade,RLUSD,9.5854,XRP,9.060226,XRP,0.000020,scalp_2pct_rlusd,1.05797,PAPER buy XRP/RLUSD limit order (simulated),PAPER-NOT-ON-LEDGER
+2026-11-10T18:45:00+00:00,Trade,XRP,11.448821,RLUSD,12.2658,XRP,0.000020,xrp_stacker,1.071356,PAPER sell XRP/RLUSD limit order (simulated),PAPER-NOT-ON-LEDGER
