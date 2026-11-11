@@ -1335,3 +1335,4 @@ ts,line,leverage,price,prices_5m,prices_1h,funding_source,trend_1h,rsi_1h,value_
 2026-11-11T18:32:09+00:00,lev_ta_5x,5,1.0646,binance_spot_data_api,binance_spot_data_api,okx_proxy,down,53.16,100,85.0684,-14.9316,29.4061,-28.1316,2.8248,FLAT,,,,,11,3,2,9,4.5298,-0.0698,4.46,0,0.0,29.04,82.2436,0
 2026-11-11T19:09:43+00:00,lev_ta_5x,5,1.0587,binance_spot_data_api,binance_spot_data_api,okx_proxy,down,47.62,100,85.0684,-14.9316,29.4061,-28.1316,3.2806,FLAT,,,,,11,3,2,9,4.5298,-0.0698,4.46,0,0.0,29.04,81.7878,0
 2026-11-11T19:24:43+00:00,lev_ta_5x,5,1.0569,binance_spot_data_api,binance_spot_data_api,okx_proxy,down,47.62,100,85.0684,-14.9316,29.4061,-28.1316,3.4196,FLAT,,,,,11,3,2,9,4.5298,-0.0698,4.46,0,0.0,29.04,81.6488,0
+2026-11-11T19:39:43+00:00,lev_ta_5x,5,1.0564,binance_spot_data_api,binance_spot_data_api,okx_proxy,down,47.62,100,85.0684,-14.9316,29.4061,-28.1316,3.4583,FLAT,,,,,11,3,2,9,4.5298,-0.0698,4.46,0,0.0,29.04,81.6101,0
