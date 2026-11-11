@@ -1509,3 +1509,4 @@ ts,coin,decision,in_position,long_scout,short_scout,idle_guard,chart_reader,long
 2026-11-11T09:30:00+00:00,BTCUSDT,IDLE,SHORT,IDLE,IDLE,IDLE,IDLE,0,0,0,0,no uptrend,"downtrend, no bounce/breakdown",choppy ADX 20,no clear structure,0.0094,1.81,2.92,43,29,,0,0,down,down,below,-1.33,down,,
 2026-11-11T09:45:00+00:00,BTCUSDT,IDLE,SHORT,IDLE,IDLE,IDLE,IDLE,0,0,0,0,no uptrend,"downtrend, no bounce/breakdown",choppy ADX 20,no clear structure,0.0094,1.81,2.92,43,29,,0,0,down,down,below,-1.33,down,,
 2026-11-11T10:00:00+00:00,BTCUSDT,IDLE,SHORT,IDLE,SHORT,IDLE,IDLE,0,0.6,0,0,no uptrend,downtrend + MACD turning down,choppy ADX 19,no clear structure,0.0094,0.94,2.96,56,29,,0,0,down,down,below,-0.98,,,
+2026-11-11T10:15:00+00:00,BTCUSDT,IDLE,SHORT,IDLE,SHORT,IDLE,IDLE,0,0.6,0,0,no uptrend,downtrend + MACD turning down,choppy ADX 19,no clear structure,0.0094,0.94,2.96,56,29,,0,0,down,down,below,-0.98,,,
