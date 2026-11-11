@@ -5,21 +5,21 @@
 **Scoreboard: value in RLUSD/USD**, XRP-equivalent second. Each strategy has its own **$100** (paper total **$300**) and is compared with **keep $100 in XRP** (bought at the start).
 
 - Started: **2026-10-20T08:43:56+00:00** at XRPL mid **$1.2948**
-- Last update: **2026-11-11T17:20:57+00:00**, XRPL XRP/RLUSD mid **$1.0759** (bid 1.0754 / ask 1.0764, node https://xrplcluster.com, ledger 108264797)
+- Last update: **2026-11-11T17:35:57+00:00**, XRPL XRP/RLUSD mid **$1.0691** (bid 1.0686 / ask 1.0697, node https://xrplcluster.com, ledger 108265016)
 - RLUSD issuer transfer fee (live): 0.0000%  |  candles processed this run: 3
 
 | Strategy | Start | **Value (RLUSD/USD)** | Change vs start | **vs keep $100 in XRP** | XRP held | RLUSD | XRP-equivalent* | vs XRP baseline (XRP-eq.) | Fills | XRP sells (taxable) | Fees paid USD (network XRP) | Reserve locked XRP |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| Weekly dip-buy ladder, never sells (`dip_ladder`) | $100 | **$87.54** | -12.46 | **+4.49** (+5.40%) | 81.3620 | $0.00 | 81.3620 | +5.40% | 10 | 0 | $0.05 (0.04663) | 2.2 |
-| Static 2% scalp ladder, all profit kept as XRP (`scalp_2pct`) | $100 | **$93.92** | -6.08 | **+10.87** (+13.09%) | 87.2950 | $0.00 | 87.2950 | +13.09% | 27 | 8 | $0.03 (0.02174) | 3.2 |
-| Static 2% scalp ladder, profit banked in RLUSD (variant) (`scalp_2pct_rlusd`) | $100 | **$94.11** | -5.89 | **+11.06** (+13.32%) | 86.0464 | $1.53 | 87.4712 | +13.32% | 27 | 8 | $0.03 (0.02174) | 3.2 |
-| **Experiment total** (all 3) | $300 | **$275.57** | -24.43 | **+26.42** (+10.60%) | 254.7033 | $1.53 | 256.1281 | +10.60% | | | $0.10 (0.09011) | 8.6 |
-| **Baseline: keep $100 in XRP** (bought at start) | $100 | $83.05 | -16.95 | — | 77.1917 | $0.00 | 77.1917 | — | 1 | 0 | $0.05 | — |
-| Baseline for the total: keep $300 in XRP | $300 | $249.15 | -50.85 | — | 231.5750 | $0.00 | 231.5750 | — | | | | |
+| Weekly dip-buy ladder, never sells (`dip_ladder`) | $100 | **$86.99** | -13.01 | **+4.46** (+5.40%) | 81.3620 | $0.00 | 81.3620 | +5.40% | 10 | 0 | $0.05 (0.04663) | 2.2 |
+| Static 2% scalp ladder, all profit kept as XRP (`scalp_2pct`) | $100 | **$93.33** | -6.67 | **+10.80** (+13.09%) | 87.2950 | $0.00 | 87.2950 | +13.09% | 27 | 8 | $0.03 (0.02174) | 3.2 |
+| Static 2% scalp ladder, profit banked in RLUSD (variant) (`scalp_2pct_rlusd`) | $100 | **$93.53** | -6.47 | **+11.00** (+13.33%) | 86.0464 | $1.53 | 87.4802 | +13.33% | 27 | 8 | $0.03 (0.02174) | 3.2 |
+| **Experiment total** (all 3) | $300 | **$273.85** | -26.15 | **+26.26** (+10.61%) | 254.7033 | $1.53 | 256.1371 | +10.61% | | | $0.10 (0.09011) | 8.6 |
+| **Baseline: keep $100 in XRP** (bought at start) | $100 | $82.53 | -17.47 | — | 77.1917 | $0.00 | 77.1917 | — | 1 | 0 | $0.05 | — |
+| Baseline for the total: keep $300 in XRP | $300 | $247.59 | -52.41 | — | 231.5750 | $0.00 | 231.5750 | — | | | | |
 
 _History replayed on 2026-10-24 from Bitstamp 5-min candles after bad XRPL book data was removed, then re-sized to $100 per strategy (earlier versions archived under `*/archive_phantom_2026-10-24/` and `*/archive_resize_2026-10-24/`)._
 
-**Experiment ($300) vs keep $300 in XRP: +26.42 USD (+10.60%)** · XRP-equivalent: +10.60%
+**Experiment ($300) vs keep $300 in XRP: +26.26 USD (+10.61%)** · XRP-equivalent: +10.61%
 
 \* Value = XRP held × current mid + RLUSD. XRP-equivalent = XRP held + RLUSD converted at the current mid with a 0.05% taker cost. XRP held includes the XRP locked as ledger reserve (it is still yours).
 
@@ -36,9 +36,9 @@ _History replayed on 2026-10-24 from Bitstamp 5-min candles after bad XRPL book 
 
 | Line | Step | **XRP held** | **vs keep $100 in XRP (XRP)** | XRP-equivalent* vs holding | Value (RLUSD/USD) | vs keep $100 in XRP (USD) | Round trips | Forced rebuys | RLUSD parked |
 |---|---|---|---|---|---|---|---|---|---|
-| `xrp_stacker` | 4% | **66.8766** | **-10.3150** (-13.36%) | +1.36% | $84.19 | +1.14 | 3 | 0 | $12.24 |
-| `xrp_stacker_6pct` | 6% | **78.3782** | **+1.1865** (+1.54%) | +1.54% | $84.33 | +1.28 | 2 | 0 | $0.00 |
-| Baseline: keep $100 in XRP | — | 77.1917 | — | — | $83.05 | — | | | |
+| `xrp_stacker` | 4% | **66.8766** | **-10.3150** (-13.36%) | +1.46% | $83.74 | +1.21 | 3 | 0 | $12.24 |
+| `xrp_stacker_6pct` | 6% | **78.3782** | **+1.1865** (+1.54%) | +1.54% | $83.80 | +1.27 | 2 | 0 | $0.00 |
+| Baseline: keep $100 in XRP | — | 77.1917 | — | — | $82.53 | — | | | |
 
 ## Separate line: XRP stacker, 4% steps (`xrp_stacker`, PAPER-NOT-ON-LEDGER) — scoreboard is XRP COUNT
 
@@ -46,8 +46,8 @@ XRP stacker: sell slices high, buy back lower with all the RLUSD (goal: more XRP
 
 | | **XRP held** | vs start XRP | RLUSD parked (waiting to rebuy) | XRP-equivalent* | Value (RLUSD/USD) | vs keep $100 in XRP (USD) | Round trips | XRP gained from trips | Forced rebuys (XRP lost) | Fees paid USD (network XRP) | Reserve locked XRP |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| `xrp_stacker` | **66.8766** | **-10.3150** (-13.36%) | $12.24 | 78.2431 (+1.36%) | $84.19 | +1.14 | 3 | +1.1716 | 0 (+0.0000) | $0.36 (0.04804) | 2.0 |
-| Baseline: keep $100 in XRP | 77.1917 | +0.0000 | $0.00 | 77.1917 | $83.05 | — | | | | | |
+| `xrp_stacker` | **66.8766** | **-10.3150** (-13.36%) | $12.24 | 78.3148 (+1.46%) | $83.74 | +1.21 | 3 | +1.1716 | 0 (+0.0000) | $0.36 (0.04804) | 2.0 |
+| Baseline: keep $100 in XRP | 77.1917 | +0.0000 | $0.00 | 77.1917 | $82.53 | — | | | | | |
 
 - Rules: 4 sell slices of 15% of the sellable stack at +4% steps above the reference; each sold slice rebuys with ALL its RLUSD one step (4%) lower, so each round trip ends with more XRP. No RLUSD profit is banked. Cost 0.25% per fill (AMM 0.205% + slippage) + network fee. Ladder trails down when nothing is parked and price is 4% below the reference. A slice parked over 14 days is bought back at market (can lose XRP).
 - Orders now (reference 1.03015): rebuy 1.0301 sell 1.1142 sell 1.1588 sell 1.2051
@@ -59,8 +59,8 @@ XRP stacker 6% steps (side-by-side test): sell slices high, buy back 6% lower wi
 
 | | **XRP held** | vs start XRP | RLUSD parked (waiting to rebuy) | XRP-equivalent* | Value (RLUSD/USD) | vs keep $100 in XRP (USD) | Round trips | XRP gained from trips | Forced rebuys (XRP lost) | Fees paid USD (network XRP) | Reserve locked XRP |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| `xrp_stacker_6pct` | **78.3782** | **+1.1865** (+1.54%) | $0.00 | 78.3782 (+1.54%) | $84.33 | +1.28 | 2 | +1.2191 | 0 (+0.0000) | $0.26 (0.05259) | 2.0 |
-| Baseline: keep $100 in XRP | 77.1917 | +0.0000 | $0.00 | 77.1917 | $83.05 | — | | | | | |
+| `xrp_stacker_6pct` | **78.3782** | **+1.1865** (+1.54%) | $0.00 | 78.3782 (+1.54%) | $83.80 | +1.27 | 2 | +1.2191 | 0 (+0.0000) | $0.26 (0.05259) | 2.0 |
+| Baseline: keep $100 in XRP | 77.1917 | +0.0000 | $0.00 | 77.1917 | $82.53 | — | | | | | |
 
 - Rules: 4 sell slices of 15% of the sellable stack at +6% steps above the reference; each sold slice rebuys with ALL its RLUSD one step (6%) lower, so each round trip ends with more XRP. No RLUSD profit is banked. Cost 0.25% per fill (AMM 0.205% + slippage) + network fee. Ladder trails down when nothing is parked and price is 6% below the reference. A slice parked over 14 days is bought back at market (can lose XRP).
 - Orders now (reference 1.04899): sell 1.1119 sell 1.1786 sell 1.2494 sell 1.3243
@@ -72,12 +72,12 @@ $100 deposited 50/50 into the XRP/RLUSD AMM pool on 2026-10-20T08:43:56+00:00 at
 
 | | **Value (RLUSD/USD)** | Change vs $100 | XRP | RLUSD | XRP-equivalent* |
 |---|---|---|---|---|---|
-| AMM LP position now (fees included) | **$91.39** | -8.61 | 42.4761 | $45.69 | 84.9204 |
-| Hold the same 50/50 (no pool) | $91.53 | -8.47 | 38.5793 | $50.02 | 85.0504 |
-| Baseline: keep $100 in XRP | $83.05 | -16.95 | 77.1917 | $0.00 | 77.1917 |
+| AMM LP position now (fees included) | **$91.10** | -8.90 | 42.5625 | $45.60 | 85.1884 |
+| Hold the same 50/50 (no pool) | $91.27 | -8.73 | 38.5793 | $50.02 | 85.3437 |
+| Baseline: keep $100 in XRP | $82.53 | -17.47 | 77.1917 | $0.00 | 77.1917 |
 
-- LP vs hold-50/50: **-0.155%** = impermanent loss -0.435% + fees earned ≈ +0.281% (pool fee 0.308%, pool share 0.002131%)
-- LP vs keep $100 in XRP: **+8.34 USD** · XRP-equivalent: +10.01%
+- LP vs hold-50/50: **-0.184%** = impermanent loss -0.454% + fees earned ≈ +0.271% (pool fee 0.308%, pool share 0.002131%)
+- LP vs keep $100 in XRP: **+8.57 USD** · XRP-equivalent: +10.36%
 - Fees paid: $0.03 (taker cost on the XRP half + 0.00008 XRP network fees for TrustSet, OfferCreate, AMMDeposit and the future AMMWithdraw, already deducted). Reserve locked: 1.4 XRP (base + RLUSD line + LP-token line), not spent.
 
 Logs: `logs/summary.csv`, `logs/<strategy>_ticks.csv`, `logs/<strategy>_fills.csv`, `logs/amm_lp_ticks.csv`, `logs/tax_export.csv`.
@@ -85,13 +85,13 @@ Logs: `logs/summary.csv`, `logs/<strategy>_ticks.csv`, `logs/<strategy>_fills.cs
 <!-- LEVERAGE-PAPER-BEGIN -->
 ## Separate line: LEVERAGED XRP grid, paper perpetual futures (`lev_2x`, `lev_5x`, PAPER-NOT-REAL)
 
-Modelled on Binance USDⓈ-M XRPUSDT perps, isolated margin. Started **2026-10-26T15:45:00+00:00** at **$1.3024**, $100 paper each, not in the $300 total. Scoreboard: USD vs keep $100 in XRP bought at the same start. Last update 2026-11-11T17:20:59+00:00 at $1.0784 (prices: `binance_spot_data_api`, funding: `okx_proxy`).
+Modelled on Binance USDⓈ-M XRPUSDT perps, isolated margin. Started **2026-10-26T15:45:00+00:00** at **$1.3024**, $100 paper each, not in the $300 total. Scoreboard: USD vs keep $100 in XRP bought at the same start. Last update 2026-11-11T17:36:00+00:00 at $1.0696 (prices: `binance_spot_data_api`, funding: `okx_proxy`).
 
 | Line | **Value (USD, if closed now)** | Change vs $100 | **vs keep $100 in XRP** | Position XRP (avg entry) | Liquidation price | Open levels | Round trips | Fees paid (trading + funding) | **Liquidations (margin lost)** | Max drawdown |
 |---|---|---|---|---|---|---|---|---|---|---|
-| `lev_2x` (2x) | **$88.54** | -11.46 | **+5.78** | 171.90 (1.14194) | 0.57454 | 10/10 | 9 | $0.25 ($0.11 + $0.13) | **0** ($0.00) | 21.4% |
-| `lev_5x` (5x) | **$71.36** | -28.64 | **-11.40** | 429.75 (1.14194) | 0.91884 | 10/10 | 9 | $0.62 ($0.28 + $0.33) | **0** ($0.00) | 51.7% |
-| Baseline: keep $100 in XRP | $82.76 | -17.24 | — | 76.74 | — | | | $0.05 | 0 | |
+| `lev_2x` (2x) | **$87.03** | -12.97 | **+4.95** | 171.90 (1.14194) | 0.57454 | 10/10 | 9 | $0.25 ($0.11 + $0.13) | **0** ($0.00) | 21.4% |
+| `lev_5x` (5x) | **$67.58** | -32.42 | **-14.51** | 429.75 (1.14194) | 0.91884 | 10/10 | 9 | $0.62 ($0.28 + $0.33) | **0** ($0.00) | 51.7% |
+| Baseline: keep $100 in XRP | $82.08 | -17.92 | — | 76.74 | — | | | $0.05 | 0 | |
 
 - Rules: 10 buy levels 2% apart below the start, $10 margin each (2x = $20 of XRP, 5x = $50), take profit +2% per level, profit kept in USDT, static ladder. Costs: 0.02% maker per fill, 8-hourly funding, and the value assumes a market close (0.05% taker + 0.05% slippage). Liquidation when margin + unrealised P/L falls to 0.5% of the position; the whole margin is lost. Backtest: `leverage/backtest_leverage_output.txt`.
 - Not available to US residents on Binance.com; Binance.US has no futures or margin. This line is for learning only.
@@ -100,7 +100,7 @@ Modelled on Binance USDⓈ-M XRPUSDT perps, isolated margin. Started **2026-10-2
 <!-- LEVERAGE-TA-BEGIN -->
 ## Separate line: TA long/short on leverage, paper perpetual futures (`lev_ta_2x`, `lev_ta_5x`, PAPER-NOT-REAL)
 
-Started **2026-10-26T16:15:00+00:00** at **$1.2938**, $100 paper each, not in the $300 total. Last update 2026-11-11T17:21:01+00:00 at $1.0784. 1h trend now: **down**, RSI(14) 54.94 (prices `binance_spot_data_api`, funding `okx_proxy`).
+Started **2026-10-26T16:15:00+00:00** at **$1.2938**, $100 paper each, not in the $300 total. Last update 2026-11-11T17:36:01+00:00 at $1.0696. 1h trend now: **down**, RSI(14) 54.94 (prices `binance_spot_data_api`, funding `okx_proxy`).
 
 ### $50 / $100 / $500 side by side (`_50` / `_500` lines are the same strategy with $50 / $500; profit after fees + funding; worst drawdown = biggest drop from a high; max loss = lowest value vs start)
 
@@ -109,15 +109,15 @@ Started **2026-10-26T16:15:00+00:00** at **$1.2938**, $100 paper each, not in th
 | `lev_ta_2x` (2x) | FLAT | 11 (3) | **-2.69** | -6.24 (12.4%), low -5.99 | 0 | **-5.38** | -12.49 (12.4%), low -11.98 | 0 | **-26.90** | -62.44 (12.4%), low -59.88 | 0 |
 | `lev_ta_5x` (5x) | FLAT | 11 (3) | **-7.47** | -14.70 (29.0%), low -14.07 | 0 | **-14.93** | -29.41 (29.0%), low -28.13 | 0 | **-74.66** | -147.03 (29.0%), low -140.66 | 0 |
 
-Keep $50 / $100 / $500 in XRP: -8.35 / -16.69 / -83.45.
+Keep $50 / $100 / $500 in XRP: -8.69 / -17.37 / -86.85.
 
 ### Details ($100 lines)
 
 | Line | **Value (USD, if closed now)** | Change vs $100 | **vs keep $100 in XRP** | Position (entry / stop / target / liq) | Trades (wins) | Longs / shorts | Fees paid (trading + funding) | **Liquidations** | Max drawdown |
 |---|---|---|---|---|---|---|---|---|---|
-| `lev_ta_2x` (2x) | **$94.62** | -5.38 | **+11.31** | FLAT | 11 (3) | 2 / 9 | $1.91 ($1.94 + $-0.03) | **0** ($0.00) | 12.4% |
-| `lev_ta_5x` (5x) | **$85.07** | -14.93 | **+1.76** | FLAT | 11 (3) | 2 / 9 | $4.46 ($4.53 + $-0.07) | **0** ($0.00) | 29.0% |
-| Baseline: keep $100 in XRP | $83.31 | -16.69 | — | | | | $0.05 | 0 | |
+| `lev_ta_2x` (2x) | **$94.62** | -5.38 | **+11.99** | FLAT | 11 (3) | 2 / 9 | $1.91 ($1.94 + $-0.03) | **0** ($0.00) | 12.4% |
+| `lev_ta_5x` (5x) | **$85.07** | -14.93 | **+2.44** | FLAT | 11 (3) | 2 / 9 | $4.46 ($4.53 + $-0.07) | **0** ($0.00) | 29.0% |
+| Baseline: keep $100 in XRP | $82.63 | -17.37 | — | | | | $0.05 | 0 | |
 
 - Rules: 1h trend = EMA50 vs EMA200 + price vs EMA200. Uptrend: long when RSI(14) turns up from under 40 or MACD crosses up. Downtrend: short when RSI turns down from over 60 or MACD crosses down. Unclear trend: flat. Stop 1.5x ATR(14), target 3x ATR, one position at a time, whole balance as isolated margin. Costs: market entry/stop 0.05% taker + 0.05% slippage, target 0.02% maker, 8-hourly funding (longs pay / shorts receive when positive), liquidation at 0.5% maintenance. Backtest: `leverage/backtest_ta_output.txt`.
 <!-- LEVERAGE-TA-END -->
@@ -131,9 +131,9 @@ Rule-based: long scout, short scout, idle guard, chart reader, with crowding, Fe
 
 | Line | Started | Position | Trades (wins) | **$50: profit** | $50: worst drawdown, low | $50: liq. | **$100: profit** | $100: worst drawdown, low | $100: liq. | **$500: profit** | $500: worst drawdown, low | $500: liq. |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| `com_xrp_2x` | 2026-10-26T16:40:00+00:00 | SHORT | 6 (2) | **-1.81** | -3.64 (7.2%), low -3.22 | 0 | **-3.61** | -7.28 (7.2%), low -6.43 | 0 | **-18.06** | -36.42 (7.2%), low -32.16 | 0 |
-| `com_xrp_5x` | 2026-10-26T16:40:00+00:00 | SHORT | 6 (2) | **-5.27** | -8.71 (17.1%), low -7.79 | 0 | **-10.54** | -17.41 (17.1%), low -15.58 | 0 | **-52.71** | -87.07 (17.1%), low -77.91 | 0 |
-| `com_xrp_mix` | 2026-10-26T17:00:00+00:00 | SHORT | 6 (2) | **-1.81** | -3.64 (7.2%), low -3.22 | 0 | **-3.61** | -7.28 (7.2%), low -6.43 | 0 | **-18.06** | -36.42 (7.2%), low -32.16 | 0 |
+| `com_xrp_2x` | 2026-10-26T16:40:00+00:00 | SHORT | 6 (2) | **-1.00** | -3.64 (7.2%), low -3.22 | 0 | **-2.00** | -7.28 (7.2%), low -6.43 | 0 | **-10.02** | -36.42 (7.2%), low -32.16 | 0 |
+| `com_xrp_5x` | 2026-10-26T16:40:00+00:00 | SHORT | 6 (2) | **-3.36** | -8.71 (17.1%), low -7.79 | 0 | **-6.72** | -17.41 (17.1%), low -15.58 | 0 | **-33.62** | -87.07 (17.1%), low -77.91 | 0 |
+| `com_xrp_mix` | 2026-10-26T17:00:00+00:00 | SHORT | 6 (2) | **-1.00** | -3.64 (7.2%), low -3.22 | 0 | **-2.00** | -7.28 (7.2%), low -6.43 | 0 | **-10.02** | -36.42 (7.2%), low -32.16 | 0 |
 | `com_xrp_proxy_2x` | 2026-10-26T17:00:00+00:00 | FLAT | 0 (0) | **+0.00** | -0.00 (0.0%), low +0.00 | 0 | **+0.00** | -0.00 (0.0%), low +0.00 | 0 | **+0.00** | -0.00 (0.0%), low +0.00 | 0 |
 | `com_xrp_proxy_5x` | 2026-10-26T17:00:00+00:00 | FLAT | 0 (0) | **+0.00** | -0.00 (0.0%), low +0.00 | 0 | **+0.00** | -0.00 (0.0%), low +0.00 | 0 | **+0.00** | -0.00 (0.0%), low +0.00 | 0 |
 | `com_xrp_proxy_mix` | 2026-10-26T17:00:00+00:00 | FLAT | 0 (0) | **+0.00** | -0.00 (0.0%), low +0.00 | 0 | **+0.00** | -0.00 (0.0%), low +0.00 | 0 | **+0.00** | -0.00 (0.0%), low +0.00 | 0 |
@@ -150,20 +150,20 @@ Rule-based: long scout, short scout, idle guard, chart reader, with crowding, Fe
 
 | Line | Started | **Value (USD, if closed now)** | Change vs $100 | **vs holding the coin** | Position (entry / stop / target / liq) | Trades (wins) | Longs / shorts | Ties | Fees + funding | **Liquidations** | Max drawdown | Last votes |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| `com_xrp_2x` | 2026-10-26T16:40:00+00:00 | **$96.39** | -3.61 | **+12.79** | SHORT (1.071364 / 1.094925 / 1.024243 / 1.599319) | 6 (2) | 0 / 7 | 0 | $1.02 | **0** | 7.2% | {"long_scout": "IDLE", "short_scout": "IDLE", "idle_guard": "SHORT", "chart_reader": "IDLE"} |
-| `com_xrp_5x` | 2026-10-26T16:40:00+00:00 | **$89.46** | -10.54 | **+5.86** | SHORT (1.071364 / 1.094925 / 1.024243 / 1.279509) | 6 (2) | 0 / 7 | 0 | $2.48 | **0** | 17.1% | {"long_scout": "IDLE", "short_scout": "IDLE", "idle_guard": "SHORT", "chart_reader": "IDLE"} |
-| `com_xrp_mix` (5x trades: 0) | 2026-10-26T17:00:00+00:00 | **$96.39** | -3.61 | **+13.22** | SHORT (1.071364 / 1.094925 / 1.024243 / 1.599319) | 6 (2) | 0 / 7 | 0 | $1.02 | **0** | 7.2% | {"long_scout": "IDLE", "short_scout": "IDLE", "idle_guard": "SHORT", "chart_reader": "IDLE"} |
-| `com_xrp_proxy_2x` | 2026-10-26T17:00:00+00:00 | **$100.00** | +0.00 | **+16.83** | FLAT | 0 (0) | 0 / 0 | 0 | $0.00 | **0** | 0.0% | {"casey": "IDLE", "pip": "IDLE", "theo": "SHORT", "remy": "IDLE"} |
-| `com_xrp_proxy_5x` | 2026-10-26T17:00:00+00:00 | **$100.00** | +0.00 | **+16.83** | FLAT | 0 (0) | 0 / 0 | 0 | $0.00 | **0** | 0.0% | {"casey": "IDLE", "pip": "IDLE", "theo": "SHORT", "remy": "IDLE"} |
-| `com_xrp_proxy_mix` (5x trades: 0) | 2026-10-26T17:00:00+00:00 | **$100.00** | +0.00 | **+16.83** | FLAT | 0 (0) | 0 / 0 | 0 | $0.00 | **0** | 0.0% | {"casey": "IDLE", "pip": "IDLE", "theo": "SHORT", "remy": "IDLE"} |
-| `com_xrp_5x_quick` | 2026-10-26T17:15:00+00:00 | **$111.68** | +11.68 | **+28.84** | FLAT | 9 (5) | 0 / 9 | 0 | $3.77 | **0** | 13.3% | {"long_scout": "IDLE", "short_scout": "IDLE", "idle_guard": "IDLE", "chart_reader": "IDLE"} |
-| `com_btc_2x` | 2026-10-26T16:40:00+00:00 | **$93.38** | -6.62 | **+0.04** | FLAT | 7 (1) | 0 / 7 | 0 | $1.13 | **0** | 7.9% | {"long_scout": "IDLE", "short_scout": "IDLE", "idle_guard": "IDLE", "chart_reader": "IDLE"} |
-| `com_btc_5x` | 2026-10-26T16:40:00+00:00 | **$83.64** | -16.36 | **-9.69** | FLAT | 7 (1) | 0 / 7 | 0 | $2.70 | **0** | 18.8% | {"long_scout": "IDLE", "short_scout": "IDLE", "idle_guard": "IDLE", "chart_reader": "IDLE"} |
-| `com_btc_mix` (5x trades: 0) | 2026-10-26T17:00:00+00:00 | **$93.38** | -6.62 | **+0.39** | FLAT | 7 (1) | 0 / 7 | 0 | $1.13 | **0** | 7.9% | {"long_scout": "IDLE", "short_scout": "IDLE", "idle_guard": "IDLE", "chart_reader": "IDLE"} |
-| `com_btc_proxy_2x` | 2026-10-26T17:00:00+00:00 | **$100.00** | +0.00 | **+7.01** | FLAT | 0 (0) | 0 / 0 | 0 | $0.00 | **0** | 0.0% | {"casey": "IDLE", "pip": "IDLE", "theo": "SHORT", "remy": "IDLE"} |
-| `com_btc_proxy_5x` | 2026-10-26T17:00:00+00:00 | **$100.00** | +0.00 | **+7.01** | FLAT | 0 (0) | 0 / 0 | 0 | $0.00 | **0** | 0.0% | {"casey": "IDLE", "pip": "IDLE", "theo": "SHORT", "remy": "IDLE"} |
-| `com_btc_proxy_mix` (5x trades: 0) | 2026-10-26T17:00:00+00:00 | **$100.00** | +0.00 | **+7.01** | FLAT | 0 (0) | 0 / 0 | 0 | $0.00 | **0** | 0.0% | {"casey": "IDLE", "pip": "IDLE", "theo": "SHORT", "remy": "IDLE"} |
-| `com_btc_5x_quick` | 2026-10-26T17:15:00+00:00 | **$82.10** | -17.90 | **-10.59** | FLAT | 7 (1) | 0 / 7 | 0 | $2.68 | **0** | 18.8% | {"long_scout": "IDLE", "short_scout": "IDLE", "idle_guard": "IDLE", "chart_reader": "IDLE"} |
+| `com_xrp_2x` | 2026-10-26T16:40:00+00:00 | **$98.00** | -2.00 | **+15.08** | SHORT (1.071364 / 1.094925 / 1.024243 / 1.599319) | 6 (2) | 0 / 7 | 0 | $1.02 | **0** | 7.2% | {"long_scout": "IDLE", "short_scout": "SHORT", "idle_guard": "SHORT", "chart_reader": "IDLE"} |
+| `com_xrp_5x` | 2026-10-26T16:40:00+00:00 | **$93.28** | -6.72 | **+10.36** | SHORT (1.071364 / 1.094925 / 1.024243 / 1.279509) | 6 (2) | 0 / 7 | 0 | $2.48 | **0** | 17.1% | {"long_scout": "IDLE", "short_scout": "SHORT", "idle_guard": "SHORT", "chart_reader": "IDLE"} |
+| `com_xrp_mix` (5x trades: 0) | 2026-10-26T17:00:00+00:00 | **$98.00** | -2.00 | **+15.51** | SHORT (1.071364 / 1.094925 / 1.024243 / 1.599319) | 6 (2) | 0 / 7 | 0 | $1.02 | **0** | 7.2% | {"long_scout": "IDLE", "short_scout": "SHORT", "idle_guard": "SHORT", "chart_reader": "IDLE"} |
+| `com_xrp_proxy_2x` | 2026-10-26T17:00:00+00:00 | **$100.00** | +0.00 | **+17.51** | FLAT | 0 (0) | 0 / 0 | 0 | $0.00 | **0** | 0.0% | {"casey": "IDLE", "pip": "IDLE", "theo": "SHORT", "remy": "IDLE"} |
+| `com_xrp_proxy_5x` | 2026-10-26T17:00:00+00:00 | **$100.00** | +0.00 | **+17.51** | FLAT | 0 (0) | 0 / 0 | 0 | $0.00 | **0** | 0.0% | {"casey": "IDLE", "pip": "IDLE", "theo": "SHORT", "remy": "IDLE"} |
+| `com_xrp_proxy_mix` (5x trades: 0) | 2026-10-26T17:00:00+00:00 | **$100.00** | +0.00 | **+17.51** | FLAT | 0 (0) | 0 / 0 | 0 | $0.00 | **0** | 0.0% | {"casey": "IDLE", "pip": "IDLE", "theo": "SHORT", "remy": "IDLE"} |
+| `com_xrp_5x_quick` | 2026-10-26T17:15:00+00:00 | **$111.68** | +11.68 | **+29.51** | FLAT | 9 (5) | 0 / 9 | 0 | $3.77 | **0** | 13.3% | {"long_scout": "IDLE", "short_scout": "SHORT", "idle_guard": "IDLE", "chart_reader": "IDLE"} |
+| `com_btc_2x` | 2026-10-26T16:40:00+00:00 | **$93.38** | -6.62 | **+0.32** | FLAT | 7 (1) | 0 / 7 | 0 | $1.13 | **0** | 7.9% | {"long_scout": "IDLE", "short_scout": "IDLE", "idle_guard": "IDLE", "chart_reader": "IDLE"} |
+| `com_btc_5x` | 2026-10-26T16:40:00+00:00 | **$83.64** | -16.36 | **-9.42** | FLAT | 7 (1) | 0 / 7 | 0 | $2.70 | **0** | 18.8% | {"long_scout": "IDLE", "short_scout": "IDLE", "idle_guard": "IDLE", "chart_reader": "IDLE"} |
+| `com_btc_mix` (5x trades: 0) | 2026-10-26T17:00:00+00:00 | **$93.38** | -6.62 | **+0.66** | FLAT | 7 (1) | 0 / 7 | 0 | $1.13 | **0** | 7.9% | {"long_scout": "IDLE", "short_scout": "IDLE", "idle_guard": "IDLE", "chart_reader": "IDLE"} |
+| `com_btc_proxy_2x` | 2026-10-26T17:00:00+00:00 | **$100.00** | +0.00 | **+7.28** | FLAT | 0 (0) | 0 / 0 | 0 | $0.00 | **0** | 0.0% | {"casey": "IDLE", "pip": "IDLE", "theo": "SHORT", "remy": "IDLE"} |
+| `com_btc_proxy_5x` | 2026-10-26T17:00:00+00:00 | **$100.00** | +0.00 | **+7.28** | FLAT | 0 (0) | 0 / 0 | 0 | $0.00 | **0** | 0.0% | {"casey": "IDLE", "pip": "IDLE", "theo": "SHORT", "remy": "IDLE"} |
+| `com_btc_proxy_mix` (5x trades: 0) | 2026-10-26T17:00:00+00:00 | **$100.00** | +0.00 | **+7.28** | FLAT | 0 (0) | 0 / 0 | 0 | $0.00 | **0** | 0.0% | {"casey": "IDLE", "pip": "IDLE", "theo": "SHORT", "remy": "IDLE"} |
+| `com_btc_5x_quick` | 2026-10-26T17:15:00+00:00 | **$82.10** | -17.90 | **-10.32** | FLAT | 7 (1) | 0 / 7 | 0 | $2.68 | **0** | 18.8% | {"long_scout": "IDLE", "short_scout": "IDLE", "idle_guard": "IDLE", "chart_reader": "IDLE"} |
 - Crowding XRPUSDT now: funding 0.01%/8h, OI 24h 2.08%, long/short accounts 3.81 (24th pct of 7d), Fear & Greed 29 -> **not crowded** (sources: okx_rubik, alternative.me)
 - Crowding BTCUSDT now: funding 0.0046%/8h, OI 24h -1.26%, long/short accounts 2.86 (31th pct of 7d), Fear & Greed 29 -> **not crowded** (sources: okx_rubik, alternative.me)
 
@@ -175,12 +175,12 @@ Backtest: `leverage/backtest_committee_output.txt`. Team committee (human/agent 
 <!-- KRAKEN-1K-BEGIN -->
 ## Candidate live setup (PAPER-NOT-REAL): $1,000 on Kraken US XRP perpetual PXRPUH, committee 'get on base' line, 2x and 3x caps
 
-Same committee signals/rules as `com_xrp_5x_quick` (take profit +1.5% underlying, stop the tighter of 1% or 1.5x ATR), whole 500-XRP contracts only, Kraken fees $0.0113/contract/side + 0.05% slippage on market fills, funding stand-in (`okx_proxy`), liquidation at 17% maintenance margin + $10 fee. Last update 2026-11-11T17:21:09+00:00 at $1.0784. Target: $4/day after fees.
+Same committee signals/rules as `com_xrp_5x_quick` (take profit +1.5% underlying, stop the tighter of 1% or 1.5x ATR), whole 500-XRP contracts only, Kraken fees $0.0113/contract/side + 0.05% slippage on market fills, funding stand-in (`okx_proxy`), liquidation at 17% maintenance margin + $10 fee. Last update 2026-11-11T17:36:09+00:00 at $1.0696. Target: $4/day after fees.
 
 | Line | Started | **P/L after fees + funding** | **$/day vs $4 target** | Worst drawdown | Trades (win rate) | Longs: closed (wins) P/L | Shorts: closed (wins) P/L | Contracts held now | Fees / funding | Liquidations | vs hold $1,000 XRP |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| `com_xrp_kraken_1k_2x` (2x cap) | 2026-10-26T18:15:00+00:00 | **+53.47** | **+3.35** (-0.65 vs $4) | -48.31 (4.6%) | 9 (56%) | 0 | 9 (56% wins) +53.47 | 0 (FLAT) | $0.63 / $-0.92 | 0 | +224.21 |
-| `com_xrp_kraken_1k_3x` (3x cap) | 2026-10-26T18:15:00+00:00 | **+92.50** | **+5.79** (+1.79 vs $4) | -80.51 (7.4%) | 9 (56%) | 0 | 9 (56% wins) +92.50 | 0 (FLAT) | $1.04 / $-1.40 | 0 | +263.24 |
+| `com_xrp_kraken_1k_2x` (2x cap) | 2026-10-26T18:15:00+00:00 | **+53.47** | **+3.35** (-0.65 vs $4) | -48.31 (4.6%) | 9 (56%) | 0 | 9 (56% wins) +53.47 | 0 (FLAT) | $0.63 / $-0.92 | 0 | +230.98 |
+| `com_xrp_kraken_1k_3x` (3x cap) | 2026-10-26T18:15:00+00:00 | **+92.50** | **+5.79** (+1.79 vs $4) | -80.51 (7.4%) | 9 (56%) | 0 | 9 (56% wins) +92.50 | 0 (FLAT) | $1.04 / $-1.40 | 0 | +270.01 |
 
 - $/day is P/L since start divided by days running; tiny in the first days. Backtest: `leverage/backtest_contracts_1k_output.txt`. Kraken's PXRPUH initial margin is unverified (3x assumed safer than 5x).
 <!-- KRAKEN-1K-END -->
@@ -188,18 +188,18 @@ Same committee signals/rules as `com_xrp_5x_quick` (take profit +1.5% underlying
 <!-- SIZES:BEGIN -->
 ## Every XRPL line at $100 vs $500 (PAPER; $100 is what actually ran, $500 is scaled)
 
-$500 = the $100 result x5 minus extra price impact for 5x larger orders, using live XRP/RLUSD AMM depth (pool 1,993,339 XRP / 2,144,070 RLUSD from https://xrplcluster.com). Worst drawdown = biggest drop from a high point in the line's history. Profit is after fees.
+$500 = the $100 result x5 minus extra price impact for 5x larger orders, using live XRP/RLUSD AMM depth (pool 1,997,398 XRP / 2,139,732 RLUSD from https://xrplcluster.com). Worst drawdown = biggest drop from a high point in the line's history. Profit is after fees.
 
 | Line | **$100: profit** | $100: worst drawdown | **$500: profit** | $500: worst drawdown | Extra cost at $500 (depth) |
 |---|---|---|---|---|---|
-| `dip_ladder` | **-12.46** | -19.66 | **-62.33** | -98.28 | $0.0122 (10 fills) |
-| `scalp_2pct` | **-6.08** | -10.52 | **-30.43** | -52.59 | $0.0224 (27 fills) |
-| `scalp_2pct_rlusd` | **-5.89** | -10.23 | **-29.47** | -51.14 | $0.0227 (27 fills) |
-| `xrp_stacker` | **-15.81** | -22.57 | **-79.17** | -112.86 | $0.1071 (8 fills) |
-| `xrp_stacker_6pct` | **-15.67** | -22.82 | **-78.47** | -114.09 | $0.1017 (5 fills) |
-| `amm_lp` | **-8.61** | -11.97 | **-43.06** | -59.87 | $0.0000 (0 fills) |
-| `lev_2x` | **-11.46** | -20.31 | **-57.29** | -101.56 | $0.0000 (0 fills) |
-| `lev_5x` | **-28.64** | -50.78 | **-143.22** | -253.89 | $0.0000 (0 fills) |
+| `dip_ladder` | **-13.01** | -19.66 | **-65.08** | -98.28 | $0.0122 (10 fills) |
+| `scalp_2pct` | **-6.67** | -10.52 | **-33.37** | -52.59 | $0.0225 (27 fills) |
+| `scalp_2pct_rlusd` | **-6.47** | -10.23 | **-32.38** | -51.14 | $0.0228 (27 fills) |
+| `xrp_stacker` | **-16.26** | -22.57 | **-81.43** | -112.86 | $0.1073 (8 fills) |
+| `xrp_stacker_6pct` | **-16.20** | -22.82 | **-81.12** | -114.09 | $0.1019 (5 fills) |
+| `amm_lp` | **-8.90** | -11.97 | **-44.50** | -59.87 | $0.0000 (0 fills) |
+| `lev_2x` | **-12.97** | -20.31 | **-64.84** | -101.56 | $0.0000 (0 fills) |
+| `lev_5x` | **-32.42** | -50.78 | **-162.11** | -253.89 | $0.0000 (0 fills) |
 
 Leverage TA and committee lines run real $50/$100/$500 twins; see their sections below.
 <!-- SIZES:END -->
