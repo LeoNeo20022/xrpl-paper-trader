@@ -30,11 +30,11 @@
  "shadows": [],
  "decisions": {
   "LONG": 0,
-  "SHORT": 45,
+  "SHORT": 46,
   "TIE": 0,
-  "IDLE": 1503
+  "IDLE": 1504
  },
- "last_run": "2026-11-11T19:39:45+00:00",
+ "last_run": "2026-11-11T20:09:35+00:00",
  "max_dd_usd": 7.283965777372785,
  "min_equity": 93.56860950432285,
  "rules_fired": {
