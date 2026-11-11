@@ -32,3 +32,4 @@ ts,event,price,qty_xrp,notional_usd,margin_usd,fee_usd,stop,target,liq_price,why
 2026-11-11T03:30:00+00:00,OPEN_SHORT,1.06157,2781.954,2953.2356,590.6471,1.47662,1.07218,1.04565,1.26755,"committee short_scout+idle_guard+chart_reader, stop dist 0.019854",,,,,,PAPER-NOT-REAL
 2026-11-11T08:00:00+00:00,FUNDING,1.0598,,,,,,,,,,-0.288886,9.79835626265e-05,,,PAPER-NOT-REAL
 2026-11-11T15:35:00+00:00,STOP_LOSS_SHORT,1.07272,2781.954,,,1.49213,,,,,-33.7036,-0.28889,,,,PAPER-NOT-REAL
+2026-11-11T19:00:00+00:00,OPEN_SHORT,1.06157,2623.605,2785.1378,557.0276,1.39257,1.07218,1.04565,1.26755,"committee short_scout+idle_guard+chart_reader, stop dist 0.017192",,,,,,PAPER-NOT-REAL
