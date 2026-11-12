@@ -948,8 +948,8 @@
   "trustset_fees_xrp": 0.03166299999999997
  },
  "dip_bounce": {
-  "buys_today": 1,
-  "cash_usd": 63.240371,
+  "buys_today": 2,
+  "cash_usd": 53.24035,
   "closed": [
    {
     "amm_fee": 0.00255,
@@ -7649,7 +7649,7 @@
    "rwCq6TENSo3Hh9LKipXnLaxaeXBXKubqki-504F4E474F000000000000000000000000000000": 1794375277.3761542,
    "rwfGtVZKpPX6vb51xE5RGTgXkQ4W9wSUrz-53504C4153480000000000000000000000000000": 1793923380.3853269
   },
-  "net_fees_xrp": 1.1435800000000005,
+  "net_fees_xrp": 1.1436200000000003,
   "positions": [
    {
     "amm_fee": 0.005,
@@ -7722,7 +7722,7 @@
     "last_ratio_net": 1.0233,
     "legs": [],
     "name": "PIGEONS",
-    "peak_hours": 5.74,
+    "peak_hours": 5.82,
     "peak_x": 1.0233,
     "pool_xrp_entry": 13227.608892,
     "remaining": 1.0,
@@ -7749,7 +7749,7 @@
     "excursion_src": "live from 2026-11-12T01:36",
     "issuer": "rhYhn7s6z4HAfuJm7ehuSE7wxepRoUPwpi",
     "key": "rhYhn7s6z4HAfuJm7ehuSE7wxepRoUPwpi-424348414D500000000000000000000000000000",
-    "last_ratio_net": 0.9763,
+    "last_ratio_net": 0.9758,
     "legs": [],
     "name": "BCHAMP",
     "peak_hours": 0.25,
@@ -7762,7 +7762,7 @@
     "tokens_net": 2550.994423998545,
     "tp_done": false,
     "trigger": "dip_bounce: 16.0% below 24h high 0.0044 XRP, age 629.4d",
-    "trough_x": 0.9763,
+    "trough_x": 0.9758,
     "ts": "2026-11-12T01:31:40+00:00",
     "usd_cost": 10.0,
     "warnings": [
@@ -7770,12 +7770,37 @@
     ],
     "xrp_cost": 9.52925481227368,
     "xrp_usd_entry": 1.0494
+   },
+   {
+    "amm_fee": 0.00118,
+    "currency": "246D617800000000000000000000000000000000",
+    "entry_eff_px": 1.883655229365978e-05,
+    "entry_spot": 1.87299784835507e-05,
+    "issuer": "rDAgpQSwp41PCrG7LyqxtAxbvssFM7rH6d",
+    "key": "rDAgpQSwp41PCrG7LyqxtAxbvssFM7rH6d-246D617800000000000000000000000000000000",
+    "legs": [],
+    "name": "$max",
+    "pool_xrp_entry": 2116.32367,
+    "remaining": 1.0,
+    "t": 1794448300.190894,
+    "tf": 0.0,
+    "tokens_gross": 509197.19511014636,
+    "tokens_net": 506316.24936520716,
+    "tp_done": false,
+    "trigger": "dip_bounce: 18.0% below 24h high 2.28449e-05 XRP, age 758.1d",
+    "ts": "2026-11-12T01:51:40+00:00",
+    "usd_cost": 10.0,
+    "warnings": [
+     "top-10 holders own 31%"
+    ],
+    "xrp_cost": 9.53725250829741,
+    "xrp_usd_entry": 1.04852
    }
   ],
   "start_ts": "2026-10-24T13:37:52+00:00",
   "start_usd": 100.0,
   "start_xrp_usd": 1.28033,
-  "trustset_fees_xrp": 0.5717300000000024
+  "trustset_fees_xrp": 0.5717500000000024
  },
  "hold": {
   "buys_today": 0,
@@ -10312,7 +10337,7 @@
     "excursion_src": "live from 2026-11-11T11:47",
     "issuer": "rGLEgQdktoN4Be5thhk6seg1HifGPBxY5Q",
     "key": "rGLEgQdktoN4Be5thhk6seg1HifGPBxY5Q-PLX",
-    "last_ratio_net": 0.989,
+    "last_ratio_net": 0.9892,
     "legs": [],
     "name": "PLX",
     "peak_hours": 3.47,
@@ -10345,7 +10370,7 @@
     "last_ratio_net": 1.0016,
     "legs": [],
     "name": "scrap",
-    "peak_hours": 14.07,
+    "peak_hours": 14.16,
     "peak_x": 1.0016,
     "pool_xrp_entry": 12234.50719,
     "remaining": 1.0,
@@ -10399,7 +10424,7 @@
     "last_ratio_net": 1.007,
     "legs": [],
     "name": "PIGEONS",
-    "peak_hours": 7.56,
+    "peak_hours": 7.64,
     "peak_x": 1.007,
     "pool_xrp_entry": 13337.446555,
     "remaining": 1.0,
@@ -13329,7 +13354,7 @@
     "excursion_src": "live from 2026-11-11T11:47",
     "issuer": "rGLEgQdktoN4Be5thhk6seg1HifGPBxY5Q",
     "key": "rGLEgQdktoN4Be5thhk6seg1HifGPBxY5Q-PLX",
-    "last_ratio_net": 0.989,
+    "last_ratio_net": 0.9892,
     "legs": [],
     "name": "PLX",
     "peak_hours": 3.47,
@@ -13362,7 +13387,7 @@
     "last_ratio_net": 1.0016,
     "legs": [],
     "name": "scrap",
-    "peak_hours": 14.07,
+    "peak_hours": 14.16,
     "peak_x": 1.0016,
     "pool_xrp_entry": 12234.50719,
     "remaining": 1.0,
@@ -29569,7 +29594,7 @@
     "last_ratio_net": 1.059,
     "legs": [],
     "name": "FUZZY",
-    "peak_hours": 15.8,
+    "peak_hours": 15.89,
     "peak_x": 1.059,
     "pool_xrp_entry": 542127.589779,
     "remaining": 1.0,
@@ -29629,7 +29654,7 @@
     "last_ratio_net": 0.999,
     "legs": [],
     "name": "PIGEONS",
-    "peak_hours": 1.48,
+    "peak_hours": 1.56,
     "peak_x": 0.999,
     "pool_xrp_entry": 13395.457811,
     "remaining": 1.0,
@@ -29689,7 +29714,7 @@
     "last_ratio_net": 0.9999,
     "legs": [],
     "name": "ARMY",
-    "peak_hours": 0.42,
+    "peak_hours": 0.5,
     "peak_x": 0.9999,
     "pool_xrp_entry": 238630.704691,
     "remaining": 1.0,
