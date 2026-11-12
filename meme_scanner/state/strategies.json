@@ -948,8 +948,8 @@
   "trustset_fees_xrp": 0.03166299999999997
  },
  "dip_bounce": {
-  "buys_today": 3,
-  "cash_usd": 69.567365,
+  "buys_today": 4,
+  "cash_usd": 59.567344,
   "closed": [
    {
     "amm_fee": 0.00255,
@@ -7779,7 +7779,7 @@
    "rwCq6TENSo3Hh9LKipXnLaxaeXBXKubqki-504F4E474F000000000000000000000000000000": 1794375277.3761542,
    "rwfGtVZKpPX6vb51xE5RGTgXkQ4W9wSUrz-53504C4153480000000000000000000000000000": 1793923380.3853269
   },
-  "net_fees_xrp": 1.1539019999999995,
+  "net_fees_xrp": 1.1539419999999994,
   "positions": [
    {
     "amm_fee": 0.01,
@@ -7852,7 +7852,7 @@
     "last_ratio_net": 1.0044,
     "legs": [],
     "name": "$max",
-    "peak_hours": 15.64,
+    "peak_hours": 15.72,
     "peak_x": 1.0044,
     "pool_xrp_entry": 2116.32367,
     "remaining": 1.0,
@@ -7870,12 +7870,35 @@
     ],
     "xrp_cost": 9.53725250829741,
     "xrp_usd_entry": 1.04852
+   },
+   {
+    "amm_fee": 0.01,
+    "currency": "4A6F657900000000000000000000000000000000",
+    "entry_eff_px": 1.822051919079374e-05,
+    "entry_spot": 1.8004326683433894e-05,
+    "issuer": "rN6CXs6J7WDh8miq2C2cre6w7jipc55Ut",
+    "key": "rN6CXs6J7WDh8miq2C2cre6w7jipc55Ut-4A6F657900000000000000000000000000000000",
+    "legs": [],
+    "name": "Joey",
+    "pool_xrp_entry": 5121.693782,
+    "remaining": 1.0,
+    "t": 1794504905.888865,
+    "tf": 0.0,
+    "tokens_gross": 541838.1652323987,
+    "tokens_net": 535409.0755726463,
+    "tp_done": false,
+    "trigger": "dip_bounce: 20.7% below 24h high 2.27003e-05 XRP, age 565.3d",
+    "ts": "2026-11-12T17:35:05+00:00",
+    "usd_cost": 10.0,
+    "warnings": [],
+    "xrp_cost": 9.755431336396539,
+    "xrp_usd_entry": 1.02507
    }
   ],
   "start_ts": "2026-10-24T13:37:52+00:00",
   "start_usd": 100.0,
   "start_xrp_usd": 1.28033,
-  "trustset_fees_xrp": 0.5768910000000025
+  "trustset_fees_xrp": 0.5769110000000025
  },
  "hold": {
   "buys_today": 0,
@@ -10415,7 +10438,7 @@
     "last_ratio_net": 0.9958,
     "legs": [],
     "name": "PLX",
-    "peak_hours": 29.8,
+    "peak_hours": 29.88,
     "peak_x": 0.9958,
     "pool_xrp_entry": 30196.938874,
     "remaining": 1.0,
@@ -13319,7 +13342,7 @@
     "excursion_src": "live from 2026-11-09T23:04",
     "issuer": "rGG3wQ4kUzd7Jnmk1n5NWPZjjut62kCBfC",
     "key": "rGG3wQ4kUzd7Jnmk1n5NWPZjjut62kCBfC-41524D5900000000000000000000000000000000",
-    "last_ratio_net": 0.9818,
+    "last_ratio_net": 0.9817,
     "legs": [],
     "name": "ARMY",
     "peak_hours": 40.69,
@@ -13402,7 +13425,7 @@
     "excursion_src": "live from 2026-11-10T03:02",
     "issuer": "r4pXXQzJ8soYSX4QKeeW4BzRQS1PCtVYLJ",
     "key": "r4pXXQzJ8soYSX4QKeeW4BzRQS1PCtVYLJ-5345414C00000000000000000000000000000000",
-    "last_ratio_net": 0.9294,
+    "last_ratio_net": 0.9357,
     "legs": [],
     "name": "SEAL",
     "peak_hours": 1.53,
@@ -13432,7 +13455,7 @@
     "last_ratio_net": 0.9958,
     "legs": [],
     "name": "PLX",
-    "peak_hours": 29.8,
+    "peak_hours": 29.88,
     "peak_x": 0.9958,
     "pool_xrp_entry": 30196.938874,
     "remaining": 1.0,
