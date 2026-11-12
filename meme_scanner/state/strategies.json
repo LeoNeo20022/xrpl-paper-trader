@@ -949,7 +949,7 @@
  },
  "dip_bounce": {
   "buys_today": 2,
-  "cash_usd": 61.508797,
+  "cash_usd": 71.429943,
   "closed": [
    {
     "amm_fee": 0.00255,
@@ -7624,6 +7624,49 @@
     ],
     "xrp_cost": 9.503083750677096,
     "xrp_usd_entry": 1.05229
+   },
+   {
+    "amm_fee": 0.00345,
+    "closed_ts": "2026-11-12T14:07:55+00:00",
+    "currency": "586D656E00000000000000000000000000000000",
+    "entry_eff_px": 0.0002113167717385531,
+    "entry_spot": 0.00021037427456120037,
+    "excursion_src": "live from 2026-11-11T14:11",
+    "issuer": "rMFL2KuFPMuiujdbVGbMzNNjj5QKyd6dZf",
+    "key": "rMFL2KuFPMuiujdbVGbMzNNjj5QKyd6dZf-586D656E00000000000000000000000000000000",
+    "last_ratio_net": 1.0235,
+    "legs": [
+     {
+      "fraction_of_buy": 1.0,
+      "pnl_usd_gross": 0.0104,
+      "pnl_usd_net": -0.0788,
+      "pnl_xrp_gross": 0.309197,
+      "pnl_xrp_net": 0.222301,
+      "reason": "time limit 24h (x1.02 net)",
+      "ts": "2026-11-12T14:07:55+00:00"
+     }
+    ],
+    "name": "Xmen",
+    "peak_hours": 13.71,
+    "peak_x": 1.0256,
+    "pnl_usd_net": -0.0788,
+    "pnl_xrp_net": 0.222301,
+    "pool_xrp_entry": 9292.856542,
+    "remaining": 0.0,
+    "t": 1794406004.6149085,
+    "tf": 0.0,
+    "tokens_gross": 44880.96636307328,
+    "tokens_net": 44680.79207607256,
+    "tp_done": false,
+    "trigger": "dip_bounce: 16.6% below 24h high 0.000252203 XRP, age 742.6d",
+    "trough_x": 0.9736,
+    "ts": "2026-11-11T14:06:44+00:00",
+    "usd_cost": 10.0,
+    "warnings": [
+     "top-10 holders own 30%"
+    ],
+    "xrp_cost": 9.441800740237177,
+    "xrp_usd_entry": 1.05912
    }
   ],
   "day": "2026-11-12",
@@ -7660,7 +7703,7 @@
    "rKtZqPGaiW8ejjaUccf13WuZLEXdzSz2CE-434952434C450000000000000000000000000000": 1794096462.7192867,
    "rLrrDKPRjnvQMJFjk7YxEew2AvpAAfejGM-244A5357525A0000000000000000000000000000": 1793658519.0801558,
    "rM2SU1Ct2fu1Bm6cKEBojf2763JNm43Tv6-4C6F636B496E0000000000000000000000000000": 1793838809.114343,
-   "rMFL2KuFPMuiujdbVGbMzNNjj5QKyd6dZf-586D656E00000000000000000000000000000000": 1793459833.9353282,
+   "rMFL2KuFPMuiujdbVGbMzNNjj5QKyd6dZf-586D656E00000000000000000000000000000000": 1794492475.7314668,
    "rMgrYs2XYgbGaLZ19HbUXfi9rpsaFQYwgc-524950504C450000000000000000000000000000": 1793962777.356409,
    "rNa4hZ4kfPwEdN5gSbbNr33aSpyF5ZjzDm-484F4E4559000000000000000000000000000000": 1793843392.714968,
    "rPBWcjbyqcrGxpUe4awobqMmB2WaeUhuFb-4C55544845520000000000000000000000000000": 1793050233.9095333,
@@ -7692,38 +7735,8 @@
    "rwCq6TENSo3Hh9LKipXnLaxaeXBXKubqki-504F4E474F000000000000000000000000000000": 1794375277.3761542,
    "rwfGtVZKpPX6vb51xE5RGTgXkQ4W9wSUrz-53504C4153480000000000000000000000000000": 1793923380.3853269
   },
-  "net_fees_xrp": 1.1436600000000001,
+  "net_fees_xrp": 1.1437,
   "positions": [
-   {
-    "amm_fee": 0.00345,
-    "currency": "586D656E00000000000000000000000000000000",
-    "entry_eff_px": 0.0002113167717385531,
-    "entry_spot": 0.00021037427456120037,
-    "excursion_src": "live from 2026-11-11T14:11",
-    "issuer": "rMFL2KuFPMuiujdbVGbMzNNjj5QKyd6dZf",
-    "key": "rMFL2KuFPMuiujdbVGbMzNNjj5QKyd6dZf-586D656E00000000000000000000000000000000",
-    "last_ratio_net": 1.0235,
-    "legs": [],
-    "name": "Xmen",
-    "peak_hours": 13.71,
-    "peak_x": 1.0256,
-    "pool_xrp_entry": 9292.856542,
-    "remaining": 1.0,
-    "t": 1794406004.6149085,
-    "tf": 0.0,
-    "tokens_gross": 44880.96636307328,
-    "tokens_net": 44680.79207607256,
-    "tp_done": false,
-    "trigger": "dip_bounce: 16.6% below 24h high 0.000252203 XRP, age 742.6d",
-    "trough_x": 0.9736,
-    "ts": "2026-11-11T14:06:44+00:00",
-    "usd_cost": 10.0,
-    "warnings": [
-     "top-10 holders own 30%"
-    ],
-    "xrp_cost": 9.441800740237177,
-    "xrp_usd_entry": 1.05912
-   },
    {
     "amm_fee": 0.01,
     "currency": "504947454F4E5300000000000000000000000000",
@@ -7795,7 +7808,7 @@
     "last_ratio_net": 1.0044,
     "legs": [],
     "name": "$max",
-    "peak_hours": 12.19,
+    "peak_hours": 12.27,
     "peak_x": 1.0044,
     "pool_xrp_entry": 2116.32367,
     "remaining": 1.0,
@@ -7818,7 +7831,7 @@
   "start_ts": "2026-10-24T13:37:52+00:00",
   "start_usd": 100.0,
   "start_xrp_usd": 1.28033,
-  "trustset_fees_xrp": 0.5717700000000024
+  "trustset_fees_xrp": 0.5717900000000025
  },
  "hold": {
   "buys_today": 0,
@@ -10328,7 +10341,7 @@
     "excursion_src": "live from 2026-11-10T17:32",
     "issuer": "raDZ4t8WPXkmDfJWMLBcNZmmSHmBC523NZ",
     "key": "raDZ4t8WPXkmDfJWMLBcNZmmSHmBC523NZ-ATM",
-    "last_ratio_net": 0.9751,
+    "last_ratio_net": 0.975,
     "legs": [],
     "name": "ATM",
     "peak_hours": 24.92,
@@ -29855,7 +29868,7 @@
     "last_ratio_net": 0.9936,
     "legs": [],
     "name": "DeepTide",
-    "peak_hours": 6.68,
+    "peak_hours": 6.76,
     "peak_x": 0.9936,
     "pool_xrp_entry": 8710.534015,
     "remaining": 1.0,
@@ -29885,7 +29898,7 @@
     "last_ratio_net": 0.9821,
     "legs": [],
     "name": "PROFIT",
-    "peak_hours": 4.06,
+    "peak_hours": 4.15,
     "peak_x": 0.9821,
     "pool_xrp_entry": 43463.148989,
     "remaining": 1.0,
