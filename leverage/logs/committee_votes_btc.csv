@@ -1616,3 +1616,4 @@ ts,coin,decision,in_position,long_scout,short_scout,idle_guard,chart_reader,long
 2026-11-12T12:15:00+00:00,BTCUSDT,IDLE,FLAT,IDLE,IDLE,IDLE,IDLE,0,0,0,0,no uptrend,"downtrend, no bounce/breakdown",5m volatility spike,no clear structure,0.0092,0.02,3.04,87,28,,1,0,down,down,below,-1.4,down,,
 2026-11-12T12:30:00+00:00,BTCUSDT,IDLE,FLAT,IDLE,IDLE,SHORT,IDLE,0,0,0.6,0,no uptrend,"downtrend, no bounce/breakdown","no red flags, big trend down",no clear structure,0.0092,0.02,3.04,87,28,,1,0,down,down,below,-1.4,down,,
 2026-11-12T12:45:00+00:00,BTCUSDT,IDLE,FLAT,IDLE,IDLE,SHORT,IDLE,0,0,0.6,0,no uptrend,"downtrend, no bounce/breakdown","no red flags, big trend down",no clear structure,0.0092,0.02,3.04,87,28,,1,0,down,down,below,-1.4,down,,
+2026-11-12T13:00:00+00:00,BTCUSDT,IDLE,FLAT,IDLE,IDLE,SHORT,IDLE,0,0,0.6,0,no uptrend,"downtrend, no bounce/breakdown","no red flags, big trend down",no clear structure,0.0092,0.83,3.14,97,28,,1,0,down,down,below,-1.32,down,,
