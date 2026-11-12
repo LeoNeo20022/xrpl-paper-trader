@@ -1,46 +1,33 @@
 {
- "cash": 0.0,
- "pos": {
-  "side": "SHORT",
-  "entry": 1.0388803000000002,
-  "qty": 2000.0,
-  "n": 4,
-  "margin": 1077.4462482328486,
-  "stop": 1.0492691030000003,
-  "target": 1.0232970955000003,
-  "opened": "2026-11-12T05:15:00+00:00",
-  "fees": 0.0452,
-  "funding": -0.2088,
-  "start_cash": 1077.2826482328485,
-  "quick_tp": true
- },
- "trades": 10,
+ "cash": 1055.5741731298483,
+ "pos": null,
+ "trades": 11,
  "wins": 6,
  "longs": 0,
  "shorts": 11,
  "liquidations": 0,
  "liq_lost_usd": 0.0,
- "fees_usd": 0.7458,
+ "fees_usd": 0.791,
  "funding_usd": -1.130959052347802,
  "peak_equity": 1098.2492245380054,
  "max_dd_pct": 5.103561780681886,
- "realised_usd": 77.28264823284849,
+ "realised_usd": 55.574173129848305,
  "last_signal_ts": 1794460500,
  "last_funding_ts": 1794470400,
- "last_stop_ts": 1794411600,
+ "last_stop_ts": 1794476400,
  "ties": [],
  "shadows": [],
  "decisions": {
   "LONG": 0,
   "SHORT": 47,
   "TIE": 0,
-  "IDLE": 1550
+  "IDLE": 1551
  },
  "started": "2026-10-26T18:15:00+00:00",
  "start_price": 1.2998,
- "last_candle_ts": 1794475200,
+ "last_candle_ts": 1794476100,
  "venue": "Kraken Derivatives US PXRPUH (paper)",
- "last_run": "2026-11-12T09:28:49+00:00",
+ "last_run": "2026-11-12T09:43:48+00:00",
  "rules_fired": {
   "R3": 407,
   "R1": 65,
@@ -49,12 +36,12 @@
  "max_dd_usd": 56.049827680156795,
  "min_equity": 968.8884826398111,
  "crowded_votes": 81,
- "loss_usd": -78.00818326415799,
+ "loss_usd": -99.71665836715817,
  "by_side": {
   "SHORT": [
-   10,
+   11,
    6,
-   77.28264823284849
+   55.574173129848305
   ]
  },
  "win_usd": 155.29083149700648
