@@ -21,13 +21,13 @@
   "LONG": 0,
   "SHORT": 49,
   "TIE": 0,
-  "IDLE": 1597
+  "IDLE": 1598
  },
  "started": "2026-10-26T18:15:00+00:00",
  "start_price": 1.2998,
- "last_candle_ts": 1794519300,
+ "last_candle_ts": 1794520200,
  "venue": "Kraken Derivatives US PXRPUH (paper)",
- "last_run": "2026-11-12T21:43:57+00:00",
+ "last_run": "2026-11-12T21:58:58+00:00",
  "rules_fired": {
   "R3": 407,
   "R1": 65,
@@ -35,7 +35,7 @@
  },
  "max_dd_usd": 89.70761652023475,
  "min_equity": 958.5179768530813,
- "crowded_votes": 116,
+ "crowded_votes": 117,
  "loss_usd": -157.75558206440405,
  "by_side": {
   "SHORT": [
