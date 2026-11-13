@@ -1688,3 +1688,4 @@ ts,coin,decision,in_position,long_scout,short_scout,idle_guard,chart_reader,long
 2026-11-13T06:15:00+00:00,BTCUSDT,IDLE,FLAT,IDLE,IDLE,IDLE,IDLE,0,0,0,0,no uptrend,"downtrend, no bounce/breakdown",wide ATR 0.95% vs median 0.64%,no clear structure,0.01,-0.78,3.07,84,20,,1,1,down,down,below,-7.4,,,
 2026-11-13T06:30:00+00:00,BTCUSDT,IDLE,FLAT,IDLE,IDLE,IDLE,IDLE,0,0,0,0,no uptrend,"downtrend, no bounce/breakdown",wide ATR 0.95% vs median 0.64%,no clear structure,0.01,-0.78,3.07,84,20,,1,1,down,down,below,-7.4,,,
 2026-11-13T06:45:00+00:00,BTCUSDT,IDLE,FLAT,IDLE,IDLE,IDLE,IDLE,0,0,0,0,no uptrend,"downtrend, no bounce/breakdown",wide ATR 0.95% vs median 0.64%,no clear structure,0.01,-0.78,3.07,84,20,,1,1,down,down,below,-7.4,,,
+2026-11-13T07:00:00+00:00,BTCUSDT,IDLE,FLAT,IDLE,IDLE,IDLE,IDLE,0,0,0,0,no uptrend,"downtrend, no bounce/breakdown",wide ATR 1.00% vs median 0.64%,no clear structure,0.01,-2.0,3.29,99,20,,1,1,down,down,below,-6.06,,,
