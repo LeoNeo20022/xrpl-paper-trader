@@ -8150,7 +8150,7 @@
     "excursion_src": "live from 2026-11-14T03:00",
     "issuer": "rpYYe5GQWX7hEPkyMGuDnaCvYM74BxtBLL",
     "key": "rpYYe5GQWX7hEPkyMGuDnaCvYM74BxtBLL-5941474100000000000000000000000000000000",
-    "last_ratio_net": 0.9373,
+    "last_ratio_net": 0.9369,
     "legs": [],
     "name": "YAGA",
     "peak_hours": 0.55,
@@ -8163,7 +8163,7 @@
     "tokens_net": 715874.7869005763,
     "tp_done": false,
     "trigger": "dip_bounce: 16.5% below 24h high 1.65804e-05 XRP, age 741.1d",
-    "trough_x": 0.9371,
+    "trough_x": 0.9369,
     "ts": "2026-11-14T02:55:45+00:00",
     "usd_cost": 10.0,
     "warnings": [
