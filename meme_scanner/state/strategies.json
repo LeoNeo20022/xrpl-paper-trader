@@ -14024,7 +14024,7 @@
  },
  "scalp": {
   "buys_today": 10,
-  "cash_usd": 51.996014,
+  "cash_usd": 61.852829,
   "closed": [
    {
     "amm_fee": 0.00224,
@@ -23026,6 +23026,49 @@
     ],
     "xrp_cost": 9.945004127176713,
     "xrp_usd_entry": 1.00553
+   },
+   {
+    "amm_fee": 0.005,
+    "closed_ts": "2026-11-14T02:10:15+00:00",
+    "currency": "PLX",
+    "entry_eff_px": 0.00019223271792909378,
+    "entry_spot": 0.00019121082632244637,
+    "excursion_src": "live from 2026-11-14T01:12",
+    "issuer": "rGLEgQdktoN4Be5thhk6seg1HifGPBxY5Q",
+    "key": "rGLEgQdktoN4Be5thhk6seg1HifGPBxY5Q-PLX",
+    "last_ratio_net": 0.9897,
+    "legs": [
+     {
+      "fraction_of_buy": 1.0,
+      "pnl_usd_gross": -0.0375,
+      "pnl_usd_net": -0.1432,
+      "pnl_xrp_gross": 0.003152,
+      "pnl_xrp_net": -0.102139,
+      "reason": "time limit 1h (x0.99 net)",
+      "ts": "2026-11-14T02:10:15+00:00"
+     }
+    ],
+    "name": "PLX",
+    "peak_hours": 1.05,
+    "peak_x": 0.9897,
+    "pnl_usd_net": -0.1432,
+    "pnl_xrp_net": -0.102139,
+    "pool_xrp_entry": 31302.350532,
+    "remaining": 0.0,
+    "t": 1794618449.828279,
+    "tf": 0.0,
+    "tokens_gross": 51922.37594069141,
+    "tokens_net": 51646.36132287513,
+    "tp_done": false,
+    "trough_x": 0.9892,
+    "ts": "2026-11-14T01:07:29+00:00",
+    "usd_cost": 10.0,
+    "warnings": [
+     "only 12% of LP burned (liquidity can be pulled)",
+     "top-10 holders own 35%"
+    ],
+    "xrp_cost": 9.928120408244313,
+    "xrp_usd_entry": 1.00724
    }
   ],
   "day": "2026-11-14",
@@ -23046,7 +23089,7 @@
    "rExSpmk2PAqxKRTT3mhjCrCpqVasBra5v8-54494D4500000000000000000000000000000000": 1794365121.808745,
    "rGG3wQ4kUzd7Jnmk1n5NWPZjjut62kCBfC-41524D5900000000000000000000000000000000": 1794618449.828279,
    "rGHtYnnigyuaHehWGfAdoEhkoirkGNdZzo-7363726170000000000000000000000000000000": 1793758027.6961865,
-   "rGLEgQdktoN4Be5thhk6seg1HifGPBxY5Q-PLX": 1794531866.2930436,
+   "rGLEgQdktoN4Be5thhk6seg1HifGPBxY5Q-PLX": 1794622215.0691524,
    "rHcU3JWTp7fnea3xgvbV8pCbEp9S3HjSUz-4342495244000000000000000000000000000000": 1793581515.5410671,
    "rJEApMjV7KVVopB8NB1WXQpQYVu84vRGTa-5045504500000000000000000000000000000000": 1793495018.8529143,
    "rJwLNwaBUh9a7ajk9FeeLAuA791wVe3oyg-50524F4649540000000000000000000000000000": 1794531866.2930436,
@@ -23078,38 +23121,8 @@
    "rszenFJoDdiGjyezQc8pME9KWDQH43Tswh-44524F5000000000000000000000000000000000": 1794538174.6251876,
    "rwfGtVZKpPX6vb51xE5RGTgXkQ4W9wSUrz-53504C4153480000000000000000000000000000": 1794619049.6724958
   },
-  "net_fees_xrp": 1.0839479999999944,
+  "net_fees_xrp": 1.0839879999999942,
   "positions": [
-   {
-    "amm_fee": 0.005,
-    "currency": "PLX",
-    "entry_eff_px": 0.00019223271792909378,
-    "entry_spot": 0.00019121082632244637,
-    "excursion_src": "live from 2026-11-14T01:12",
-    "issuer": "rGLEgQdktoN4Be5thhk6seg1HifGPBxY5Q",
-    "key": "rGLEgQdktoN4Be5thhk6seg1HifGPBxY5Q-PLX",
-    "last_ratio_net": 0.9897,
-    "legs": [],
-    "name": "PLX",
-    "peak_hours": 0.96,
-    "peak_x": 0.9897,
-    "pool_xrp_entry": 31302.350532,
-    "remaining": 1.0,
-    "t": 1794618449.828279,
-    "tf": 0.0,
-    "tokens_gross": 51922.37594069141,
-    "tokens_net": 51646.36132287513,
-    "tp_done": false,
-    "trough_x": 0.9892,
-    "ts": "2026-11-14T01:07:29+00:00",
-    "usd_cost": 10.0,
-    "warnings": [
-     "only 12% of LP burned (liquidity can be pulled)",
-     "top-10 holders own 35%"
-    ],
-    "xrp_cost": 9.928120408244313,
-    "xrp_usd_entry": 1.00724
-   },
    {
     "amm_fee": 0.00702,
     "currency": "4641524D00000000000000000000000000000000",
@@ -23121,7 +23134,7 @@
     "last_ratio_net": 0.9855,
     "legs": [],
     "name": "FARM",
-    "peak_hours": 0.25,
+    "peak_hours": 0.33,
     "peak_x": 0.9855,
     "pool_xrp_entry": 41888.460844,
     "remaining": 1.0,
@@ -23145,10 +23158,14 @@
     "currency": "XYZ",
     "entry_eff_px": 4.385779453632988e-05,
     "entry_spot": 4.3548712103994434e-05,
+    "excursion_src": "live from 2026-11-14T02:10",
     "issuer": "rU5nUwkBUPx3MFPQSHmMnr9S9yg4g8cKLc",
     "key": "rU5nUwkBUPx3MFPQSHmMnr9S9yg4g8cKLc-XYZ",
+    "last_ratio_net": 0.986,
     "legs": [],
     "name": "XYZ",
+    "peak_hours": 0.08,
+    "peak_x": 0.986,
     "pool_xrp_entry": 4807.354908,
     "remaining": 1.0,
     "t": 1794621914.5275073,
@@ -23156,6 +23173,7 @@
     "tokens_gross": 228535.5161198732,
     "tokens_net": 226924.9400764551,
     "tp_done": false,
+    "trough_x": 0.986,
     "ts": "2026-11-14T02:05:14+00:00",
     "usd_cost": 10.0,
     "warnings": [
@@ -23167,7 +23185,7 @@
   ],
   "start_usd": 100.0,
   "start_xrp_usd": 1.28151,
-  "trustset_fees_xrp": 0.5418480000000033
+  "trustset_fees_xrp": 0.5418680000000033
  },
  "slow_scalp": {
   "buys_today": 4,
@@ -31743,7 +31761,7 @@
     "last_ratio_net": 0.9855,
     "legs": [],
     "name": "FARM",
-    "peak_hours": 0.25,
+    "peak_hours": 0.33,
     "peak_x": 0.9855,
     "pool_xrp_entry": 41888.460844,
     "remaining": 1.0,
@@ -31774,7 +31792,7 @@
     "last_ratio_net": 0.9787,
     "legs": [],
     "name": "Schmeckles",
-    "peak_hours": 0.25,
+    "peak_hours": 0.33,
     "peak_x": 0.9787,
     "pool_xrp_entry": 14032.330664,
     "remaining": 1.0,
