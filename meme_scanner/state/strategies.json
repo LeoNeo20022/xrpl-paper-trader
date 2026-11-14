@@ -8176,11 +8176,11 @@
     "excursion_src": "live from 2026-11-14T02:00",
     "issuer": "rDAgpQSwp41PCrG7LyqxtAxbvssFM7rH6d",
     "key": "rDAgpQSwp41PCrG7LyqxtAxbvssFM7rH6d-246D617800000000000000000000000000000000",
-    "last_ratio_net": 1.0288,
+    "last_ratio_net": 1.0332,
     "legs": [],
     "name": "$max",
-    "peak_hours": 16.27,
-    "peak_x": 1.0288,
+    "peak_hours": 16.36,
+    "peak_x": 1.0332,
     "pool_xrp_entry": 2364.279173,
     "remaining": 1.0,
     "t": 1794621314.9779396,
@@ -8233,8 +8233,8 @@
   "trustset_fees_xrp": 0.5937020000000028
  },
  "hold": {
-  "buys_today": 3,
-  "cash_usd": 5.655202,
+  "buys_today": 4,
+  "cash_usd": 3.876576,
   "closed": [
    {
     "amm_fee": 0.00224,
@@ -10867,6 +10867,48 @@
     "warnings": [],
     "xrp_cost": 9.464946570376611,
     "xrp_usd_entry": 1.05653
+   },
+   {
+    "amm_fee": 0.01,
+    "closed_ts": "2026-11-14T18:16:41+00:00",
+    "currency": "504947454F4E5300000000000000000000000000",
+    "entry_eff_px": 0.0003457673434052545,
+    "entry_spot": 0.00034207023659773737,
+    "excursion_src": "live from 2026-11-11T18:18",
+    "issuer": "rfQVVT7X5FynwK87EczgP2T8RQXmQcQSf",
+    "key": "rfQVVT7X5FynwK87EczgP2T8RQXmQcQSf-504947454F4E5300000000000000000000000000",
+    "last_ratio_net": 0.9159,
+    "legs": [
+     {
+      "fraction_of_buy": 1.0,
+      "pnl_usd_gross": -1.6002,
+      "pnl_usd_net": -1.7786,
+      "pnl_xrp_gross": -0.603756,
+      "pnl_xrp_net": -0.790623,
+      "reason": "time limit 72h (x0.92 net)",
+      "ts": "2026-11-14T18:16:41+00:00"
+     }
+    ],
+    "name": "PIGEONS",
+    "peak_hours": 10.43,
+    "peak_x": 1.007,
+    "pnl_usd_net": -1.7786,
+    "pnl_xrp_net": -0.790623,
+    "pool_xrp_entry": 13337.446555,
+    "remaining": 0.0,
+    "t": 1794420781.721659,
+    "tf": 0.0,
+    "tokens_gross": 27483.347910730034,
+    "tokens_net": 27189.483048729366,
+    "tp_done": false,
+    "trough_x": 0.9153,
+    "ts": "2026-11-11T18:13:01+00:00",
+    "usd_cost": 10.0,
+    "warnings": [
+     "top-10 holders own 40%"
+    ],
+    "xrp_cost": 9.401235322321353,
+    "xrp_usd_entry": 1.06369
    }
   ],
   "day": "2026-11-14",
@@ -10896,6 +10938,7 @@
    "raDZ4t8WPXkmDfJWMLBcNZmmSHmBC523NZ-ATM": 1794590965.9062245,
    "raHJ4Jz9PYk356wWaDMYw79B17iWtfsSMi-404": 1793359191.6685994,
    "razRVbPbtNtFt5TTa63XE122uRzoYooEpJ-4E4F525448000000000000000000000000000000": 1793878581.393573,
+   "rfQVVT7X5FynwK87EczgP2T8RQXmQcQSf-504947454F4E5300000000000000000000000000": 1794680201.9974594,
    "rfcasq9uRbvwcmLFvc4ti3j8Qt1CYCGgHz-589": 1794397331.2689033,
    "rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62-46555A5A59000000000000000000000000000000": 1794331661.3949027,
    "rhYhn7s6z4HAfuJm7ehuSE7wxepRoUPwpi-424348414D500000000000000000000000000000": 1793812665.773134,
@@ -10907,37 +10950,8 @@
    "rszenFJoDdiGjyezQc8pME9KWDQH43Tswh-44524F5000000000000000000000000000000000": 1794397331.2689033,
    "rwfGtVZKpPX6vb51xE5RGTgXkQ4W9wSUrz-53504C4153480000000000000000000000000000": 1794137976.2370565
   },
-  "net_fees_xrp": 0.2790399999999998,
+  "net_fees_xrp": 0.27911999999999987,
   "positions": [
-   {
-    "amm_fee": 0.01,
-    "currency": "504947454F4E5300000000000000000000000000",
-    "entry_eff_px": 0.0003457673434052545,
-    "entry_spot": 0.00034207023659773737,
-    "excursion_src": "live from 2026-11-11T18:18",
-    "issuer": "rfQVVT7X5FynwK87EczgP2T8RQXmQcQSf",
-    "key": "rfQVVT7X5FynwK87EczgP2T8RQXmQcQSf-504947454F4E5300000000000000000000000000",
-    "last_ratio_net": 0.9159,
-    "legs": [],
-    "name": "PIGEONS",
-    "peak_hours": 10.43,
-    "peak_x": 1.007,
-    "pool_xrp_entry": 13337.446555,
-    "remaining": 1.0,
-    "t": 1794420781.721659,
-    "tf": 0.0,
-    "tokens_gross": 27483.347910730034,
-    "tokens_net": 27189.483048729366,
-    "tp_done": false,
-    "trough_x": 0.9153,
-    "ts": "2026-11-11T18:13:01+00:00",
-    "usd_cost": 10.0,
-    "warnings": [
-     "top-10 holders own 40%"
-    ],
-    "xrp_cost": 9.401235322321353,
-    "xrp_usd_entry": 1.06369
-   },
    {
     "amm_fee": 0.00392,
     "currency": "44524F5000000000000000000000000000000000",
@@ -11080,11 +11094,36 @@
     "warnings": [],
     "xrp_cost": 10.067350575349085,
     "xrp_usd_entry": 0.99331
+   },
+   {
+    "amm_fee": 0.00995,
+    "currency": "MAG",
+    "entry_eff_px": 355.73665834288244,
+    "entry_spot": 352.18459556611253,
+    "issuer": "rXmagwMmnFtVet3uL26Q2iwk287SRvVMJ",
+    "key": "rXmagwMmnFtVet3uL26Q2iwk287SRvVMJ-MAG",
+    "legs": [],
+    "name": "MAG",
+    "pool_xrp_entry": 309205.376904,
+    "remaining": 1.0,
+    "t": 1794680201.9974594,
+    "tf": 0.0,
+    "tokens_gross": 0.029738374994330737,
+    "tokens_net": 0.02944143462458911,
+    "tp_done": false,
+    "ts": "2026-11-14T18:16:41+00:00",
+    "usd_cost": 10.0,
+    "warnings": [
+     "only 0% of LP burned (liquidity can be pulled)",
+     "top-10 holders own 38%"
+    ],
+    "xrp_cost": 10.473397570171764,
+    "xrp_usd_entry": 0.9548
    }
   ],
   "start_usd": 100.0,
   "start_xrp_usd": 1.28151,
-  "trustset_fees_xrp": 0.13944000000000026
+  "trustset_fees_xrp": 0.13948000000000024
  },
  "plus5": {
   "buys_today": 4,
