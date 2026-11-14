@@ -4109,3 +4109,4 @@ ts,label,strategy,token,issuer,currency,decision,reasons,change_1h_pct,pro1h_xrp
 2026-11-14T20:45:47+00:00,PAPER-NOT-ON-LEDGER,slow_scalp,SPLASH,rwfGtVZKpPX6vb51xE5RGTgXkQ4W9wSUrz,53504C4153480000000000000000000000000000,ELIGIBLE,,,,,,,,,,,,1.9891,https://xrpl.to/token/rwfGtVZKpPX6vb51xE5RGTgXkQ4W9wSUrz-53504C4153480000000000000000000000000000
 2026-11-14T20:55:47+00:00,PAPER-NOT-ON-LEDGER,slow_scalp,MAG,rXmagwMmnFtVet3uL26Q2iwk287SRvVMJ,MAG,SKIP,round-trip cost 2.16% > 2.0%,,,,,,,,,,,2.16275,https://xrpl.to/token/rXmagwMmnFtVet3uL26Q2iwk287SRvVMJ-MAG
 2026-11-14T21:00:47+00:00,PAPER-NOT-ON-LEDGER,slow_scalp,MAG,rXmagwMmnFtVet3uL26Q2iwk287SRvVMJ,MAG,ELIGIBLE,,,,,,,,,,,,1.98043,https://xrpl.to/token/rXmagwMmnFtVet3uL26Q2iwk287SRvVMJ-MAG
+2026-11-14T22:12:26+00:00,PAPER-NOT-ON-LEDGER,slow_scalp,MAG,rXmagwMmnFtVet3uL26Q2iwk287SRvVMJ,MAG,SKIP,round-trip cost 2.07% > 2.0%,,,,,,,,,,,2.07098,https://xrpl.to/token/rXmagwMmnFtVet3uL26Q2iwk287SRvVMJ-MAG
