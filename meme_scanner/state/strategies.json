@@ -948,8 +948,8 @@
   "trustset_fees_xrp": 0.03166299999999997
  },
  "dip_bounce": {
-  "buys_today": 2,
-  "cash_usd": 76.766936,
+  "buys_today": 3,
+  "cash_usd": 66.766916,
   "closed": [
    {
     "amm_fee": 0.00255,
@@ -8080,7 +8080,7 @@
    "rwCq6TENSo3Hh9LKipXnLaxaeXBXKubqki-504F4E474F000000000000000000000000000000": 1794375277.3761542,
    "rwfGtVZKpPX6vb51xE5RGTgXkQ4W9wSUrz-53504C4153480000000000000000000000000000": 1793923380.3853269
   },
-  "net_fees_xrp": 1.1873639999999974,
+  "net_fees_xrp": 1.1874039999999972,
   "positions": [
    {
     "amm_fee": 0.00027,
@@ -8141,12 +8141,37 @@
     ],
     "xrp_cost": 9.952625502607587,
     "xrp_usd_entry": 1.00476
+   },
+   {
+    "amm_fee": 0.0034,
+    "currency": "5941474100000000000000000000000000000000",
+    "entry_eff_px": 1.3927141887443322e-05,
+    "entry_spot": 1.3845485153255557e-05,
+    "issuer": "rpYYe5GQWX7hEPkyMGuDnaCvYM74BxtBLL",
+    "key": "rpYYe5GQWX7hEPkyMGuDnaCvYM74BxtBLL-5941474100000000000000000000000000000000",
+    "legs": [],
+    "name": "YAGA",
+    "pool_xrp_entry": 4013.556745,
+    "remaining": 1.0,
+    "t": 1794624945.1853898,
+    "tf": 0.0,
+    "tokens_gross": 720096.8128201171,
+    "tokens_net": 715874.7869005763,
+    "tp_done": false,
+    "trigger": "dip_bounce: 16.5% below 24h high 1.65804e-05 XRP, age 741.1d",
+    "ts": "2026-11-14T02:55:45+00:00",
+    "usd_cost": 10.0,
+    "warnings": [
+     "top-10 holders own 34%"
+    ],
+    "xrp_cost": 9.970089730807578,
+    "xrp_usd_entry": 1.003
    }
   ],
   "start_ts": "2026-10-24T13:37:52+00:00",
   "start_usd": 100.0,
   "start_xrp_usd": 1.28033,
-  "trustset_fees_xrp": 0.5936220000000028
+  "trustset_fees_xrp": 0.5936420000000028
  },
  "hold": {
   "buys_today": 0,
@@ -31638,7 +31663,7 @@
     "last_ratio_net": 1.0024,
     "legs": [],
     "name": "ATM",
-    "peak_hours": 21.05,
+    "peak_hours": 21.13,
     "peak_x": 1.0024,
     "pool_xrp_entry": 76293.524857,
     "remaining": 1.0,
@@ -31693,7 +31718,7 @@
     "excursion_src": "live from 2026-11-13T16:44",
     "issuer": "rCULtAKrKbQjk1Tpmg5hkw4dpcf9S9KCs",
     "key": "rCULtAKrKbQjk1Tpmg5hkw4dpcf9S9KCs-43554C5400000000000000000000000000000000",
-    "last_ratio_net": 0.9765,
+    "last_ratio_net": 0.9749,
     "legs": [],
     "name": "CULT",
     "peak_hours": 0.08,
@@ -31706,7 +31731,7 @@
     "tokens_net": 0.06887242105498838,
     "tp_done": false,
     "trigger": "slow_scalp: new/top-15 trending, round trip 1.99% <= 2.0%",
-    "trough_x": 0.9759,
+    "trough_x": 0.9749,
     "ts": "2026-11-13T16:39:45+00:00",
     "usd_cost": 10.0,
     "warnings": [
@@ -31787,7 +31812,7 @@
     "last_ratio_net": 0.9855,
     "legs": [],
     "name": "FARM",
-    "peak_hours": 1.01,
+    "peak_hours": 1.09,
     "peak_x": 0.9855,
     "pool_xrp_entry": 41888.460844,
     "remaining": 1.0,
@@ -31818,7 +31843,7 @@
     "last_ratio_net": 0.9787,
     "legs": [],
     "name": "Schmeckles",
-    "peak_hours": 1.01,
+    "peak_hours": 1.09,
     "peak_x": 0.9787,
     "pool_xrp_entry": 14032.330664,
     "remaining": 1.0,
