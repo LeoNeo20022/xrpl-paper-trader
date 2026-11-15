@@ -21,18 +21,18 @@
   "LONG": 0,
   "SHORT": 50,
   "TIE": 0,
-  "IDLE": 1893
+  "IDLE": 1894
  },
- "last_run": "2026-11-15T22:31:38+00:00",
+ "last_run": "2026-11-15T22:46:39+00:00",
  "max_dd_usd": 36.41982888686391,
  "min_equity": 467.84304752161427,
  "scaled_from_100": true,
  "rules_fired": {
   "R3": 408,
-  "R1": 71,
+  "R1": 72,
   "R6": 64
  },
- "crowded_votes": 399,
+ "crowded_votes": 400,
  "loss_usd": -80.98795062323222,
  "win_usd": 96.44198585798347
 }
