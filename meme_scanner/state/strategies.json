@@ -949,7 +949,7 @@
  },
  "dip_bounce": {
   "buys_today": 5,
-  "cash_usd": 62.945928,
+  "cash_usd": 72.032101,
   "closed": [
    {
     "amm_fee": 0.00255,
@@ -8476,6 +8476,49 @@
     ],
     "xrp_cost": 10.391445761848846,
     "xrp_usd_entry": 0.96233
+   },
+   {
+    "amm_fee": 0.00013,
+    "closed_ts": "2026-11-16T21:56:53+00:00",
+    "currency": "4D4F555345000000000000000000000000000000",
+    "entry_eff_px": 3.666786792340174e-05,
+    "entry_spot": 3.660927049341179e-05,
+    "excursion_src": "live from 2026-11-16T15:22",
+    "issuer": "rJevHGVUzAUPSGxiECgqcNVNVjRkTBWD7T",
+    "key": "rJevHGVUzAUPSGxiECgqcNVNVjRkTBWD7T-4D4F555345000000000000000000000000000000",
+    "last_ratio_net": 0.8976,
+    "legs": [
+     {
+      "fraction_of_buy": 1.0,
+      "pnl_usd_gross": -0.8854,
+      "pnl_usd_net": -0.9138,
+      "pnl_xrp_gross": -1.053175,
+      "pnl_xrp_net": -1.082843,
+      "reason": "stop (x0.90 net)",
+      "ts": "2026-11-16T21:56:53+00:00"
+     }
+    ],
+    "name": "MOUSE",
+    "peak_hours": 0.17,
+    "peak_x": 0.9968,
+    "pnl_usd_net": -0.9138,
+    "pnl_xrp_net": -1.082843,
+    "pool_xrp_entry": 7198.122359,
+    "remaining": 0.0,
+    "t": 1794842249.9861228,
+    "tf": 0.0,
+    "tokens_gross": 288777.7309755464,
+    "tokens_net": 288316.2470161069,
+    "tp_done": false,
+    "trigger": "dip_bounce: 32.5% below 24h high 5.42034e-05 XRP, age 639.8d",
+    "trough_x": 0.8976,
+    "ts": "2026-11-16T15:17:29+00:00",
+    "usd_cost": 10.0,
+    "warnings": [
+     "top-10 holders own 42%"
+    ],
+    "xrp_cost": 10.57194206575748,
+    "xrp_usd_entry": 0.9459
    }
   ],
   "day": "2026-11-16",
@@ -8506,7 +8549,7 @@
    "rJ5PL1DYXyDuUPNzpSRq52Wz56jFZb8RuP-GiB": 1794229854.9763288,
    "rJEApMjV7KVVopB8NB1WXQpQYVu84vRGTa-5045504500000000000000000000000000000000": 1794025910.7608492,
    "rJMtvf5B3GbuFMrqybh5wYVXEH4QE8VyU1-586F676500000000000000000000000000000000": 1793792260.2737265,
-   "rJevHGVUzAUPSGxiECgqcNVNVjRkTBWD7T-4D4F555345000000000000000000000000000000": 1794178439.322305,
+   "rJevHGVUzAUPSGxiECgqcNVNVjRkTBWD7T-4D4F555345000000000000000000000000000000": 1794866213.2049654,
    "rJfQFeHTZcnRsY4Ba5sJVKUhLs48E9apBn-5055505045540000000000000000000000000000": 1793040584.748974,
    "rKMwfvWZekbcQMFWVbRm3GidhC2tbJVmv2-4A6F6B6B61000000000000000000000000000000": 1794633321.8435593,
    "rKqoG3EJLokTMVEjyFMmTaz9DX2cgJFaLu-536B657463680000000000000000000000000000": 1793857537.4489493,
@@ -8548,7 +8591,7 @@
    "rwCq6TENSo3Hh9LKipXnLaxaeXBXKubqki-504F4E474F000000000000000000000000000000": 1794375277.3761542,
    "rwfGtVZKpPX6vb51xE5RGTgXkQ4W9wSUrz-53504C4153480000000000000000000000000000": 1793923380.3853269
   },
-  "net_fees_xrp": 1.2487319999999942,
+  "net_fees_xrp": 1.248771999999994,
   "positions": [
    {
     "amm_fee": 0.01,
@@ -8588,7 +8631,7 @@
     "excursion_src": "live from 2026-11-16T11:35",
     "issuer": "rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62",
     "key": "rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62-46555A5A59000000000000000000000000000000",
-    "last_ratio_net": 1.067,
+    "last_ratio_net": 1.068,
     "legs": [],
     "name": "FUZZY",
     "peak_hours": 6.57,
@@ -8609,42 +8652,12 @@
     ],
     "xrp_cost": 10.475591870940708,
     "xrp_usd_entry": 0.9546
-   },
-   {
-    "amm_fee": 0.00013,
-    "currency": "4D4F555345000000000000000000000000000000",
-    "entry_eff_px": 3.666786792340174e-05,
-    "entry_spot": 3.660927049341179e-05,
-    "excursion_src": "live from 2026-11-16T15:22",
-    "issuer": "rJevHGVUzAUPSGxiECgqcNVNVjRkTBWD7T",
-    "key": "rJevHGVUzAUPSGxiECgqcNVNVjRkTBWD7T-4D4F555345000000000000000000000000000000",
-    "last_ratio_net": 0.9886,
-    "legs": [],
-    "name": "MOUSE",
-    "peak_hours": 0.17,
-    "peak_x": 0.9968,
-    "pool_xrp_entry": 7198.122359,
-    "remaining": 1.0,
-    "t": 1794842249.9861228,
-    "tf": 0.0,
-    "tokens_gross": 288777.7309755464,
-    "tokens_net": 288316.2470161069,
-    "tp_done": false,
-    "trigger": "dip_bounce: 32.5% below 24h high 5.42034e-05 XRP, age 639.8d",
-    "trough_x": 0.9876,
-    "ts": "2026-11-16T15:17:29+00:00",
-    "usd_cost": 10.0,
-    "warnings": [
-     "top-10 holders own 42%"
-    ],
-    "xrp_cost": 10.57194206575748,
-    "xrp_usd_entry": 0.9459
    }
   ],
   "start_ts": "2026-10-24T13:37:52+00:00",
   "start_usd": 100.0,
   "start_xrp_usd": 1.28033,
-  "trustset_fees_xrp": 0.6243060000000031
+  "trustset_fees_xrp": 0.6243260000000032
  },
  "hold": {
   "buys_today": 2,
@@ -11487,7 +11500,7 @@
     "excursion_src": "live from 2026-11-14T11:48",
     "issuer": "rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62",
     "key": "rhCAT4hRdi2Y9puNdkpMzxrdKa5wkppR62-46555A5A59000000000000000000000000000000",
-    "last_ratio_net": 0.9965,
+    "last_ratio_net": 0.9974,
     "legs": [],
     "name": "FUZZY",
     "peak_hours": 37.24,
@@ -14932,7 +14945,7 @@
     "excursion_src": "live from 2026-11-14T11:48",
     "issuer": "rnHDzEH4xyW6u4LbXqDoX1uk36v5ovhbFi",
     "key": "rnHDzEH4xyW6u4LbXqDoX1uk36v5ovhbFi-4465657054696465000000000000000000000000",
-    "last_ratio_net": 1.0168,
+    "last_ratio_net": 1.0167,
     "legs": [],
     "name": "DeepTide",
     "peak_hours": 38.26,
@@ -14988,7 +15001,7 @@
     "excursion_src": "live from 2026-11-15T23:08",
     "issuer": "rfQVVT7X5FynwK87EczgP2T8RQXmQcQSf",
     "key": "rfQVVT7X5FynwK87EczgP2T8RQXmQcQSf-504947454F4E5300000000000000000000000000",
-    "last_ratio_net": 0.981,
+    "last_ratio_net": 0.9795,
     "legs": [],
     "name": "PIGEONS",
     "peak_hours": 22.76,
@@ -34418,7 +34431,7 @@
     "excursion_src": "live from 2026-11-16T11:30",
     "issuer": "r9Qk4VGodriw2xKLG9sRbTXWgknkz9TkDd",
     "key": "r9Qk4VGodriw2xKLG9sRbTXWgknkz9TkDd-5465646479000000000000000000000000000000",
-    "last_ratio_net": 0.9669,
+    "last_ratio_net": 0.967,
     "legs": [],
     "name": "Teddy",
     "peak_hours": 8.71,
@@ -34451,7 +34464,7 @@
     "last_ratio_net": 0.991,
     "legs": [],
     "name": "SEAL",
-    "peak_hours": 6.53,
+    "peak_hours": 6.66,
     "peak_x": 0.991,
     "pool_xrp_entry": 33314.686121,
     "remaining": 1.0,
