@@ -43,3 +43,4 @@ ts,event,price,qty_xrp,notional_usd,margin_usd,fee_usd,stop,target,liq_price,why
 2026-11-14T20:30:00+00:00,TAKE_PROFIT_SHORT,0.93607,2713.544,,,0.50801,,,,,93.8146,0.0,,,,binance_spot_data_api,PAPER-NOT-REAL
 2026-11-16T06:00:00+00:00,OPEN_SHORT,0.95232,3258.983,3103.6065,620.7213,1.5518,0.97129,0.91439,1.1371,"MACD in downtrend, ATR 0.0126",,,,,,binance_spot_data_api,PAPER-NOT-REAL
 2026-11-16T08:00:00+00:00,FUNDING,0.96,,,,,,,,okx_proxy,,0.168957,-5.40036543122e-05,,,binance_spot_data_api,PAPER-NOT-REAL
+2026-11-16T14:35:00+00:00,STOP_LOSS_SHORT,0.97178,3258.983,,,1.5835,,,,,-66.7069,0.16896,,,,binance_spot_data_api,PAPER-NOT-REAL
