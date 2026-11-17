@@ -1,7 +1,7 @@
 {
  "xrp": {
   "funding_pct": -0.0046,
-  "oi_24h_pct": -0.07,
+  "oi_24h_pct": -0.11,
   "ls_ratio": 2.12,
   "ls_pctile": 3,
   "fng": 12,
@@ -13,13 +13,13 @@
   "fng_source": "alternative.me",
   "funding_source": "okx_proxy",
   "trend_1h": null,
-  "ts": "2026-11-17T12:00:25+00:00"
+  "ts": "2026-11-17T12:37:06+00:00"
  },
  "btc": {
   "funding_pct": 0.0014,
-  "oi_24h_pct": -3.53,
-  "ls_ratio": 2.92,
-  "ls_pctile": 54,
+  "oi_24h_pct": -3.16,
+  "ls_ratio": 2.87,
+  "ls_pctile": 51,
   "fng": 12,
   "crowded": null,
   "long_signals": 0,
@@ -29,6 +29,6 @@
   "fng_source": "alternative.me",
   "funding_source": "okx_proxy",
   "trend_1h": null,
-  "ts": "2026-11-17T12:00:25+00:00"
+  "ts": "2026-11-17T12:37:06+00:00"
  }
 }
