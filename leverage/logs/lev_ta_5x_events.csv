@@ -50,3 +50,4 @@ ts,event,price,qty_xrp,notional_usd,margin_usd,fee_usd,stop,target,liq_price,why
 2026-11-17T12:20:00+00:00,STOP_LOSS_SHORT,0.97219,582.047,,,0.28293,,,,,-12.3061,0.06511,,,,binance_spot_data_api,PAPER-NOT-REAL
 2026-11-17T15:00:00+00:00,OPEN_SHORT,0.97211,506.94,492.8036,98.5607,0.2464,0.98646,0.94342,1.16073,"RSI in downtrend, ATR 0.0096",,,,,,binance_spot_data_api,PAPER-NOT-REAL
 2026-11-17T16:00:00+00:00,FUNDING,0.9607,,,,,,,,okx_proxy,,-0.004043,8.3023426794e-06,,,binance_spot_data_api,PAPER-NOT-REAL
+2026-11-17T23:05:00+00:00,STOP_LOSS_SHORT,0.98695,506.94,,,0.25016,,,,,-8.0157,-0.00404,,,,binance_spot_data_api,PAPER-NOT-REAL
