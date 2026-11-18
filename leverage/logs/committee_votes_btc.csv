@@ -2192,3 +2192,4 @@ ts,coin,decision,in_position,long_scout,short_scout,idle_guard,chart_reader,long
 2026-11-18T12:15:00+00:00,BTCUSDT,IDLE,FLAT,IDLE,IDLE,IDLE,IDLE,0,0,0,0,no uptrend,extreme fear (F&G 11): one trigger not enough,choppy ADX 11,no clear structure,0.0024,0.74,2.87,60,11,,0,1,down,down,below,-1.18,down,,
 2026-11-18T12:30:00+00:00,BTCUSDT,IDLE,FLAT,IDLE,IDLE,IDLE,IDLE,0,0,0,0,no uptrend,extreme fear (F&G 11): one trigger not enough,choppy ADX 11,no clear structure,0.0024,0.74,2.87,60,11,,0,1,down,down,below,-1.18,down,,
 2026-11-18T12:45:00+00:00,BTCUSDT,IDLE,FLAT,IDLE,IDLE,IDLE,IDLE,0,0,0,0,no uptrend,extreme fear (F&G 11): one trigger not enough,choppy ADX 11,no clear structure,0.0024,0.74,2.87,60,11,,0,1,down,down,below,-1.18,down,,
+2026-11-18T13:00:00+00:00,BTCUSDT,IDLE,FLAT,IDLE,IDLE,IDLE,IDLE,0,0,0,0,no uptrend,"downtrend, no bounce/breakdown",choppy ADX 11,no clear structure,0.0024,-0.32,2.89,60,11,,0,1,down,down,below,-1.5,,,
