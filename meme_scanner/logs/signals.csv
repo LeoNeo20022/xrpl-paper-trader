@@ -4497,3 +4497,4 @@ ts,label,strategy,token,issuer,currency,decision,reasons,change_1h_pct,pro1h_xrp
 2026-11-18T11:56:48+00:00,PAPER-NOT-ON-LEDGER,slow_scalp,PIGEONS,rfQVVT7X5FynwK87EczgP2T8RQXmQcQSf,504947454F4E5300000000000000000000000000,ELIGIBLE,,,,,,,,,,,,1.98974,https://xrpl.to/token/rfQVVT7X5FynwK87EczgP2T8RQXmQcQSf-504947454F4E5300000000000000000000000000
 2026-11-18T20:57:21+00:00,PAPER-NOT-ON-LEDGER,slow_scalp,WBC,rnFdeZggmwKLXGaHvTL4aTwfEsPPXV5FHa,WBC,ELIGIBLE,,,,,,,,,,,,1.98912,https://xrpl.to/token/rnFdeZggmwKLXGaHvTL4aTwfEsPPXV5FHa-WBC
 2026-11-18T21:12:22+00:00,PAPER-NOT-ON-LEDGER,slow_scalp,WBC,rnFdeZggmwKLXGaHvTL4aTwfEsPPXV5FHa,WBC,SKIP,round-trip cost 2.18% > 2.0%,,,,,,,,,,,2.18023,https://xrpl.to/token/rnFdeZggmwKLXGaHvTL4aTwfEsPPXV5FHa-WBC
+2026-11-18T21:17:22+00:00,PAPER-NOT-ON-LEDGER,slow_scalp,WBC,rnFdeZggmwKLXGaHvTL4aTwfEsPPXV5FHa,WBC,ELIGIBLE,,,,,,,,,,,,1.98912,https://xrpl.to/token/rnFdeZggmwKLXGaHvTL4aTwfEsPPXV5FHa-WBC
