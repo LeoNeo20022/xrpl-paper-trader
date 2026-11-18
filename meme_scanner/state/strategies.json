@@ -8748,7 +8748,7 @@
     "last_ratio_net": 0.9903,
     "legs": [],
     "name": "XDC",
-    "peak_hours": 0.25,
+    "peak_hours": 0.33,
     "peak_x": 0.9903,
     "pool_xrp_entry": 2241.214708,
     "remaining": 1.0,
@@ -11839,7 +11839,7 @@
     "excursion_src": "live from 2026-11-17T11:51",
     "issuer": "rGLEgQdktoN4Be5thhk6seg1HifGPBxY5Q",
     "key": "rGLEgQdktoN4Be5thhk6seg1HifGPBxY5Q-PLX",
-    "last_ratio_net": 0.9894,
+    "last_ratio_net": 0.9896,
     "legs": [],
     "name": "PLX",
     "peak_hours": 10.94,
@@ -15480,7 +15480,7 @@
     "excursion_src": "live from 2026-11-17T11:51",
     "issuer": "rGLEgQdktoN4Be5thhk6seg1HifGPBxY5Q",
     "key": "rGLEgQdktoN4Be5thhk6seg1HifGPBxY5Q-PLX",
-    "last_ratio_net": 0.9894,
+    "last_ratio_net": 0.9896,
     "legs": [],
     "name": "PLX",
     "peak_hours": 10.94,
@@ -15535,8 +15535,8 @@
   "trustset_fees_xrp": 0.19648199999999968
  },
  "scalp": {
-  "buys_today": 8,
-  "cash_usd": 67.244118,
+  "buys_today": 9,
+  "cash_usd": 57.244099,
   "closed": [
    {
     "amm_fee": 0.00224,
@@ -26252,7 +26252,7 @@
    "rszenFJoDdiGjyezQc8pME9KWDQH43Tswh-44524F5000000000000000000000000000000000": 1794965095.3228106,
    "rwfGtVZKpPX6vb51xE5RGTgXkQ4W9wSUrz-53504C4153480000000000000000000000000000": 1794619049.6724958
   },
-  "net_fees_xrp": 1.118205999999981,
+  "net_fees_xrp": 1.1182459999999808,
   "positions": [
    {
     "amm_fee": 0.00559,
@@ -26282,11 +26282,35 @@
     ],
     "xrp_cost": 10.243487702693013,
     "xrp_usd_entry": 0.97623
+   },
+   {
+    "amm_fee": 0.00345,
+    "currency": "586D656E00000000000000000000000000000000",
+    "entry_eff_px": 0.0002303705970828642,
+    "entry_spot": 0.00022933419438493652,
+    "issuer": "rMFL2KuFPMuiujdbVGbMzNNjj5QKyd6dZf",
+    "key": "rMFL2KuFPMuiujdbVGbMzNNjj5QKyd6dZf-586D656E00000000000000000000000000000000",
+    "legs": [],
+    "name": "Xmen",
+    "pool_xrp_entry": 9727.796979,
+    "remaining": 1.0,
+    "t": 1794965995.9820237,
+    "tf": 0.0,
+    "tokens_gross": 44762.49314364131,
+    "tokens_net": 44561.113413556435,
+    "tp_done": false,
+    "ts": "2026-11-18T01:39:55+00:00",
+    "usd_cost": 10.0,
+    "warnings": [
+     "top-10 holders own 30%"
+    ],
+    "xrp_cost": 10.265570303758224,
+    "xrp_usd_entry": 0.97413
    }
   ],
   "start_usd": 100.0,
   "start_xrp_usd": 1.28151,
-  "trustset_fees_xrp": 0.5589770000000047
+  "trustset_fees_xrp": 0.5589970000000047
  },
  "slow_scalp": {
   "buys_today": 2,
