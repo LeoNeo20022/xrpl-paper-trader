@@ -8887,7 +8887,7 @@
     "excursion_src": "live from 2026-11-18T21:02",
     "issuer": "rDAgpQSwp41PCrG7LyqxtAxbvssFM7rH6d",
     "key": "rDAgpQSwp41PCrG7LyqxtAxbvssFM7rH6d-246D617800000000000000000000000000000000",
-    "last_ratio_net": 1.0227,
+    "last_ratio_net": 1.0226,
     "legs": [],
     "name": "$max",
     "peak_hours": 0.5,
@@ -8920,7 +8920,7 @@
     "last_ratio_net": 0.9759,
     "legs": [],
     "name": "BFOOT",
-    "peak_hours": 0.08,
+    "peak_hours": 0.17,
     "peak_x": 0.9759,
     "pool_xrp_entry": 4772.321296,
     "remaining": 1.0,
@@ -12014,7 +12014,7 @@
     "last_ratio_net": 1.0041,
     "legs": [],
     "name": "PLX",
-    "peak_hours": 38.51,
+    "peak_hours": 38.59,
     "peak_x": 1.0041,
     "pool_xrp_entry": 31780.712971,
     "remaining": 1.0,
@@ -15653,7 +15653,7 @@
     "last_ratio_net": 1.0304,
     "legs": [],
     "name": "FUZZY",
-    "peak_hours": 38.51,
+    "peak_hours": 38.59,
     "peak_x": 1.0304,
     "pool_xrp_entry": 552834.663087,
     "remaining": 1.0,
@@ -15682,7 +15682,7 @@
     "last_ratio_net": 1.0041,
     "legs": [],
     "name": "PLX",
-    "peak_hours": 38.51,
+    "peak_hours": 38.59,
     "peak_x": 1.0041,
     "pool_xrp_entry": 31780.712971,
     "remaining": 1.0,
@@ -15790,8 +15790,8 @@
   "trustset_fees_xrp": 0.19656199999999965
  },
  "scalp": {
-  "buys_today": 5,
-  "cash_usd": 27.144992,
+  "buys_today": 6,
+  "cash_usd": 17.144973,
   "closed": [
    {
     "amm_fee": 0.00224,
@@ -26634,7 +26634,7 @@
    "rszenFJoDdiGjyezQc8pME9KWDQH43Tswh-44524F5000000000000000000000000000000000": 1794965095.3228106,
    "rwfGtVZKpPX6vb51xE5RGTgXkQ4W9wSUrz-53504C4153480000000000000000000000000000": 1794619049.6724958
   },
-  "net_fees_xrp": 1.1186059999999791,
+  "net_fees_xrp": 1.118645999999979,
   "positions": [
    {
     "amm_fee": 0.00462,
@@ -26705,7 +26705,7 @@
     "last_ratio_net": 0.9999,
     "legs": [],
     "name": "ARMY",
-    "peak_hours": 0.08,
+    "peak_hours": 0.17,
     "peak_x": 0.9999,
     "pool_xrp_entry": 225109.190774,
     "remaining": 1.0,
@@ -26759,7 +26759,7 @@
     "last_ratio_net": 0.992,
     "legs": [],
     "name": "SHROOMIES",
-    "peak_hours": 0.08,
+    "peak_hours": 0.17,
     "peak_x": 0.992,
     "pool_xrp_entry": 3809.692519,
     "remaining": 1.0,
@@ -26776,15 +26776,37 @@
     ],
     "xrp_cost": 10.413304037237975,
     "xrp_usd_entry": 0.96031
+   },
+   {
+    "amm_fee": 4e-05,
+    "currency": "ATM",
+    "entry_eff_px": 6.433724442693847e-06,
+    "entry_spot": 6.432572775644722e-06,
+    "issuer": "raDZ4t8WPXkmDfJWMLBcNZmmSHmBC523NZ",
+    "key": "raDZ4t8WPXkmDfJWMLBcNZmmSHmBC523NZ-ATM",
+    "legs": [],
+    "name": "ATM",
+    "pool_xrp_entry": 75906.31538,
+    "remaining": 1.0,
+    "t": 1795054923.805988,
+    "tf": 0.0,
+    "tokens_gross": 1617980.402825707,
+    "tokens_net": 1617690.776695048,
+    "tp_done": false,
+    "ts": "2026-11-19T02:22:03+00:00",
+    "usd_cost": 10.0,
+    "warnings": [],
+    "xrp_cost": 10.407776690743324,
+    "xrp_usd_entry": 0.96082
    }
   ],
   "start_usd": 100.0,
   "start_xrp_usd": 1.28151,
-  "trustset_fees_xrp": 0.5591770000000049
+  "trustset_fees_xrp": 0.5591970000000049
  },
  "slow_scalp": {
-  "buys_today": 2,
-  "cash_usd": 13.938627,
+  "buys_today": 3,
+  "cash_usd": 3.938608,
   "closed": [
    {
     "amm_fee": 0.00311,
@@ -36726,7 +36748,7 @@
    "rszenFJoDdiGjyezQc8pME9KWDQH43Tswh-44524F5000000000000000000000000000000000": 1795054322.443709,
    "rwfGtVZKpPX6vb51xE5RGTgXkQ4W9wSUrz-53504C4153480000000000000000000000000000": 1794703883.202312
   },
-  "net_fees_xrp": 1.1527659999999926,
+  "net_fees_xrp": 1.1528059999999924,
   "positions": [
    {
     "amm_fee": 0.0,
@@ -36856,7 +36878,7 @@
     "last_ratio_net": 0.992,
     "legs": [],
     "name": "SHROOMIES",
-    "peak_hours": 0.08,
+    "peak_hours": 0.17,
     "peak_x": 0.992,
     "pool_xrp_entry": 3809.692519,
     "remaining": 1.0,
@@ -36874,11 +36896,34 @@
     ],
     "xrp_cost": 10.413304037237975,
     "xrp_usd_entry": 0.96031
+   },
+   {
+    "amm_fee": 4e-05,
+    "currency": "ATM",
+    "entry_eff_px": 6.433724442693847e-06,
+    "entry_spot": 6.432572775644722e-06,
+    "issuer": "raDZ4t8WPXkmDfJWMLBcNZmmSHmBC523NZ",
+    "key": "raDZ4t8WPXkmDfJWMLBcNZmmSHmBC523NZ-ATM",
+    "legs": [],
+    "name": "ATM",
+    "pool_xrp_entry": 75906.31538,
+    "remaining": 1.0,
+    "t": 1795054923.805988,
+    "tf": 0.0,
+    "tokens_gross": 1617980.402825707,
+    "tokens_net": 1617690.776695048,
+    "tp_done": false,
+    "trigger": "slow_scalp: new/top-15 trending, round trip 0.01% <= 2.0%",
+    "ts": "2026-11-19T02:22:03+00:00",
+    "usd_cost": 10.0,
+    "warnings": [],
+    "xrp_cost": 10.407776690743324,
+    "xrp_usd_entry": 0.96082
    }
   ],
   "start_ts": "2026-10-24T13:37:52+00:00",
   "start_usd": 100.0,
   "start_xrp_usd": 1.28033,
-  "trustset_fees_xrp": 0.5763170000000039
+  "trustset_fees_xrp": 0.5763370000000039
  }
 }
