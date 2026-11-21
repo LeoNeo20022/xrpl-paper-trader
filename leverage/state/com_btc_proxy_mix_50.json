@@ -21,17 +21,17 @@
   "LONG": 0,
   "SHORT": 0,
   "TIE": 0,
-  "IDLE": 2508
+  "IDLE": 2509
  },
  "started": "2026-10-26T17:00:00+00:00",
  "start_price": 80236.25,
- "crowded_votes": 508,
+ "crowded_votes": 509,
  "rules_fired": {
   "theo": 100,
   "remy": 184,
   "casey": 23
  },
- "last_run": "2026-11-21T20:03:53+00:00",
+ "last_run": "2026-11-21T20:18:53+00:00",
  "max_dd_usd": 0.0,
  "min_equity": 50.0,
  "scaled_from_100": true
