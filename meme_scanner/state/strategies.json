@@ -949,7 +949,7 @@
  },
  "dip_bounce": {
   "buys_today": 0,
-  "cash_usd": 76.58533,
+  "cash_usd": 85.000632,
   "closed": [
    {
     "amm_fee": 0.00255,
@@ -8988,6 +8988,49 @@
     ],
     "xrp_cost": 10.357435084775606,
     "xrp_usd_entry": 0.96549
+   },
+   {
+    "amm_fee": 0.01,
+    "closed_ts": "2026-11-21T04:06:16+00:00",
+    "currency": "4C494F4E53000000000000000000000000000000",
+    "entry_eff_px": 0.00012787071514654906,
+    "entry_spot": 0.00012624416282193114,
+    "excursion_src": "live from 2026-11-20T23:10",
+    "issuer": "rGHtf1GTfXEXSPxmZfnQrUMGUpajYqAuzS",
+    "key": "rGHtf1GTfXEXSPxmZfnQrUMGUpajYqAuzS-4C494F4E53000000000000000000000000000000",
+    "last_ratio_net": 0.8803,
+    "legs": [
+     {
+      "fraction_of_buy": 1.0,
+      "pnl_usd_gross": -1.3679,
+      "pnl_usd_net": -1.5847,
+      "pnl_xrp_gross": -1.061615,
+      "pnl_xrp_net": -1.309789,
+      "reason": "stop (x0.88 net)",
+      "ts": "2026-11-21T04:06:16+00:00"
+     }
+    ],
+    "name": "LIONS",
+    "peak_hours": 0.08,
+    "peak_x": 0.9748,
+    "pnl_usd_net": -1.5847,
+    "pnl_xrp_net": -1.309789,
+    "pool_xrp_entry": 3934.830466,
+    "remaining": 0.0,
+    "t": 1795215921.1896408,
+    "tf": 0.0,
+    "tokens_gross": 86689.41180803376,
+    "tokens_net": 85586.69752247966,
+    "tp_done": false,
+    "trigger": "dip_bounce: 21.1% below 24h high 0.00016 XRP, age 497.6d",
+    "trough_x": 0.8803,
+    "ts": "2026-11-20T23:05:21+00:00",
+    "usd_cost": 10.0,
+    "warnings": [
+     "top-10 holders own 47%"
+    ],
+    "xrp_cost": 10.944032219230854,
+    "xrp_usd_entry": 0.91374
    }
   ],
   "day": "2026-11-21",
@@ -9012,6 +9055,7 @@
    "rEjQsRE5gJDng9bnkV2WUYPtgtkD28fWMd-42464F4F54000000000000000000000000000000": 1795115048.2906709,
    "rExSpmk2PAqxKRTT3mhjCrCpqVasBra5v8-54494D4500000000000000000000000000000000": 1794914783.1921997,
    "rG7jT6D4fHsipvVmPSbcnvDtFzXwwSR4qx-524942424C450000000000000000000000000000": 1793237291.5620797,
+   "rGHtf1GTfXEXSPxmZfnQrUMGUpajYqAuzS-4C494F4E53000000000000000000000000000000": 1795233976.1580498,
    "rGJbFqiLdh23e9WigQ5sxTfFqTENveLX21-XOX": 1793825748.0283558,
    "rGLEgQdktoN4Be5thhk6seg1HifGPBxY5Q-PLX": 1793923380.3853269,
    "rHLRdLwXiBZSD53ZQz8ogGJz25LzNCCjSz-4752494D00000000000000000000000000000000": 1793575973.0161536,
@@ -9062,43 +9106,12 @@
    "rwCq6TENSo3Hh9LKipXnLaxaeXBXKubqki-504F4E474F000000000000000000000000000000": 1794375277.3761542,
    "rwfGtVZKpPX6vb51xE5RGTgXkQ4W9wSUrz-53504C4153480000000000000000000000000000": 1793923380.3853269
   },
-  "net_fees_xrp": 1.2596119999999904,
-  "positions": [
-   {
-    "amm_fee": 0.01,
-    "currency": "4C494F4E53000000000000000000000000000000",
-    "entry_eff_px": 0.00012787071514654906,
-    "entry_spot": 0.00012624416282193114,
-    "excursion_src": "live from 2026-11-20T23:10",
-    "issuer": "rGHtf1GTfXEXSPxmZfnQrUMGUpajYqAuzS",
-    "key": "rGHtf1GTfXEXSPxmZfnQrUMGUpajYqAuzS-4C494F4E53000000000000000000000000000000",
-    "last_ratio_net": 0.9748,
-    "legs": [],
-    "name": "LIONS",
-    "peak_hours": 0.08,
-    "peak_x": 0.9748,
-    "pool_xrp_entry": 3934.830466,
-    "remaining": 1.0,
-    "t": 1795215921.1896408,
-    "tf": 0.0,
-    "tokens_gross": 86689.41180803376,
-    "tokens_net": 85586.69752247966,
-    "tp_done": false,
-    "trigger": "dip_bounce: 21.1% below 24h high 0.00016 XRP, age 497.6d",
-    "trough_x": 0.9743,
-    "ts": "2026-11-20T23:05:21+00:00",
-    "usd_cost": 10.0,
-    "warnings": [
-     "top-10 holders own 47%"
-    ],
-    "xrp_cost": 10.944032219230854,
-    "xrp_usd_entry": 0.91374
-   }
-  ],
+  "net_fees_xrp": 1.2596519999999902,
+  "positions": [],
   "start_ts": "2026-10-24T13:37:52+00:00",
   "start_usd": 100.0,
   "start_xrp_usd": 1.28033,
-  "trustset_fees_xrp": 0.6297460000000036
+  "trustset_fees_xrp": 0.6297660000000036
  },
  "hold": {
   "buys_today": 0,
@@ -12361,7 +12374,7 @@
     "excursion_src": "live from 2026-11-19T19:09",
     "issuer": "rGG3wQ4kUzd7Jnmk1n5NWPZjjut62kCBfC",
     "key": "rGG3wQ4kUzd7Jnmk1n5NWPZjjut62kCBfC-41524D5900000000000000000000000000000000",
-    "last_ratio_net": 0.9745,
+    "last_ratio_net": 0.9747,
     "legs": [],
     "name": "ARMY",
     "peak_hours": 13.72,
@@ -16232,7 +16245,7 @@
     "excursion_src": "live from 2026-11-19T10:21",
     "issuer": "rGG3wQ4kUzd7Jnmk1n5NWPZjjut62kCBfC",
     "key": "rGG3wQ4kUzd7Jnmk1n5NWPZjjut62kCBfC-41524D5900000000000000000000000000000000",
-    "last_ratio_net": 0.9759,
+    "last_ratio_net": 0.9762,
     "legs": [],
     "name": "ARMY",
     "peak_hours": 22.52,
@@ -16316,7 +16329,7 @@
     "last_ratio_net": 0.9885,
     "legs": [],
     "name": "PROFIT",
-    "peak_hours": 10.77,
+    "peak_hours": 10.85,
     "peak_x": 0.9885,
     "pool_xrp_entry": 43833.473311,
     "remaining": 1.0,
@@ -28048,7 +28061,7 @@
     "last_ratio_net": 0.9925,
     "legs": [],
     "name": "DROP",
-    "peak_hours": 0.08,
+    "peak_hours": 0.17,
     "peak_x": 0.9925,
     "pool_xrp_entry": 111483.646587,
     "remaining": 1.0,
@@ -38478,7 +38491,7 @@
     "excursion_src": "live from 2026-11-20T08:37",
     "issuer": "rGG3wQ4kUzd7Jnmk1n5NWPZjjut62kCBfC",
     "key": "rGG3wQ4kUzd7Jnmk1n5NWPZjjut62kCBfC-41524D5900000000000000000000000000000000",
-    "last_ratio_net": 0.9672,
+    "last_ratio_net": 0.9674,
     "legs": [],
     "name": "ARMY",
     "peak_hours": 0.58,
@@ -38597,7 +38610,7 @@
     "last_ratio_net": 0.993,
     "legs": [],
     "name": "BCHAMP",
-    "peak_hours": 4.52,
+    "peak_hours": 4.6,
     "peak_x": 0.993,
     "pool_xrp_entry": 120940.012244,
     "remaining": 1.0,
