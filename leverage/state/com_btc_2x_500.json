@@ -13,7 +13,7 @@
  "max_dd_pct": 7.9620488007433154,
  "realised_usd": -11.516047131064227,
  "last_signal_ts": 1794624300,
- "last_funding_ts": 1795219200,
+ "last_funding_ts": 1795248000,
  "last_stop_ts": 1794417600,
  "ties": [],
  "shadows": [],
@@ -21,13 +21,13 @@
   "LONG": 0,
   "SHORT": 39,
   "TIE": 0,
-  "IDLE": 2409
+  "IDLE": 2441
  },
- "last_run": "2026-11-21T04:40:18+00:00",
- "crowded_votes": 460,
+ "last_run": "2026-11-21T12:39:50+00:00",
+ "crowded_votes": 479,
  "rules_fired": {
   "R6": 68,
-  "R3": 444,
+  "R3": 459,
   "R1": 160
  },
  "max_dd_usd": 39.810244003716605,
