@@ -948,8 +948,8 @@
   "trustset_fees_xrp": 0.03166299999999997
  },
  "dip_bounce": {
-  "buys_today": 0,
-  "cash_usd": 75.000613,
+  "buys_today": 1,
+  "cash_usd": 65.000595,
   "closed": [
    {
     "amm_fee": 0.00255,
@@ -9106,7 +9106,7 @@
    "rwCq6TENSo3Hh9LKipXnLaxaeXBXKubqki-504F4E474F000000000000000000000000000000": 1794375277.3761542,
    "rwfGtVZKpPX6vb51xE5RGTgXkQ4W9wSUrz-53504C4153480000000000000000000000000000": 1793923380.3853269
   },
-  "net_fees_xrp": 1.25969199999999,
+  "net_fees_xrp": 1.2597319999999899,
   "positions": [
    {
     "amm_fee": 0.005,
@@ -9119,7 +9119,7 @@
     "last_ratio_net": 1.0162,
     "legs": [],
     "name": "XYZ",
-    "peak_hours": 9.14,
+    "peak_hours": 9.22,
     "peak_x": 1.0162,
     "pool_xrp_entry": 4774.542076,
     "remaining": 1.0,
@@ -9137,12 +9137,37 @@
     ],
     "xrp_cost": 10.737678513905294,
     "xrp_usd_entry": 0.9313
+   },
+   {
+    "amm_fee": 0.00024,
+    "currency": "XLM",
+    "entry_eff_px": 3.9817135965576537e-07,
+    "entry_spot": 3.9635571475580856e-07,
+    "issuer": "r44CR5cYKVyzuJpFUtF2ZRDizVZpvtkc4C",
+    "key": "r44CR5cYKVyzuJpFUtF2ZRDizVZpvtkc4C-XLM",
+    "legs": [],
+    "name": "XLM",
+    "pool_xrp_entry": 2514.979173,
+    "remaining": 1.0,
+    "t": 1795318666.3250782,
+    "tf": 0.0,
+    "tokens_gross": 27531795.452608787,
+    "tokens_net": 27406251.606252283,
+    "tp_done": false,
+    "trigger": "dip_bounce: 22.0% below 24h high 5.08336e-07 XRP, age 723.2d",
+    "ts": "2026-11-22T03:37:46+00:00",
+    "usd_cost": 10.0,
+    "warnings": [
+     "top-10 holders own 50%"
+    ],
+    "xrp_cost": 10.912384465129476,
+    "xrp_usd_entry": 0.91639
    }
   ],
   "start_ts": "2026-10-24T13:37:52+00:00",
   "start_usd": 100.0,
   "start_xrp_usd": 1.28033,
-  "trustset_fees_xrp": 0.6297860000000036
+  "trustset_fees_xrp": 0.6298060000000036
  },
  "hold": {
   "buys_today": 0,
@@ -16443,7 +16468,7 @@
     "last_ratio_net": 0.9884,
     "legs": [],
     "name": "PUNX",
-    "peak_hours": 0.17,
+    "peak_hours": 0.25,
     "peak_x": 0.9884,
     "pool_xrp_entry": 2267.689445,
     "remaining": 1.0,
@@ -28732,7 +28757,7 @@
     "last_ratio_net": 0.995,
     "legs": [],
     "name": "DeepTide",
-    "peak_hours": 0.08,
+    "peak_hours": 0.25,
     "peak_x": 0.995,
     "pool_xrp_entry": 8199.878209,
     "remaining": 1.0,
@@ -39552,7 +39577,7 @@
     "last_ratio_net": 0.9756,
     "legs": [],
     "name": "SEAL",
-    "peak_hours": 3.46,
+    "peak_hours": 3.55,
     "peak_x": 0.9756,
     "pool_xrp_entry": 32232.314666,
     "remaining": 1.0,
