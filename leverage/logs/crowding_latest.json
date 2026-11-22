@@ -13,12 +13,12 @@
   "fng_source": "alternative.me",
   "funding_source": "okx_proxy",
   "trend_1h": null,
-  "ts": "2026-11-22T15:05:38+00:00"
+  "ts": "2026-11-22T15:20:37+00:00"
  },
  "btc": {
   "funding_pct": 0.0034,
   "oi_24h_pct": -0.18,
-  "ls_ratio": 2.23,
+  "ls_ratio": 2.24,
   "ls_pctile": 9,
   "fng": 11,
   "crowded": "shorts",
@@ -29,6 +29,6 @@
   "fng_source": "alternative.me",
   "funding_source": "okx_proxy",
   "trend_1h": null,
-  "ts": "2026-11-22T15:05:38+00:00"
+  "ts": "2026-11-22T15:20:37+00:00"
  }
 }
