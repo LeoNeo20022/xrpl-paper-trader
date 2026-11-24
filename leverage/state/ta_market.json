@@ -1,12 +1,12 @@
 {
  "started": "2026-10-26T16:15:00+00:00",
  "start_price": 1.2938,
- "last_candle_ts": 1795472400,
- "last_close": 0.9425,
+ "last_candle_ts": 1795498800,
+ "last_close": 0.9597,
  "baseline_xrp": 77.2530723353735,
- "last_run": "2026-11-23T22:25:03+00:00",
+ "last_run": "2026-11-24T05:45:39+00:00",
  "last_source_5m": "binance_spot_data_api",
  "last_source_1h": "binance_spot_data_api",
  "last_funding_source": "okx_proxy",
- "candles_this_run": 3
+ "candles_this_run": 88
 }

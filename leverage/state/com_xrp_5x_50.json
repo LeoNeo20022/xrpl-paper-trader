@@ -13,7 +13,7 @@
  "max_dd_pct": 17.101468403213193,
  "realised_usd": 2.2021092165163765,
  "last_signal_ts": 1794489300,
- "last_funding_ts": 1795449600,
+ "last_funding_ts": 1795478400,
  "last_stop_ts": 1794519000,
  "ties": [],
  "shadows": [],
@@ -21,18 +21,18 @@
   "LONG": 0,
   "SHORT": 50,
   "TIE": 0,
-  "IDLE": 2661
+  "IDLE": 2690
  },
- "last_run": "2026-11-23T22:25:05+00:00",
+ "last_run": "2026-11-24T05:45:41+00:00",
  "max_dd_usd": 8.707493805814913,
  "min_equity": 42.209150312177094,
  "scaled_from_100": true,
  "rules_fired": {
-  "R3": 582,
-  "R1": 211,
+  "R3": 584,
+  "R1": 233,
   "R6": 64
  },
- "crowded_votes": 706,
+ "crowded_votes": 713,
  "loss_usd": -20.388744818610512,
  "win_usd": 22.59085403512689
 }
