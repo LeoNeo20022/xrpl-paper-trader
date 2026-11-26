@@ -17797,8 +17797,8 @@
   "trustset_fees_xrp": 0.20714199999999944
  },
  "scalp": {
-  "buys_today": 5,
-  "cash_usd": 52.441499,
+  "buys_today": 6,
+  "cash_usd": 42.44148,
   "closed": [
    {
     "amm_fee": 0.00224,
@@ -31665,7 +31665,7 @@
    "rwfGtVZKpPX6vb51xE5RGTgXkQ4W9wSUrz-53504C4153480000000000000000000000000000": 1794619049.6724958,
    "rwxrCZTjrxXmtYA6v6krDKjjFaRuUiAhvJ-62756C6C00000000000000000000000000000000": 1795559911.753455
   },
-  "net_fees_xrp": 1.204325999999955,
+  "net_fees_xrp": 1.2043659999999548,
   "positions": [
    {
     "amm_fee": 0.0006,
@@ -31722,11 +31722,33 @@
     "warnings": [],
     "xrp_cost": 10.555315128933175,
     "xrp_usd_entry": 0.94739
+   },
+   {
+    "amm_fee": 0.00172,
+    "currency": "589",
+    "entry_eff_px": 0.00011310820341831515,
+    "entry_spot": 0.00011286801068906338,
+    "issuer": "rfcasq9uRbvwcmLFvc4ti3j8Qt1CYCGgHz",
+    "key": "rfcasq9uRbvwcmLFvc4ti3j8Qt1CYCGgHz-589",
+    "legs": [],
+    "name": "589",
+    "pool_xrp_entry": 26139.158896,
+    "remaining": 1.0,
+    "t": 1795709172.5351481,
+    "tf": 0.0,
+    "tokens_gross": 93382.093942785,
+    "tokens_net": 93183.79090790777,
+    "tp_done": false,
+    "ts": "2026-11-26T16:06:12+00:00",
+    "usd_cost": 10.0,
+    "warnings": [],
+    "xrp_cost": 10.539851177301378,
+    "xrp_usd_entry": 0.94878
    }
   ],
   "start_usd": 100.0,
   "start_xrp_usd": 1.28151,
-  "trustset_fees_xrp": 0.6020370000000078
+  "trustset_fees_xrp": 0.6020570000000078
  },
  "slow_scalp": {
   "buys_today": 3,
