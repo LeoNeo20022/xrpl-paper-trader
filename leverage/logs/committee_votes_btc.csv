@@ -3017,3 +3017,4 @@ ts,coin,decision,in_position,long_scout,short_scout,idle_guard,chart_reader,long
 2026-11-27T02:30:00+00:00,BTCUSDT,IDLE,FLAT,LONG,IDLE,IDLE,IDLE,0.6,0,0,0,uptrend + MACD turning up,no downtrend,choppy ADX 14; 5m volatility spike,no clear structure,0.0005,1.88,2.45,39,12,,0,1,down,down,below,-0.23,,,
 2026-11-27T02:45:00+00:00,BTCUSDT,IDLE,FLAT,LONG,IDLE,IDLE,IDLE,0.6,0,0,0,uptrend + MACD turning up,no downtrend,choppy ADX 14,no clear structure,0.0005,1.88,2.45,39,12,,0,1,down,down,below,-0.23,,,
 2026-11-27T03:00:00+00:00,BTCUSDT,IDLE,FLAT,IDLE,IDLE,IDLE,IDLE,0,0,0,0,"uptrend, no pullback/reversal",no downtrend,choppy ADX 16,no clear structure,0.0005,2.39,2.47,42,12,,0,1,down,down,below,0.99,,,
+2026-11-27T03:15:00+00:00,BTCUSDT,IDLE,FLAT,IDLE,IDLE,IDLE,IDLE,0,0,0,0,"uptrend, no pullback/reversal",no downtrend,choppy ADX 16,no clear structure,0.0005,2.39,2.47,42,12,,0,1,down,down,below,0.99,,,
